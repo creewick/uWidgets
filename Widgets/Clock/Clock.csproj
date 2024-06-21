@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\uWidgets\uWidgets.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Update="Clock.axaml">
+        <DependentUpon>Clock.axaml</DependentUpon>
+      </UpToDateCheckInput>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="AnalogClockI.axaml.cs">
+        <DependentUpon>Clock.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+</Project>

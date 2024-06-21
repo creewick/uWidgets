@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="uWidgets/App.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Clock.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/MainWindow.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Settings.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Styles/Dark.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Styles/Light.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Styles/Monochrome.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Styles/WidgetStyle.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/TestWidget.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Widget.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Widget2.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/WidgetTemplate.axaml" value="uWidgets/uWidgets.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

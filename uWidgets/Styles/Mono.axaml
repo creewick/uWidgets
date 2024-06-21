@@ -1,0 +1,11 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="Dark">
+        <Style.Resources>
+            <Color x:Key="BackgroundColor">#4B4B4B</Color>
+            <Color x:Key="TextColor">#E3E3E3</Color>
+            <Color x:Key="TextMutedColor1">#ABABAB</Color>
+            <Color x:Key="TextMutedColor2">#7C7C7C</Color>
+        </Style.Resources>
+    </Style>
+</Styles>

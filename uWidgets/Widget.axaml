@@ -1,0 +1,30 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="uWidgets.Widget"
+        Width="160" Height="160"
+        Background="Transparent"
+        TransparencyLevelHint="AcrylicBlur"
+        ShowInTaskbar="False"
+        SystemDecorations="None"
+        Title="Widget">
+    <Window.Styles>
+        <Style Selector="Window">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="#404B4B4B" CornerRadius="24" Padding="12">
+                        <ContentPresenter Content="{TemplateBinding Content}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </Window.Styles>
+    <StackPanel>
+        <TextBlock Text="This widget is empty" FontSize="14"/>
+        <Button Content="Button" Margin="0,10, 0, 0"/>
+        <ToggleSwitch Margin="0, 10, 0, 0"/>
+        <Slider />
+    </StackPanel>
+</Window>
