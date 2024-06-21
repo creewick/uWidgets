@@ -2,4 +2,4 @@
 
 namespace uWidgets.Core.Interfaces;
 
-public interface IWidgetSettingsProvider : IDataProvider<WidgetModel>;
+public interface IWidgetSettingsProvider : IDataProvider<WidgetSettings>;

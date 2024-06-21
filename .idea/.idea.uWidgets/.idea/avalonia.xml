@@ -10,6 +10,8 @@
         <entry key="uWidgets/Styles/Dark.axaml" value="uWidgets/uWidgets.csproj" />
         <entry key="uWidgets/Styles/Light.axaml" value="uWidgets/uWidgets.csproj" />
         <entry key="uWidgets/Styles/Monochrome.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Styles/Styles1.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Styles/Transparent.axaml" value="uWidgets/uWidgets.csproj" />
         <entry key="uWidgets/Styles/WidgetStyle.axaml" value="uWidgets/uWidgets.csproj" />
         <entry key="uWidgets/TestWidget.axaml" value="uWidgets/uWidgets.csproj" />
         <entry key="uWidgets/Widget.axaml" value="uWidgets/uWidgets.csproj" />

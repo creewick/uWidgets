@@ -3,4 +3,4 @@ using uWidgets.Core.Models;
 
 namespace uWidgets.Core.Services;
 
-public class AppSettingsProvider() : JsonParser<SettingsModel>(Const.AppSettingsFile), IAppSettingsProvider;
+public class AppSettingsProvider() : JsonParser<AppSettings>(Const.AppSettingsFile), IAppSettingsProvider;

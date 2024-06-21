@@ -3,15 +3,20 @@ using uWidgets.Core.Models;
 
 namespace uWidgets.Core.Services;
 
-public class WidgetSettingsProvider : IWidgetSettingsProvider
+public class WidgetSettingsProvider(ILayoutProvider layoutProvider, WidgetSettings settings) 
+    : IWidgetSettingsProvider
 {
-    public Task<WidgetModel> Get()
-    {
-        throw new NotImplementedException();
-    }
+    public Task<WidgetSettings> Get() => Task.FromResult(settings);
 
-    public Task Save(WidgetModel data)
+    public async Task Save(WidgetSettings data)
     {
-        throw new NotImplementedException();
+        var layout = await layoutProvider.Get();
+        var index = layout.IndexOf(data);
+
+        if (index > -1)
+        {
+            layout[index] = data;
+            await layoutProvider.Save(layout);
+        }
     }
 }

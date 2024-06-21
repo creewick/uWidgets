@@ -4,5 +4,5 @@ namespace uWidgets.Core.Interfaces;
 
 public interface IThemeService
 {
-    public void Apply(ThemeModel theme);
+    public void Apply(Theme theme);
 }

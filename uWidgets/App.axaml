@@ -3,6 +3,10 @@
              x:Class="uWidgets.App"
              RequestedThemeVariant="Default">
     <Application.Styles>
-        <FluentTheme />
+        <FluentTheme>
+            <FluentTheme.Palettes>
+                <ColorPaletteResources x:Key="Dark" AltHigh="#2E2E2E" />
+            </FluentTheme.Palettes>
+        </FluentTheme>
     </Application.Styles>
 </Application>

@@ -2,4 +2,4 @@
 
 namespace uWidgets.Core.Interfaces;
 
-public interface ILayoutProvider : IDataProvider<List<WidgetModel>>;
+public interface ILayoutProvider : IDataProvider<List<WidgetSettings>>;
