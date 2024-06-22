@@ -18,14 +18,14 @@ public class ThemeService : IThemeService
     
     public void Apply(Theme theme)
     {
-        Application.Current!.RequestedThemeVariant = theme.IsDark switch
+        Application.Current!.RequestedThemeVariant = theme.DarkMode switch
         {
             null => ThemeVariant.Default,
-            false when !theme.UseTransparency => ThemeVariant.Light,
+            false when !theme.Transparency => ThemeVariant.Light,
             _ => ThemeVariant.Dark,
         };
 
-        if (theme.UseTransparency)
+        if (theme.Transparency)
             Application.Current.Styles.Add(transparentStyle);
         else
             Application.Current.Styles.Remove(transparentStyle);

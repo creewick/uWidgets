@@ -2,7 +2,7 @@
 
 public interface IDataProvider<T>
 {
-    public Task<T> Get();
+    public T Get();
 
-    public Task Save(T data);
+    public void Save(T data);
 }

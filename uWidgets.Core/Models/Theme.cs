@@ -1,3 +1,3 @@
 ﻿namespace uWidgets.Core.Models;
 
-public record Theme(bool? IsDark, bool UseTransparency);
+public record Theme(bool? DarkMode, string? AccentColor, bool Transparency);

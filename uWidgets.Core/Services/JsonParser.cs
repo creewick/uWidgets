@@ -18,20 +18,20 @@ public class JsonParser<T> : IDataProvider<T>
         if (converter != null) options.Converters.Add(converter);
     }
     
-    public async Task<T> Get()
+    public T Get()
     {
         if (data != null) return data;
 
-        var json = await File.ReadAllTextAsync(filePath);
+        var json = File.ReadAllText(filePath);
 
         return data = JsonSerializer.Deserialize<T>(json, options)
                ?? throw new FormatException(nameof(T));
     }
 
-    public async Task Save(T newData)
+    public void Save(T newData)
     {
         var json = JsonSerializer.Serialize(data = newData, options);
         
-        await File.WriteAllTextAsync(filePath, json);
+        File.WriteAllText(filePath, json);
     }
 }

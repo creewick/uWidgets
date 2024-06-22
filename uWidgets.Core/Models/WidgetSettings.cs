@@ -1,3 +1,3 @@
 ﻿namespace uWidgets.Core.Models;
 
-public record WidgetSettings(string Name, int X, int Y, int Width, int Height);
+public record WidgetSettings(string Type, string SubType, int X, int Y, int Width, int Height);

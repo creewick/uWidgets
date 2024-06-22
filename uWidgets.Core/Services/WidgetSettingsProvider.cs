@@ -6,17 +6,16 @@ namespace uWidgets.Core.Services;
 public class WidgetSettingsProvider(ILayoutProvider layoutProvider, WidgetSettings settings) 
     : IWidgetSettingsProvider
 {
-    public Task<WidgetSettings> Get() => Task.FromResult(settings);
+    public WidgetSettings Get() => settings;
 
-    public async Task Save(WidgetSettings data)
+    public void Save(WidgetSettings data)
     {
-        var layout = await layoutProvider.Get();
+        var layout = layoutProvider.Get();
         var index = layout.IndexOf(data);
 
-        if (index > -1)
-        {
-            layout[index] = data;
-            await layoutProvider.Save(layout);
-        }
+        if (index == -1) return;
+        
+        layout[index] = data;
+        layoutProvider.Save(layout);
     }
 }

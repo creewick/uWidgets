@@ -2,7 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style>
         <Style.Resources>
-            <SolidColorBrush x:Key="SystemControlBackgroundAltHighBrush" Color="#40808080" />
+            <SolidColorBrush x:Key="SystemControlBackgroundAltHighBrush" Color="#30000000" />
+            <x:Double x:Key="TextOpacity">0.8</x:Double>
         </Style.Resources>
     </Style>
 </Styles>

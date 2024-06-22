@@ -1,11 +1,9 @@
-using System;
-using System.Threading.Tasks;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using uWidgets.Core.Interfaces;
-using uWidgets.Core.Models;
 using uWidgets.Core.Services;
 using uWidgets.Services;
 
@@ -22,19 +20,29 @@ public partial class App : Application
     {
         var services = new ServiceCollection()
             .AddSingleton<IAppSettingsProvider, AppSettingsProvider>()
-            .AddSingleton<IWidgetSettingsProvider, WidgetSettingsProvider>()
+            .AddSingleton<ILayoutProvider, LayoutProvider>()
+            .AddSingleton<IAssemblyProvider, AssemblyProvider>()
             .AddSingleton<IThemeService, ThemeService>()
+            .AddSingleton<IWidgetFactory<Widget>, WidgetFactory>()
             .BuildServiceProvider();
-        
-        
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+
+        var settings = services
+            .GetRequiredService<IAppSettingsProvider>()
+            .Get();
+
+        services
+            .GetRequiredService<IThemeService>()
+            .Apply(settings.Theme);
+
+        var widgets = services
+            .GetRequiredService<IWidgetFactory<Widget>>()
+            .Create();
+
+        foreach (var widget in widgets)
         {
-            desktop.MainWindow = new Widget();
+            widget.Show();
         }
         
-        services.GetRequiredService<IThemeService>().Apply(new Theme(true, false));
-
-
         base.OnFrameworkInitializationCompleted();
     }
 }

@@ -1,8 +1,25 @@
 ﻿[
   {
-    "Name": "Clock",
+    "Type": "Clock",
+    "SubType": "AnalogI",
     "X": 100,
     "Y": 100,
+    "Width": 160,
+    "Height": 160
+  },
+  {
+    "Type": "Clock",
+    "SubType": "AnalogII",
+    "X": 100,
+    "Y": 300,
+    "Width": 160,
+    "Height": 160
+  },
+  {
+    "Type": "Clock",
+    "SubType": "AnalogIII",
+    "X": 100,
+    "Y": 500,
     "Width": 160,
     "Height": 160
   }

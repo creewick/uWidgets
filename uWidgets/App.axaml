@@ -8,5 +8,10 @@
                 <ColorPaletteResources x:Key="Dark" AltHigh="#2E2E2E" />
             </FluentTheme.Palettes>
         </FluentTheme>
+        <Style>
+            <Style.Resources>
+                <x:Double x:Key="TextOpacity">1.0</x:Double>
+            </Style.Resources>
+        </Style>
     </Application.Styles>
 </Application>

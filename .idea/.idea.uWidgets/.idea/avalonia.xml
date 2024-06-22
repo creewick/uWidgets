@@ -8,6 +8,7 @@
         <entry key="uWidgets/MainWindow.axaml" value="uWidgets/uWidgets.csproj" />
         <entry key="uWidgets/Settings.axaml" value="uWidgets/uWidgets.csproj" />
         <entry key="uWidgets/Styles/Dark.axaml" value="uWidgets/uWidgets.csproj" />
+        <entry key="uWidgets/Styles/Default.axaml" value="uWidgets/uWidgets.csproj" />
         <entry key="uWidgets/Styles/Light.axaml" value="uWidgets/uWidgets.csproj" />
         <entry key="uWidgets/Styles/Monochrome.axaml" value="uWidgets/uWidgets.csproj" />
         <entry key="uWidgets/Styles/Styles1.axaml" value="uWidgets/uWidgets.csproj" />
