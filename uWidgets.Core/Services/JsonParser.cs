@@ -25,7 +25,7 @@ public class JsonParser<T> : IDataProvider<T>
         var json = File.ReadAllText(filePath);
 
         return data = JsonSerializer.Deserialize<T>(json, options)
-               ?? throw new FormatException(nameof(T));
+               ?? throw new FormatException($"Can't deserialize {typeof(T).Name}");
     }
 
     public void Save(T newData)

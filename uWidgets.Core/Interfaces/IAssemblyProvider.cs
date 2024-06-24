@@ -6,5 +6,7 @@ public interface IAssemblyProvider
 {
     public Assembly LoadAssembly(string assemblyName);
     public void UnloadAssembly(string assemblyName);
-    public object Activate(string assemblyName, string typeName, Type? parentType = null, params object[] args);
+    public Type GetType(Assembly assembly, string typeName, Type? parentType = null);
+    public object Activate(Assembly assembly, Type type, params object[] args);
+    public Type? GetSettingsType(Assembly assembly, Type controlType);
 }

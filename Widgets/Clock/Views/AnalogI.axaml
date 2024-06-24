@@ -1,17 +1,9 @@
-﻿<uWidgets:Widget xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:uWidgets="clr-namespace:uWidgets;assembly=uWidgets"
-        x:Class="Clock.Views.AnalogI"
-        Title="Clock">
-    <Window.Styles>
-        <Style Selector="Window">
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <Border Background="{DynamicResource SystemControlBackgroundAltHighBrush}" CornerRadius="24" Padding="8">
-                        <ContentPresenter Content="{TemplateBinding Content}" />
-                    </Border>
-                </ControlTemplate>
-            </Setter>
+        x:Class="Clock.Views.AnalogI">
+    <UserControl.Styles>
+        <Style Selector="Border#WidgetBackground">
+            <Setter Property="Padding" Value="8" />
         </Style>
         <Style Selector="TextBlock">
             <Setter Property="FontSize" Value="110" />
@@ -25,7 +17,7 @@
             <Setter Property="Width" Value="940" />
             <Setter Property="Height" Value="940" />
         </Style>
-    </Window.Styles>
+    </UserControl.Styles>
     <Viewbox Stretch="Uniform">
         <Canvas Width="1000" Height="1000">
             <Ellipse Canvas.Left="0" Canvas.Top="0" Width="1000" Height="1000" Opacity="0.2"
@@ -66,7 +58,7 @@
                 <Path Data="M 500,470 V 436" StrokeThickness="16" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
                 <Path Data="M 500,420 V 55" StrokeThickness="32" StrokeLineCap="Round" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
             </Canvas>
-            <Canvas Name="Seconds" Opacity="{DynamicResource TextOpacity}">
+            <Canvas Name="Seconds" Opacity="{DynamicResource TextOpacity}" IsVisible="{Binding ShowSeconds}">
                 <Canvas.RenderTransform>
                     <RotateTransform Angle="{Binding SecondsAngle}" CenterX="500" CenterY="500" />
                 </Canvas.RenderTransform>
@@ -75,5 +67,5 @@
             </Canvas>
         </Canvas>
     </Viewbox>
-</uWidgets:Widget>
+</UserControl>
 

@@ -5,7 +5,7 @@ using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
 
 namespace uWidgets.Core.Services;
-
+ 
 public class AssemblyProvider(IServiceProvider serviceProvider) : IAssemblyProvider
 {
     private ILookup<string, AssemblyInfo> assemblyCache = GetAssembliesMetadata(Const.WidgetsFolder);
@@ -59,23 +59,36 @@ public class AssemblyProvider(IServiceProvider serviceProvider) : IAssemblyProvi
         GC.WaitForPendingFinalizers();
     }
 
-    public object Activate(string assemblyName, string typeName, Type? parentType = null, params object[] args)
+    public Type GetType(Assembly assembly, string typeName, Type? parentType = null)
     {
-        var type = LoadAssembly(assemblyName)
+        var type = assembly
             .GetTypes()
             .SingleOrDefault(type => (parentType == null || type.IsAssignableTo(parentType)) && 
                                      typeName == type.Name);
         
         if (type == null)
-            throw new ArgumentException($"No suitable class {typeName} found in assembly {assemblyName}");
+            throw new ArgumentException($"No suitable class {typeName} found in assembly {assembly.FullName}");
 
+        return type;
+    }
+
+    public object Activate(Assembly assembly, Type type, params object[] args)
+    {
         try
         {
             return ActivatorUtilities.CreateInstance(serviceProvider, type, args);
         }
         catch (Exception e)
         {
-            throw new InvalidOperationException($"Failed to create an instance of {typeName}", e);
+            throw new InvalidOperationException($"Failed to create an instance of {type.Name}", e);
         }
+    }
+    
+    public Type? GetSettingsType(Assembly assembly, Type controlType)
+    {
+        return assembly
+            .GetCustomAttributes<WidgetInfoAttribute>()
+            .SingleOrDefault(attribute => attribute.ControlType == controlType)
+            ?.SettingsType;
     }
 }

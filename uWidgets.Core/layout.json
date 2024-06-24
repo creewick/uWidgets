@@ -5,13 +5,16 @@
     "X": 100,
     "Y": 100,
     "Width": 160,
-    "Height": 160
+    "Height": 160,
+    "Settings": {
+      "ShowSeconds": true
+    }
   },
   {
     "Type": "Clock",
     "SubType": "AnalogII",
     "X": 100,
-    "Y": 300,
+    "Y": 500,
     "Width": 160,
     "Height": 160
   },
@@ -19,7 +22,7 @@
     "Type": "Clock",
     "SubType": "AnalogIII",
     "X": 100,
-    "Y": 500,
+    "Y": 900,
     "Width": 160,
     "Height": 160
   }

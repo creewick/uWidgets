@@ -1,3 +1,5 @@
-﻿namespace uWidgets.Core.Models;
+﻿using System.Text.Json;
 
-public record WidgetSettings(string Type, string SubType, int X, int Y, int Width, int Height);
+namespace uWidgets.Core.Models;
+
+public record WidgetSettings(string Type, string SubType, int X, int Y, int Width, int Height, JsonElement? Settings);

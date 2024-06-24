@@ -8,7 +8,7 @@ namespace uWidgets;
 
 public partial class Widget : Window
 {
-    protected Widget(IWidgetSettingsProvider widgetSettings)
+    public Widget(IWidgetSettingsProvider widgetSettings)
     {
         Position = new PixelPoint(
             widgetSettings.Get().X,

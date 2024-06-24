@@ -1,9 +1,7 @@
-﻿<uWidgets:Widget xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:uWidgets="clr-namespace:uWidgets;assembly=uWidgets"
-        x:Class="Clock.Views.AnalogIII"
-        Title="Clock">
-    <Window.Styles>
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Clock.Views.AnalogIII">
+    <UserControl.Styles>
         <Style Selector="Window">
             <Setter Property="Template">
                 <ControlTemplate>
@@ -17,11 +15,11 @@
             <Setter Property="FontSize" Value="140" />
             <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
-    </Window.Styles>
+    </UserControl.Styles>
     <Viewbox Stretch="Uniform">
         <Canvas Width="1000" Height="1000">
             <Canvas Name="Strokes">
-                <Ellipse Canvas.Left="-500" Canvas.Top="-500" Width="2000" Height="2000" StrokeThickness="1000" Opacity="{DynamicResource TextOpacity}"
+                <Ellipse Canvas.Left="-500" Canvas.Top="-500" Width="2000" Height="2000" StrokeThickness="1000" Opacity="0.5"
                          Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" StrokeDashArray="0.01,0.2517">
                     <Ellipse.Clip>
                         <CombinedGeometry GeometryCombineMode="Exclude">
@@ -58,22 +56,21 @@
                      Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" StrokeThickness="12" />
             <Ellipse Canvas.Left="480" Canvas.Top="480" Width="40" Height="40"
                      Stroke="{DynamicResource SystemControlBackgroundAccentBrush}" StrokeThickness="8" />
-            <Canvas Name="Hours">
+            <Canvas Name="Hours" Opacity="{DynamicResource TextOpacity}">
                 <Canvas.RenderTransform>
                     <RotateTransform Angle="{Binding HoursAngle}" CenterX="500" CenterY="500" />
                 </Canvas.RenderTransform>
-                <Path Data="M 500,470 V 420" StrokeThickness="16" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
-                <Path Data="M 500,420 V 230" StrokeLineCap="Round" StrokeThickness="32"
-                      Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+                <Path Data="M 500,470 V 436" StrokeThickness="16" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+                <Path Data="M 500,420 V 230" StrokeLineCap="Round" StrokeThickness="32" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
             </Canvas>
-            <Canvas Name="Minutes">
+            <Canvas Name="Minutes" Opacity="{DynamicResource TextOpacity}">
                 <Canvas.RenderTransform>
                     <RotateTransform Angle="{Binding MinutesAngle}" CenterX="500" CenterY="500" />
                 </Canvas.RenderTransform>
-                <Path Data="M 500,470 V 420" StrokeThickness="16" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
-                <Path Data="M 500,420 V 55" StrokeLineCap="Round" StrokeThickness="32" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+                <Path Data="M 500,470 V 436" StrokeThickness="16" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+                <Path Data="M 500,420 V 55" StrokeThickness="32" StrokeLineCap="Round" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
             </Canvas>
-            <Canvas Name="Seconds">
+            <Canvas Name="Seconds" Opacity="{DynamicResource TextOpacity}" IsVisible="{Binding ShowSeconds}">
                 <Canvas.RenderTransform>
                     <RotateTransform Angle="{Binding SecondsAngle}" CenterX="500" CenterY="500" />
                 </Canvas.RenderTransform>
@@ -82,5 +79,5 @@
             </Canvas>
         </Canvas>
     </Viewbox>
-</uWidgets:Widget>
+</UserControl>
 

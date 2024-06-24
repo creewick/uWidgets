@@ -14,7 +14,8 @@
         <Style Selector="Window">
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Border Background="{DynamicResource SystemControlBackgroundAltHighBrush}" CornerRadius="24" Padding="12">
+                    <Border Name="WidgetBackground" Background="{DynamicResource SystemControlBackgroundAltHighBrush}" CornerRadius="24" Padding="12"
+                            x:FieldModifier="public">
                         <ContentPresenter Content="{TemplateBinding Content}" />
                     </Border>
                 </ControlTemplate>

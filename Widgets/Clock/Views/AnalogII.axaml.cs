@@ -1,18 +1,16 @@
-﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
+﻿using Avalonia.Controls;
+using Clock.SettingsModels;
 using Clock.ViewModels;
-using uWidgets;
-using uWidgets.Core.Interfaces;
 
 namespace Clock.Views;
 
-public partial class AnalogII : Widget
+public partial class AnalogII : UserControl
 {
-    public AnalogII(IAppSettingsProvider appSettings, IWidgetSettingsProvider widgetSettings) 
-        : base(widgetSettings)
+    public AnalogII() : this(new ClockSettings()) {}
+    
+    public AnalogII(ClockSettings clockSettings) 
     {
-        DataContext = new AnalogClockViewModel(appSettings, widgetSettings);
+        DataContext = new AnalogClockViewModel(clockSettings);
         InitializeComponent();
     }
 }

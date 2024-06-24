@@ -1,4 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Avalonia.Controls;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Services;
 
@@ -11,12 +17,23 @@ public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider l
         foreach (var widgetSettings in layoutProvider.Get())
         {
             var widgetSettingsProvider = new WidgetSettingsProvider(layoutProvider, widgetSettings);
+            var assembly = assemblyProvider.LoadAssembly(widgetSettings.Type);
+            var controlType = assemblyProvider.GetType(assembly, widgetSettings.SubType, typeof(UserControl));
+            var settingsType = assemblyProvider.GetSettingsType(assembly, controlType);
+            var args = new List<object>();
 
-            yield return (Widget) assemblyProvider.Activate(
-                widgetSettings.Type,
-                widgetSettings.SubType,
-                typeof(Widget),
-                widgetSettingsProvider);
+            if (settingsType != null && widgetSettings.Settings.HasValue)
+            {
+                var settings = widgetSettings.Settings.Value.Deserialize(settingsType) 
+                    ?? throw new FormatException($"Can't deserialize {settingsType.Name}");
+                args.Add(settings);
+            }
+            var userControl = assemblyProvider.Activate(assembly, controlType, args.ToArray());
+
+            yield return new Widget(widgetSettingsProvider)
+            {
+                Content = userControl
+            };
         }
     }
 }
