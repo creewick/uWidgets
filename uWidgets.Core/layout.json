@@ -7,7 +7,8 @@
     "Width": 160,
     "Height": 160,
     "Settings": {
-      "ShowSeconds": true
+      "ShowSeconds": true,
+      "TimeZone": 0
     }
   },
   {
