@@ -1,8 +1,8 @@
 ﻿namespace uWidgets.Core.Models;
 
 [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-public class WidgetInfoAttribute(Type controlType, Type? settingsType) : Attribute
+public class WidgetInfoAttribute(Type viewType, Type? modelType) : Attribute
 {
-    public Type ControlType { get; } = controlType;
-    public Type? SettingsType { get; } = settingsType;
+    public Type ViewType { get; } = viewType;
+    public Type? ModelType { get; } = modelType;
 }

@@ -25,5 +25,33 @@
     "Y": 900,
     "Width": 160,
     "Height": 160
+  },
+  {
+    "Type": "Clock",
+    "SubType": "Digital",
+    "X": 100,
+    "Y": 1300,
+    "Width": 160,
+    "Height": 160,
+    "Settings": {
+      "Use24Hours": true
+    }
+  },
+  {
+    "Type": "Clock",
+    "SubType": "World",
+    "X": 500,
+    "Y": 100,
+    "Width": 160,
+    "Height": 160,
+    "Settings": {
+      "ShowSeconds": false,
+      "TimeZones": [
+        null,
+        2,
+        4,
+        6
+      ]
+    }
   }
 ]

@@ -84,11 +84,11 @@ public class AssemblyProvider(IServiceProvider serviceProvider) : IAssemblyProvi
         }
     }
     
-    public Type? GetSettingsType(Assembly assembly, Type controlType)
+    public Type? GetWidgetModelType(Assembly assembly, Type controlType)
     {
         return assembly
             .GetCustomAttributes<WidgetInfoAttribute>()
-            .SingleOrDefault(attribute => attribute.ControlType == controlType)
-            ?.SettingsType;
+            .SingleOrDefault(attribute => attribute.ViewType == controlType)
+            ?.ModelType;
     }
 }

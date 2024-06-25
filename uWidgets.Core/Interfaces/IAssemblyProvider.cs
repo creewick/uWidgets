@@ -8,5 +8,5 @@ public interface IAssemblyProvider
     public void UnloadAssembly(string assemblyName);
     public Type GetType(Assembly assembly, string typeName, Type? parentType = null);
     public object Activate(Assembly assembly, Type type, params object[] args);
-    public Type? GetSettingsType(Assembly assembly, Type controlType);
+    public Type? GetWidgetModelType(Assembly assembly, Type controlType);
 }

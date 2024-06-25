@@ -1,0 +1,16 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Clock.Views.Digital">
+    
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="110" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </UserControl.Styles>
+    
+    <Viewbox Stretch="Uniform">
+        <TextBlock Text="{Binding Text}" Opacity="{DynamicResource TextOpacity}" />
+    </Viewbox>
+</UserControl>
+

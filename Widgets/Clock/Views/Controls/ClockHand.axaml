@@ -6,7 +6,8 @@
         RenderTransformOrigin="500,500"
         Width="1000" Height="1000"
         x:Class="Clock.Views.Controls.ClockHand" 
-        Opacity="{DynamicResource TextOpacity}">
+        Opacity="{DynamicResource TextOpacity}"
+        IsVisible="{Binding IsVisible}">
     <Canvas.RenderTransform>
         <RotateTransform Angle="{Binding RotateAngle}" />
     </Canvas.RenderTransform>

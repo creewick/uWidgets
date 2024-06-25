@@ -56,7 +56,7 @@
             </Canvas>
             <controls:ClockHand DataContext="{Binding HourHand}" />
             <controls:ClockHand DataContext="{Binding MinuteHand}" />
-            <controls:ClockHand DataContext="{Binding SecondHand}" IsVisible="{Binding $parent.DataContext.ShowSeconds}" />
+            <controls:ClockHand DataContext="{Binding SecondHand}" />
         </Canvas>
     </Viewbox>
 </UserControl>

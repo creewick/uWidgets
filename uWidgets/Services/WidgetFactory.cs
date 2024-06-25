@@ -19,7 +19,7 @@ public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider l
             var widgetSettingsProvider = new WidgetSettingsProvider(layoutProvider, widgetSettings);
             var assembly = assemblyProvider.LoadAssembly(widgetSettings.Type);
             var controlType = assemblyProvider.GetType(assembly, widgetSettings.SubType, typeof(UserControl));
-            var settingsType = assemblyProvider.GetSettingsType(assembly, controlType);
+            var settingsType = assemblyProvider.GetWidgetModelType(assembly, controlType);
             var args = new List<object>();
 
             if (settingsType != null && widgetSettings.Settings.HasValue)

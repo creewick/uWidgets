@@ -1,0 +1,12 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:views="clr-namespace:Clock.Views"
+             x:Class="Clock.Views.World" 
+             Margin="4">
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+        <views:AnalogI Grid.Column="0" Grid.Row="0" Name="First" DataContext="{Binding First}" Margin="4" />
+        <views:AnalogI Grid.Column="1" Grid.Row="0" DataContext="{Binding Second}" Margin="4" />
+        <views:AnalogI Grid.Column="0" Grid.Row="1" DataContext="{Binding Third}" Margin="4" />
+        <views:AnalogI Grid.Column="1" Grid.Row="1" DataContext="{Binding Fourth}" Margin="4" />
+    </Grid>
+</UserControl>

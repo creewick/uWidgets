@@ -1,16 +1,16 @@
 ﻿using Avalonia.Controls;
-using Clock.SettingsModels;
+using Clock.Models;
 using Clock.ViewModels;
 
 namespace Clock.Views;
 
 public partial class AnalogII : UserControl
 {
-    public AnalogII() : this(new ClockSettings()) {}
+    public AnalogII() : this(new ClockModel()) {}
     
-    public AnalogII(ClockSettings clockSettings) 
+    public AnalogII(ClockModel clockModel) 
     {
-        DataContext = new AnalogClockViewModel(clockSettings);
+        DataContext = new AnalogClockViewModel(clockModel);
         InitializeComponent();
     }
 }
