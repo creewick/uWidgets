@@ -13,6 +13,7 @@
       <UpToDateCheckInput Update="Clock.axaml">
         <DependentUpon>Clock.axaml</DependentUpon>
       </UpToDateCheckInput>
+      <UpToDateCheckInput Remove="Controls\ClockHand.axaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -32,5 +33,9 @@
         <DependentUpon>AnalogI.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Views\Controls\ClockHand.axaml" />
     </ItemGroup>
 </Project>
