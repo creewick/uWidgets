@@ -1,16 +1,8 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="Clock.Views.AnalogIII">
+             x:Class="Clock.Views.AnalogIII"
+             Margin="4">
     <UserControl.Styles>
-        <Style Selector="Window">
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <Border Background="{DynamicResource SystemControlBackgroundAltHighBrush}" CornerRadius="24" Padding="4">
-                        <ContentPresenter Content="{TemplateBinding Content}" />
-                    </Border>
-                </ControlTemplate>
-            </Setter>
-        </Style>
         <Style Selector="TextBlock">
             <Setter Property="FontSize" Value="140" />
             <Setter Property="FontWeight" Value="SemiBold" />

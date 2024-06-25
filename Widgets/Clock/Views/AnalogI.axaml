@@ -1,10 +1,8 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="Clock.Views.AnalogI">
+        x:Class="Clock.Views.AnalogI"
+        Margin="8">
     <UserControl.Styles>
-        <Style Selector="Border#WidgetBackground">
-            <Setter Property="Padding" Value="8" />
-        </Style>
         <Style Selector="TextBlock">
             <Setter Property="FontSize" Value="110" />
             <Setter Property="FontWeight" Value="SemiBold" />
