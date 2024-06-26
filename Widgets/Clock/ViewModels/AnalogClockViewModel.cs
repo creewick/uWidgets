@@ -7,6 +7,10 @@ namespace Clock.ViewModels;
 public class AnalogClockViewModel : INotifyPropertyChanged
 {
     private readonly ClockModel clockModel;
+    private double diff => (Time - DateTime.Now).TotalMinutes / 60;
+    public string TimeZoneDiff => clockModel.TimeZone == null 
+        ? string.Empty 
+        : Math.Abs(Math.Round(diff) - diff) > 0.1 ? $"{diff:+0.0;-0.0;0}" : $"{diff:+0;-0;0}";
     public ClockHandViewModel? HourHand { get; set; }
     public ClockHandViewModel? MinuteHand { get; set; }
     public ClockHandViewModel? SecondHand { get; set; }

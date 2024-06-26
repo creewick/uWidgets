@@ -5,6 +5,10 @@
         Margin="8">
     
     <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="110" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
         <Style Selector="#Numbers > Path">
             <Setter Property="Data" Value="M 500,50 V 150" />
             <Setter Property="StrokeLineCap" Value="Round" />
@@ -32,6 +36,7 @@
                 <Path><Path.RenderTransform><RotateTransform Angle="270" /></Path.RenderTransform></Path>
                 <Path><Path.RenderTransform><RotateTransform Angle="300" /></Path.RenderTransform></Path>
                 <Path><Path.RenderTransform><RotateTransform Angle="330" /></Path.RenderTransform></Path>
+                <TextBlock Canvas.Top="600" Width="1000" TextAlignment="Center" Text="{Binding TimeZoneDiff}" />
             </Canvas>
             <controls:ClockHand DataContext="{Binding HourHand}" />
             <controls:ClockHand DataContext="{Binding MinuteHand}" />

@@ -4,7 +4,7 @@ using Clock.Views;
 using uWidgets.Core.Models;
 
 [assembly: AssemblyCompany("creewick")]
-[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyVersion("1.0.1")]
 
 [assembly: WidgetInfo(typeof(AnalogI), typeof(ClockModel))]
 [assembly: WidgetInfo(typeof(AnalogII), typeof(ClockModel))]

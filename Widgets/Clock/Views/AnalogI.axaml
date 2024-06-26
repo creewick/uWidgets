@@ -40,6 +40,7 @@
                 <TextBlock Canvas.Left="140" Canvas.Top="255" Text="10" />
                 <TextBlock Canvas.Left="280" Canvas.Top="120" Text="11" />
                 <TextBlock Canvas.Left="440" Canvas.Top="70" Text="12" />
+                <TextBlock Canvas.Top="600" Width="1000" TextAlignment="Center" Text="{Binding TimeZoneDiff}" />
             </Canvas>
             <controls:ClockHand DataContext="{Binding HourHand}" />
             <controls:ClockHand DataContext="{Binding MinuteHand}" />
