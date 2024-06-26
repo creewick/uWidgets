@@ -22,9 +22,9 @@ public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider l
             var settingsType = assemblyProvider.GetWidgetModelType(assembly, controlType);
             var args = new List<object>();
 
-            if (settingsType != null && widgetSettings.Model.HasValue)
+            if (settingsType != null && widgetSettings.Settings.HasValue)
             {
-                var settings = widgetSettings.Model.Value.Deserialize(settingsType) 
+                var settings = widgetSettings.Settings.Value.Deserialize(settingsType) 
                     ?? throw new FormatException($"Can't deserialize {settingsType.Name}");
                 args.Add(settings);
             }
