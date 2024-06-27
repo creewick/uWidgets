@@ -7,7 +7,8 @@
     "Width": 160,
     "Height": 160,
     "Settings": {
-      "ShowSeconds": true
+      "ShowSeconds": true,
+      "TimeZone": 5
     }
   },
   {
@@ -16,7 +17,11 @@
     "X": 100,
     "Y": 500,
     "Width": 160,
-    "Height": 160
+    "Height": 160,
+    "Settings": {
+      "ShowSeconds": true,
+      "TimeZone": 5
+    }
   },
   {
     "Type": "Clock",
@@ -24,7 +29,11 @@
     "X": 100,
     "Y": 900,
     "Width": 160,
-    "Height": 160
+    "Height": 160,
+    "Settings": {
+      "ShowSeconds": true,
+      "TimeZone": 5
+    }
   },
   {
     "Type": "Clock",

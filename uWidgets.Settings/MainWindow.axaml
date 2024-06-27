@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:settings="clr-namespace:uWidgets.Settings"
+        Width="1000" Height="550" MinWidth="500"
+        x:Class="uWidgets.Settings.MainWindow"
+        Background="{DynamicResource SystemAltMediumHighColor}"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="50"
+        ClipToBounds="True"
+        Title="Settings"
+        x:DataType="settings:MainWindow">
+    
+    <Window.Styles>
+        <Style Selector="ListBoxItem">
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SystemRevealListLowColor}" />                
+        </Style>
+    </Window.Styles>
+    
+    <Grid RowDefinitions="Auto,*">
+        <TextBlock IsHitTestVisible="False" Margin="32 16 0  0" FontWeight="Bold">uWidgets</TextBlock>
+
+        <SplitView Name="SplitView" Grid.Row="1" IsPaneOpen="True" DisplayMode="CompactInline" PaneBackground="Transparent" Margin="16" OpenPaneLength="240" CompactPaneLength="64">
+            <SplitView.Pane>
+                <StackPanel Margin="0 0 16 0">
+                    <ListBox Background="Transparent" ItemsSource="{Binding MenuItems}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="settings:ListItemTemplate">
+                                <StackPanel Orientation="Horizontal" Spacing="12">
+                                    <PathIcon Data="{Binding Icon}" Height="16" />
+                                    <TextBlock Text="{Binding Text}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <StackPanel Background="Red" MaxWidth="800">
+                    <TextBlock>CONTENT</TextBlock>
+                </StackPanel>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Window>
