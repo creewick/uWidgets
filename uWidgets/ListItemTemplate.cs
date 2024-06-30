@@ -3,7 +3,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 
-namespace uWidgets.Settings;
+namespace uWidgets;
 
 public record ListItemTemplate(Type Type, string Text)
 {

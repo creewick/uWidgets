@@ -43,6 +43,8 @@ public partial class App : Application
             widget.Show();
         }
         
+        new Settings().Show();
+        
         base.OnFrameworkInitializationCompleted();
     }
 }

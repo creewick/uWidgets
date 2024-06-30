@@ -1,16 +1,15 @@
-<Window xmlns="https://github.com/avaloniaui"
+﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:settings="clr-namespace:uWidgets.Settings"
+        xmlns:uWidgets="clr-namespace:uWidgets"
         Width="1000" Height="550" MinWidth="500"
-        x:Class="uWidgets.Settings.MainWindow"
+        x:Class="uWidgets.Settings"
         Background="{DynamicResource SystemAltMediumHighColor}"
         TransparencyLevelHint="AcrylicBlur"
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaTitleBarHeightHint="50"
         ClipToBounds="True"
         Title="Settings"
-        x:DataType="settings:MainWindow">
-    
+        x:DataType="uWidgets:Settings">
     <Window.Styles>
         <Style Selector="ListBoxItem">
             <Setter Property="CornerRadius" Value="4" />
@@ -29,7 +28,7 @@
                 <StackPanel Margin="0 0 16 0">
                     <ListBox Background="Transparent" ItemsSource="{Binding MenuItems}">
                         <ListBox.ItemTemplate>
-                            <DataTemplate DataType="settings:ListItemTemplate">
+                            <DataTemplate DataType="uWidgets:ListItemTemplate">
                                 <StackPanel Orientation="Horizontal" Spacing="12">
                                     <PathIcon Data="{Binding Icon}" Height="16" />
                                     <TextBlock Text="{Binding Text}" />
