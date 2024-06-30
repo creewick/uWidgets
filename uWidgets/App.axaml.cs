@@ -1,6 +1,4 @@
-using System.Linq;
 using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using uWidgets.Core.Interfaces;
@@ -26,13 +24,12 @@ public partial class App : Application
             .AddSingleton<IWidgetFactory<Widget>, WidgetFactory>()
             .BuildServiceProvider();
 
-        var settings = services
-            .GetRequiredService<IAppSettingsProvider>()
-            .Get();
+        var settingsProvider = services
+            .GetRequiredService<IAppSettingsProvider>();
 
         services
             .GetRequiredService<IThemeService>()
-            .Apply(settings.Theme);
+            .Apply(settingsProvider.Get().Theme);
 
         var widgets = services
             .GetRequiredService<IWidgetFactory<Widget>>()
@@ -43,7 +40,7 @@ public partial class App : Application
             widget.Show();
         }
         
-        new Settings().Show();
+        new Settings(settingsProvider).Show();
         
         base.OnFrameworkInitializationCompleted();
     }

@@ -1,7 +1,7 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:uWidgets="clr-namespace:uWidgets"
-        Width="1000" Height="550" MinWidth="500"
+        Width="1000" Height="550" MinWidth="500" MinHeight="300"
         x:Class="uWidgets.Settings"
         Background="{DynamicResource SystemAltMediumHighColor}"
         TransparencyLevelHint="AcrylicBlur"
@@ -26,7 +26,7 @@
         <SplitView Name="SplitView" Grid.Row="1" IsPaneOpen="True" DisplayMode="CompactInline" PaneBackground="Transparent" Margin="16" OpenPaneLength="240" CompactPaneLength="64">
             <SplitView.Pane>
                 <StackPanel Margin="0 0 16 0">
-                    <ListBox Background="Transparent" ItemsSource="{Binding MenuItems}">
+                    <ListBox Background="Transparent" ItemsSource="{Binding MenuItems}" SelectionChanged="OnMenuItemChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="uWidgets:ListItemTemplate">
                                 <StackPanel Orientation="Horizontal" Spacing="12">
@@ -39,9 +39,7 @@
                 </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
-                <StackPanel Background="Red" MaxWidth="800">
-                    <TextBlock>CONTENT</TextBlock>
-                </StackPanel>
+                <TransitioningContentControl Content="{Binding CurrentPage}" />
             </SplitView.Content>
         </SplitView>
     </Grid>

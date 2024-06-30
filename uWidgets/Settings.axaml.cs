@@ -1,55 +1,48 @@
 ﻿using System;
-using System.Runtime.InteropServices;
+using System.ComponentModel;
 using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
+using uWidgets.Core.Interfaces;
+using uWidgets.Views;
 
 namespace uWidgets;
 
-public partial class Settings : Window
+public partial class Settings : Window, INotifyPropertyChanged
 {
-    public ListItemTemplate[] MenuItems =>
-    [
-        new ListItemTemplate(typeof(Settings), "Appearance"),
-        new ListItemTemplate(typeof(Settings), "Language"),
-        new ListItemTemplate(typeof(Settings), "About")
-    ];
+    private readonly IAppSettingsProvider appSettingsProvider;
     
+    private ListItemTemplate? selectedListItem;
 
-    public Settings()
-    {        DataContext = this;
+    public UserControl? CurrentPage { get; set; }
+    
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    public Settings(IAppSettingsProvider appSettingsProvider)
+    {
+        CurrentPage = new Appearance(appSettingsProvider);
+        this.appSettingsProvider = appSettingsProvider;
+        DataContext = this;
         Resized += OnResized;
         InitializeComponent();
     }
+    
+    public ListItemTemplate[] MenuItems =>
+    [
+        new ListItemTemplate(typeof(Appearance), "Appearance"),
+        new ListItemTemplate(null, "Language"),
+        new ListItemTemplate(null, "About")
+    ];
     
     private void OnResized(object? sender, WindowResizedEventArgs e)
     {
         SplitView.IsPaneOpen = Width >= 800;
     }
-    
-    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+
+    private void OnMenuItemChanged(object? sender, SelectionChangedEventArgs e)
     {
-        base.OnApplyTemplate(e);
-
-        if (OperatingSystem.IsWindows())
-        {
-            var platformHandle = this.TryGetPlatformHandle();
-            if (platformHandle != null)
-            {
-                var hwnd = platformHandle.Handle;
-                SetCornerPreference(hwnd);
-            }
-        }
-    }
-
-    [DllImport("dwmapi.dll", PreserveSig = true)]
-    private static extern int DwmSetWindowAttribute(IntPtr hwnd, uint attr, ref int attrValue, int attrSize);
-
-    private const int DWMWA_WINDOW_CORNER_PREFERENCE = 33;
-    private const int DWMWCP_DEFAULT = 0;
-
-    private void SetCornerPreference(IntPtr hwnd)
-    {
-        int preference = DWMWCP_DEFAULT;
-        DwmSetWindowAttribute(hwnd, DWMWA_WINDOW_CORNER_PREFERENCE, ref preference, sizeof(int));
+        CurrentPage = e.AddedItems[0] is ListItemTemplate menuItem && menuItem.Type != null
+            ? (UserControl?)Activator.CreateInstance(menuItem.Type, appSettingsProvider)
+            : null;
+        
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentPage)));
     }
 }
