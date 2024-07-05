@@ -1,0 +1,26 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:uWidgets.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="uWidgets.Controls.Setting">
+    <UserControl.Template>
+        <ControlTemplate>
+            <Border CornerRadius="4" BorderThickness="1" Padding="18"
+                    BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}" 
+                    Background="{DynamicResource SystemAltMediumHighColor}">
+                <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto">
+                    <PathIcon Grid.RowSpan="2" Height="24" VerticalAlignment="Center" Margin="0 0 18 0"
+                              Data="{Binding Icon, RelativeSource={RelativeSource AncestorType=controls:Setting}}" />
+                    <TextBlock Grid.Row="0" Grid.Column="1" 
+                               Text="{Binding Title, RelativeSource={RelativeSource AncestorType=controls:Setting}}" />
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Subtitle, RelativeSource={RelativeSource AncestorType=controls:Setting}}" 
+                               Opacity="0.7" FontSize="12"/>
+                    <ContentPresenter Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Content="{TemplateBinding Content}"
+                                      VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

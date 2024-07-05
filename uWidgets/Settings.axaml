@@ -1,6 +1,7 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:uWidgets="clr-namespace:uWidgets"
+        xmlns:models="clr-namespace:uWidgets.Models"
+        xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
         Width="1000" Height="550" MinWidth="500" MinHeight="300"
         x:Class="uWidgets.Settings"
         Background="{DynamicResource SystemAltMediumHighColor}"
@@ -9,7 +10,8 @@
         ExtendClientAreaTitleBarHeightHint="50"
         ClipToBounds="True"
         Title="Settings"
-        x:DataType="uWidgets:Settings">
+        x:DataType="viewModels:SettingsViewModel">
+
     <Window.Styles>
         <Style Selector="ListBoxItem">
             <Setter Property="CornerRadius" Value="4" />
@@ -22,13 +24,12 @@
     
     <Grid RowDefinitions="Auto,*">
         <TextBlock IsHitTestVisible="False" Margin="32 16 0  0" FontWeight="Bold">uWidgets</TextBlock>
-
         <SplitView Name="SplitView" Grid.Row="1" IsPaneOpen="True" DisplayMode="CompactInline" PaneBackground="Transparent" Margin="16" OpenPaneLength="240" CompactPaneLength="64">
             <SplitView.Pane>
                 <StackPanel Margin="0 0 16 0">
-                    <ListBox Background="Transparent" ItemsSource="{Binding MenuItems}" SelectionChanged="OnMenuItemChanged">
+                    <ListBox Background="Transparent" SelectionMode="Single" ItemsSource="{Binding MenuItems}" SelectionChanged="OnMenuItemChanged">
                         <ListBox.ItemTemplate>
-                            <DataTemplate DataType="uWidgets:ListItemTemplate">
+                            <DataTemplate DataType="models:ListItemTemplate">
                                 <StackPanel Orientation="Horizontal" Spacing="12">
                                     <PathIcon Data="{Binding Icon}" Height="16" />
                                     <TextBlock Text="{Binding Text}" />
@@ -39,7 +40,10 @@
                 </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
-                <TransitioningContentControl Content="{Binding CurrentPage}" />
+                <StackPanel MaxWidth="1000">
+                    <TextBlock FontSize="28" FontWeight="SemiBold" Text="{Binding CurrentPageTitle}" Margin="0 0 0 32" />
+                    <TransitioningContentControl Content="{Binding CurrentPage}" />   
+                </StackPanel>
             </SplitView.Content>
         </SplitView>
     </Grid>
