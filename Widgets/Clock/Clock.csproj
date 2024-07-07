@@ -50,4 +50,8 @@
         <LastGenOutput>Locale.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.11" />
+    </ItemGroup>
 </Project>

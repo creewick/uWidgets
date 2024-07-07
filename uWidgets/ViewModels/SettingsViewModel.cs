@@ -1,21 +1,35 @@
 ﻿using System;
-using System.ComponentModel;
 using Avalonia.Controls;
-using Avalonia.Controls.Selection;
+using ReactiveUI;
 using uWidgets.Core.Interfaces;
 using uWidgets.Models;
-using uWidgets.Views;
+using Appearance = uWidgets.Views.Pages.Appearance;
 
 namespace uWidgets.ViewModels;
 
-public class SettingsViewModel(IAppSettingsProvider appSettingsProvider) : INotifyPropertyChanged
+public class SettingsViewModel : ReactiveObject
 {
-    public UserControl? CurrentPage { get; set; }
-    
-    public string? CurrentPageTitle { get; set; }
+    private readonly IAppSettingsProvider appSettingsProvider;
 
-    public event PropertyChangedEventHandler? PropertyChanged;
-    
+    private UserControl? currentPage;
+    public UserControl? CurrentPage
+    {
+        get => currentPage;
+        set => this.RaiseAndSetIfChanged(ref currentPage, value);
+    }
+
+    private string? currentPageTitle;
+    public string? CurrentPageTitle
+    {
+        get => currentPageTitle;
+        set => this.RaiseAndSetIfChanged(ref currentPageTitle, value);
+    }
+
+    public SettingsViewModel(IAppSettingsProvider appSettingsProvider)
+    {
+        this.appSettingsProvider = appSettingsProvider;
+    }
+
     public ListItemTemplate[] MenuItems =>
     [
         new ListItemTemplate(typeof(Appearance), "Appearance"),
@@ -29,10 +43,5 @@ public class SettingsViewModel(IAppSettingsProvider appSettingsProvider) : INoti
             ? (UserControl?)Activator.CreateInstance(value.Type, appSettingsProvider)
             : null;
         CurrentPageTitle = value?.Text;
-        Update(nameof(CurrentPage));
-        Update(nameof(CurrentPageTitle));
     }
-    
-    private void Update(string propertyName) => 
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
