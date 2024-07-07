@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Settings_Appearance" xml:space="preserve">
+        <value>Appearance</value>
+    </data>
+    <data name="Settings_Language" xml:space="preserve">
+        <value>Language</value>
+    </data>
+    <data name="Settings_About" xml:space="preserve">
+        <value>About</value>
+    </data>
+    <data name="Settings_Appearance_Theme" xml:space="preserve">
+        <value>Theme</value>
+    </data>
+    <data name="Settings_Appearance_DarkMode_Title" xml:space="preserve">
+        <value>Choose your mode</value>
+    </data>
+    <data name="Settings_Appearance_DarkMode_Subtitle" xml:space="preserve">
+        <value>Change the colors that appear in widget</value>
+    </data>
+    <data name="Settings_Appearance_DarkMode_True" xml:space="preserve">
+        <value>Dark</value>
+    </data>
+    <data name="Settings_Appearance_DarkMode_False" xml:space="preserve">
+        <value>Light</value>
+    </data>
+    <data name="Settings_Appearance_DarkMode_Null" xml:space="preserve">
+        <value>Auto</value>
+    </data>
+    <data name="Settings_Appearance_Transparency_Title" xml:space="preserve">
+        <value>Transparency effects</value>
+    </data>
+    <data name="Settings_Appearance_Transparency_Subtitle" xml:space="preserve">
+        <value>Widgets appear translucent</value>
+    </data>
+    <data name="Settings_Appearance_AccentColor_Title" xml:space="preserve">
+        <value>Accent color</value>
+    </data>
+    <data name="Settings_Appearance_Layout" xml:space="preserve">
+        <value>Layout</value>
+    </data>
+    <data name="Settings_Appearance_WidgetSize_Title" xml:space="preserve">
+        <value>Widget size</value>
+    </data>
+    <data name="Settings_Appearance_WidgetMargin_Title" xml:space="preserve">
+        <value>Widget margin</value>
+    </data>
+    <data name="Widget_Remove" xml:space="preserve">
+        <value>Remove widget</value>
+    </data>
+    <data name="Widget_Size" xml:space="preserve">
+        <value>Size</value>
+    </data>
+    <data name="Widget_Size_Small" xml:space="preserve">
+        <value>Small</value>
+    </data>
+    <data name="Widget_Size_Medium" xml:space="preserve">
+        <value>Medium</value>
+    </data>
+    <data name="Widget_Size_Large" xml:space="preserve">
+        <value>Large</value>
+    </data>
+    <data name="Widget_Size_ExtraLarge" xml:space="preserve">
+        <value>Extra Large</value>
+    </data>
+    <data name="Widget_Edit" xml:space="preserve">
+        <value>Edit</value>
+    </data>
+    <data name="Widget_Settings" xml:space="preserve">
+        <value>Edit widgets...</value>
+    </data>
+    <data name="Settings" xml:space="preserve">
+        <value>Settings</value>
+    </data>
+    <data name="Widget" xml:space="preserve">
+        <value>Widget</value>
+    </data>
+</root>
