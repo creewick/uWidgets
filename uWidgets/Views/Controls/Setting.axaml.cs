@@ -1,9 +1,8 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 
-namespace uWidgets.Controls;
+namespace uWidgets.Views.Controls;
 
 public partial class Setting : UserControl
 {

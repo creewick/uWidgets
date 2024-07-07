@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Services;
 using uWidgets.Services;
+using uWidgets.Views;
 
 namespace uWidgets;
 
@@ -30,6 +31,9 @@ public partial class App : Application
         services
             .GetRequiredService<IThemeService>()
             .Apply(settingsProvider.Get().Theme);
+        
+        LocaleService.Initialize(services.GetRequiredService<IAssemblyProvider>());
+        LocaleService.SetCulture("en-US");
 
         var widgets = services
             .GetRequiredService<IWidgetFactory<Widget>>()

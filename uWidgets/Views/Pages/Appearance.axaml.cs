@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using uWidgets.Core.Interfaces;
 
-namespace uWidgets.Views;
+namespace uWidgets.Views.Pages;
 
 public partial class Appearance : UserControl
 {

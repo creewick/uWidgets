@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Clock.Locales;
 using Clock.Models;
 using Clock.Views;
 using uWidgets.Core.Models;
@@ -11,3 +12,4 @@ using uWidgets.Core.Models;
 [assembly: WidgetInfo(typeof(AnalogIII), typeof(ClockModel))]
 [assembly: WidgetInfo(typeof(Digital), typeof(ClockModel))]
 [assembly: WidgetInfo(typeof(World), typeof(WorldClockModel))]
+[assembly: Locale(typeof(Locale))]

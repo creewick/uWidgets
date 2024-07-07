@@ -3,7 +3,7 @@ using uWidgets.Core.Interfaces;
 using uWidgets.Models;
 using uWidgets.ViewModels;
 
-namespace uWidgets;
+namespace uWidgets.Views;
 
 public partial class Settings : Window
 {

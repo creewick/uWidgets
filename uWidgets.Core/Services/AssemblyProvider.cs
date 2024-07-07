@@ -91,4 +91,11 @@ public class AssemblyProvider(IServiceProvider serviceProvider) : IAssemblyProvi
             .SingleOrDefault(attribute => attribute.ViewType == controlType)
             ?.ModelType;
     }
+
+    public string? GetLocaleBaseName(Assembly assembly)
+    {
+        return assembly
+            .GetCustomAttributes<LocaleAttribute>()
+            .SingleOrDefault()?.Type?.Namespace;
+    }
 }

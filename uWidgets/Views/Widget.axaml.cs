@@ -4,7 +4,7 @@ using Avalonia.Input;
 using Avalonia.Media;
 using uWidgets.Core.Interfaces;
 
-namespace uWidgets;
+namespace uWidgets.Views;
 
 public partial class Widget : Window
 {

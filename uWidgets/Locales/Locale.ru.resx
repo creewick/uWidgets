@@ -21,13 +21,13 @@
         <value>Контрастный цвет</value>
     </data>
     <data name="Settings_Appearance_DarkMode_False" xml:space="preserve">
-        <value>Светлая</value>
+        <value>Светлый</value>
     </data>
     <data name="Settings_Appearance_DarkMode_Null" xml:space="preserve">
-        <value>Автоматически</value>
+        <value>Системный</value>
     </data>
     <data name="Settings_Appearance_DarkMode_True" xml:space="preserve">
-        <value>Темная</value>
+        <value>Темный</value>
     </data>
     <data name="Settings_Appearance_Layout" xml:space="preserve">
         <value>Размеры</value>
@@ -53,8 +53,8 @@
     <data name="Widget_Remove" xml:space="preserve">
         <value>Удалить виджет</value>
     </data>
-    <data name="Widget_Settings" xml:space="preserve">
-        <value>Изменить виджеты...</value>
+    <data name="Widget_OpenSettings" xml:space="preserve">
+        <value>Изменить виджеты</value>
     </data>
     <data name="Widget_Size" xml:space="preserve">
         <value>Размер</value>

@@ -38,7 +38,7 @@ namespace uWidgets.Locales {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("uWidgets.Locale", typeof(Locale).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("uWidgets.Locales.Locale", typeof(Locale).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -105,7 +105,7 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto.
+        ///   Looks up a localized string similar to Match System.
         /// </summary>
         internal static string Settings_Appearance_DarkMode_Null {
             get {
@@ -222,20 +222,20 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit widgets.
+        /// </summary>
+        internal static string Widget_OpenSettings {
+            get {
+                return ResourceManager.GetString("Widget_OpenSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove widget.
         /// </summary>
         internal static string Widget_Remove {
             get {
                 return ResourceManager.GetString("Widget_Remove", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit widgets....
-        /// </summary>
-        internal static string Widget_Settings {
-            get {
-                return ResourceManager.GetString("Widget_Settings", resourceCulture);
             }
         }
         

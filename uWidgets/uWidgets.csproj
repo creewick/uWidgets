@@ -26,6 +26,8 @@
 
     <ItemGroup>
       <UpToDateCheckInput Remove="Styles\WidgetStyle.axaml" />
+      <UpToDateCheckInput Remove="Controls\Setting.axaml" />
+      <UpToDateCheckInput Remove="Styles\Transparent.axaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -35,17 +37,28 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="Locale.resx">
+      <EmbeddedResource Update="Locales\Locale.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>Locale.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Locale.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Locale.resx</DependentUpon>
+      <Compile Update="Views\Settings.axaml.cs">
+        <DependentUpon>Settings.axaml</DependentUpon>
+        <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Views\Widget.axaml.cs">
+        <DependentUpon>Widget.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\Appearance.axaml.cs">
+        <DependentUpon>Appearance.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Views\Controls\Setting.axaml" />
     </ItemGroup>
 </Project>
