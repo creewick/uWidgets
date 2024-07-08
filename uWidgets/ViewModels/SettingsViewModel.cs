@@ -3,14 +3,12 @@ using Avalonia.Controls;
 using ReactiveUI;
 using uWidgets.Core.Interfaces;
 using uWidgets.Models;
-using Appearance = uWidgets.Views.Pages.Appearance;
+using uWidgets.Views.Pages;
 
 namespace uWidgets.ViewModels;
 
-public class SettingsViewModel : ReactiveObject
+public class SettingsViewModel(IAppSettingsProvider appSettingsProvider) : ReactiveObject
 {
-    private readonly IAppSettingsProvider appSettingsProvider;
-
     private UserControl? currentPage;
     public UserControl? CurrentPage
     {
@@ -23,11 +21,6 @@ public class SettingsViewModel : ReactiveObject
     {
         get => currentPageTitle;
         set => this.RaiseAndSetIfChanged(ref currentPageTitle, value);
-    }
-
-    public SettingsViewModel(IAppSettingsProvider appSettingsProvider)
-    {
-        this.appSettingsProvider = appSettingsProvider;
     }
 
     public ListItemTemplate[] MenuItems =>

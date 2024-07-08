@@ -24,10 +24,10 @@
     </Window.Styles>
     
     <Grid RowDefinitions="Auto,*">
-        <TextBlock IsHitTestVisible="False" Margin="32 16 0  0" FontWeight="Bold">uWidgets</TextBlock>
-        <SplitView Name="SplitView" Grid.Row="1" IsPaneOpen="True" DisplayMode="CompactInline" PaneBackground="Transparent" Margin="16" OpenPaneLength="240" CompactPaneLength="64">
+        <TextBlock IsHitTestVisible="False" Margin="16 16 0  16" FontWeight="Bold">uWidgets</TextBlock>
+        <SplitView Name="SplitView" Grid.Row="1" IsPaneOpen="True" DisplayMode="CompactInline" PaneBackground="Transparent" OpenPaneLength="240" CompactPaneLength="60">
             <SplitView.Pane>
-                <StackPanel Margin="0 0 16 0">
+                <StackPanel Margin="0 0 12 0">
                     <ListBox Background="Transparent" SelectionMode="Single" ItemsSource="{Binding MenuItems}" SelectionChanged="OnMenuItemChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="models:ListItemTemplate">
@@ -41,10 +41,12 @@
                 </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
-                <StackPanel MaxWidth="1000">
-                    <TextBlock FontSize="28" FontWeight="SemiBold" Text="{Binding CurrentPageTitle}" Margin="0 0 0 32" />
-                    <TransitioningContentControl Content="{Binding CurrentPage}" />   
-                </StackPanel>
+                <Grid RowDefinitions="Auto, *" MaxWidth="800">
+                    <TextBlock Grid.Row="0" FontSize="28" FontWeight="SemiBold" Text="{Binding CurrentPageTitle}" Margin="0 0 0 32" />
+                    <ScrollViewer Grid.Row="1">
+                        <TransitioningContentControl Margin="0 0 16 16" Content="{Binding CurrentPage}" />   
+                    </ScrollViewer>
+                </Grid>
             </SplitView.Content>
         </SplitView>
     </Grid>

@@ -8,6 +8,9 @@
 //------------------------------------------------------------------------------
 
 namespace Clock.Locales {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -89,6 +92,24 @@ namespace Clock.Locales {
         internal static string Clock_Use24Hours {
             get {
                 return ResourceManager.GetString("Clock_Use24Hours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal distance between widgets.
+        /// </summary>
+        internal static string Settings_Appearance_WidgetMargin_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_WidgetMargin_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size of the small widget.
+        /// </summary>
+        internal static string Settings_Appearance_WidgetSize_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_WidgetSize_Subtitle", resourceCulture);
             }
         }
     }

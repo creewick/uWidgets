@@ -7,12 +7,15 @@ namespace uWidgets.Views;
 
 public partial class Settings : Window
 {
+    private readonly SettingsViewModel viewModel;
 
     public Settings(IAppSettingsProvider appSettingsProvider)
     {
-        DataContext = new SettingsViewModel(appSettingsProvider);
+        viewModel = new SettingsViewModel(appSettingsProvider);
+        DataContext = viewModel;
         Resized += OnResized;
         InitializeComponent();
+        viewModel.SetCurrentPage(viewModel.MenuItems[0]);
     }
     
     private void OnResized(object? sender, WindowResizedEventArgs e)
@@ -22,6 +25,6 @@ public partial class Settings : Window
 
     private void OnMenuItemChanged(object? _, SelectionChangedEventArgs e)
     {
-        (DataContext as SettingsViewModel)!.SetCurrentPage(e.AddedItems[0] as ListItemTemplate);
+        viewModel.SetCurrentPage(e.AddedItems[0] as ListItemTemplate);
     }
 }

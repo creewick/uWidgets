@@ -33,6 +33,10 @@ public partial class Setting : UserControl
         set => SetValue(SubtitleProperty, value);
     }
 
+    public int TitleRowSpan => SubtitleVisible ? 1 : 2;
+
+    public bool SubtitleVisible => !string.IsNullOrEmpty(Subtitle);
+
     public Setting()
     {
         InitializeComponent();

@@ -1,6 +1,6 @@
-﻿using System;
-using Avalonia;
-using Avalonia.Markup.Xaml.Styling;
+﻿using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Media;
 using Avalonia.Styling;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
@@ -9,12 +9,14 @@ namespace uWidgets.Services;
 
 public class ThemeService : IThemeService
 {
-    private readonly StyleInclude transparentStyle = LoadStyles("avares://uWidgets/Styles/Transparent.axaml");
-    
-    private static StyleInclude LoadStyles(string path)
+    private readonly Style transparentStyle = new()
     {
-        return new StyleInclude(new Uri(path)) { Source = new Uri(path) };
-    }
+        Resources = new ResourceDictionary
+        {
+            { "SystemControlBackgroundAltHighBrush", new SolidColorBrush(Color.Parse("#30000000")) },
+            { "TextOpacity", 0.8 }
+        }
+    };
     
     public void Apply(Theme theme)
     {

@@ -4,24 +4,33 @@
              xmlns:controls="clr-namespace:uWidgets.Views.Controls"
              x:Class="uWidgets.Views.Pages.Appearance">
     <StackPanel Orientation="Vertical" Spacing="5">
-        <TextBlock FontSize="14" FontWeight="SemiBold" Text="Theme" Margin="0 0 0 10" />
-        <controls:Setting Icon="{DynamicResource Brush}" Title="{services:LocaleService Key=Settings_Appearance_DarkMode_Title}" Subtitle="Change the colors that appear in widgets">
+        <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 0 0 10" 
+                   Text="{services:LocaleService Key=Settings_Appearance_Theme}"/>
+        <controls:Setting Icon="{DynamicResource Brush}" 
+            Title="{services:LocaleService Key=Settings_Appearance_DarkMode_Title}" 
+            Subtitle="{services:LocaleService Key=Settings_Appearance_DarkMode_Subtitle}">
             <TextBlock Text="Test" />
         </controls:Setting>
-        <controls:Setting Icon="{DynamicResource Transparency}" Title="Transparency effects" Subtitle="Widgets appear translucent">
+        <controls:Setting Icon="{DynamicResource Transparency}" 
+            Title="{services:LocaleService Key=Settings_Appearance_Transparency_Title}" 
+            Subtitle="{services:LocaleService Key=Settings_Appearance_Transparency_Subtitle}">
             <ToggleSwitch />
         </controls:Setting>
-        <Expander>
-            <Expander.Header>
-                <controls:Setting Icon="{DynamicResource Color}" Title="Accent color" />
-            </Expander.Header>
-        </Expander>
-        <TextBlock FontSize="14" FontWeight="SemiBold" Text="Size" Margin="0 20 0 10" />
-        <controls:Setting Icon="{DynamicResource Transparency}" Title="Widget size">
-            <ToggleSwitch />
+        <controls:Setting Icon="{DynamicResource Color}"
+            Title="{services:LocaleService Key=Settings_Appearance_AccentColor_Title}">
+            <ColorPicker Color="Aqua"  />
         </controls:Setting>
-        <controls:Setting Icon="{DynamicResource Transparency}" Title="Widget margin">
-            <ToggleSwitch />
+        <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10"
+                   Text="{services:LocaleService Key=Settings_Appearance_Layout}"/>
+        <controls:Setting Icon="{DynamicResource WidgetSize}" 
+            Title="{services:LocaleService Key=Settings_Appearance_WidgetSize_Title}"
+            Subtitle="{services:LocaleService Key=Settings_Appearance_WidgetSize_Subtitle}">
+            <NumericUpDown Minimum="80" Maximum="240" />
+        </controls:Setting>
+        <controls:Setting Icon="{DynamicResource WidgetMargin}" 
+            Title="{services:LocaleService Key=Settings_Appearance_WidgetMargin_Title}"
+            Subtitle="{services:LocaleService Key=Settings_Appearance_WidgetMargin_Subtitle}">
+            <NumericUpDown Minimum="0" Maximum="32" />
         </controls:Setting>
     </StackPanel>
 </UserControl>
