@@ -1,51 +1,21 @@
-using System;
 using System.Globalization;
-using System.Resources;
 using System.Threading;
-using Avalonia.Markup.Xaml;
 using uWidgets.Core.Interfaces;
 using uWidgets.Locales;
 
 namespace uWidgets.Services;
 
-public class LocaleService : MarkupExtension
+public class LocaleService : ILocaleService
 {
-    private static IAssemblyProvider? AssemblyProvider { get; set; }
-    public string? Key { get; set; }
-    public string? Assembly { get; set; }
-
-    public static void Initialize(IAssemblyProvider assemblyProvider)
+    public LocaleService(IAppSettingsProvider appSettingsProvider)
     {
-        AssemblyProvider = assemblyProvider;
-    }
-
-    public override object ProvideValue(IServiceProvider serviceProvider)
-    {
-        if (string.IsNullOrEmpty(Key)) 
-            return string.Empty;
-
-        var resourceManager = string.IsNullOrEmpty(Assembly)
-            ? Locale.ResourceManager
-            : GetResourceManager(Assembly);
-        
-        return resourceManager.GetString(Key) 
-               ?? string.Empty;
+        appSettingsProvider.DataChanged += (_, newSettings) => 
+            SetCulture(newSettings.Region.Language);
     }
     
-    public static void SetCulture(string cultureName)
+    public void SetCulture(string cultureName)
     {
         Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureName);
         Locale.Culture = Thread.CurrentThread.CurrentUICulture;
-    }
-
-    private static ResourceManager GetResourceManager(string assemblyName)
-    {
-        var assembly = AssemblyProvider!.LoadAssembly(assemblyName);
-        var baseName = AssemblyProvider.GetLocaleBaseName(assembly);
-
-        if (baseName == null)
-            throw new NullReferenceException($"LocaleAttribute is not defined in assembly {assemblyName}");
-
-        return new ResourceManager(baseName, assembly);
     }
 }

@@ -3,24 +3,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:uWidgets.Views.Controls"
-             xmlns:services="clr-namespace:uWidgets.Services"
              xmlns:pages="clr-namespace:uWidgets.Views.Pages"
+             xmlns:locales="clr-namespace:uWidgets.Locales"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="uWidgets.Views.Pages.About"
              x:DataType="pages:About">
     <StackPanel Orientation="Vertical" Spacing="5">
         <controls:Setting Icon="{DynamicResource About}" 
-                          Title="{services:LocaleService Key=Settings_About_Version}"
+                          Title="{x:Static locales:Locale.Settings_About_Version}"
                           Subtitle="uWidgets by creewick">
             <TextBlock Text="{Binding Version}" />
         </controls:Setting>
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10" 
-                   Text="{services:LocaleService Key=Settings_About_Actions}"/>
+                   Text="{x:Static locales:Locale.Settings_About_Actions}"/>
         <controls:Setting Icon="{DynamicResource GitHub}" 
-                          Title="{services:LocaleService Key=Settings_About_Repository}"
+                          Title="{x:Static locales:Locale.Settings_About_Repository}"
                           Cursor="Hand" PointerPressed="GoToRepository" />
         <controls:Setting Icon="{DynamicResource Bug}" 
-                          Title="{services:LocaleService Key=Settings_About_ReportBug}"
+                          Title="{x:Static locales:Locale.Settings_About_ReportBug}"
                           Cursor="Hand" PointerPressed="GoToIssues" />
     </StackPanel>
 </UserControl>

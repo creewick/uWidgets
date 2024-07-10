@@ -37,7 +37,7 @@
         <value>Change the colors that appear in widget</value>
     </data>
     <data name="Settings_Appearance_DarkMode_True" xml:space="preserve">
-        <value>Dark</value>
+        <value>Dark </value>
     </data>
     <data name="Settings_Appearance_DarkMode_False" xml:space="preserve">
         <value>Light</value>
@@ -104,5 +104,17 @@
     </data>
     <data name="Settings_About_ReportBug" xml:space="preserve">
         <value>Report a bug</value>
+    </data>
+    <data name="Settings_Language_Language_Title" xml:space="preserve">
+        <value>Display language</value>
+    </data>
+    <data name="Settings_Language_Language_Subtitle" xml:space="preserve">
+        <value>uWidgets will appear in this language</value>
+    </data>
+    <data name="Settings_Appearance_WidgetMargin_Subtitle" xml:space="preserve">
+        <value>Minimal distance between widgets</value>
+    </data>
+    <data name="Settings_Appearance_WidgetSize_Subtitle" xml:space="preserve">
+        <value>Size of the small widget</value>
     </data>
 </root>

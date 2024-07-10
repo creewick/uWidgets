@@ -47,7 +47,7 @@
                             <TransitioningContentControl.PageTransition>
                                 <CompositePageTransition>
                                     <CrossFade Duration="0:00:00.000" />
-                                    <PageSlide Orientation="Vertical" SlideInEasing="CubicEaseOut" Duration="0:00:00.150" />
+                                    <PageSlide Orientation="Vertical" SlideInEasing="CubicEaseOut" Duration="0:00:00.300" />
                                 </CompositePageTransition>
                             </TransitioningContentControl.PageTransition>
                         </TransitioningContentControl>

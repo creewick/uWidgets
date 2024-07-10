@@ -1,16 +1,16 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:services="clr-namespace:uWidgets.Services"
              xmlns:controls="clr-namespace:uWidgets.Views.Controls"
              xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
+             xmlns:locales="clr-namespace:uWidgets.Locales"
              x:Class="uWidgets.Views.Pages.Appearance"
              x:DataType="viewModels:AppearanceViewModel">
     <StackPanel Orientation="Vertical" Spacing="5">
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 0 0 10" 
-                   Text="{services:LocaleService Key=Settings_Appearance_Theme}"/>
+                   Text="{x:Static locales:Locale.Settings_Appearance_Theme}"/>
         <controls:Setting Icon="{DynamicResource Brush}" 
-            Title="{services:LocaleService Key=Settings_Appearance_DarkMode_Title}" 
-            Subtitle="{services:LocaleService Key=Settings_Appearance_DarkMode_Subtitle}">
+            Title="{x:Static locales:Locale.Settings_Appearance_DarkMode_Title}" 
+            Subtitle="{x:Static locales:Locale.Settings_Appearance_DarkMode_Subtitle}">
             <ComboBox ItemsSource="{Binding Themes}" MinWidth="130" 
                       SelectedItem="{Binding DarkMode}">
                 <ComboBox.ItemTemplate>
@@ -21,24 +21,24 @@
             </ComboBox>
         </controls:Setting>
         <controls:Setting Icon="{DynamicResource Transparency}" 
-            Title="{services:LocaleService Key=Settings_Appearance_Transparency_Title}" 
-            Subtitle="{services:LocaleService Key=Settings_Appearance_Transparency_Subtitle}">
+            Title="{x:Static locales:Locale.Settings_Appearance_Transparency_Title}" 
+            Subtitle="{x:Static locales:Locale.Settings_Appearance_Transparency_Subtitle}">
             <ToggleSwitch IsChecked="{Binding Transparency}" />
         </controls:Setting>
         <controls:Setting Icon="{DynamicResource Color}"
-            Title="{services:LocaleService Key=Settings_Appearance_AccentColor_Title}">
+            Title="{x:Static locales:Locale.Settings_Appearance_AccentColor_Title}">
             <ColorPicker Color="Aqua" />
         </controls:Setting>
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10"
-                   Text="{services:LocaleService Key=Settings_Appearance_Layout}"/>
+                   Text="{x:Static locales:Locale.Settings_Appearance_Layout}"/>
         <controls:Setting Icon="{DynamicResource WidgetSize}" 
-            Title="{services:LocaleService Key=Settings_Appearance_WidgetSize_Title}"
-            Subtitle="{services:LocaleService Key=Settings_Appearance_WidgetSize_Subtitle}">
+            Title="{x:Static locales:Locale.Settings_Appearance_WidgetSize_Title}"
+            Subtitle="{x:Static locales:Locale.Settings_Appearance_WidgetSize_Subtitle}">
             <NumericUpDown Minimum="80" Maximum="240" Value="{Binding WidgetSize, StringFormat=F0}" />
         </controls:Setting>
         <controls:Setting Icon="{DynamicResource WidgetMargin}" 
-            Title="{services:LocaleService Key=Settings_Appearance_WidgetMargin_Title}"
-            Subtitle="{services:LocaleService Key=Settings_Appearance_WidgetMargin_Subtitle}">
+            Title="{x:Static locales:Locale.Settings_Appearance_WidgetMargin_Title}"
+            Subtitle="{x:Static locales:Locale.Settings_Appearance_WidgetMargin_Subtitle}">
             <NumericUpDown Minimum="0" Maximum="32" Value="{Binding WidgetMargin, StringFormat=F0}" />
         </controls:Setting>
     </StackPanel>

@@ -21,7 +21,7 @@ namespace uWidgets.Locales {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Locale {
+    public class Locale {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -35,7 +35,7 @@ namespace uWidgets.Locales {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("uWidgets.Locales.Locale", typeof(Locale).Assembly);
@@ -50,7 +50,7 @@ namespace uWidgets.Locales {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -62,7 +62,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string Settings {
+        public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
             }
@@ -71,7 +71,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
-        internal static string Settings_About {
+        public static string Settings_About {
             get {
                 return ResourceManager.GetString("Settings_About", resourceCulture);
             }
@@ -80,7 +80,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Actions.
         /// </summary>
-        internal static string Settings_About_Actions {
+        public static string Settings_About_Actions {
             get {
                 return ResourceManager.GetString("Settings_About_Actions", resourceCulture);
             }
@@ -89,7 +89,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Report a bug.
         /// </summary>
-        internal static string Settings_About_ReportBug {
+        public static string Settings_About_ReportBug {
             get {
                 return ResourceManager.GetString("Settings_About_ReportBug", resourceCulture);
             }
@@ -98,7 +98,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to GitHub repository.
         /// </summary>
-        internal static string Settings_About_Repository {
+        public static string Settings_About_Repository {
             get {
                 return ResourceManager.GetString("Settings_About_Repository", resourceCulture);
             }
@@ -107,7 +107,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
-        internal static string Settings_About_Version {
+        public static string Settings_About_Version {
             get {
                 return ResourceManager.GetString("Settings_About_Version", resourceCulture);
             }
@@ -116,7 +116,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Appearance.
         /// </summary>
-        internal static string Settings_Appearance {
+        public static string Settings_Appearance {
             get {
                 return ResourceManager.GetString("Settings_Appearance", resourceCulture);
             }
@@ -125,7 +125,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Accent color.
         /// </summary>
-        internal static string Settings_Appearance_AccentColor_Title {
+        public static string Settings_Appearance_AccentColor_Title {
             get {
                 return ResourceManager.GetString("Settings_Appearance_AccentColor_Title", resourceCulture);
             }
@@ -134,7 +134,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Light.
         /// </summary>
-        internal static string Settings_Appearance_DarkMode_False {
+        public static string Settings_Appearance_DarkMode_False {
             get {
                 return ResourceManager.GetString("Settings_Appearance_DarkMode_False", resourceCulture);
             }
@@ -143,7 +143,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to System.
         /// </summary>
-        internal static string Settings_Appearance_DarkMode_Null {
+        public static string Settings_Appearance_DarkMode_Null {
             get {
                 return ResourceManager.GetString("Settings_Appearance_DarkMode_Null", resourceCulture);
             }
@@ -152,7 +152,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Change the colors that appear in widget.
         /// </summary>
-        internal static string Settings_Appearance_DarkMode_Subtitle {
+        public static string Settings_Appearance_DarkMode_Subtitle {
             get {
                 return ResourceManager.GetString("Settings_Appearance_DarkMode_Subtitle", resourceCulture);
             }
@@ -161,16 +161,16 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Choose your mode.
         /// </summary>
-        internal static string Settings_Appearance_DarkMode_Title {
+        public static string Settings_Appearance_DarkMode_Title {
             get {
                 return ResourceManager.GetString("Settings_Appearance_DarkMode_Title", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dark.
+        ///   Looks up a localized string similar to Dark .
         /// </summary>
-        internal static string Settings_Appearance_DarkMode_True {
+        public static string Settings_Appearance_DarkMode_True {
             get {
                 return ResourceManager.GetString("Settings_Appearance_DarkMode_True", resourceCulture);
             }
@@ -179,7 +179,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Layout.
         /// </summary>
-        internal static string Settings_Appearance_Layout {
+        public static string Settings_Appearance_Layout {
             get {
                 return ResourceManager.GetString("Settings_Appearance_Layout", resourceCulture);
             }
@@ -188,7 +188,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
-        internal static string Settings_Appearance_Theme {
+        public static string Settings_Appearance_Theme {
             get {
                 return ResourceManager.GetString("Settings_Appearance_Theme", resourceCulture);
             }
@@ -197,7 +197,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Widgets appear translucent.
         /// </summary>
-        internal static string Settings_Appearance_Transparency_Subtitle {
+        public static string Settings_Appearance_Transparency_Subtitle {
             get {
                 return ResourceManager.GetString("Settings_Appearance_Transparency_Subtitle", resourceCulture);
             }
@@ -206,25 +206,43 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Transparency effects.
         /// </summary>
-        internal static string Settings_Appearance_Transparency_Title {
+        public static string Settings_Appearance_Transparency_Title {
             get {
                 return ResourceManager.GetString("Settings_Appearance_Transparency_Title", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minimal distance between widgets.
+        /// </summary>
+        public static string Settings_Appearance_WidgetMargin_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_WidgetMargin_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Widget margin.
         /// </summary>
-        internal static string Settings_Appearance_WidgetMargin_Title {
+        public static string Settings_Appearance_WidgetMargin_Title {
             get {
                 return ResourceManager.GetString("Settings_Appearance_WidgetMargin_Title", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Size of the small widget.
+        /// </summary>
+        public static string Settings_Appearance_WidgetSize_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_WidgetSize_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Widget size.
         /// </summary>
-        internal static string Settings_Appearance_WidgetSize_Title {
+        public static string Settings_Appearance_WidgetSize_Title {
             get {
                 return ResourceManager.GetString("Settings_Appearance_WidgetSize_Title", resourceCulture);
             }
@@ -233,16 +251,34 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
-        internal static string Settings_Language {
+        public static string Settings_Language {
             get {
                 return ResourceManager.GetString("Settings_Language", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uWidgets will appear in this language.
+        /// </summary>
+        public static string Settings_Language_Language_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Language_Language_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display language.
+        /// </summary>
+        public static string Settings_Language_Language_Title {
+            get {
+                return ResourceManager.GetString("Settings_Language_Language_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Widget.
         /// </summary>
-        internal static string Widget {
+        public static string Widget {
             get {
                 return ResourceManager.GetString("Widget", resourceCulture);
             }
@@ -251,7 +287,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
-        internal static string Widget_Edit {
+        public static string Widget_Edit {
             get {
                 return ResourceManager.GetString("Widget_Edit", resourceCulture);
             }
@@ -260,7 +296,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Edit widgets.
         /// </summary>
-        internal static string Widget_OpenSettings {
+        public static string Widget_OpenSettings {
             get {
                 return ResourceManager.GetString("Widget_OpenSettings", resourceCulture);
             }
@@ -269,7 +305,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Remove widget.
         /// </summary>
-        internal static string Widget_Remove {
+        public static string Widget_Remove {
             get {
                 return ResourceManager.GetString("Widget_Remove", resourceCulture);
             }
@@ -278,7 +314,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Size.
         /// </summary>
-        internal static string Widget_Size {
+        public static string Widget_Size {
             get {
                 return ResourceManager.GetString("Widget_Size", resourceCulture);
             }
@@ -287,7 +323,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Extra Large.
         /// </summary>
-        internal static string Widget_Size_ExtraLarge {
+        public static string Widget_Size_ExtraLarge {
             get {
                 return ResourceManager.GetString("Widget_Size_ExtraLarge", resourceCulture);
             }
@@ -296,7 +332,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Large.
         /// </summary>
-        internal static string Widget_Size_Large {
+        public static string Widget_Size_Large {
             get {
                 return ResourceManager.GetString("Widget_Size_Large", resourceCulture);
             }
@@ -305,7 +341,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Medium.
         /// </summary>
-        internal static string Widget_Size_Medium {
+        public static string Widget_Size_Medium {
             get {
                 return ResourceManager.GetString("Widget_Size_Medium", resourceCulture);
             }
@@ -314,7 +350,7 @@ namespace uWidgets.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Small.
         /// </summary>
-        internal static string Widget_Size_Small {
+        public static string Widget_Size_Small {
             get {
                 return ResourceManager.GetString("Widget_Size_Small", resourceCulture);
             }

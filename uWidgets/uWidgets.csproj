@@ -39,7 +39,7 @@
 
     <ItemGroup>
       <EmbeddedResource Update="Locales\Locale.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
+        <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>Locale.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
@@ -56,6 +56,9 @@
       <Compile Update="Views\Pages\Appearance.axaml.cs">
         <DependentUpon>Appearance.axaml</DependentUpon>
         <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Locales\Locale.Designer.cs">
+        <Generator>PublicResXFileCodeGenerator</Generator>
       </Compile>
     </ItemGroup>
 

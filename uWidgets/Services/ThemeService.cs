@@ -10,8 +10,11 @@ namespace uWidgets.Services;
 
 public class ThemeService : IThemeService
 {
-    public static WindowTransparencyLevel AcrylicBlur => WindowTransparencyLevel.AcrylicBlur;
-    public static WindowTransparencyLevel None => WindowTransparencyLevel.None;
+    public ThemeService(IAppSettingsProvider appSettingsProvider)
+    {
+        appSettingsProvider.DataChanged += (_, settings) => 
+            Apply(settings.Theme);
+    }
     
     private readonly StyleInclude transparentStyle = new(new Uri("avares://uWidgets/"))
     {

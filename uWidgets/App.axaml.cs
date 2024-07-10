@@ -22,24 +22,21 @@ public partial class App : Application
             .AddSingleton<ILayoutProvider, LayoutProvider>()
             .AddSingleton<IAssemblyProvider, AssemblyProvider>()
             .AddSingleton<IThemeService, ThemeService>()
+            .AddSingleton<ILocaleService, LocaleService>()
             .AddSingleton<IWidgetFactory<Widget>, WidgetFactory>()
             .BuildServiceProvider();
 
-        var settingsProvider = services
+        var appSettingsProvider = services
             .GetRequiredService<IAppSettingsProvider>();
 
         var themeService = services
             .GetRequiredService<IThemeService>();
-            
-        themeService.Apply(settingsProvider.Get().Theme);
-
-        settingsProvider.DataChanged += (sender, settings) =>
-        {
-            themeService.Apply(settings.Theme);
-        };
         
-        LocaleService.Initialize(services.GetRequiredService<IAssemblyProvider>());
-        LocaleService.SetCulture("en-US");
+        var localeService = services
+            .GetRequiredService<ILocaleService>();
+        
+        localeService.SetCulture(appSettingsProvider.Get().Region.Language);
+        themeService.Apply(appSettingsProvider.Get().Theme);
 
         var widgets = services
             .GetRequiredService<IWidgetFactory<Widget>>()
@@ -50,7 +47,7 @@ public partial class App : Application
             widget.Show();
         }
         
-        new Settings(settingsProvider).Show();
+        new Settings(appSettingsProvider).Show();
         
         base.OnFrameworkInitializationCompleted();
     }

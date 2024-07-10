@@ -94,23 +94,5 @@ namespace Clock.Locales {
                 return ResourceManager.GetString("Clock_Use24Hours", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Minimal distance between widgets.
-        /// </summary>
-        internal static string Settings_Appearance_WidgetMargin_Subtitle {
-            get {
-                return ResourceManager.GetString("Settings_Appearance_WidgetMargin_Subtitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Size of the small widget.
-        /// </summary>
-        internal static string Settings_Appearance_WidgetSize_Subtitle {
-            get {
-                return ResourceManager.GetString("Settings_Appearance_WidgetSize_Subtitle", resourceCulture);
-            }
-        }
     }
 }
