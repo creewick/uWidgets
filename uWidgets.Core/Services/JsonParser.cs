@@ -6,6 +6,7 @@ namespace uWidgets.Core.Services;
 
 public class JsonParser<T> : IDataProvider<T>
 {
+    public event EventHandler<T>? DataChanged;
     private readonly JsonSerializerOptions? options;
     private readonly string filePath;
     private T? data;
@@ -30,6 +31,7 @@ public class JsonParser<T> : IDataProvider<T>
 
     public void Save(T newData)
     {
+        DataChanged?.Invoke(this, newData);
         var json = JsonSerializer.Serialize(data = newData, options);
         
         File.WriteAllText(filePath, json);

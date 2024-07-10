@@ -28,9 +28,15 @@ public partial class App : Application
         var settingsProvider = services
             .GetRequiredService<IAppSettingsProvider>();
 
-        services
-            .GetRequiredService<IThemeService>()
-            .Apply(settingsProvider.Get().Theme);
+        var themeService = services
+            .GetRequiredService<IThemeService>();
+            
+        themeService.Apply(settingsProvider.Get().Theme);
+
+        settingsProvider.DataChanged += (sender, settings) =>
+        {
+            themeService.Apply(settings.Theme);
+        };
         
         LocaleService.Initialize(services.GetRequiredService<IAssemblyProvider>());
         LocaleService.SetCulture("en-US");

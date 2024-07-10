@@ -6,10 +6,12 @@ namespace uWidgets.Core.Services;
 public class WidgetSettingsProvider(ILayoutProvider layoutProvider, WidgetSettings settings) 
     : IWidgetSettingsProvider
 {
+    public event EventHandler<WidgetSettings>? DataChanged;
     public WidgetSettings Get() => settings;
 
     public void Save(WidgetSettings data)
     {
+        DataChanged?.Invoke(this, data);
         var layout = layoutProvider.Get();
         var index = layout.IndexOf(data);
 

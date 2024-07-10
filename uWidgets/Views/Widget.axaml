@@ -13,8 +13,7 @@
         <Style Selector="Window">
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Border CornerRadius="24"
-                            Background="{DynamicResource SystemControlBackgroundAltHighBrush}">
+                    <Border CornerRadius="24" Background="{DynamicResource WidgetBackground}">
                         <ContentPresenter Content="{TemplateBinding Content}" />
                     </Border>
                 </ControlTemplate>

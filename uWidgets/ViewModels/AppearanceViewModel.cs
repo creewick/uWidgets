@@ -1,8 +1,7 @@
 using System.Linq;
-using Avalonia;
-using Avalonia.Media;
 using ReactiveUI;
 using uWidgets.Core.Interfaces;
+using uWidgets.Locales;
 
 namespace uWidgets.ViewModels;
 
@@ -10,9 +9,9 @@ public class AppearanceViewModel(IAppSettingsProvider appSettingsProvider) : Rea
 {
     public ThemeViewModel[] Themes =>
     [
-        new ThemeViewModel("Light", false),
-        new ThemeViewModel("Dark", true),
-        new ThemeViewModel("Auto", null)
+        new ThemeViewModel(Locale.Settings_Appearance_DarkMode_False, false),
+        new ThemeViewModel(Locale.Settings_Appearance_DarkMode_True, true),
+        new ThemeViewModel(Locale.Settings_Appearance_DarkMode_Null, null)
     ];
 
     public ThemeViewModel? DarkMode

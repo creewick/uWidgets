@@ -141,7 +141,7 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Match System.
+        ///   Looks up a localized string similar to System.
         /// </summary>
         internal static string Settings_Appearance_DarkMode_Null {
             get {

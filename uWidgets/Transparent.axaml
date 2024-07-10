@@ -1,0 +1,9 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style>
+        <Style.Resources>
+            <SolidColorBrush x:Key="WidgetBackground" Color="{DynamicResource SystemAltHighColor}" Opacity="0.2" />
+            <x:Double x:Key="TextOpacity">0.8</x:Double>
+        </Style.Resources>
+    </Style>
+</Styles>
