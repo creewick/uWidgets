@@ -18,11 +18,9 @@
                    Text="{services:LocaleService Key=Settings_About_Actions}"/>
         <controls:Setting Icon="{DynamicResource GitHub}" 
                           Title="{services:LocaleService Key=Settings_About_Repository}"
-                          Cursor="Hand" PointerPressed="GoToRepository">
-        </controls:Setting>
+                          Cursor="Hand" PointerPressed="GoToRepository" />
         <controls:Setting Icon="{DynamicResource Bug}" 
                           Title="{services:LocaleService Key=Settings_About_ReportBug}"
-                          Cursor="Hand" PointerPressed="GoToIssues">
-        </controls:Setting>
+                          Cursor="Hand" PointerPressed="GoToIssues" />
     </StackPanel>
 </UserControl>

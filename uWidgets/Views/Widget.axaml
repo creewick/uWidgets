@@ -3,7 +3,7 @@
         x:Class="uWidgets.Views.Widget"
         Width="160" Height="160"
         Background="Transparent"
-        TransparencyLevelHint="AcrylicBlur"
+        TransparencyLevelHint="{DynamicResource TransparencyLevelHint}"
         ShowInTaskbar="False"
         SystemDecorations="None">
     <Window.Styles>

@@ -4,13 +4,12 @@
         xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
         Width="1000" Height="600" MinWidth="500" MinHeight="300"
         x:Class="uWidgets.Views.Settings"
-        Background="{DynamicResource SystemAltMediumHighColor}"
-        TransparencyLevelHint="AcrylicBlur"
+        Background="{DynamicResource SettingsBackground}"
+        TransparencyLevelHint="{DynamicResource TransparencyLevelHint}"
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaTitleBarHeightHint="50"
         ClipToBounds="True"
         Title="Settings"
-        xmlns:loc="clr-namespace:uWidgets.Locales"
         x:DataType="viewModels:SettingsViewModel">
 
     <Window.Styles>

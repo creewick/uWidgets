@@ -1,6 +1,4 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 using uWidgets.Core.Interfaces;
 
 namespace uWidgets.Views.Pages;

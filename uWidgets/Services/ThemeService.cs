@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
 using uWidgets.Core.Interfaces;
@@ -9,7 +10,13 @@ namespace uWidgets.Services;
 
 public class ThemeService : IThemeService
 {
-    private readonly StyleInclude transparentStyle = new StyleInclude(new Uri("avares://uWidgets/")) { Source = new Uri("avares://uWidgets/Transparent.axaml") };
+    public static WindowTransparencyLevel AcrylicBlur => WindowTransparencyLevel.AcrylicBlur;
+    public static WindowTransparencyLevel None => WindowTransparencyLevel.None;
+    
+    private readonly StyleInclude transparentStyle = new(new Uri("avares://uWidgets/"))
+    {
+        Source = new Uri("avares://uWidgets/Transparent.axaml")
+    };
     
     public void Apply(Theme theme)
     {
