@@ -86,4 +86,16 @@
     <data name="Settings" xml:space="preserve">
         <value>Настройки</value>
     </data>
+    <data name="Settings_About_Version" xml:space="preserve">
+        <value>Версия</value>
+    </data>
+    <data name="Settings_About_Actions" xml:space="preserve">
+        <value>Действия</value>
+    </data>
+    <data name="Settings_About_Repository" xml:space="preserve">
+        <value>GitHub репозиторий</value>
+    </data>
+    <data name="Settings_About_ReportBug" xml:space="preserve">
+        <value>Сообщить об ошибке</value>
+    </data>
 </root>

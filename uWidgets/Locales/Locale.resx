@@ -93,4 +93,16 @@
     <data name="Widget" xml:space="preserve">
         <value>Widget</value>
     </data>
+    <data name="Settings_About_Version" xml:space="preserve">
+        <value>Version</value>
+    </data>
+    <data name="Settings_About_Actions" xml:space="preserve">
+        <value>Actions</value>
+    </data>
+    <data name="Settings_About_Repository" xml:space="preserve">
+        <value>GitHub repository</value>
+    </data>
+    <data name="Settings_About_ReportBug" xml:space="preserve">
+        <value>Report a bug</value>
+    </data>
 </root>

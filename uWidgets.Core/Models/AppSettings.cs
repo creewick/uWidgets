@@ -1,3 +1,3 @@
 ﻿namespace uWidgets.Core.Models;
 
-public record AppSettings(Theme Theme);
+public record AppSettings(Theme Theme, Layout Layout);

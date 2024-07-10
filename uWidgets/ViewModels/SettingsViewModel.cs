@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using ReactiveUI;
 using uWidgets.Core.Interfaces;
+using uWidgets.Locales;
 using uWidgets.Models;
 using uWidgets.Views.Pages;
 
@@ -25,9 +26,9 @@ public class SettingsViewModel(IAppSettingsProvider appSettingsProvider) : React
 
     public ListItemTemplate[] MenuItems =>
     [
-        new ListItemTemplate(typeof(Appearance), "Appearance"),
-        new ListItemTemplate(null, "Language"),
-        new ListItemTemplate(null, "About")
+        new ListItemTemplate(typeof(Appearance), Locale.Settings_Appearance),
+        new ListItemTemplate(typeof(Language), Locale.Settings_Language),
+        new ListItemTemplate(typeof(About),  Locale.Settings_About)
     ];
 
     public void SetCurrentPage(ListItemTemplate? value)

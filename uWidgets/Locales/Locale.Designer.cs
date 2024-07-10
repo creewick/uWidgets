@@ -78,6 +78,42 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        internal static string Settings_About_Actions {
+            get {
+                return ResourceManager.GetString("Settings_About_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report a bug.
+        /// </summary>
+        internal static string Settings_About_ReportBug {
+            get {
+                return ResourceManager.GetString("Settings_About_ReportBug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GitHub repository.
+        /// </summary>
+        internal static string Settings_About_Repository {
+            get {
+                return ResourceManager.GetString("Settings_About_Repository", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string Settings_About_Version {
+            get {
+                return ResourceManager.GetString("Settings_About_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appearance.
         /// </summary>
         internal static string Settings_Appearance {

@@ -15,7 +15,7 @@ public partial class Settings : Window
         DataContext = viewModel;
         Resized += OnResized;
         InitializeComponent();
-        viewModel.SetCurrentPage(viewModel.MenuItems[0]);
+        ListBox.SelectedItem = viewModel.MenuItems[0];
     }
     
     private void OnResized(object? sender, WindowResizedEventArgs e)
