@@ -27,6 +27,8 @@ public class LanguageViewModel(IAppSettingsProvider appSettingsProvider) : React
     private static IEnumerable<CultureInfo> GetAvailableCultures()
     {
         var cultures = CultureInfo.GetCultures(CultureTypes.NeutralCultures);
+
+        yield return new CultureInfo("en");
         
         foreach (var culture in cultures)
         {

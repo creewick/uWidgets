@@ -11,4 +11,18 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <data name="Clock" xml:space="preserve">
+        <value>Uhrzeit</value>
+    </data>
+    <data name="Clock_ShowSeconds" xml:space="preserve">
+        <value>Sekunden anzeigen
+</value>
+    </data>
+    <data name="Clock_TimeZone" xml:space="preserve">
+        <value>Zeitzone</value>
+    </data>
+    <data name="Clock_Use24Hours" xml:space="preserve">
+        <value>24-Stunden-Zeit
+</value>
+    </data>
 </root>

@@ -21,8 +21,8 @@
     <data name="Settings_Appearance" xml:space="preserve">
         <value>Appearance</value>
     </data>
-    <data name="Settings_Language" xml:space="preserve">
-        <value>Language</value>
+    <data name="Settings_General" xml:space="preserve">
+        <value>General</value>
     </data>
     <data name="Settings_About" xml:space="preserve">
         <value>About</value>
@@ -105,10 +105,10 @@
     <data name="Settings_About_ReportBug" xml:space="preserve">
         <value>Report a bug</value>
     </data>
-    <data name="Settings_Language_Language_Title" xml:space="preserve">
+    <data name="Settings_General_Language_Title" xml:space="preserve">
         <value>Display language</value>
     </data>
-    <data name="Settings_Language_Language_Subtitle" xml:space="preserve">
+    <data name="Settings_General_Language_Subtitle" xml:space="preserve">
         <value>uWidgets will appear in this language</value>
     </data>
     <data name="Settings_Appearance_WidgetMargin_Subtitle" xml:space="preserve">
@@ -116,5 +116,26 @@
     </data>
     <data name="Settings_Appearance_WidgetSize_Subtitle" xml:space="preserve">
         <value>Size of the small widget</value>
+    </data>
+    <data name="Settings_General_Exit_Title" xml:space="preserve">
+        <value>Exit the application</value>
+    </data>
+    <data name="Settings_General_Exit_Action" xml:space="preserve">
+        <value>Exit</value>
+    </data>
+    <data name="Settings_General_Restart_Action" xml:space="preserve">
+        <value>Restart</value>
+    </data>
+    <data name="Settings_General_Restart_Title" xml:space="preserve">
+        <value>Restart the application</value>
+    </data>
+    <data name="Settings_General_Language" xml:space="preserve">
+        <value>Language</value>
+    </data>
+    <data name="Settings_General_Actions" xml:space="preserve">
+        <value>Actions</value>
+    </data>
+    <data name="Settings_About_Repository_Action" xml:space="preserve">
+        <value>Visit</value>
     </data>
 </root>

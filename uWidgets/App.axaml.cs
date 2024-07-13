@@ -1,5 +1,4 @@
 using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using uWidgets.Core.Interfaces;
@@ -48,8 +47,6 @@ public partial class App : Application
         {
             widget.Show();
         }
-        
-        new Settings(appSettingsProvider).Show();
         
         base.OnFrameworkInitializationCompleted();
     }

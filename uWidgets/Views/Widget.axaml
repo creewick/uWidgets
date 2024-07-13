@@ -22,7 +22,7 @@
             <Separator />
             <MenuItem Header="{x:Static locales:Locale.Widget_Remove}" Command="{Binding Remove}" />
             <Separator />
-            <MenuItem Header="{x:Static locales:Locale.Widget_OpenSettings}" />
+            <MenuItem Header="{x:Static locales:Locale.Widget_OpenSettings}" Command="{Binding OpenSettings}" />
         </ContextMenu>
     </Window.ContextMenu> 
     

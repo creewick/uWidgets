@@ -34,12 +34,12 @@
         <controls:Setting Icon="{DynamicResource WidgetSize}" 
             Title="{x:Static locales:Locale.Settings_Appearance_WidgetSize_Title}"
             Subtitle="{x:Static locales:Locale.Settings_Appearance_WidgetSize_Subtitle}">
-            <NumericUpDown Minimum="36" Maximum="144" Value="{Binding WidgetSize, StringFormat=F0}" />
+            <NumericUpDown MinWidth="130" Minimum="36" Maximum="144" Value="{Binding WidgetSize, StringFormat=F0}" />
         </controls:Setting>
         <controls:Setting Icon="{DynamicResource WidgetMargin}" 
             Title="{x:Static locales:Locale.Settings_Appearance_WidgetMargin_Title}"
             Subtitle="{x:Static locales:Locale.Settings_Appearance_WidgetMargin_Subtitle}">
-            <NumericUpDown Minimum="0" Maximum="32" Value="{Binding WidgetMargin, StringFormat=F0}" />
+            <NumericUpDown MinWidth="130" Minimum="0" Maximum="32" Value="{Binding WidgetMargin, StringFormat=F0}" />
         </controls:Setting>
     </StackPanel>
 </UserControl>

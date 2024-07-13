@@ -17,10 +17,12 @@
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10" 
                    Text="{x:Static locales:Locale.Settings_About_Actions}"/>
         <controls:Setting Icon="{DynamicResource GitHub}" 
-                          Title="{x:Static locales:Locale.Settings_About_Repository}"
-                          Cursor="Hand" PointerPressed="GoToRepository" />
+                          Title="{x:Static locales:Locale.Settings_About_Repository}">
+            <Button MinWidth="130" HorizontalContentAlignment="Center" Content="{x:Static locales:Locale.Settings_About_Repository_Action}" Click="GoToRepository" />
+        </controls:Setting>
         <controls:Setting Icon="{DynamicResource Bug}" 
-                          Title="{x:Static locales:Locale.Settings_About_ReportBug}"
-                          Cursor="Hand" PointerPressed="GoToIssues" />
+                          Title="{x:Static locales:Locale.Settings_About_ReportBug}">
+            <Button MinWidth="130" HorizontalContentAlignment="Center" Content="{x:Static locales:Locale.Settings_About_Repository_Action}" Click="GoToIssues" />
+        </controls:Setting>
     </StackPanel>
 </UserControl>

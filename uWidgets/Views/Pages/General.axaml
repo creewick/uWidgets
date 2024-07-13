@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:uWidgets.Views.Controls"
+             xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
+             xmlns:globalization="clr-namespace:System.Globalization;assembly=System.Runtime"
+             xmlns:locales="clr-namespace:uWidgets.Locales"
+             x:Class="uWidgets.Views.Pages.General"
+             x:DataType="viewModels:LanguageViewModel">
+    <StackPanel Orientation="Vertical" Spacing="5">
+        <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 0 0 10" 
+                   Text="{x:Static locales:Locale.Settings_General_Language}"/>
+        <controls:Setting Icon="{DynamicResource Language}" 
+                          Title="{x:Static locales:Locale.Settings_General_Language_Title}"
+                          Subtitle="{x:Static locales:Locale.Settings_General_Language_Subtitle}">
+            <ComboBox ItemsSource="{Binding Languages}" MinWidth="130"
+                      SelectedItem="{Binding Language}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="globalization:CultureInfo">
+                        <TextBlock Text="{Binding DisplayName}" Margin="0 4" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </controls:Setting>
+        <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10" 
+                   Text="{x:Static locales:Locale.Settings_General_Actions}"/>
+        <controls:Setting Icon="{DynamicResource Refresh}"
+                          Title="{x:Static locales:Locale.Settings_General_Restart_Title}">
+            <Button MinWidth="130" HorizontalContentAlignment="Center" Content="{x:Static locales:Locale.Settings_General_Restart_Action}" Click="Restart" />
+        </controls:Setting>       
+        <controls:Setting Icon="{DynamicResource Power}"
+                          Title="{x:Static locales:Locale.Settings_General_Exit_Title}">
+            <Button MinWidth="130" HorizontalContentAlignment="Center" Content="{x:Static locales:Locale.Settings_General_Exit_Action}" Click="Exit" />
+        </controls:Setting>
+    </StackPanel>
+</UserControl>

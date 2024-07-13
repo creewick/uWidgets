@@ -44,8 +44,8 @@
     <data name="Settings_Appearance_WidgetSize_Title" xml:space="preserve">
         <value>Размер виджета</value>
     </data>
-    <data name="Settings_Language" xml:space="preserve">
-        <value>Язык</value>
+    <data name="Settings_General" xml:space="preserve">
+        <value>Основные</value>
     </data>
     <data name="Widget_Edit" xml:space="preserve">
         <value>Изменить</value>
@@ -103,5 +103,32 @@
     </data>
     <data name="Settings_Appearance_WidgetSize_Subtitle" xml:space="preserve">
         <value>Размер маленького виджета</value>
+    </data>
+    <data name="Settings_General_Language_Subtitle" xml:space="preserve">
+        <value>uWidgets будет отображаться на выбранном языке</value>
+    </data>
+    <data name="Settings_General_Language_Title" xml:space="preserve">
+        <value>Язык интерфейса</value>
+    </data>
+    <data name="Settings_General_Exit_Title" xml:space="preserve">
+        <value>Выход из приложения</value>
+    </data>
+    <data name="Settings_General_Exit_Action" xml:space="preserve">
+        <value>Выйти</value>
+    </data>
+    <data name="Settings_General_Restart_Action" xml:space="preserve">
+        <value>Перезапустить</value>
+    </data>
+    <data name="Settings_General_Restart_Title" xml:space="preserve">
+        <value>Перезапуск приложения</value>
+    </data>
+    <data name="Settings_General_Language" xml:space="preserve">
+        <value>Язык</value>
+    </data>
+    <data name="Settings_General_Actions" xml:space="preserve">
+        <value>Действия</value>
+    </data>
+    <data name="Settings_About_Repository_Action" xml:space="preserve">
+        <value>Открыть</value>
     </data>
 </root>

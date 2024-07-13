@@ -1,6 +1,5 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:models="clr-namespace:uWidgets.Models"
         xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
         Width="1000" Height="600" MinWidth="500" MinHeight="300"
         x:Class="uWidgets.Views.Settings"
@@ -29,7 +28,7 @@
                 <StackPanel Margin="0 0 12 0">
                     <ListBox Name="ListBox" Background="Transparent" SelectionMode="Single" ItemsSource="{Binding MenuItems}" SelectionChanged="OnMenuItemChanged">
                         <ListBox.ItemTemplate>
-                            <DataTemplate DataType="models:ListItemTemplate">
+                            <DataTemplate DataType="viewModels:PageViewModel">
                                 <StackPanel Orientation="Horizontal" Spacing="12">
                                     <PathIcon Data="{Binding Icon}" Height="16" />
                                     <TextBlock Text="{Binding Text}" />

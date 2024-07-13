@@ -105,6 +105,15 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Visit.
+        /// </summary>
+        public static string Settings_About_Repository_Action {
+            get {
+                return ResourceManager.GetString("Settings_About_Repository_Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
         public static string Settings_About_Version {
@@ -249,29 +258,83 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string Settings_General {
+            get {
+                return ResourceManager.GetString("Settings_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        public static string Settings_General_Actions {
+            get {
+                return ResourceManager.GetString("Settings_General_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string Settings_General_Exit_Action {
+            get {
+                return ResourceManager.GetString("Settings_General_Exit_Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit the application.
+        /// </summary>
+        public static string Settings_General_Exit_Title {
+            get {
+                return ResourceManager.GetString("Settings_General_Exit_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
-        public static string Settings_Language {
+        public static string Settings_General_Language {
             get {
-                return ResourceManager.GetString("Settings_Language", resourceCulture);
+                return ResourceManager.GetString("Settings_General_Language", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to uWidgets will appear in this language.
         /// </summary>
-        public static string Settings_Language_Language_Subtitle {
+        public static string Settings_General_Language_Subtitle {
             get {
-                return ResourceManager.GetString("Settings_Language_Language_Subtitle", resourceCulture);
+                return ResourceManager.GetString("Settings_General_Language_Subtitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Display language.
         /// </summary>
-        public static string Settings_Language_Language_Title {
+        public static string Settings_General_Language_Title {
             get {
-                return ResourceManager.GetString("Settings_Language_Language_Title", resourceCulture);
+                return ResourceManager.GetString("Settings_General_Language_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restart.
+        /// </summary>
+        public static string Settings_General_Restart_Action {
+            get {
+                return ResourceManager.GetString("Settings_General_Restart_Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restart the application.
+        /// </summary>
+        public static string Settings_General_Restart_Title {
+            get {
+                return ResourceManager.GetString("Settings_General_Restart_Title", resourceCulture);
             }
         }
         
