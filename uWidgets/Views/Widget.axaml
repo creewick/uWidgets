@@ -20,7 +20,7 @@
             <MenuItem Header="{x:Static locales:Locale.Widget_Size_Large}" Command="{Binding ResizeLarge}" />
             <MenuItem Header="{x:Static locales:Locale.Widget_Size_ExtraLarge}" Command="{Binding ResizeExtraLarge}" />
             <Separator />
-            <MenuItem Header="{x:Static locales:Locale.Widget_Remove}" />
+            <MenuItem Header="{x:Static locales:Locale.Widget_Remove}" Command="{Binding Remove}" />
             <Separator />
             <MenuItem Header="{x:Static locales:Locale.Widget_OpenSettings}" />
         </ContextMenu>

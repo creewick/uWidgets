@@ -34,7 +34,7 @@
         <controls:Setting Icon="{DynamicResource WidgetSize}" 
             Title="{x:Static locales:Locale.Settings_Appearance_WidgetSize_Title}"
             Subtitle="{x:Static locales:Locale.Settings_Appearance_WidgetSize_Subtitle}">
-            <NumericUpDown Minimum="80" Maximum="240" Value="{Binding WidgetSize, StringFormat=F0}" />
+            <NumericUpDown Minimum="36" Maximum="144" Value="{Binding WidgetSize, StringFormat=F0}" />
         </controls:Setting>
         <controls:Setting Icon="{DynamicResource WidgetMargin}" 
             Title="{x:Static locales:Locale.Settings_Appearance_WidgetMargin_Title}"

@@ -21,4 +21,11 @@ public class WidgetSettingsProvider(ILayoutProvider layoutProvider, WidgetSettin
         layoutProvider.Save(layout);
         settings = data;
     }
+
+    public void Remove()
+    {
+        var layout = layoutProvider.Get();
+        layout.Remove(settings);
+        layoutProvider.Save(layout);
+    }
 }

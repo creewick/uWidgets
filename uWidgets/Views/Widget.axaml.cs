@@ -57,4 +57,10 @@ public partial class Widget : Window
         var settings = widgetSettings.Get();
         widgetSettings.Save(settings with { Width = (int)Width, Height = (int)Height });
     }
+
+    public void Remove()
+    {
+        widgetSettings.Remove();
+        Close();
+    }
 }
