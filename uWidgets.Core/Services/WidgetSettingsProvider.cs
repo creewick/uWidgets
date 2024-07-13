@@ -13,11 +13,12 @@ public class WidgetSettingsProvider(ILayoutProvider layoutProvider, WidgetSettin
     {
         DataChanged?.Invoke(this, data);
         var layout = layoutProvider.Get();
-        var index = layout.IndexOf(data);
+        var index = layout.IndexOf(settings);
 
         if (index == -1) return;
         
         layout[index] = data;
         layoutProvider.Save(layout);
+        settings = data;
     }
 }

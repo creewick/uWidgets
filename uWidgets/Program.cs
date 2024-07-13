@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using System;
+using uWidgets.Core;
 
 namespace uWidgets;
 
@@ -22,7 +23,7 @@ class Program
             .With(new Win32PlatformOptions
             {
                 CompositionMode = new [] { Win32CompositionMode.WinUIComposition },
-                WinUICompositionBackdropCornerRadius = 48f,
+                WinUICompositionBackdropCornerRadius = Const.CornerRadius,
             })
             .LogToTrace();
 }

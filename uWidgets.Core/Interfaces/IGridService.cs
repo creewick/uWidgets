@@ -2,9 +2,9 @@ using System.Drawing;
 
 namespace uWidgets.Core.Interfaces;
 
-public interface IGridService
+public interface IGridService<in T>
 {
-    public Size GetSize(int columns, int rows);
-    public Size SnapSize(Size size);
-    public Point SnapPosition(Point position);
+    public void SetSize(T window, int columns, int rows);
+    public void SnapSize(T window);
+    public void SnapPosition(T window);
 }

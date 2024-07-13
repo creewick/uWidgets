@@ -34,7 +34,7 @@
             <Setter Property="Template">
                 <ControlTemplate>
                     <Grid>
-                        <Border CornerRadius="24" Background="{DynamicResource WidgetBackground}" 
+                        <Border CornerRadius="{Binding Radius}" Background="{DynamicResource WidgetBackground}" 
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Left"
                                 Width="{Binding Width, RelativeSource={RelativeSource AncestorType=Window}}"
@@ -42,8 +42,8 @@
                             <ContentPresenter Content="{TemplateBinding Content}" />
                             <Border.Transitions>
                                 <Transitions>
-                                    <DoubleTransition Property="Width" Duration="0:0:0.2"/>
-                                    <DoubleTransition Property="Height" Duration="0:0:0.2"/>
+                                    <DoubleTransition Property="Width" Duration="0:0:0.3"/>
+                                    <DoubleTransition Property="Height" Duration="0:0:0.3"/>
                                 </Transitions>
                             </Border.Transitions>
                         </Border>

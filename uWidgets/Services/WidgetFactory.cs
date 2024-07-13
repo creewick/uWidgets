@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using Avalonia.Controls;
+using Microsoft.Extensions.DependencyInjection;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Services;
 using uWidgets.Views;
 
 namespace uWidgets.Services;
 
-public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider layoutProvider, IGridService gridService) : IWidgetFactory<Views.Widget>
+public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider layoutProvider, IServiceProvider serviceProvider) : IWidgetFactory<Widget>
 {
     public IEnumerable<Widget> Create()
     {
@@ -28,10 +29,11 @@ public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider l
             }
             var userControl = assemblyProvider.Activate(assembly, controlType, args.ToArray());
 
-            yield return new Widget(widgetSettingsProvider, gridService)
-            {
-                Content = userControl
-            };
+            var widget = (Widget) ActivatorUtilities.CreateInstance(serviceProvider, typeof(Widget), widgetSettingsProvider);
+           
+            widget.Content = userControl;
+
+            yield return widget;
         }
     }
 }

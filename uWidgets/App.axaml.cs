@@ -1,4 +1,5 @@
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using uWidgets.Core.Interfaces;
@@ -23,7 +24,7 @@ public partial class App : Application
             .AddSingleton<IAssemblyProvider, AssemblyProvider>()
             .AddSingleton<IThemeService, ThemeService>()
             .AddSingleton<ILocaleService, LocaleService>()
-            .AddSingleton<IGridService, GridService>()
+            .AddSingleton<IGridService<Widget>, GridService>()
             .AddSingleton<IWidgetFactory<Widget>, WidgetFactory>()
             .BuildServiceProvider();
 

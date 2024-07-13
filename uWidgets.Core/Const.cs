@@ -10,4 +10,5 @@ public static class Const
     public static string WidgetsFolder = Path.Combine(CurrentFolder, WidgetsFolderName);
     public static string AppSettingsFile = Path.Combine(CurrentFolder, AppSettingsFileName);
     public static string LayoutFile = Path.Combine(CurrentFolder, LayoutFileName);
+    public static int CornerRadius = 48;
 }
