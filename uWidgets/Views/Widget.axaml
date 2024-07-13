@@ -9,21 +9,23 @@
         ShowInTaskbar="False"
         SystemDecorations="None"
         x:DataType="views:Widget">
+
     <Window.ContextMenu>
         <ContextMenu>
             <MenuItem Header="{x:Static locales:Locale.Widget_Edit}" />
             <Separator />
             <MenuItem Header="{x:Static locales:Locale.Widget_Size}" IsEnabled="False" />
-            <MenuItem Header="{x:Static locales:Locale.Widget_Size_Small}" />
-            <MenuItem Header="{x:Static locales:Locale.Widget_Size_Medium}" />
-            <MenuItem Header="{x:Static locales:Locale.Widget_Size_Large}" />
-            <MenuItem Header="{x:Static locales:Locale.Widget_Size_ExtraLarge}" />
+            <MenuItem Header="{x:Static locales:Locale.Widget_Size_Small}" Command="{Binding ResizeSmall}" />
+            <MenuItem Header="{x:Static locales:Locale.Widget_Size_Medium}" Command="{Binding ResizeMedium}" />
+            <MenuItem Header="{x:Static locales:Locale.Widget_Size_Large}" Command="{Binding ResizeLarge}" />
+            <MenuItem Header="{x:Static locales:Locale.Widget_Size_ExtraLarge}" Command="{Binding ResizeExtraLarge}" />
             <Separator />
             <MenuItem Header="{x:Static locales:Locale.Widget_Remove}" />
             <Separator />
             <MenuItem Header="{x:Static locales:Locale.Widget_OpenSettings}" />
         </ContextMenu>
     </Window.ContextMenu> 
+    
     <Window.Styles>
         <Style Selector=":is(UserControl)">
             <Setter Property="Margin" Value="12" />
@@ -31,11 +33,24 @@
         <Style Selector="Window">
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Border CornerRadius="24" Background="{DynamicResource WidgetBackground}">
-                        <ContentPresenter Content="{TemplateBinding Content}" />
-                    </Border>
+                    <Grid>
+                        <Border CornerRadius="24" Background="{DynamicResource WidgetBackground}" 
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Width="{Binding Width, RelativeSource={RelativeSource AncestorType=Window}}"
+                                Height="{Binding Height, RelativeSource={RelativeSource AncestorType=Window}}">
+                            <ContentPresenter Content="{TemplateBinding Content}" />
+                            <Border.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Width" Duration="0:0:0.2"/>
+                                    <DoubleTransition Property="Height" Duration="0:0:0.2"/>
+                                </Transitions>
+                            </Border.Transitions>
+                        </Border>
+                    </Grid>
                 </ControlTemplate>
             </Setter>
         </Style>
     </Window.Styles>
+    
 </Window>

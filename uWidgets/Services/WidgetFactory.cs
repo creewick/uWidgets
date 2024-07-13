@@ -8,7 +8,7 @@ using uWidgets.Views;
 
 namespace uWidgets.Services;
 
-public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider layoutProvider) : IWidgetFactory<Views.Widget>
+public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider layoutProvider, IGridService gridService) : IWidgetFactory<Views.Widget>
 {
     public IEnumerable<Widget> Create()
     {
@@ -28,7 +28,7 @@ public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider l
             }
             var userControl = assemblyProvider.Activate(assembly, controlType, args.ToArray());
 
-            yield return new Widget(widgetSettingsProvider)
+            yield return new Widget(widgetSettingsProvider, gridService)
             {
                 Content = userControl
             };
