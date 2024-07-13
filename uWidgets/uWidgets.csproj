@@ -35,6 +35,12 @@
       <None Update="app.manifest">
         <DependentUpon>App.axaml</DependentUpon>
       </None>
+      <None Update="appSettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="layout.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

@@ -23,6 +23,7 @@ public partial class App : Application
             .AddSingleton<IAssemblyProvider, AssemblyProvider>()
             .AddSingleton<IThemeService, ThemeService>()
             .AddSingleton<ILocaleService, LocaleService>()
+            .AddSingleton<IGridService, GridService>()
             .AddSingleton<IWidgetFactory<Widget>, WidgetFactory>()
             .BuildServiceProvider();
 
