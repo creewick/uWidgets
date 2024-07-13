@@ -30,4 +30,25 @@
     <data name="Clock_TimeZone" xml:space="preserve">
         <value>Time zone</value>
     </data>
+    <data name="Clock_AnalogI_Title" xml:space="preserve">
+        <value>Analog I</value>
+    </data>
+    <data name="Clock_AnalogII_Title" xml:space="preserve">
+        <value>Analog II</value>
+    </data>
+    <data name="Clock_AnalogIII_Title" xml:space="preserve">
+        <value>Analog III</value>
+    </data>
+    <data name="Clock_Digital_Title" xml:space="preserve">
+        <value>Digital</value>
+    </data>
+    <data name="Clock_World_Title" xml:space="preserve">
+        <value>World Clock</value>
+    </data>
+    <data name="Clock_Analog_Subtitle" xml:space="preserve">
+        <value>Add a clock for a city to check the time at that location</value>
+    </data>
+    <data name="Clock_World_Subtitle" xml:space="preserve">
+        <value>View the time in multiple cities from around the world</value>
+    </data>
 </root>

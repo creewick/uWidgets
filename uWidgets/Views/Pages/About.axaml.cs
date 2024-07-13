@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.Reflection;
 using Avalonia.Controls;
-using Avalonia.Input;
 using Avalonia.Interactivity;
 using uWidgets.Core.Interfaces;
 

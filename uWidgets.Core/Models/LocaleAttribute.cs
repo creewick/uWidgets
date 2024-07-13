@@ -1,7 +1,7 @@
 namespace uWidgets.Core.Models;
 
 [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-public class LocaleAttribute(Type type) : Attribute
+public class LocaleAttribute(Type localeType) : Attribute
 {
-    public Type Type { get; } = type;
+    public Type LocaleType { get; } = localeType;
 }

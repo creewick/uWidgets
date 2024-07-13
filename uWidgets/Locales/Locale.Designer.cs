@@ -418,5 +418,14 @@ namespace uWidgets.Locales {
                 return ResourceManager.GetString("Widget_Size_Small", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Widgets.
+        /// </summary>
+        public static string Widgets {
+            get {
+                return ResourceManager.GetString("Widgets", resourceCulture);
+            }
+        }
     }
 }

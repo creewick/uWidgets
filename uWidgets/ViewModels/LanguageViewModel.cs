@@ -10,7 +10,7 @@ namespace uWidgets.ViewModels;
 
 public class LanguageViewModel(IAppSettingsProvider appSettingsProvider) : ReactiveObject
 {
-    public CultureInfo[] Languages => GetAvailableCultures().OrderBy(x => x.DisplayName).ToArray();
+    public CultureInfo[] Languages => GetAvailableCultures().ToHashSet().OrderBy(x => x.DisplayName).ToArray();
     
     public CultureInfo Language
     {

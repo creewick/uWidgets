@@ -138,4 +138,7 @@
     <data name="Settings_About_Repository_Action" xml:space="preserve">
         <value>Visit</value>
     </data>
+    <data name="Widgets" xml:space="preserve">
+        <value>Widgets</value>
+    </data>
 </root>

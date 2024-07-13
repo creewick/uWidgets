@@ -6,12 +6,20 @@ using uWidgets.Core.Models;
 
 namespace uWidgets.Core.Services;
  
-public class AssemblyProvider(IServiceProvider serviceProvider) : IAssemblyProvider
+public class AssemblyProvider : IAssemblyProvider
 {
-    private ILookup<string, AssemblyInfo> assemblyCache = GetAssembliesMetadata(Const.WidgetsFolder);
+    private readonly IServiceProvider serviceProvider;
+
+    public AssemblyProvider(IServiceProvider serviceProvider)
+    {
+        this.serviceProvider = serviceProvider;
+        assemblyCache = GetAssembliesMetadata(Const.WidgetsFolder);
+    }
+
+    private ILookup<string, AssemblyInfo> assemblyCache;
     private readonly Dictionary<string, AssemblyLoadContext> loadedContexts = new();
     
-    private static ILookup<string, AssemblyInfo> GetAssembliesMetadata(string directoryPath)
+    public ILookup<string, AssemblyInfo> GetAssembliesMetadata(string directoryPath)
     {
         return Directory
             .GetFiles(directoryPath, "*.dll")
@@ -39,7 +47,7 @@ public class AssemblyProvider(IServiceProvider serviceProvider) : IAssemblyProvi
     public Assembly LoadAssembly(string name)
     {
         if (loadedContexts.TryGetValue(name, out var context))
-            return context.Assemblies.Single();
+            return context.Assemblies.Single(assembly => assembly.ManifestModule.Name == $"{name}.dll");
         
         var filePath = GetAssemblyPath(name);
         context = new AssemblyLoadContext(name, true);
@@ -96,6 +104,6 @@ public class AssemblyProvider(IServiceProvider serviceProvider) : IAssemblyProvi
     {
         return assembly
             .GetCustomAttributes<LocaleAttribute>()
-            .SingleOrDefault()?.Type?.Namespace;
+            .SingleOrDefault()?.LocaleType?.Namespace;
     }
 }

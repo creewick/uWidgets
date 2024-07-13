@@ -131,4 +131,7 @@
     <data name="Settings_About_Repository_Action" xml:space="preserve">
         <value>Открыть</value>
     </data>
+    <data name="Widgets" xml:space="preserve">
+        <value>Виджеты</value>
+    </data>
 </root>

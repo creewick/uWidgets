@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:pages="clr-namespace:uWidgets.Views.Pages"
+             xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
+             x:Class="uWidgets.Views.Pages.WidgetGallery"
+             x:DataType="pages:WidgetGallery">
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Width" Value="{Binding WidgetSize, RelativeSource={RelativeSource AncestorType=pages:WidgetGallery}}" />
+            <Setter Property="Height" Value="{Binding WidgetSize, RelativeSource={RelativeSource AncestorType=pages:WidgetGallery}}" />
+            <Setter Property="CornerRadius" Value="{Binding Radius, RelativeSource={RelativeSource AncestorType=pages:WidgetGallery}}" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+    </UserControl.Styles>
+    <StackPanel>
+        <ItemsControl ItemsSource="{Binding Widgets}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="viewModels:WidgetPreviewViewModel">
+                    <StackPanel Width="220" Margin="10 0 10 40">
+                        <Button HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                            <ContentPresenter Content="{Binding Control}" />
+                        </Button>
+                        <TextBlock Margin="0 20 0 5" FontWeight="Bold" TextAlignment="Center" Text="{Binding Title}" />
+                        <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Subtitle}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

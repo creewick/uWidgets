@@ -50,9 +50,6 @@
     <data name="Settings_Appearance_DarkMode_True" xml:space="preserve">
         <value>Dunkles</value>
     </data>
-    <data name="Settings_Appearance_DarkMode_Null" xml:space="preserve">
-        <value>System</value>
-    </data>
     <data name="Settings_Appearance_DarkMode_Subtitle" xml:space="preserve">
         <value>Ändern der in Widgets angezeigten Farben</value>
     </data>
@@ -115,5 +112,8 @@
     </data>
     <data name="Widget_Size_Small" xml:space="preserve">
         <value>Klein</value>
+    </data>
+    <data name="Widgets" xml:space="preserve">
+        <value>Widgets</value>
     </data>
 </root>

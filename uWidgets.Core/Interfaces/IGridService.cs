@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace uWidgets.Core.Interfaces;
 
 public interface IGridService<in T>

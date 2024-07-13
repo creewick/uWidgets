@@ -23,4 +23,25 @@
     <data name="Clock_TimeZone" xml:space="preserve">
         <value>Часовой пояс</value>
     </data>
+    <data name="Clock_AnalogI_Title" xml:space="preserve">
+        <value>Аналоговые I</value>
+    </data>
+    <data name="Clock_AnalogII_Title" xml:space="preserve">
+        <value>Аналоговые II</value>
+    </data>
+    <data name="Clock_AnalogIII_Title" xml:space="preserve">
+        <value>Аналоговые III</value>
+    </data>
+    <data name="Clock_Digital_Title" xml:space="preserve">
+        <value>Цифровые</value>
+    </data>
+    <data name="Clock_World_Title" xml:space="preserve">
+        <value>Мировые часы</value>
+    </data>
+    <data name="Clock_Analog_Subtitle" xml:space="preserve">
+        <value>Добавьте часы для города, чтобы проверить время в этом месте</value>
+    </data>
+    <data name="Clock_World_Subtitle" xml:space="preserve">
+        <value>Просмотр времени в нескольких городах со всего мира</value>
+    </data>
 </root>

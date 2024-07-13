@@ -69,6 +69,51 @@ namespace Clock.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a clock for a city to check the time at that location.
+        /// </summary>
+        internal static string Clock_Analog_Subtitle {
+            get {
+                return ResourceManager.GetString("Clock_Analog_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analog I.
+        /// </summary>
+        internal static string Clock_AnalogI_Title {
+            get {
+                return ResourceManager.GetString("Clock_AnalogI_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analog II.
+        /// </summary>
+        internal static string Clock_AnalogII_Title {
+            get {
+                return ResourceManager.GetString("Clock_AnalogII_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analog III.
+        /// </summary>
+        internal static string Clock_AnalogIII_Title {
+            get {
+                return ResourceManager.GetString("Clock_AnalogIII_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital.
+        /// </summary>
+        internal static string Clock_Digital_Title {
+            get {
+                return ResourceManager.GetString("Clock_Digital_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show seconds.
         /// </summary>
         internal static string Clock_ShowSeconds {
@@ -92,6 +137,24 @@ namespace Clock.Locales {
         internal static string Clock_Use24Hours {
             get {
                 return ResourceManager.GetString("Clock_Use24Hours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View the time in multiple cities from around the world.
+        /// </summary>
+        internal static string Clock_World_Subtitle {
+            get {
+                return ResourceManager.GetString("Clock_World_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to World Clock.
+        /// </summary>
+        internal static string Clock_World_Title {
+            get {
+                return ResourceManager.GetString("Clock_World_Title", resourceCulture);
             }
         }
     }
