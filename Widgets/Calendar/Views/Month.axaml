@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="clr-namespace:Calendar.ViewModels"
+             x:Class="Calendar.Views.Month">
+    
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+    </UserControl.Styles>
+    
+    <Grid RowDefinitions="Auto,*">
+        <TextBlock Grid.Row="0" Foreground="{DynamicResource SystemControlBackgroundAccentBrush}" Text="{Binding Month}" />
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Days}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="viewModels:DayViewModel">
+                    <Grid>
+                        <Viewbox>
+                            <Canvas Width="100" Height="100">
+                                <Ellipse Canvas.Left="0" Canvas.Top="0" Width="100" Height="100" IsVisible="{Binding IsToday}" Fill="{DynamicResource SystemControlBackgroundAccentBrush}" />
+                            </Canvas>
+                        </Viewbox>
+                        <TextBlock Foreground="{Binding Foreground}" VerticalAlignment="Center" TextAlignment="Center" Text="{Binding Day}" Opacity="{Binding Opacity}" />
+                    </Grid>
+                    </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="7" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </Grid>
+    
+</UserControl>

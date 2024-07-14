@@ -41,7 +41,7 @@ public class SettingsViewModel(IAppSettingsProvider appSettingsProvider, IAssemb
         return assemblyProvider
             .GetAssemblyInfos(Const.WidgetsFolder)
             .Select(assemblyInfo => new PageViewModel(
-                typeof(WidgetGallery), 
+                typeof(Gallery), 
                 assemblyInfo.Key, 
                 assemblyInfo.Key, 
                 assemblyInfo.MaxBy(assembly => assembly.AssemblyName.Version)))
@@ -53,7 +53,7 @@ public class SettingsViewModel(IAppSettingsProvider appSettingsProvider, IAssemb
         CurrentPage = value?.Type != null
             ? value.AssemblyInfo == null
                 ? (UserControl?)Activator.CreateInstance(value.Type, appSettingsProvider)
-                : (UserControl?)new WidgetGallery(appSettingsProvider, assemblyProvider, value.AssemblyInfo, widgetFactory)
+                : new Gallery(appSettingsProvider, assemblyProvider, value.AssemblyInfo, widgetFactory)
             : null;
         CurrentPageTitle = value?.Text;
     }

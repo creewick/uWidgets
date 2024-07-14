@@ -1,7 +1,11 @@
 using System.Reflection;
+using Calendar.Views;
+using uWidgets.Core.Models;
 
 [assembly: AssemblyCompany("creewick")]
 [assembly: AssemblyVersion("1.0.1")]
+
+[assembly: WidgetInfo(typeof(Month))]
 
 // [assembly: WidgetInfo(typeof(AnalogI), typeof(ClockModel), "Clock_AnalogI_Title", "Clock_Analog_Subtitle")]
 // [assembly: WidgetInfo(typeof(AnalogII), typeof(ClockModel), "Clock_AnalogII_Title", "Clock_Analog_Subtitle")]

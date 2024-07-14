@@ -37,6 +37,18 @@ public class AppearanceViewModel(IAppSettingsProvider appSettingsProvider) : Rea
             appSettingsProvider.Save(newSettings);
         }
     }
+    
+    public bool SnapPosition
+    {
+        get => appSettingsProvider.Get().Layout.SnapPosition;
+        set
+        {
+            var settings = appSettingsProvider.Get();
+            var newLayout = settings.Layout with { SnapPosition = value };
+            var newSettings = settings with { Layout = newLayout };
+            appSettingsProvider.Save(newSettings);
+        }
+    }
 
     public int WidgetSize
     {

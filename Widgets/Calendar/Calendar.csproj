@@ -24,8 +24,6 @@
 
     <ItemGroup>
       <Folder Include="Locales\" />
-      <Folder Include="ViewModels\" />
-      <Folder Include="Views\" />
     </ItemGroup>
 
     <ItemGroup>

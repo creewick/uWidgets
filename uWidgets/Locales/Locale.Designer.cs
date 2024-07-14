@@ -195,6 +195,24 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Align widget position to grid.
+        /// </summary>
+        public static string Settings_Appearance_SnapPosition_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_SnapPosition_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snap position.
+        /// </summary>
+        public static string Settings_Appearance_SnapPosition_Title {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_SnapPosition_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
         public static string Settings_Appearance_Theme {

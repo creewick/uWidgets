@@ -13,7 +13,7 @@ using uWidgets.ViewModels;
 
 namespace uWidgets.Views.Pages;
 
-public partial class WidgetGallery : UserControl
+public partial class Gallery : UserControl
 {
     private readonly IAppSettingsProvider appSettingsProvider;
     private readonly IAssemblyProvider assemblyProvider;
@@ -23,7 +23,7 @@ public partial class WidgetGallery : UserControl
     public int WidgetSize => appSettingsProvider.Get().Layout.WidgetSize * 2;
     public CornerRadius Radius => new(16);
 
-    public WidgetGallery(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, 
+    public Gallery(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, 
         AssemblyInfo assemblyInfo, IWidgetFactory<Widget> widgetFactory)
     {
         this.appSettingsProvider = appSettingsProvider;

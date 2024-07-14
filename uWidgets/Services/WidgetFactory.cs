@@ -31,16 +31,18 @@ public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider l
         var widgetSettingsProvider = new WidgetSettingsProvider(layoutProvider, widgetSettings);
         var assembly = assemblyProvider.LoadAssembly(widgetSettings.Type);
         var controlType = assemblyProvider.GetType(assembly, widgetSettings.SubType, typeof(UserControl));
-        var settingsType = GetWidgetModelType(assembly, controlType);
-        var settings = settingsType != null && widgetSettings.Settings.HasValue
-            ? widgetSettings.Settings.Value.Deserialize(settingsType)
-              ?? throw new FormatException($"Can't deserialize {settingsType.Name}")
+        var widgetInfo = GetWidgetInfo(assembly, controlType);
+        var modelType = widgetInfo?.ModelType;
+        var editModelViewType = widgetInfo?.EditModelViewType;
+        var settings = modelType != null && widgetSettings.Settings.HasValue
+            ? widgetSettings.Settings.Value.Deserialize(modelType)
+              ?? throw new FormatException($"Can't deserialize {modelType.Name}")
             : null;
 
         var userControl = settings != null
             ? assemblyProvider.Activate(assembly, controlType, settings)
             : assemblyProvider.Activate(assembly, controlType);
-
+        
         var widget = (Widget) ActivatorUtilities.CreateInstance(serviceProvider, typeof(Widget), widgetSettingsProvider);
            
         widget.Content = userControl;
@@ -48,11 +50,10 @@ public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider l
         return widget;
     }
 
-    private static Type? GetWidgetModelType(Assembly assembly, Type controlType)
+    private static WidgetInfoAttribute? GetWidgetInfo(Assembly assembly, Type controlType)
     {
         return assembly
             .GetCustomAttributes<WidgetInfoAttribute>()
-            .SingleOrDefault(attribute => attribute.ViewType == controlType)
-            ?.ModelType;
+            .SingleOrDefault(attribute => attribute.ViewType == controlType);
     }
 }

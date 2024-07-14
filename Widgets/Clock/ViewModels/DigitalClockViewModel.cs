@@ -35,6 +35,7 @@ public class DigitalClockViewModel : ReactiveObject
 
     private void Tick()
     {
+        // TODO: Fix the Timer Interval
         timer.Interval = GetTimerInterval();
 
         Time = clockModel.TimeZone.HasValue 

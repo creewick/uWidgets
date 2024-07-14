@@ -2,13 +2,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:pages="clr-namespace:uWidgets.Views.Pages"
              xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
-             x:Class="uWidgets.Views.Pages.WidgetGallery"
-             x:DataType="pages:WidgetGallery">
+             x:Class="uWidgets.Views.Pages.Gallery"
+             x:DataType="pages:Gallery">
     <UserControl.Styles>
         <Style Selector="Button">
-            <Setter Property="Width" Value="{Binding WidgetSize, RelativeSource={RelativeSource AncestorType=pages:WidgetGallery}}" />
-            <Setter Property="Height" Value="{Binding WidgetSize, RelativeSource={RelativeSource AncestorType=pages:WidgetGallery}}" />
-            <Setter Property="CornerRadius" Value="{Binding Radius, RelativeSource={RelativeSource AncestorType=pages:WidgetGallery}}" />
+            <Setter Property="Width" Value="{Binding WidgetSize, RelativeSource={RelativeSource AncestorType=pages:Gallery}}" />
+            <Setter Property="Height" Value="{Binding WidgetSize, RelativeSource={RelativeSource AncestorType=pages:Gallery}}" />
+            <Setter Property="CornerRadius" Value="{Binding Radius, RelativeSource={RelativeSource AncestorType=pages:Gallery}}" />
             <Setter Property="Padding" Value="0" />
         </Style>
     </UserControl.Styles>

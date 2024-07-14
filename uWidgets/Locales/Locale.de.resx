@@ -116,4 +116,13 @@
     <data name="Widgets" xml:space="preserve">
         <value>Widgets</value>
     </data>
+    <data name="Settings_Appearance_SnapPosition_Subtitle" xml:space="preserve">
+        <value>Widget-Position am Raster ausrichten</value>
+    </data>
+    <data name="Settings_Appearance_SnapPosition_Title" xml:space="preserve">
+        <value>Raster Position</value>
+    </data>
+    <data name="Settings_Appearance_DarkMode_Null" xml:space="preserve">
+        <value>System</value>
+    </data>
 </root>

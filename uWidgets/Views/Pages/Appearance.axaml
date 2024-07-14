@@ -41,5 +41,10 @@
             Subtitle="{x:Static locales:Locale.Settings_Appearance_WidgetMargin_Subtitle}">
             <NumericUpDown MinWidth="130" Minimum="0" Maximum="32" Value="{Binding WidgetMargin, StringFormat=F0}" />
         </controls:Setting>
+        <controls:Setting Icon="{DynamicResource SnapPosition}" 
+                          Title="{x:Static locales:Locale.Settings_Appearance_SnapPosition_Title}" 
+                          Subtitle="{x:Static locales:Locale.Settings_Appearance_SnapPosition_Subtitle}">
+            <ToggleSwitch IsChecked="{Binding SnapPosition}" />
+        </controls:Setting>
     </StackPanel>
 </UserControl>
