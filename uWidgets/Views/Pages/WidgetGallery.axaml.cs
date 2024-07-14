@@ -23,7 +23,8 @@ public partial class WidgetGallery : UserControl
     public int WidgetSize => appSettingsProvider.Get().Layout.WidgetSize * 2;
     public CornerRadius Radius => new(16);
 
-    public WidgetGallery(IAppSettingsProvider appSettingsProvider, ILayoutProvider layoutProvider, IAssemblyProvider assemblyProvider, AssemblyInfo assemblyInfo, IWidgetFactory<Widget> widgetFactory)
+    public WidgetGallery(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, 
+        AssemblyInfo assemblyInfo, IWidgetFactory<Widget> widgetFactory)
     {
         this.appSettingsProvider = appSettingsProvider;
         this.assemblyProvider = assemblyProvider;
@@ -58,12 +59,14 @@ public partial class WidgetGallery : UserControl
     }
 
     private void Button_OnClick(object? sender, RoutedEventArgs e)
-    { 
-        var viewModel = (sender as UserControl)?.DataContext as WidgetPreviewViewModel;
+    {
+        var button = sender as Button;
+        var viewModel = button!.DataContext as WidgetPreviewViewModel;
         var layout = appSettingsProvider.Get().Layout;
         var size = 2 * layout.WidgetSize + layout.WidgetMargin;
+        var position = button!.PointToScreen(new Point(0, 0));
 
-        var widgetSettings = new WidgetSettings(viewModel!.Type, viewModel.Subtype, 100, 100, size, size, new JsonElement());
-        widgetFactory.Create(widgetSettings);
+        var widgetSettings = new WidgetSettings(viewModel!.Type, viewModel.Subtype, position.X, position.Y, size, size, null);
+        widgetFactory.Open(widgetSettings);
     }
 }

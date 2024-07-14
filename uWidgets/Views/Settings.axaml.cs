@@ -9,15 +9,15 @@ public partial class Settings : Window
 {
     private readonly SettingsViewModel viewModel;
 
-    public Settings(IAppSettingsProvider appSettingsProvider)
+    public Settings(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, IWidgetFactory<Widget> widgetFactory)
     {
-        viewModel = new SettingsViewModel(appSettingsProvider);
+        viewModel = new SettingsViewModel(appSettingsProvider, assemblyProvider, widgetFactory);
         DataContext = viewModel;
         Resized += OnResized;
         Opened += OnOpened;
         Closing += OnClosing;
         InitializeComponent();
-        ListBox.SelectedItem = viewModel.MenuItems[0];
+        ListBox.SelectedItem = SettingsViewModel.MenuItems[0];
     }
 
     private void OnOpened(object? sender, EventArgs e) =>

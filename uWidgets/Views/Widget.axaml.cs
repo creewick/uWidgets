@@ -4,6 +4,7 @@ using Avalonia.Input;
 using Avalonia.Media;
 using uWidgets.Core;
 using uWidgets.Core.Interfaces;
+using uWidgets.Locales;
 
 namespace uWidgets.Views;
 
@@ -13,6 +14,8 @@ public partial class Widget : Window
     private readonly IAppSettingsProvider appSettingsProvider;
     private readonly IGridService<Widget> gridService;
     private readonly Settings settingsWindow;
+
+    public string Edit => $"{Locale.Widget_Edit} \"{widgetSettings.Get().Type}\"";
     public CornerRadius Radius => new(Const.CornerRadius / (Screens.ScreenFromWindow(this)?.Scaling ?? 1.0));
     
     public Widget(IWidgetSettingsProvider widgetSettings, IAppSettingsProvider appSettingsProvider, 

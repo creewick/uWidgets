@@ -17,7 +17,16 @@ public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider l
 {
     public IEnumerable<Widget> Create() => layoutProvider.Get().Select(Create);
 
-    public Widget Create(WidgetSettings widgetSettings)
+    public Widget Open(WidgetSettings widgetSettings)
+    {
+        var widget = Create(widgetSettings);
+        layoutProvider.Save(layoutProvider.Get().Append(widgetSettings).ToList());
+        widget.Show();
+        
+        return widget;
+    }
+
+    private Widget Create(WidgetSettings widgetSettings)
     {
         var widgetSettingsProvider = new WidgetSettingsProvider(layoutProvider, widgetSettings);
         var assembly = assemblyProvider.LoadAssembly(widgetSettings.Type);

@@ -12,7 +12,7 @@
 
     <Window.ContextMenu>
         <ContextMenu>
-            <MenuItem Header="{x:Static locales:Locale.Widget_Edit}" />
+            <MenuItem Header="{Binding Edit}" />
             <Separator />
             <MenuItem Header="{x:Static locales:Locale.Widget_Size}" IsEnabled="False" />
             <MenuItem Header="{x:Static locales:Locale.Widget_Size_Small}" Command="{Binding ResizeSmall}" />

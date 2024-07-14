@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <OutputPath>..\..\uWidgets\bin\$(Configuration)\$(TargetFramework)\Widgets</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\uWidgets\uWidgets.csproj">
+            <Private>false</Private>
+        </ProjectReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\uWidgets.Core\uWidgets.Core.csproj">
+            <Private>false</Private>
+        </ProjectReference>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Folder Include="Locales\" />
+      <Folder Include="ViewModels\" />
+      <Folder Include="Views\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Avalonia.Controls">
+        <HintPath>..\..\..\..\.nuget\packages\avalonia\11.0.11\ref\net6.0\Avalonia.Controls.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="11.0.11" />
+    </ItemGroup>
+
+</Project>
