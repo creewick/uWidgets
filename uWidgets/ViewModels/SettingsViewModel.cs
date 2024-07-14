@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Linq;
 using Avalonia.Controls;
 using ReactiveUI;
-using uWidgets.Core;
 using uWidgets.Core.Interfaces;
 using uWidgets.Locales;
 using uWidgets.Views.Pages;
 
 namespace uWidgets.ViewModels;
 
-public class SettingsViewModel(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider) : ReactiveObject
+public class SettingsViewModel(IAppSettingsProvider appSettingsProvider) : ReactiveObject
 {
     private UserControl? currentPage;
     public UserControl? CurrentPage
@@ -25,7 +23,8 @@ public class SettingsViewModel(IAppSettingsProvider appSettingsProvider, IAssemb
         set => this.RaiseAndSetIfChanged(ref currentPageTitle, value);
     }
 
-    public PageViewModel[] AllItems => MenuItems.Concat(WidgetItems()).ToArray();
+    // public PageViewModel[] AllItems => MenuItems.Concat(WidgetItems()).ToArray();
+    public PageViewModel[] AllItems => MenuItems;
 
     public PageViewModel[] MenuItems =>
     [
@@ -34,20 +33,21 @@ public class SettingsViewModel(IAppSettingsProvider appSettingsProvider, IAssemb
         new PageViewModel(typeof(About), nameof(About),  Locale.Settings_About)
     ];
 
-    public PageViewModel[] WidgetItems()
-    {
-        return assemblyProvider
-            .GetAssembliesMetadata(Const.WidgetsFolder)
-            .Select(assemblyInfo => new PageViewModel(typeof(WidgetGallery), assemblyInfo.Key, assemblyInfo.Key, assemblyInfo.MaxBy(assembly => assembly.AssemblyName.Version)))
-            .ToArray();
-    }
+    // public PageViewModel[] WidgetItems()
+    // {
+    //     return assemblyProvider
+    //         .GetAssembliesMetadata(Const.WidgetsFolder)
+    //         .Select(assemblyInfo => new PageViewModel(typeof(WidgetGallery), assemblyInfo.Key, assemblyInfo.Key, assemblyInfo.MaxBy(assembly => assembly.AssemblyName.Version)))
+    //         .ToArray();
+    // }
 
     public void SetCurrentPage(PageViewModel? value)
     {
         CurrentPage = value?.Type != null
             ? value.AssemblyInfo == null
                 ? (UserControl?)Activator.CreateInstance(value.Type, appSettingsProvider)
-                : (UserControl?)new WidgetGallery(appSettingsProvider, assemblyProvider, value.AssemblyInfo)
+                : null
+                // : (UserControl?)new WidgetGallery(appSettingsProvider, layoutProvider, assemblyProvider, value.AssemblyInfo, widgetFactory)
             : null;
         CurrentPageTitle = value?.Text;
     }

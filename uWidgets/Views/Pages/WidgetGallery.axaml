@@ -17,7 +17,7 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="viewModels:WidgetPreviewViewModel">
                     <StackPanel Width="220" Margin="10 0 10 40">
-                        <Button HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                        <Button HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="Button_OnClick">
                             <ContentPresenter Content="{Binding Control}" />
                         </Button>
                         <TextBlock Margin="0 20 0 5" FontWeight="Bold" TextAlignment="Center" Text="{Binding Title}" />

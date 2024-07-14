@@ -1,3 +1,4 @@
+using System.Linq;
 using Avalonia;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,12 +9,9 @@ using uWidgets.Views;
 
 namespace uWidgets;
 
-public partial class App : Application
+public class App : Application
 {
-    public override void Initialize()
-    {
-        AvaloniaXamlLoader.Load(this);
-    }
+    public override void Initialize() => AvaloniaXamlLoader.Load(this);
 
     public override void OnFrameworkInitializationCompleted()
     {
@@ -25,6 +23,7 @@ public partial class App : Application
             .AddSingleton<ILocaleService, LocaleService>()
             .AddSingleton<IGridService<Widget>, GridService>()
             .AddSingleton<IWidgetFactory<Widget>, WidgetFactory>()
+            .AddSingleton<Settings, Settings>()
             .BuildServiceProvider();
 
         var appSettingsProvider = services
@@ -41,12 +40,14 @@ public partial class App : Application
 
         var widgets = services
             .GetRequiredService<IWidgetFactory<Widget>>()
-            .Create();
+            .Create()
+            .ToList();
 
-        foreach (var widget in widgets)
-        {
+        foreach (var widget in widgets) 
             widget.Show();
-        }
+
+        if (widgets.Count == 0)
+            services.GetRequiredService<Settings>().Show();
         
         base.OnFrameworkInitializationCompleted();
     }

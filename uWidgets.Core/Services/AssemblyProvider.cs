@@ -8,49 +8,32 @@ namespace uWidgets.Core.Services;
  
 public class AssemblyProvider : IAssemblyProvider
 {
+    private readonly Dictionary<string, AssemblyLoadContext> loadedContexts = new();
+    private ILookup<string, AssemblyInfo> assemblyCache;
     private readonly IServiceProvider serviceProvider;
 
     public AssemblyProvider(IServiceProvider serviceProvider)
     {
+        assemblyCache = GetAssemblyInfos(Const.WidgetsFolder);
         this.serviceProvider = serviceProvider;
-        assemblyCache = GetAssembliesMetadata(Const.WidgetsFolder);
     }
-
-    private ILookup<string, AssemblyInfo> assemblyCache;
-    private readonly Dictionary<string, AssemblyLoadContext> loadedContexts = new();
     
-    public ILookup<string, AssemblyInfo> GetAssembliesMetadata(string directoryPath)
+    public ILookup<string, AssemblyInfo> GetAssemblyInfos(string directoryPath)
     {
         return Directory
             .GetFiles(directoryPath, "*.dll")
-            .Select(filePath => new AssemblyInfo(AssemblyName.GetAssemblyName(filePath), filePath))
+            .Select(filePath => new AssemblyInfo(filePath))
             .ToLookup(assembly => assembly.AssemblyName.Name!);
-    }
-
-    private string GetAssemblyPath(string name, bool updateCache = false)
-    {
-        if (updateCache) 
-            assemblyCache = GetAssembliesMetadata(Const.WidgetsFolder);
-        
-        var assemblyInfo = assemblyCache[name]
-            .MaxBy(assembly => assembly.AssemblyName.Version);
-
-        if (assemblyInfo != default) 
-            return assemblyInfo.FilePath;
-
-        if (!updateCache)
-            return GetAssemblyPath(name, true);
-        
-        throw new FileNotFoundException($"Assembly {name} not found");
     }
     
     public Assembly LoadAssembly(string name)
     {
         if (loadedContexts.TryGetValue(name, out var context))
-            return context.Assemblies.Single(assembly => assembly.ManifestModule.Name == $"{name}.dll");
+            return context.Assemblies.Single(assembly => 
+                assembly.ManifestModule.Name == $"{name}.dll");
         
-        var filePath = GetAssemblyPath(name);
         context = new AssemblyLoadContext(name, true);
+        var filePath = GetAssemblyPath(name);
         loadedContexts[name] = context;
         
         return context.LoadFromAssemblyPath(filePath);
@@ -71,8 +54,9 @@ public class AssemblyProvider : IAssemblyProvider
     {
         var type = assembly
             .GetTypes()
-            .SingleOrDefault(type => (parentType == null || type.IsAssignableTo(parentType)) && 
-                                     typeName == type.Name);
+            .SingleOrDefault(type => 
+                (parentType == null || type.IsAssignableTo(parentType)) && 
+                typeName == type.Name);
         
         if (type == null)
             throw new ArgumentException($"No suitable class {typeName} found in assembly {assembly.FullName}");
@@ -92,18 +76,20 @@ public class AssemblyProvider : IAssemblyProvider
         }
     }
     
-    public Type? GetWidgetModelType(Assembly assembly, Type controlType)
+    private string GetAssemblyPath(string name, bool updateCache = false)
     {
-        return assembly
-            .GetCustomAttributes<WidgetInfoAttribute>()
-            .SingleOrDefault(attribute => attribute.ViewType == controlType)
-            ?.ModelType;
-    }
+        if (updateCache) 
+            assemblyCache = GetAssemblyInfos(Const.WidgetsFolder);
+        
+        var assemblyInfo = assemblyCache[name]
+            .MaxBy(assembly => assembly.AssemblyName.Version);
 
-    public string? GetLocaleBaseName(Assembly assembly)
-    {
-        return assembly
-            .GetCustomAttributes<LocaleAttribute>()
-            .SingleOrDefault()?.LocaleType?.Namespace;
+        if (assemblyInfo != default) 
+            return assemblyInfo.FilePath;
+
+        if (!updateCache)
+            return GetAssemblyPath(name, true);
+        
+        throw new FileNotFoundException($"Assembly {name} not found");
     }
 }

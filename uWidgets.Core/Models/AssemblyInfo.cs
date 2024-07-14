@@ -2,4 +2,8 @@
 
 namespace uWidgets.Core.Models;
 
-public record AssemblyInfo(AssemblyName AssemblyName, string FilePath);
+public class AssemblyInfo(string filePath)
+{
+    public readonly string FilePath = filePath;
+    public readonly AssemblyName AssemblyName = AssemblyName.GetAssemblyName(filePath);
+}
