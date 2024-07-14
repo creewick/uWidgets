@@ -18,6 +18,7 @@ public partial class Settings : Window
         Closing += OnClosing;
         InitializeComponent();
         ListBox.SelectedItem = SettingsViewModel.MenuItems[0];
+        KeyDown += (_, _) => Title.Text = "UwUidgets";
     }
 
     private void OnOpened(object? sender, EventArgs e) =>

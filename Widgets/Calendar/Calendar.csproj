@@ -21,11 +21,6 @@
         </ProjectReference>
     </ItemGroup>
 
-
-    <ItemGroup>
-      <Folder Include="Locales\" />
-    </ItemGroup>
-
     <ItemGroup>
       <Reference Include="Avalonia.Controls">
         <HintPath>..\..\..\..\.nuget\packages\avalonia\11.0.11\ref\net6.0\Avalonia.Controls.dll</HintPath>
@@ -34,6 +29,21 @@
 
     <ItemGroup>
       <PackageReference Include="Avalonia" Version="11.0.11" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Locales\Locale.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Locale.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Locales\Locale.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Locale.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

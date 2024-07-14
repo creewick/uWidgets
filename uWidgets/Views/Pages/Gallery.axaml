@@ -11,6 +11,9 @@
             <Setter Property="CornerRadius" Value="{Binding Radius, RelativeSource={RelativeSource AncestorType=pages:Gallery}}" />
             <Setter Property="Padding" Value="0" />
         </Style>
+        <Style Selector=":is(UserControl)">
+            <Setter Property="Margin" Value="12" />
+        </Style>
     </UserControl.Styles>
     <StackPanel>
         <ItemsControl ItemsSource="{Binding Widgets}">

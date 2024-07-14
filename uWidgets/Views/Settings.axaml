@@ -23,7 +23,7 @@
     </Window.Styles>
     
     <Grid RowDefinitions="Auto,*">
-        <TextBlock IsHitTestVisible="False" Margin="16 16 0  16" FontWeight="Bold">uWidgets</TextBlock>
+        <TextBlock Name="Title" IsHitTestVisible="False" Margin="16 16 0  16" FontWeight="Bold">uWidgets</TextBlock>
         <SplitView Name="SplitView" Grid.Row="1" IsPaneOpen="True" DisplayMode="CompactInline" PaneBackground="Transparent" OpenPaneLength="240" CompactPaneLength="60">
             <SplitView.Pane>
                 <StackPanel Margin="0 0 12 0">

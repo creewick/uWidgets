@@ -9,5 +9,6 @@ public record DayViewModel(string? Day = null, bool IsWeekend = false, bool IsTo
 
     public SolidColorBrush Foreground => IsToday
         ? new SolidColorBrush(Colors.White)
-        : new SolidColorBrush((Color)Application.Current!.Resources["SystemBaseHighColor"]!);
+        // TODO ResourceManager is empty here
+        : new SolidColorBrush((Color)Application.Current!.Resources["SystemBaseMediumColor"]!);
 }

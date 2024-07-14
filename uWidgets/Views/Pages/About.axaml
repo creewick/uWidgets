@@ -9,6 +9,8 @@
              x:Class="uWidgets.Views.Pages.About"
              x:DataType="pages:About">
     <StackPanel Orientation="Vertical" Spacing="5">
+        <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 0 0 10" 
+                   Text="{x:Static locales:Locale.Settings_About}"/>
         <controls:Setting Icon="{DynamicResource About}" 
                           Title="{x:Static locales:Locale.Settings_About_Version}"
                           Subtitle="uWidgets by creewick">
