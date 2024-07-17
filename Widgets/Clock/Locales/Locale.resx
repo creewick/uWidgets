@@ -51,4 +51,7 @@
     <data name="Clock_World_Subtitle" xml:space="preserve">
         <value>View the time in multiple cities from around the world</value>
     </data>
+    <data name="Clock_LocalTimeZone" xml:space="preserve">
+        <value>Use local time zone</value>
+    </data>
 </root>

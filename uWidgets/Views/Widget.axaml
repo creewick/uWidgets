@@ -3,7 +3,6 @@
         xmlns:locales="clr-namespace:uWidgets.Locales"
         xmlns:views="clr-namespace:uWidgets.Views"
         x:Class="uWidgets.Views.Widget"
-        Width="160" Height="160"
         Background="Transparent"
         TransparencyLevelHint="{DynamicResource TransparencyLevelHint}"
         ShowInTaskbar="False"
@@ -12,8 +11,8 @@
 
     <Window.ContextMenu>
         <ContextMenu>
-            <MenuItem Header="{Binding Edit}" />
-            <Separator />
+            <MenuItem Header="{Binding Edit}" Command="{Binding EditWidget}" IsVisible="{Binding ShowEditButton}" />
+            <Separator IsVisible="{Binding ShowEditButton}"/>
             <MenuItem Header="{x:Static locales:Locale.Widget_Size}" IsEnabled="False" />
             <MenuItem Header="{x:Static locales:Locale.Widget_Size_Small}" Command="{Binding ResizeSmall}" />
             <MenuItem Header="{x:Static locales:Locale.Widget_Size_Medium}" Command="{Binding ResizeMedium}" />

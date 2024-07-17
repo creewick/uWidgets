@@ -1,7 +1,6 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
-        xmlns:locales="clr-namespace:uWidgets.Locales"
         Width="1000" Height="600" MinWidth="500" MinHeight="300"
         x:Class="uWidgets.Views.Settings"
         Background="{DynamicResource SettingsBackground}"

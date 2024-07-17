@@ -21,7 +21,7 @@ namespace Clock.Locales {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Locale {
+    public class Locale {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -35,7 +35,7 @@ namespace Clock.Locales {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Clock.Locales.Locale", typeof(Locale).Assembly);
@@ -50,7 +50,7 @@ namespace Clock.Locales {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -62,7 +62,7 @@ namespace Clock.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Clock.
         /// </summary>
-        internal static string Clock {
+        public static string Clock {
             get {
                 return ResourceManager.GetString("Clock", resourceCulture);
             }
@@ -71,7 +71,7 @@ namespace Clock.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Add a clock for a city to check the time at that location.
         /// </summary>
-        internal static string Clock_Analog_Subtitle {
+        public static string Clock_Analog_Subtitle {
             get {
                 return ResourceManager.GetString("Clock_Analog_Subtitle", resourceCulture);
             }
@@ -80,7 +80,7 @@ namespace Clock.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Analog I.
         /// </summary>
-        internal static string Clock_AnalogI_Title {
+        public static string Clock_AnalogI_Title {
             get {
                 return ResourceManager.GetString("Clock_AnalogI_Title", resourceCulture);
             }
@@ -89,7 +89,7 @@ namespace Clock.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Analog II.
         /// </summary>
-        internal static string Clock_AnalogII_Title {
+        public static string Clock_AnalogII_Title {
             get {
                 return ResourceManager.GetString("Clock_AnalogII_Title", resourceCulture);
             }
@@ -98,7 +98,7 @@ namespace Clock.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Analog III.
         /// </summary>
-        internal static string Clock_AnalogIII_Title {
+        public static string Clock_AnalogIII_Title {
             get {
                 return ResourceManager.GetString("Clock_AnalogIII_Title", resourceCulture);
             }
@@ -107,16 +107,25 @@ namespace Clock.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Digital.
         /// </summary>
-        internal static string Clock_Digital_Title {
+        public static string Clock_Digital_Title {
             get {
                 return ResourceManager.GetString("Clock_Digital_Title", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use local time zone.
+        /// </summary>
+        public static string Clock_LocalTimeZone {
+            get {
+                return ResourceManager.GetString("Clock_LocalTimeZone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show seconds.
         /// </summary>
-        internal static string Clock_ShowSeconds {
+        public static string Clock_ShowSeconds {
             get {
                 return ResourceManager.GetString("Clock_ShowSeconds", resourceCulture);
             }
@@ -125,7 +134,7 @@ namespace Clock.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Time zone.
         /// </summary>
-        internal static string Clock_TimeZone {
+        public static string Clock_TimeZone {
             get {
                 return ResourceManager.GetString("Clock_TimeZone", resourceCulture);
             }
@@ -134,7 +143,7 @@ namespace Clock.Locales {
         /// <summary>
         ///   Looks up a localized string similar to 24-hour time.
         /// </summary>
-        internal static string Clock_Use24Hours {
+        public static string Clock_Use24Hours {
             get {
                 return ResourceManager.GetString("Clock_Use24Hours", resourceCulture);
             }
@@ -143,7 +152,7 @@ namespace Clock.Locales {
         /// <summary>
         ///   Looks up a localized string similar to View the time in multiple cities from around the world.
         /// </summary>
-        internal static string Clock_World_Subtitle {
+        public static string Clock_World_Subtitle {
             get {
                 return ResourceManager.GetString("Clock_World_Subtitle", resourceCulture);
             }
@@ -152,7 +161,7 @@ namespace Clock.Locales {
         /// <summary>
         ///   Looks up a localized string similar to World Clock.
         /// </summary>
-        internal static string Clock_World_Title {
+        public static string Clock_World_Title {
             get {
                 return ResourceManager.GetString("Clock_World_Title", resourceCulture);
             }

@@ -44,4 +44,7 @@
     <data name="Clock_World_Subtitle" xml:space="preserve">
         <value>Просмотр времени в нескольких городах со всего мира</value>
     </data>
+    <data name="Clock_LocalTimeZone" xml:space="preserve">
+        <value>Локальный часовой пояс</value>
+    </data>
 </root>

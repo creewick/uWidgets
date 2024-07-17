@@ -147,4 +147,7 @@
     <data name="Settings_Appearance_SnapPosition_Subtitle" xml:space="preserve">
         <value>Align widget position to grid</value>
     </data>
+    <data name="Widget_Save" xml:space="preserve">
+        <value>Done</value>
+    </data>
 </root>

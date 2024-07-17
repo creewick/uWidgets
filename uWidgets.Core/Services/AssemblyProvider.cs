@@ -50,20 +50,6 @@ public class AssemblyProvider : IAssemblyProvider
         GC.WaitForPendingFinalizers();
     }
 
-    public Type GetType(Assembly assembly, string typeName, Type? parentType = null)
-    {
-        var type = assembly
-            .GetTypes()
-            .SingleOrDefault(type => 
-                (parentType == null || type.IsAssignableTo(parentType)) && 
-                typeName == type.Name);
-        
-        if (type == null)
-            throw new ArgumentException($"No suitable class {typeName} found in assembly {assembly.FullName}");
-
-        return type;
-    }
-
     public object Activate(Assembly assembly, Type type, params object[] args)
     {
         try

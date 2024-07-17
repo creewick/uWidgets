@@ -1,22 +1,17 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Calendar.Views.Date">
-    <UserControl.Styles>
-        <Style Selector="TextBlock">
-            <Setter Property="FontWeight" Value="Bold" />
-        </Style>
-    </UserControl.Styles>
     <Viewbox Stretch="Uniform">
         <Grid RowDefinitions="*,4*" ColumnDefinitions="*,*">
-            <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,2,0"
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,2,0" FontWeight="Bold"
                        Foreground="{DynamicResource SystemControlBackgroundAccentBrush}" 
                        Text="{Binding DayOfWeek}" 
                        VerticalAlignment="Bottom" HorizontalAlignment="Right" />
-            <TextBlock Grid.Row="0" Grid.Column="1" Opacity="0.5" 
+            <TextBlock Grid.Row="0" Grid.Column="1" Opacity="0.5" FontWeight="Bold"
                        Text="{Binding Month}" 
                        VerticalAlignment="Bottom" HorizontalAlignment="Left" />
             <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-5,0,0" 
-                       FontSize="50" LineHeight="55" Text="{Binding Day}" 
+                       FontSize="50" LineHeight="55" Text="{Binding Day}" FontWeight="SemiBold"
                        VerticalAlignment="Top" HorizontalAlignment="Center" />
         </Grid>
     </Viewbox>

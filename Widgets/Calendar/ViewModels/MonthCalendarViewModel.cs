@@ -1,4 +1,3 @@
-using System.Globalization;
 using Avalonia.Threading;
 using ReactiveUI;
 
@@ -35,7 +34,7 @@ public class MonthCalendarViewModel : ReactiveObject
         var now = DateTime.Now;
         timer.Interval = GetTimerInterval();
         
-        Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(now.Month).ToUpper();
+        Month = Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetMonthName(now.Month).ToUpper();
         Days = GetWeekDays().Concat(GetEmptyDays(now)).Concat(GetDaysOfMonth(now)).ToList();
     }
 
@@ -58,7 +57,7 @@ public class MonthCalendarViewModel : ReactiveObject
 
     private static IEnumerable<DayViewModel> GetWeekDays()
     {
-        return Enumerable.Range(0, 7).Select(i => new DayViewModel(CultureInfo.CurrentCulture.DateTimeFormat.GetShortestDayName((DayOfWeek)((i + 1) % 7))));
+        return Enumerable.Range(0, 7).Select(i => new DayViewModel(Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetShortestDayName((DayOfWeek)((i + 1) % 7))));
     }
     
     private static bool IsWeekend(DayOfWeek dayOfWeek) => dayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday;

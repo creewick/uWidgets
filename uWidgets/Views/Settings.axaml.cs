@@ -1,5 +1,4 @@
-﻿using System;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using uWidgets.Core.Interfaces;
 using uWidgets.ViewModels;
 
@@ -14,20 +13,9 @@ public partial class Settings : Window
         viewModel = new SettingsViewModel(appSettingsProvider, assemblyProvider, widgetFactory);
         DataContext = viewModel;
         Resized += OnResized;
-        Opened += OnOpened;
-        Closing += OnClosing;
+        KeyDown += (_, _) => Title.Text = "UwUidgets";
         InitializeComponent();
         ListBox.SelectedItem = SettingsViewModel.MenuItems[0];
-        KeyDown += (_, _) => Title.Text = "UwUidgets";
-    }
-
-    private void OnOpened(object? sender, EventArgs e) =>
-        WindowState = WindowState.Normal;
-
-    private void OnClosing(object? sender, WindowClosingEventArgs e)
-    {
-        e.Cancel = true;
-        Hide();
     }
 
     private void OnResized(object? sender, WindowResizedEventArgs e) => 

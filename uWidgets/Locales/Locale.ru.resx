@@ -140,4 +140,7 @@
     <data name="Settings_Appearance_SnapPosition_Title" xml:space="preserve">
         <value>Положение по сетке </value>
     </data>
+    <data name="Widget_Save" xml:space="preserve">
+        <value>Готово</value>
+    </data>
 </root>

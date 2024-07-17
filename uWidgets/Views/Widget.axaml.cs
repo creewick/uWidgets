@@ -14,6 +14,8 @@ public partial class Widget : Window
     private readonly IAppSettingsProvider appSettingsProvider;
     private readonly IGridService<Widget> gridService;
     private readonly Settings settingsWindow;
+    public Window? EditModelView { get; set; }
+    public bool ShowEditButton => EditModelView != null;
 
     public string Edit => $"{Locale.Widget_Edit} \"{widgetSettings.Get().Type}\"";
     public CornerRadius Radius => new(Const.CornerRadius / (Screens.ScreenFromWindow(this)?.Scaling ?? 1.0));
@@ -37,7 +39,8 @@ public partial class Widget : Window
         RenderOptions.SetTextRenderingMode(this, TextRenderingMode.Antialias);
         PointerPressed += OnPointerPressed;
     }
-    
+
+    public void EditWidget() => EditModelView?.ShowDialog(this);
     public void ResizeSmall() => Resize(2, 2);
     public void ResizeMedium() => Resize(4, 2);
     public void ResizeLarge() => Resize(4, 4);
