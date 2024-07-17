@@ -7,7 +7,7 @@ namespace Clock.ViewModels;
 
 public class ClockSettingsViewModel(IWidgetSettingsProvider widgetSettingsProvider) : ReactiveObject
 {
-    private ClockModel clockModel = widgetSettingsProvider.Get().GetModel<ClockModel>() ?? new ClockModel();
+    private ClockModel clockModel = widgetSettingsProvider.Get().Settings?.Deserialize<ClockModel>() ?? new ClockModel();
 
     public bool ShowSeconds
     {

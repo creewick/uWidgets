@@ -1,5 +1,6 @@
 using System.Linq;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using uWidgets.Core.Interfaces;
@@ -22,7 +23,7 @@ public class App : Application
             .AddSingleton<IThemeService, ThemeService>()
             .AddSingleton<ILocaleService, LocaleService>()
             .AddSingleton<IGridService<Widget>, GridService>()
-            .AddSingleton<IWidgetFactory<Widget>, WidgetFactory>()
+            .AddSingleton<IWidgetFactory<Window, UserControl>, WidgetFactory>()
             .AddSingleton<Settings, Settings>()
             .BuildServiceProvider();
 
@@ -39,7 +40,7 @@ public class App : Application
         themeService.Apply(appSettingsProvider.Get().Theme);
 
         var widgets = services
-            .GetRequiredService<IWidgetFactory<Widget>>()
+            .GetRequiredService<IWidgetFactory<Window, UserControl>>()
             .Create()
             .ToList();
 

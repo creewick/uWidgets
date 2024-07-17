@@ -8,7 +8,7 @@ public partial class Settings : Window
 {
     private readonly SettingsViewModel viewModel;
 
-    public Settings(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, IWidgetFactory<Widget> widgetFactory)
+    public Settings(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, IWidgetFactory<Window, UserControl> widgetFactory)
     {
         viewModel = new SettingsViewModel(appSettingsProvider, assemblyProvider, widgetFactory);
         DataContext = viewModel;

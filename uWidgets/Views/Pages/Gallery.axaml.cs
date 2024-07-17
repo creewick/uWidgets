@@ -17,13 +17,13 @@ public partial class Gallery : UserControl
     private readonly IAppSettingsProvider appSettingsProvider;
     private readonly IAssemblyProvider assemblyProvider;
     private readonly AssemblyInfo assemblyInfo;
-    private readonly IWidgetFactory<Widget> widgetFactory;
+    private readonly IWidgetFactory<Window, UserControl> widgetFactory;
     public List<WidgetPreviewViewModel> Widgets => GetWidgets();
     public int WidgetSize => appSettingsProvider.Get().Layout.WidgetSize * 2;
     public CornerRadius Radius => new(16);
 
     public Gallery(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, 
-        AssemblyInfo assemblyInfo, IWidgetFactory<Widget> widgetFactory)
+        AssemblyInfo assemblyInfo, IWidgetFactory<Window, UserControl> widgetFactory)
     {
         this.appSettingsProvider = appSettingsProvider;
         this.assemblyProvider = assemblyProvider;
@@ -48,7 +48,7 @@ public partial class Gallery : UserControl
         return assembly
             .GetCustomAttributes<WidgetInfoAttribute>()
             .Select(widgetInfo => new WidgetPreviewViewModel(
-                (UserControl) assemblyProvider.Activate(assembly, widgetInfo.ViewType),
+                (UserControl) assemblyProvider.Activate(widgetInfo.ViewType),
                 assemblyInfo.AssemblyName.Name!,
                 widgetInfo.ViewType.Name,
                 resources?.GetString(widgetInfo.Title ?? string.Empty),
@@ -66,6 +66,6 @@ public partial class Gallery : UserControl
         var position = button!.PointToScreen(new Point(0, 0));
 
         var widgetSettings = new WidgetSettings(viewModel!.Type, viewModel.Subtype, position.X, position.Y, size, size, null);
-        widgetFactory.Open(widgetSettings);
+        widgetFactory.Create(widgetSettings).Show();
     }
 }

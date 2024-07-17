@@ -4,17 +4,20 @@ namespace uWidgets.Core.Models;
 
 public record WidgetSettings(string Type, string SubType, int X, int Y, int Width, int Height, JsonElement? Settings)
 {
-    public T? GetModel<T>() 
+    public T? GetModel<T>() => (T?) GetModel(typeof(T));
+    
+    public object? GetModel(Type? type)
     {
-        if (!Settings.HasValue) return default;
+        if (type == null || !Settings.HasValue) 
+            return null;
 
         try
         {
-            return Settings.Value.Deserialize<T>() ?? default;
+            return Settings.Value.Deserialize(type);
         }
         catch (Exception)
         {
-            return default;
+            return null;
         }
     }
 }

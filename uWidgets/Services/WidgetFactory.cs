@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text.Json;
 using Avalonia.Controls;
-using Microsoft.Extensions.DependencyInjection;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
 using uWidgets.Core.Services;
@@ -12,48 +10,66 @@ using uWidgets.Views;
 
 namespace uWidgets.Services;
 
-public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider layoutProvider, 
-    IServiceProvider serviceProvider) : IWidgetFactory<Widget>
+public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider layoutProvider) : IWidgetFactory<Window, UserControl>
 {
-    public IEnumerable<Widget> Create() => layoutProvider.Get().Select(Create);
+    public IEnumerable<Window> Create() => layoutProvider.Get().Select(CreateInternal);
 
-    public Widget Open(WidgetSettings widgetSettings)
+    public UserControl CreateWidgetControl(Type type, object? model)
     {
-        var widget = Create(widgetSettings);
+        return model != null 
+            ? (UserControl) assemblyProvider.Activate(type, model)
+            : (UserControl) assemblyProvider.Activate(type);
+    }
+    
+    public Window Create(WidgetSettings widgetSettings)
+    {
         layoutProvider.Save(layoutProvider.Get().Append(widgetSettings).ToList());
-        widget.Show();
         
-        return widget;
+        return CreateInternal(widgetSettings);
     }
 
-    private Widget Create(WidgetSettings widgetSettings)
+    private Window CreateInternal(WidgetSettings widgetSettings)
     {
         var widgetSettingsProvider = new WidgetSettingsProvider(layoutProvider, widgetSettings);
         var assembly = assemblyProvider.LoadAssembly(widgetSettings.Type);
-        var controlType = assemblyProvider.GetType(assembly, widgetSettings.SubType, typeof(UserControl));
-        var widgetInfo = GetWidgetInfo(assembly, controlType);
-        var modelType = widgetInfo?.ModelType;
-        var editModelViewType = widgetInfo?.EditModelViewType;
-        var settings = modelType != null && widgetSettings.Settings.HasValue
-            ? widgetSettings.Settings.Value.Deserialize(modelType)
-              ?? throw new FormatException($"Can't deserialize {modelType.Name}")
-            : null;
-
-        var userControl = settings != null
-            ? assemblyProvider.Activate(assembly, controlType, settings)
-            : assemblyProvider.Activate(assembly, controlType);
+        var widgetType = GetWidgetType(assembly, widgetSettings.SubType);
+        var widgetInfo = GetWidgetInfo(assembly, widgetType);
         
-        var widget = (Widget) ActivatorUtilities.CreateInstance(serviceProvider, typeof(Widget), widgetSettingsProvider);
-           
-        widget.Content = userControl;
-
+        var widget = (Widget) assemblyProvider.Activate(typeof(Widget), widgetSettingsProvider, widgetInfo);
+        widget.Content = CreateWidgetControl(widgetInfo.ViewType, widgetSettings.GetModel(widgetInfo.ModelType));
+        
         return widget;
     }
 
-    private static WidgetInfoAttribute? GetWidgetInfo(Assembly assembly, Type controlType)
+    public Window CreateEditWidgetWindow(Type type, IWidgetSettingsProvider widgetSettingsProvider)
     {
-        return assembly
+        return new EditWidget(widgetSettingsProvider)
+        {
+            Content = (UserControl) assemblyProvider.Activate(type, widgetSettingsProvider)
+        };
+    }
+    
+    private static Type GetWidgetType(Assembly assembly, string typeName)
+    {
+        var type = assembly
+            .GetTypes()
+            .SingleOrDefault(type => type.IsAssignableTo(typeof(UserControl)) && typeName == type.Name);
+        
+        if (type == null)
+            throw new ArgumentException($"No suitable class {typeName} found in assembly {assembly.FullName}");
+
+        return type;
+    }
+
+    private static WidgetInfoAttribute GetWidgetInfo(Assembly assembly, Type controlType)
+    {
+        var widgetInfo = assembly
             .GetCustomAttributes<WidgetInfoAttribute>()
             .SingleOrDefault(attribute => attribute.ViewType == controlType);
+        
+        if (widgetInfo == null) 
+            throw new ArgumentException($"No suitable WidgetInfoAttribute found for {controlType.Name}");
+
+        return widgetInfo;
     }
 }

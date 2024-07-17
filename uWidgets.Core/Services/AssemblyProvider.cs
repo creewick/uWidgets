@@ -50,7 +50,7 @@ public class AssemblyProvider : IAssemblyProvider
         GC.WaitForPendingFinalizers();
     }
 
-    public object Activate(Assembly assembly, Type type, params object[] args)
+    public object Activate(Type type, params object[] args)
     {
         try
         {

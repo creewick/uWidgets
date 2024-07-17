@@ -11,7 +11,7 @@ using uWidgets.Views.Pages;
 namespace uWidgets.ViewModels;
 
 public class SettingsViewModel(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, 
-    IWidgetFactory<Widget> widgetFactory) : ReactiveObject
+    IWidgetFactory<Window, UserControl> widgetFactory) : ReactiveObject
 {
     private UserControl? currentPage;
     public UserControl? CurrentPage

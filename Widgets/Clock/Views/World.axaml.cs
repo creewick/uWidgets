@@ -8,9 +8,9 @@ public partial class World : UserControl
 {
     public World() : this(new WorldClockModel([])) {}
     
-    public World(WorldClockModel clockModel)
+    public World(WorldClockModel worldClockModel)
     {
-        DataContext = new WorldClockViewModel(clockModel);
+        DataContext = new WorldClockViewModel(worldClockModel);
         InitializeComponent();
     }
 }

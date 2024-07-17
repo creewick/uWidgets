@@ -8,5 +8,5 @@ public interface IAssemblyProvider
     public ILookup<string, AssemblyInfo> GetAssemblyInfos(string directoryPath);
     public Assembly LoadAssembly(string assemblyName);
     public void UnloadAssembly(string assemblyName);
-    public object Activate(Assembly assembly, Type type, params object[] args);
+    public object Activate(Type type, params object[] args);
 }
