@@ -1,10 +1,12 @@
 using Avalonia.Threading;
+using Calendar.Models;
 using ReactiveUI;
 
 namespace Calendar.ViewModels;
 
 public class MonthCalendarViewModel : ReactiveObject
 {
+    private readonly MonthCalendarModel monthCalendarModel;
     private string? month;
     public string? Month 
     {
@@ -21,8 +23,9 @@ public class MonthCalendarViewModel : ReactiveObject
     
     private readonly DispatcherTimer timer;
     
-    public MonthCalendarViewModel()
+    public MonthCalendarViewModel(MonthCalendarModel monthCalendarModel)
     {
+        this.monthCalendarModel = monthCalendarModel;
         timer = new DispatcherTimer { Interval = GetInitialTimerInterval(DateTime.Now) };
         timer.Tick += (_, _) => Tick();
         timer.Start();
@@ -48,16 +51,16 @@ public class MonthCalendarViewModel : ReactiveObject
                 day == now.Day));
     }
 
-    private static IEnumerable<DayViewModel> GetEmptyDays(DateTime now)
+    private IEnumerable<DayViewModel> GetEmptyDays(DateTime now)
     {
-        var count = ((int)new DateTime(now.Year, now.Month, 1).DayOfWeek + 6) % 7;
+        var count = ((int)new DateTime(now.Year, now.Month, 1).DayOfWeek + (int)monthCalendarModel.FirstDayOfWeek + 5) % 7;
         
         return Enumerable.Range(0, count).Select(_ => new DayViewModel());
     }
 
-    private static IEnumerable<DayViewModel> GetWeekDays()
+    private IEnumerable<DayViewModel> GetWeekDays()
     {
-        return Enumerable.Range(0, 7).Select(i => new DayViewModel(Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetShortestDayName((DayOfWeek)((i + 1) % 7))));
+        return Enumerable.Range(0, 7).Select(i => new DayViewModel(Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetShortestDayName( (DayOfWeek)((i + (int)monthCalendarModel.FirstDayOfWeek) % 7) )));
     }
     
     private static bool IsWeekend(DayOfWeek dayOfWeek) => dayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday;
