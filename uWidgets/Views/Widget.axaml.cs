@@ -48,12 +48,12 @@ public partial class Widget : Window
     public bool ShowEditButton => editWidgetWindow != null;
     public string Edit => $"{Locale.Widget_Edit} \"{widgetLayoutProvider.Get().Type}\"";
     public CornerRadius Radius => new(Const.CornerRadius / (Screens.ScreenFromWindow(this)?.Scaling ?? 1.0));
-    public void EditWidget() => editWidgetWindow?.Invoke().Show();
+    public void EditWidget() => editWidgetWindow?.Invoke().ShowDialog(this);
     public void ResizeSmall() => Resize(2, 2);
     public void ResizeMedium() => Resize(4, 2);
     public void ResizeLarge() => Resize(4, 4);
     public void ResizeExtraLarge() => Resize(8, 4);
-    public void OpenSettings() => settingsWindow?.Invoke().ShowDialog(this);
+    public void OpenSettings() => settingsWindow.Invoke().Show();
 
     private void OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {

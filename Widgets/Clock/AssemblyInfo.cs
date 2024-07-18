@@ -12,5 +12,5 @@ using uWidgets.Core.Models;
 [assembly: WidgetInfo(typeof(AnalogII), typeof(ClockModel), typeof(AnalogClockSettings), "Clock_AnalogII_Title", "Clock_Analog_Subtitle")]
 [assembly: WidgetInfo(typeof(AnalogIII), typeof(ClockModel), typeof(AnalogClockSettings), "Clock_AnalogIII_Title", "Clock_Analog_Subtitle")]
 [assembly: WidgetInfo(typeof(Digital), typeof(ClockModel), typeof(DigitalClockSettings), "Clock_Digital_Title", "Clock_Analog_Subtitle")]
-[assembly: WidgetInfo(typeof(World), typeof(WorldClockModel), null, "Clock_World_Title", "Clock_World_Subtitle")]
+[assembly: WidgetInfo(typeof(World), typeof(WorldClockModel), typeof(WorldClockSettings), "Clock_World_Title", "Clock_World_Subtitle")]
 [assembly: Locale(typeof(Locale))]
