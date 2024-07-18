@@ -4,7 +4,7 @@ using ReactiveUI;
 
 namespace Clock.ViewModels;
 
-public class AnalogClockViewModel : ReactiveObject
+public class AnalogClockViewModel : ReactiveObject, IDisposable
 {
     private readonly DispatcherTimer timer;
     private readonly ClockModel clockModel;

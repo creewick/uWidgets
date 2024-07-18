@@ -8,9 +8,9 @@ using uWidgets.Core.Models;
 [assembly: AssemblyCompany("creewick")]
 [assembly: AssemblyVersion("1.0.1")]
 
-[assembly: WidgetInfo(typeof(AnalogI), typeof(ClockModel), typeof(ClockSettings), "Clock_AnalogI_Title", "Clock_Analog_Subtitle")]
-[assembly: WidgetInfo(typeof(AnalogII), typeof(ClockModel), null, "Clock_AnalogII_Title", "Clock_Analog_Subtitle")]
-[assembly: WidgetInfo(typeof(AnalogIII), typeof(ClockModel), null, "Clock_AnalogIII_Title", "Clock_Analog_Subtitle")]
-[assembly: WidgetInfo(typeof(Digital), typeof(ClockModel), null, "Clock_Digital_Title", "Clock_Analog_Subtitle")]
+[assembly: WidgetInfo(typeof(AnalogI), typeof(ClockModel), typeof(AnalogClockSettings), "Clock_AnalogI_Title", "Clock_Analog_Subtitle")]
+[assembly: WidgetInfo(typeof(AnalogII), typeof(ClockModel), typeof(AnalogClockSettings), "Clock_AnalogII_Title", "Clock_Analog_Subtitle")]
+[assembly: WidgetInfo(typeof(AnalogIII), typeof(ClockModel), typeof(AnalogClockSettings), "Clock_AnalogIII_Title", "Clock_Analog_Subtitle")]
+[assembly: WidgetInfo(typeof(Digital), typeof(ClockModel), typeof(DigitalClockSettings), "Clock_Digital_Title", "Clock_Analog_Subtitle")]
 [assembly: WidgetInfo(typeof(World), typeof(WorldClockModel), null, "Clock_World_Title", "Clock_World_Subtitle")]
 [assembly: Locale(typeof(Locale))]

@@ -5,9 +5,9 @@ using uWidgets.Core.Interfaces;
 
 namespace Clock.ViewModels;
 
-public class ClockSettingsViewModel(IWidgetSettingsProvider widgetSettingsProvider) : ReactiveObject
+public class AnalogClockSettingsViewModel(IWidgetLayoutProvider widgetLayoutProvider) : ReactiveObject
 {
-    private ClockModel clockModel = widgetSettingsProvider.Get().Settings?.Deserialize<ClockModel>() ?? new ClockModel();
+    private ClockModel clockModel = widgetLayoutProvider.Get().GetModel<ClockModel>() ?? new ClockModel();
 
     public bool ShowSeconds
     {
@@ -26,7 +26,7 @@ public class ClockSettingsViewModel(IWidgetSettingsProvider widgetSettingsProvid
     public bool UseLocalTimeZone
     {
         get => !clockModel.TimeZone.HasValue;
-        set => UpdateClockModel(clockModel with { TimeZone = value ? null : TimeZoneInfo.Local.BaseUtcOffset.Hours });
+        set => UpdateClockModel(clockModel with { TimeZone = value ? null : 0 });
     }
 
     public TimeZoneInfo TimeZone
@@ -34,20 +34,20 @@ public class ClockSettingsViewModel(IWidgetSettingsProvider widgetSettingsProvid
         get
         {
             var timespan = TimeSpan.FromHours(clockModel.TimeZone ?? 0);
-            var name = $"UTC{(timespan >= TimeSpan.Zero ? "+" : "-")}{timespan.Hours:D2}:{timespan.Minutes:D2}";
+            var name = $"(UTC{timespan.Hours:+00}:{timespan.Minutes:D2})";
             return TimeZoneInfo.CreateCustomTimeZone(name, timespan, name, name);
         }
-        set => UpdateClockModel(clockModel with { TimeZone = value.BaseUtcOffset.Hours });
+        set => UpdateClockModel(clockModel with { TimeZone = value.BaseUtcOffset.TotalMinutes / 60 });
     }
 
-    public TimeZoneInfo[] TimeZones => TimeZoneInfo.GetSystemTimeZones().ToArray();
+    public TimeZoneInfo[] TimeZones => TimeZoneInfo.GetSystemTimeZones().Append(TimeZone).ToArray();
 
     private void UpdateClockModel(ClockModel newClockModel)
     {
         clockModel = newClockModel;
-        var widgetSettings = widgetSettingsProvider.Get();
+        var widgetSettings = widgetLayoutProvider.Get();
         var newSettings = widgetSettings with { Settings = JsonSerializer.SerializeToElement(clockModel) };
-        widgetSettingsProvider.Save(newSettings);
+        widgetLayoutProvider.Save(newSettings);
         this.RaisePropertyChanged(nameof(ShowSeconds));
         this.RaisePropertyChanged(nameof(Use24Hours));
         this.RaisePropertyChanged(nameof(ShowTimeZones));

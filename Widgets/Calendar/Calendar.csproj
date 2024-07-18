@@ -33,7 +33,7 @@
 
     <ItemGroup>
       <EmbeddedResource Update="Locales\Locale.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
+        <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>Locale.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>

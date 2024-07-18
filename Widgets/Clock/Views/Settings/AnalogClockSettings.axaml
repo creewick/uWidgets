@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
+        xmlns:locales="clr-namespace:Clock.Locales"
+        xmlns:settings="clr-namespace:Clock.Views.Settings"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime"
+        x:Class="Clock.Views.Settings.AnalogClockSettings"
+        x:DataType="settings:AnalogClockSettings">
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical" Spacing="5">
+            <controls:Setting Title="{x:Static locales:Locale.Clock_ShowSeconds}">
+                <ToggleSwitch IsChecked="{Binding ShowSeconds} "/>
+            </controls:Setting>
+            <controls:Setting Title="{x:Static locales:Locale.Clock_LocalTimeZone}">
+                <ToggleSwitch IsChecked="{Binding UseLocalTimeZone} "/>
+            </controls:Setting>
+            <controls:Setting IsVisible="{Binding ShowTimeZones}" Title="{x:Static locales:Locale.Clock_TimeZone}">
+                <ComboBox ItemsSource="{Binding TimeZones}" Width="130" SelectedItem="{Binding TimeZone}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="system:TimeZoneInfo">
+                            <TextBlock Text="{Binding  DisplayName}" Margin="0 4" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </controls:Setting>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

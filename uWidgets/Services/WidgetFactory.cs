@@ -10,65 +10,73 @@ using uWidgets.Views;
 
 namespace uWidgets.Services;
 
-public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider layoutProvider) : IWidgetFactory<Window, UserControl>
+public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider layoutProvider) 
+    : IWidgetFactory<Window, UserControl>
 {
     public IEnumerable<Window> Create() => layoutProvider.Get().Select(CreateInternal);
-
-    public UserControl CreateWidgetControl(Type type, object? model)
+    
+    public Window Add(WidgetLayout widgetLayout)
     {
-        return model != null 
-            ? (UserControl) assemblyProvider.Activate(type, model)
-            : (UserControl) assemblyProvider.Activate(type);
+        layoutProvider.Save(layoutProvider.Get().Append(widgetLayout).ToList());
+        
+        return CreateInternal(widgetLayout);
     }
     
-    public Window Create(WidgetSettings widgetSettings)
+    private Window CreateInternal(WidgetLayout widgetLayout)
     {
-        layoutProvider.Save(layoutProvider.Get().Append(widgetSettings).ToList());
+        var widgetLayoutProvider = new WidgetLayoutProvider(layoutProvider, widgetLayout);
         
-        return CreateInternal(widgetSettings);
+        var assembly = assemblyProvider.LoadAssembly(widgetLayout.Type);
+        var widgetInfo = GetWidgetInfo(assembly, widgetLayout.SubType);
+        var widgetControl = () => CreateWidgetControl(widgetInfo.ViewType, widgetLayoutProvider, widgetLayoutProvider.Get().GetModel(widgetInfo.ModelType));
+        var settingsWindow = () => (Settings) assemblyProvider.Activate(typeof(Settings));
+        
+        var editWidgetWindow = widgetInfo.EditModelViewType != null 
+            ? () => CreateEditWidgetWindow(widgetLayoutProvider, widgetInfo.EditModelViewType)
+            : (Func<EditWidget>?) null;
+        
+        if (editWidgetWindow != null)
+            return (Widget) assemblyProvider.Activate(typeof(Widget), widgetLayoutProvider, widgetControl, settingsWindow, editWidgetWindow);
+        return (Widget) assemblyProvider.Activate(typeof(Widget), widgetLayoutProvider, widgetControl, settingsWindow);
     }
 
-    private Window CreateInternal(WidgetSettings widgetSettings)
+    private UserControl CreateWidgetControl(Type type, WidgetLayoutProvider? widgetLayoutProvider, object? model)
     {
-        var widgetSettingsProvider = new WidgetSettingsProvider(layoutProvider, widgetSettings);
-        var assembly = assemblyProvider.LoadAssembly(widgetSettings.Type);
-        var widgetType = GetWidgetType(assembly, widgetSettings.SubType);
-        var widgetInfo = GetWidgetInfo(assembly, widgetType);
+        List<object> args = [];
         
-        var widget = (Widget) assemblyProvider.Activate(typeof(Widget), widgetSettingsProvider, widgetInfo);
-        widget.Content = CreateWidgetControl(widgetInfo.ViewType, widgetSettings.GetModel(widgetInfo.ModelType));
+        if (NeedsWidgetLayoutProvider(type) && widgetLayoutProvider != null)
+            args.Add(widgetLayoutProvider);
         
-        return widget;
+        if (model != null)
+            args.Add(model);
+
+        return (UserControl) assemblyProvider.Activate(type, args.ToArray());
     }
 
-    public Window CreateEditWidgetWindow(Type type, IWidgetSettingsProvider widgetSettingsProvider)
+    private EditWidget CreateEditWidgetWindow(IWidgetLayoutProvider widgetLayoutProvider, Type type)
     {
-        return new EditWidget(widgetSettingsProvider)
-        {
-            Content = (UserControl) assemblyProvider.Activate(type, widgetSettingsProvider)
-        };
-    }
-    
-    private static Type GetWidgetType(Assembly assembly, string typeName)
-    {
-        var type = assembly
-            .GetTypes()
-            .SingleOrDefault(type => type.IsAssignableTo(typeof(UserControl)) && typeName == type.Name);
-        
-        if (type == null)
-            throw new ArgumentException($"No suitable class {typeName} found in assembly {assembly.FullName}");
+        var control = (UserControl) assemblyProvider.Activate(type, widgetLayoutProvider);
 
-        return type;
+        return new EditWidget(widgetLayoutProvider, control);
     }
 
-    private static WidgetInfoAttribute GetWidgetInfo(Assembly assembly, Type controlType)
+    private bool NeedsWidgetLayoutProvider(Type type)
+    {
+        return type
+            .GetConstructors()
+            .Any(constructor => constructor
+                .GetParameters()
+                .Any(param => param.ParameterType == typeof(IWidgetLayoutProvider)));
+    }
+
+    private static WidgetInfoAttribute GetWidgetInfo(Assembly assembly, string typeName)
     {
         var widgetInfo = assembly
             .GetCustomAttributes<WidgetInfoAttribute>()
-            .SingleOrDefault(attribute => attribute.ViewType == controlType);
+            .SingleOrDefault(attribute => attribute.ViewType.Name == typeName);
         
         if (widgetInfo == null) 
-            throw new ArgumentException($"No suitable WidgetInfoAttribute found for {controlType.Name}");
+            throw new ArgumentException($"No suitable WidgetInfoAttribute found for {typeName}");
 
         return widgetInfo;
     }

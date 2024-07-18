@@ -2,7 +2,7 @@
 
 namespace uWidgets.Core.Models;
 
-public record WidgetSettings(string Type, string SubType, int X, int Y, int Width, int Height, JsonElement? Settings)
+public record WidgetLayout(string Type, string SubType, int X, int Y, int Width, int Height, JsonElement? Settings)
 {
     public T? GetModel<T>() => (T?) GetModel(typeof(T));
     

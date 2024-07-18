@@ -65,7 +65,7 @@ public partial class Gallery : UserControl
         var size = 2 * layout.WidgetSize + layout.WidgetMargin;
         var position = button!.PointToScreen(new Point(0, 0));
 
-        var widgetSettings = new WidgetSettings(viewModel!.Type, viewModel.Subtype, position.X, position.Y, size, size, null);
-        widgetFactory.Create(widgetSettings).Show();
+        var widgetSettings = new WidgetLayout(viewModel!.Type, viewModel.Subtype, position.X, position.Y, size, size, null);
+        widgetFactory.Add(widgetSettings).Show();
     }
 }

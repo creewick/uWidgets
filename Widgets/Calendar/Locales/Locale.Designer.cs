@@ -21,7 +21,7 @@ namespace Calendar.Locales {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Locale {
+    public class Locale {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -35,7 +35,7 @@ namespace Calendar.Locales {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Calendar.Locales.Locale", typeof(Locale).Assembly);
@@ -50,7 +50,7 @@ namespace Calendar.Locales {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -62,7 +62,7 @@ namespace Calendar.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Calendar.
         /// </summary>
-        internal static string Calendar {
+        public static string Calendar {
             get {
                 return ResourceManager.GetString("Calendar", resourceCulture);
             }
@@ -71,7 +71,7 @@ namespace Calendar.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Track the current date.
         /// </summary>
-        internal static string Calendar_Date_Subtitle {
+        public static string Calendar_Date_Subtitle {
             get {
                 return ResourceManager.GetString("Calendar_Date_Subtitle", resourceCulture);
             }
@@ -80,16 +80,25 @@ namespace Calendar.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
-        internal static string Calendar_Date_Title {
+        public static string Calendar_Date_Title {
             get {
                 return ResourceManager.GetString("Calendar_Date_Title", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First day of week.
+        /// </summary>
+        public static string Calendar_FirstDayOfWeek {
+            get {
+                return ResourceManager.GetString("Calendar_FirstDayOfWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Track the day of the month.
         /// </summary>
-        internal static string Calendar_Month_Subtitle {
+        public static string Calendar_Month_Subtitle {
             get {
                 return ResourceManager.GetString("Calendar_Month_Subtitle", resourceCulture);
             }
@@ -98,7 +107,7 @@ namespace Calendar.Locales {
         /// <summary>
         ///   Looks up a localized string similar to Month.
         /// </summary>
-        internal static string Calendar_Month_Title {
+        public static string Calendar_Month_Title {
             get {
                 return ResourceManager.GetString("Calendar_Month_Title", resourceCulture);
             }

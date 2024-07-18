@@ -11,7 +11,7 @@ public class ThemeService : IThemeService
 {
     public ThemeService(IAppSettingsProvider appSettingsProvider)
     {
-        appSettingsProvider.DataChanged += (_, settings) => 
+        appSettingsProvider.DataChanging += (_, settings) => 
             Apply(settings.Theme);
     }
     

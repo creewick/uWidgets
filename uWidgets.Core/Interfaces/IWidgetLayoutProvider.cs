@@ -2,7 +2,7 @@
 
 namespace uWidgets.Core.Interfaces;
 
-public interface IWidgetSettingsProvider : IDataProvider<WidgetSettings>
+public interface IWidgetLayoutProvider : IDataProvider<WidgetLayout>
 {
     public void Remove();
 }

@@ -33,4 +33,7 @@
     <data name="Calendar_Date_Subtitle" xml:space="preserve">
         <value>Track the current date</value>
     </data>
+    <data name="Calendar_FirstDayOfWeek" xml:space="preserve">
+        <value>First day of week</value>
+    </data>
 </root>

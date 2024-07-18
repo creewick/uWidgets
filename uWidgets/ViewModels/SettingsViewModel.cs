@@ -5,7 +5,6 @@ using ReactiveUI;
 using uWidgets.Core;
 using uWidgets.Core.Interfaces;
 using uWidgets.Locales;
-using uWidgets.Views;
 using uWidgets.Views.Pages;
 
 namespace uWidgets.ViewModels;

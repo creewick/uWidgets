@@ -8,27 +8,18 @@ namespace uWidgets.Views;
 
 public partial class EditWidget : Window
 {
-    private readonly IWidgetSettingsProvider widgetSettingsProvider;
+    private readonly IWidgetLayoutProvider widgetLayoutProvider;
     public CornerRadius Radius => new(Const.CornerRadius / (Screens.ScreenFromWindow(this)?.Scaling ?? 1.0));
-    public string WidgetType => widgetSettingsProvider.Get().Type;
-    public string WidgetSubType => widgetSettingsProvider.Get().SubType;
+    public string WidgetType => widgetLayoutProvider.Get().Type;
+    public string WidgetSubType => widgetLayoutProvider.Get().SubType;
     
-    public EditWidget(IWidgetSettingsProvider widgetSettingsProvider)
+    public EditWidget(IWidgetLayoutProvider widgetLayoutProvider, UserControl control)
     {
-        this.widgetSettingsProvider = widgetSettingsProvider;
+        this.widgetLayoutProvider = widgetLayoutProvider;
         DataContext = this;
-        Closing += OnClosing;
+        Content = control;
         InitializeComponent();
     }
-    
-    private void OnClosing(object? sender, WindowClosingEventArgs e)
-    {
-        e.Cancel = true;
-        Hide();
-    }
 
-    private void Button_OnClick(object? sender, RoutedEventArgs e)
-    {
-        Close();
-    }
+    private void Close(object? sender, RoutedEventArgs e) => Close();
 }

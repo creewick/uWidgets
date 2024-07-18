@@ -1,11 +1,11 @@
 <UserControl xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
-        xmlns:locales="clr-namespace:Clock.Locales"
-        xmlns:settings="clr-namespace:Clock.Views.Settings"
-        xmlns:system="clr-namespace:System;assembly=System.Runtime"
-        x:Class="Clock.Views.Settings.ClockSettings"
-        x:DataType="settings:ClockSettings">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
+             xmlns:locales="clr-namespace:Clock.Locales"
+             xmlns:settings="clr-namespace:Clock.Views.Settings"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             x:Class="Clock.Views.Settings.DigitalClockSettings"
+             x:DataType="settings:AnalogClockSettings">
     <ScrollViewer>
         <StackPanel Orientation="Vertical" Spacing="5">
             <controls:Setting Title="{x:Static locales:Locale.Clock_ShowSeconds}">
