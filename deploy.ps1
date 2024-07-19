@@ -39,4 +39,10 @@ foreach ($runtime in $runtimes) {
         New-Item -Path $widgetsDestDir -ItemType Directory | Out-Null
     }
     Copy-Item -Path "$widgetsSrcDir\*" -Destination $widgetsDestDir -Recurse -Force
+
+    $filesToDelete = @('*.pdb', '*.deps.json')
+
+    foreach ($filePattern in $filesToDelete) {
+        Get-ChildItem -Path $targetDir -Recurse -Filter $filePattern | ForEach-Object { Remove-Item -Path $_.FullName -Force }
+    }
 }
