@@ -11,8 +11,8 @@ public class ThemeService : IThemeService
 {
     public ThemeService(IAppSettingsProvider appSettingsProvider)
     {
-        appSettingsProvider.DataChanging += (_, settings) => 
-            Apply(settings.Theme);
+        appSettingsProvider.DataChanging += (_, _, newSettings) => 
+            Apply(newSettings.Theme);
     }
     
     private readonly StyleInclude transparentStyle = new(new Uri("avares://uWidgets/"))

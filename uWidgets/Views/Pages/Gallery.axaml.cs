@@ -48,7 +48,7 @@ public partial class Gallery : UserControl
         return assembly
             .GetCustomAttributes<WidgetInfoAttribute>()
             .Select(widgetInfo => new WidgetPreviewViewModel(
-                (UserControl) assemblyProvider.Activate(widgetInfo.ViewType),
+                widgetFactory.CreateControl(widgetInfo.ViewType),
                 assemblyInfo.AssemblyName.Name!,
                 widgetInfo.ViewType.Name,
                 resources?.GetString(widgetInfo.Title ?? string.Empty),

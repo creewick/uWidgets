@@ -21,6 +21,12 @@ public class WidgetFactory(IAssemblyProvider assemblyProvider, ILayoutProvider l
         
         return CreateInternal(widgetLayout);
     }
+
+    public UserControl CreateControl(Type type)
+    {
+        var widgetLayoutProvider = new WidgetLayoutProvider(layoutProvider, null);
+        return CreateWidgetControl(type, widgetLayoutProvider, null);
+    }
     
     private Window CreateInternal(WidgetLayout widgetLayout)
     {

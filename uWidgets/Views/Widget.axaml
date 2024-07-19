@@ -36,6 +36,7 @@
                         <Border CornerRadius="{Binding Radius}" Background="{DynamicResource WidgetBackground}" 
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Left"
+                                ClipToBounds="True"
                                 Width="{Binding Width, RelativeSource={RelativeSource AncestorType=Window}}"
                                 Height="{Binding Height, RelativeSource={RelativeSource AncestorType=Window}}">
                             <ContentPresenter Content="{TemplateBinding Content}" />

@@ -6,13 +6,13 @@ namespace uWidgets.Core.Services;
 public class WidgetLayoutProvider(ILayoutProvider layoutProvider, WidgetLayout widgetLayout) 
     : IWidgetLayoutProvider
 {
-    public event EventHandler<WidgetLayout>? DataChanging;
-    public event EventHandler<WidgetLayout>? DataChanged;
+    public event DataChangedEvent<WidgetLayout>? DataChanging;
+    public event DataChangedEvent<WidgetLayout>? DataChanged;
     public WidgetLayout Get() => widgetLayout;
 
     public void Save(WidgetLayout data)
     {
-        DataChanging?.Invoke(this, data);
+        DataChanging?.Invoke(this, widgetLayout, data);
         var layout = layoutProvider.Get();
         var index = layout.IndexOf(widgetLayout);
 
@@ -20,8 +20,9 @@ public class WidgetLayoutProvider(ILayoutProvider layoutProvider, WidgetLayout w
         
         layout[index] = data;
         layoutProvider.Save(layout);
+        var oldData = widgetLayout;
         widgetLayout = data;
-        DataChanged?.Invoke(this, data);
+        DataChanged?.Invoke(this, oldData, data);
     }
 
     public void Remove()

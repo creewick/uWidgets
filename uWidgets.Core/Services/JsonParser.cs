@@ -5,9 +5,9 @@ namespace uWidgets.Core.Services;
 
 public class JsonParser<T>(string filePath) : IDataProvider<T>
 {
-    public event EventHandler<T>? DataChanging;
-    public event EventHandler<T>? DataChanged;
     private T? data;
+    public event DataChangedEvent<T>? DataChanging;
+    public event DataChangedEvent<T>? DataChanged;
 
     public T Get()
     {
@@ -21,10 +21,10 @@ public class JsonParser<T>(string filePath) : IDataProvider<T>
 
     public void Save(T newData)
     {
-        DataChanging?.Invoke(this, newData);
+        DataChanging?.Invoke(this, data, newData);
         var json = JsonSerializer.Serialize(data = newData);
         
         File.WriteAllText(filePath, json);
-        DataChanged?.Invoke(this, newData);
+        DataChanged?.Invoke(this, data, newData);
     }
 }

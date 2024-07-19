@@ -6,6 +6,7 @@ using Avalonia.Media;
 using uWidgets.Core;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
+using uWidgets.Core.Services;
 using uWidgets.Locales;
 
 namespace uWidgets.Views;
@@ -44,7 +45,12 @@ public partial class Widget : Window
         widgetLayoutProvider.DataChanged += UpdateControl;
     }
 
-    private void UpdateControl(object? sender, WidgetLayout e) => Content = userControl();
+    private void UpdateControl(object? sender, WidgetLayout? oldLayout, WidgetLayout newLayout)
+    {
+        if (!Equals(oldLayout?.Settings, newLayout.Settings))
+            Content = userControl();
+    }
+
     public bool ShowEditButton => editWidgetWindow != null;
     public string Edit => $"{Locale.Widget_Edit} \"{widgetLayoutProvider.Get().Type}\"";
     public CornerRadius Radius => new(Const.CornerRadius / (Screens.ScreenFromWindow(this)?.Scaling ?? 1.0));

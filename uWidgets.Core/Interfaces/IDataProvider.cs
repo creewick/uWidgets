@@ -4,6 +4,10 @@ public interface IDataProvider<T>
 {
     public T Get();
     public void Save(T data);
-    public event EventHandler<T> DataChanging; 
-    public event EventHandler<T> DataChanged;
+    public event DataChangedEvent<T> DataChanging; 
+    public event DataChangedEvent<T> DataChanged;
 }
+
+
+public delegate void DataChangedEvent<in T>(object sender, T? oldData, T newData);
+

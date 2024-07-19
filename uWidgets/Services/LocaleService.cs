@@ -9,7 +9,7 @@ public class LocaleService : ILocaleService
 {
     public LocaleService(IAppSettingsProvider appSettingsProvider)
     {
-        appSettingsProvider.DataChanging += (_, newSettings) => 
+        appSettingsProvider.DataChanging += (_, _, newSettings) => 
             SetCulture(newSettings.Region.Language);
     }
     
