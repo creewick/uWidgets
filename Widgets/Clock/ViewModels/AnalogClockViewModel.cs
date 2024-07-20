@@ -18,6 +18,12 @@ public class AnalogClockViewModel : ReactiveObject, IDisposable
         timer.Start();
         UpdateTime();
     }
+    
+    public void Dispose()
+    {
+        timer.Stop();
+        timer.Tick -= Tick;
+    }
 
     private void Tick(object? sender, EventArgs e) => UpdateTime();
 
@@ -71,10 +77,4 @@ public class AnalogClockViewModel : ReactiveObject, IDisposable
     private TimeSpan GetTimerInterval() => clockModel.ShowSeconds 
         ? TimeSpan.FromSeconds(1d / 10) 
         : TimeSpan.FromSeconds(5);
-    
-    public void Dispose()
-    {
-        timer.Stop();
-        timer.Tick -= Tick;
-    }
 }

@@ -6,7 +6,6 @@ using Avalonia.Media;
 using uWidgets.Core;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
-using uWidgets.Core.Services;
 using uWidgets.Locales;
 
 namespace uWidgets.Views;

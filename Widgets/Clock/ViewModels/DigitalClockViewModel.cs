@@ -18,6 +18,12 @@ public class DigitalClockViewModel : ReactiveObject, IDisposable
         UpdateTime();
     }
     
+    public void Dispose()
+    {
+        timer.Stop();
+        timer.Tick -= Tick;
+    }
+    
     private void Tick(object? sender, EventArgs e)
     {
         timer.Interval = GetTimerInterval();
@@ -53,10 +59,4 @@ public class DigitalClockViewModel : ReactiveObject, IDisposable
     private TimeSpan GetTimerInterval() => clockModel.ShowSeconds 
         ? TimeSpan.FromSeconds(1)
         : TimeSpan.FromSeconds(60);
-
-    public void Dispose()
-    {
-        timer.Stop();
-        timer.Tick -= Tick;
-    }
 }

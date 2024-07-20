@@ -8,7 +8,7 @@ namespace Clock.ViewModels;
 
 public class WorldClockSettingsViewModel(IWidgetLayoutProvider widgetLayoutProvider) : ReactiveObject
 {
-    private WorldClockModel clockModel = widgetLayoutProvider.Get().GetModel<WorldClockModel>() ?? new WorldClockModel([]);
+    private readonly WorldClockModel clockModel = widgetLayoutProvider.Get().GetModel<WorldClockModel>() ?? new WorldClockModel([]);
     
     public TimeZoneInfo[] TimeZones => TimeZoneInfo.GetSystemTimeZones().ToArray();
 
