@@ -82,8 +82,10 @@ public class MonthCalendarViewModel : ReactiveObject, IDisposable
         var offset = (int)monthCalendarModel.FirstDayOfWeek;
         
         return Enumerable.Range(0, 7)
-            .Select(i => new DayViewModel(format
-                .GetShortestDayName((DayOfWeek)((i + offset) % 7))));
+            .Select(i => (DayOfWeek)((i + offset) % 7))
+            .Select(day => new DayViewModel(
+                format.GetShortestDayName(day),
+                IsWeekend(day)));
     }
     
     private static bool IsWeekend(DayOfWeek dayOfWeek) => dayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday;

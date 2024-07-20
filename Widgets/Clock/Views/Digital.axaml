@@ -10,7 +10,7 @@
     </UserControl.Styles>
     
     <Viewbox Stretch="Uniform">
-        <TextBlock Text="{Binding Text}" Opacity="{DynamicResource TextOpacity}" />
+        <TextBlock Text="{Binding Text}" />
     </Viewbox>
 </UserControl>
 
