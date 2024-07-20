@@ -15,6 +15,7 @@ namespace uWidgets.Views.Pages;
 public partial class Gallery : UserControl
 {
     private readonly IAppSettingsProvider appSettingsProvider;
+    private readonly ILayoutProvider layoutProvider;
     private readonly IAssemblyProvider assemblyProvider;
     private readonly AssemblyInfo assemblyInfo;
     private readonly IWidgetFactory<Window, UserControl> widgetFactory;
@@ -22,19 +23,21 @@ public partial class Gallery : UserControl
     public int WidgetSize => appSettingsProvider.Get().Layout.WidgetSize * 2;
     public CornerRadius Radius => new(16);
 
-    public Gallery(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, 
+    public Gallery(IAppSettingsProvider appSettingsProvider, ILayoutProvider layoutProvider, IAssemblyProvider assemblyProvider, 
         AssemblyInfo assemblyInfo, IWidgetFactory<Window, UserControl> widgetFactory)
     {
         this.appSettingsProvider = appSettingsProvider;
+        this.layoutProvider = layoutProvider;
         this.assemblyProvider = assemblyProvider;
         this.assemblyInfo = assemblyInfo;
         this.widgetFactory = widgetFactory;
         DataContext = this;
+        Unloaded += OnUnloaded;
         
         InitializeComponent();
     }
 
-    public List<WidgetPreviewViewModel> GetWidgets()
+    private List<WidgetPreviewViewModel> GetWidgets()
     {
         var assembly = assemblyProvider
             .LoadAssembly(assemblyInfo.AssemblyName.Name!);
@@ -55,6 +58,14 @@ public partial class Gallery : UserControl
                 resources?.GetString(widgetInfo.Subtitle ?? string.Empty)
             ))
             .ToList();
+    }
+    
+    private void OnUnloaded(object? sender, RoutedEventArgs e)
+    {
+        if (layoutProvider.Get().All(x => x.Type != assemblyInfo.AssemblyName.Name!))
+        {
+            assemblyProvider.UnloadAssembly(assemblyInfo.AssemblyName.Name!);
+        }
     }
 
     private void Button_OnClick(object? sender, RoutedEventArgs e)

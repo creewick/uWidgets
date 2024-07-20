@@ -10,7 +10,7 @@ using uWidgets.Views.Pages;
 namespace uWidgets.ViewModels;
 
 public class SettingsViewModel(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, 
-    IWidgetFactory<Window, UserControl> widgetFactory) : ReactiveObject
+    ILayoutProvider layoutProvider, IWidgetFactory<Window, UserControl> widgetFactory) : ReactiveObject
 {
     private UserControl? currentPage;
     public UserControl? CurrentPage
@@ -26,18 +26,17 @@ public class SettingsViewModel(IAppSettingsProvider appSettingsProvider, IAssemb
         set => this.RaiseAndSetIfChanged(ref currentPageTitle, value);
     }
 
-    public PageViewModel[] AllItems => MenuItems.Concat(WidgetItems()).ToArray();
+    public PageViewModel[] AllItems => MenuItems.Concat(widgetItems).ToArray();
 
-    public static PageViewModel[] MenuItems =>
+    public static readonly PageViewModel[] MenuItems =
     [
         new PageViewModel(typeof(Appearance), nameof(Appearance), Locale.Settings_Appearance),
         new PageViewModel(typeof(General), nameof(General), Locale.Settings_General),
         new PageViewModel(typeof(About), nameof(About),  Locale.Settings_About)
     ];
 
-    private PageViewModel[] WidgetItems()
-    {
-        return assemblyProvider
+    private readonly PageViewModel[] widgetItems =
+     assemblyProvider
             .GetAssemblyInfos(Const.WidgetsFolder)
             .Select(assemblyInfo => new PageViewModel(
                 typeof(Gallery), 
@@ -45,14 +44,13 @@ public class SettingsViewModel(IAppSettingsProvider appSettingsProvider, IAssemb
                 assemblyInfo.Key, 
                 assemblyInfo.MaxBy(assembly => assembly.AssemblyName.Version)))
             .ToArray();
-    }
 
     public void SetCurrentPage(PageViewModel? value)
     {
         CurrentPage = value?.Type != null
             ? value.AssemblyInfo == null
                 ? (UserControl?)Activator.CreateInstance(value.Type, appSettingsProvider)
-                : new Gallery(appSettingsProvider, assemblyProvider, value.AssemblyInfo, widgetFactory)
+                : new Gallery(appSettingsProvider, layoutProvider, assemblyProvider, value.AssemblyInfo, widgetFactory)
             : null;
         CurrentPageTitle = value?.Text;
     }
