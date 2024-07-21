@@ -2,16 +2,21 @@
 
 namespace Clock.ViewModels;
 
-public class WorldClockViewModel(WorldClockModel worldClockModel)
+public class WorldClockViewModel(WorldClockModel worldClockModel) : IDisposable
 {
-    public AnalogClockViewModel First => GetViewModel(worldClockModel, 0);
-    public AnalogClockViewModel Second => GetViewModel(worldClockModel, 1);
-    public AnalogClockViewModel Third => GetViewModel(worldClockModel, 2);
-    public AnalogClockViewModel Fourth => GetViewModel(worldClockModel, 3);
-    
-    private static AnalogClockViewModel GetViewModel(WorldClockModel worldClockModel, int index) => new(
-        new ClockModel(false, false,
-            worldClockModel.TimeZones.Count > index
-                ? worldClockModel.TimeZones[index]
-                : null));
+    private readonly List<AnalogClockViewModel> viewModels = Enumerable
+        .Range(0, 4)
+        .Select(i =>
+            new AnalogClockViewModel(new ClockModel(
+                false, 
+                false, 
+                worldClockModel.TimeZones.ElementAtOrDefault(i))))
+        .ToList();
+
+    public AnalogClockViewModel? First => viewModels[0];
+    public AnalogClockViewModel? Second => viewModels[1];
+    public AnalogClockViewModel? Third => viewModels[2];
+    public AnalogClockViewModel? Fourth => viewModels[3];
+
+    public void Dispose() => viewModels.ForEach(x => x.Dispose());
 }

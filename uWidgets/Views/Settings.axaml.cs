@@ -1,4 +1,6 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Interactivity;
 using uWidgets.Core.Interfaces;
 using uWidgets.ViewModels;
 
@@ -14,9 +16,21 @@ public partial class Settings : Window
         viewModel = new SettingsViewModel(appSettingsProvider, assemblyProvider, layoutProvider, widgetFactory);
         DataContext = viewModel;
         Resized += OnResized;
-        KeyDown += (_, _) => AppTitle.Text = "UwUidgets";
+        KeyDown += OnKeyDown;
+        Unloaded += OnUnloaded;
         InitializeComponent();
         ListBox.SelectedItem = SettingsViewModel.MenuItems[0];
+    }
+
+    private void OnKeyDown(object? sender, KeyEventArgs e)
+    {
+        AppTitle.Text = "UwUidgets";
+    }
+
+    private void OnUnloaded(object? sender, RoutedEventArgs e)
+    {
+        Resized -= OnResized;
+        KeyDown -= OnKeyDown;
     }
 
     private void OnResized(object? sender, WindowResizedEventArgs e) => 

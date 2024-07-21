@@ -11,6 +11,7 @@ public partial class Digital : UserControl
     public Digital(ClockModel clockModel)
     {
         DataContext = new DigitalClockViewModel(clockModel);
+        Unloaded += (_, _) => ((DigitalClockViewModel)DataContext).Dispose();
         InitializeComponent();
     }
 }

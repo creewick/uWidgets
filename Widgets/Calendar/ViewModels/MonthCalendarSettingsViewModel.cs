@@ -8,7 +8,8 @@ namespace Calendar.ViewModels;
 public class MonthCalendarSettingsViewModel(IWidgetLayoutProvider widgetLayoutProvider) : ReactiveObject
 {
     public MonthCalendarModel Model =>
-        widgetLayoutProvider.Get().GetModel<MonthCalendarModel>() ?? new MonthCalendarModel(DayOfWeek.Monday);
+        widgetLayoutProvider.Get().GetModel<MonthCalendarModel>() 
+        ?? new MonthCalendarModel(DayOfWeek.Monday);
 
     public DayOfWeek[] Days => Enum.GetValues<DayOfWeek>();
     
@@ -18,7 +19,10 @@ public class MonthCalendarSettingsViewModel(IWidgetLayoutProvider widgetLayoutPr
         set
         {
             var newModel = Model with { FirstDayOfWeek = value };
-            var newSettings = widgetLayoutProvider.Get() with { Settings = JsonSerializer.SerializeToElement(newModel) };
+            var newSettings = widgetLayoutProvider.Get() with
+            {
+                Settings = JsonSerializer.SerializeToElement(newModel)
+            };
             widgetLayoutProvider.Save(newSettings);
             this.RaisePropertyChanged();
         }

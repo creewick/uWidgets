@@ -11,6 +11,7 @@ public partial class AnalogI : UserControl
     public AnalogI(ClockModel clockModel)
     {
         DataContext = new AnalogClockViewModel(clockModel);
+        Unloaded += (_, _) => ((AnalogClockViewModel)DataContext).Dispose();
         InitializeComponent();
     }
 }

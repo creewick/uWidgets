@@ -11,6 +11,7 @@ public partial class World : UserControl
     public World(WorldClockModel worldClockModel)
     {
         DataContext = new WorldClockViewModel(worldClockModel);
+        Unloaded += (_, _) => ((WorldClockViewModel)DataContext).Dispose();
         InitializeComponent();
     }
 }

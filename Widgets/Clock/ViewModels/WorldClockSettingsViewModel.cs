@@ -8,7 +8,16 @@ namespace Clock.ViewModels;
 
 public class WorldClockSettingsViewModel(IWidgetLayoutProvider widgetLayoutProvider) : ReactiveObject
 {
-    private readonly WorldClockModel clockModel = widgetLayoutProvider.Get().GetModel<WorldClockModel>() ?? new WorldClockModel([]);
+    private readonly WorldClockModel clockModel = GetInitialModel(widgetLayoutProvider);
+    private static WorldClockModel GetInitialModel(IWidgetLayoutProvider widgetLayoutProvider)
+    {
+        var model = widgetLayoutProvider.Get().GetModel<WorldClockModel>();
+
+        if (model?.TimeZones == null || model.TimeZones.Count < 4)
+            return new WorldClockModel([null, null, null, null]);
+
+        return model;
+    }
     
     public TimeZoneInfo[] TimeZones => TimeZoneInfo.GetSystemTimeZones().ToArray();
 
@@ -43,9 +52,9 @@ public class WorldClockSettingsViewModel(IWidgetLayoutProvider widgetLayoutProvi
 
     private TimeZoneInfo Get(int index)
     {
-        var baseUtcOffset = clockModel.TimeZones[index] ?? 0;
-        var timespan = TimeSpan.FromHours(baseUtcOffset);
-        var name = $"(UTC{timespan.Hours:+00}:{timespan.Minutes:D2})";
+        var baseUtcOffset = clockModel.TimeZones[index];
+        var timespan = TimeSpan.FromHours(baseUtcOffset ?? 0);
+        var name = $"(UTC{timespan.Hours:+00:-00}:{timespan.Minutes:D2})";
         return TimeZoneInfo.CreateCustomTimeZone(name, timespan, name, name);
     }
 

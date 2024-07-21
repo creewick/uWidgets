@@ -2,6 +2,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Media;
 using uWidgets.Core;
 using uWidgets.Core.Interfaces;
@@ -42,6 +43,13 @@ public partial class Widget : Window
         RenderOptions.SetTextRenderingMode(this, TextRenderingMode.Antialias);
         PointerPressed += OnPointerPressed;
         widgetLayoutProvider.DataChanged += UpdateControl;
+        Unloaded += OnUnloaded;
+    }
+
+    private void OnUnloaded(object? sender, RoutedEventArgs e)
+    {
+        PointerPressed -= OnPointerPressed;
+        widgetLayoutProvider.DataChanged -= UpdateControl;
     }
 
     private void UpdateControl(object? sender, WidgetLayout? oldLayout, WidgetLayout newLayout)

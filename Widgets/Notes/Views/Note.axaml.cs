@@ -23,7 +23,13 @@ public partial class Note : UserControl
         DataContext = new NoteViewModel(noteModel);
         
         PointerExited += OnPointerExited;
+        Unloaded += OnUnloaded;
         InitializeComponent();
+    }
+
+    private void OnUnloaded(object? sender, RoutedEventArgs e)
+    {
+        PointerExited -= OnPointerExited;
     }
 
     private void UpdateContent(object? sender, RoutedEventArgs e)
