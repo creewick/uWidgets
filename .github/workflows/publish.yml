@@ -110,7 +110,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.version.outputs.version }}
-          includeInvalidCommits: true
 
       - name: Create Release
         id: create_release
