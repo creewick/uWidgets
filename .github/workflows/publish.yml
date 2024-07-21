@@ -94,14 +94,11 @@ jobs:
           }
         shell: pwsh
 
-      - name: Get Commit Messages
-        id: commit_messages
-        run: |
-          git fetch --tags
-          $lastTag = git describe --tags --abbrev=0
-          $commitMessages = git log "$lastTag..HEAD" --pretty=format:"`%h` %s"
-          Write-Output "Changelog: $commitMessages"
-          echo "::set-output name=messages::$commitMessages"
+      - name: Get Changelog
+        uses: cobraz/get-commit-changelog@v1
+        id: changelog
+        with:
+          base: ${{ github.ref_name }}
 
       - name: Create Release
         id: create_release
@@ -111,7 +108,7 @@ jobs:
           release_name: v${{ steps.version.outputs.version }}-beta
           body: |
             Changelog:
-            ${{ steps.commit_messages.outputs.messages }}
+            ${{ steps.changelog.outputs.changelog }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
