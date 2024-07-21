@@ -57,7 +57,7 @@ jobs:
           Compress-Archive -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -DestinationPath .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: publish
           path: .\uWidgets\bin\Publish
@@ -73,7 +73,7 @@ jobs:
           ref: beta
 
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: publish
           path: .\uWidgets\bin\Publish
@@ -95,8 +95,11 @@ jobs:
         shell: pwsh
 
       - name: Get Changelog
-        uses: cobraz/get-commit-changelog@v1
         id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: ${{ github.ref_name }}
 
       - name: Create Release
         id: create_release
