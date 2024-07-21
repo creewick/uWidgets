@@ -24,13 +24,14 @@ jobs:
       - name: Restore
         run: dotnet restore .\uWidgets.sln
 
-      - name: Cache NuGet Packages
-        uses: actions/cache@v3
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
         with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
+          name: restore
+          path: |
+            .\uWidgets\bin
+            .\uWidgets\obj
+            ~/.nuget/packages
 
   build:
     runs-on: windows-latest
@@ -42,6 +43,12 @@ jobs:
         with:
           ref: dev
 
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: restore
+          path: .\uWidgets
+
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
         with:
@@ -52,6 +59,15 @@ jobs:
 
       - name: Build
         run: dotnet build .\uWidgets.sln --configuration Release --no-restore
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: restore
+          path: |
+            .\uWidgets\bin
+            .\uWidgets\obj
+            ~/.nuget/packages
 
   publish:
     runs-on: windows-latest
@@ -66,6 +82,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: dev
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: restore
+          path: .\uWidgets
 
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
