@@ -71,31 +71,10 @@ jobs:
           name: publish
           path: .\uWidgets\bin\Publish
           
-      - name: Create Release
-        run: |
-          gh auth login --with-token ${{ secrets.GITHUB_TOKEN }}
-          gh release create TEST `
-            --title "Release TEST" `
-            --notes "Release notes for TEST" `
-            .\uWidgets\bin\Publish\win-x86.zip `
-            .\uWidgets\bin\Publish\win-x64.zip `
-            .\uWidgets\bin\Publish\win-arm64.zip
-
-  merge:
-    runs-on: windows-latest
-    needs: release
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Release
+        uses: actions/create-release@v1
         with:
-          ref: beta
-
-      - name: Merge dev into beta
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git fetch origin
-          git checkout beta
-          git merge origin/dev
-          git push origin beta
+          tag_name: test
+          release_name: Release test
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
