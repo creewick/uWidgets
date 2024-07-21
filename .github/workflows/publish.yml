@@ -57,9 +57,9 @@ jobs:
           Compress-Archive -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -DestinationPath .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: publish
+          name: publish-${{ matrix.runtime }}
           path: .\uWidgets\bin\Publish
 
   release:
@@ -73,9 +73,10 @@ jobs:
           ref: beta
 
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: publish
+          pattern: publish-*
+          merge-multiple: true
           path: .\uWidgets\bin\Publish
 
       - name: Get Assembly Version
@@ -86,27 +87,36 @@ jobs:
 
           if ($content -match '\[assembly: AssemblyVersion\("([0-9]+\.[0-9]+\.[0-9]+)"\)\]') {
             $version = $matches[1]
-            Write-Output "Assembly Version: $version"
-            echo "::set-output name=version::$version"
+            echo "Assembly Version: $version"
+            echo "version=v$version" >> $GITHUB_ENV
           } else {
-            Write-Error "AssemblyVersion not found in $filePath"
+            echo "AssemblyVersion not found in $filePath"
             exit 1
           }
-        shell: pwsh
+
+      - name: Create tag
+        run: |
+          tag="${{ env.version }}"
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git tag -a "$tag" -m "Automated tag for version $tag"
+          git push origin "$tag"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get Changelog
         id: changelog
         uses: requarks/changelog-action@v1
         with:
-          token: ${{ github.token }}
+          token: ${{ env.version }}
           tag: ${{ github.ref_name }}
 
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v${{ steps.version.outputs.version }}
-          release_name: v${{ steps.version.outputs.version }}-beta
+          tag_name: ${{ env.version }}
+          release_name: ${{ env.version }}-beta
           body: |
             Changelog:
             ${{ steps.changelog.outputs.changelog }}
