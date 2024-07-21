@@ -1,0 +1,41 @@
+name: Publish to beta
+
+on:
+  push:
+    branches: [ "dev" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        runtime: [ win-x86, win-x64, win-arm64 ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Build
+        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
+
+      - name: Publish for ${{ matrix.runtime }}
+        run: |
+          dotnet publish .\uWidgets\uWidgets.csproj --configuration Release --runtime ${{ matrix.runtime }} --output .\uWidgets\bin\Publish\${{ matrix.runtime }} --self-contained false --no-restore
+          mkdir .\uWidgets\bin\Publish\${{ martrix.runtime }}\Widgets
+          cp -r .\uWidgets\bin\Release\net8.0\Widgets\* .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets
+          Remove-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\*.pdb -Force
+          Remove-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\*.deps.json -Force
