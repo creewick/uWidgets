@@ -73,7 +73,7 @@ jobs:
           
       - name: Create Release
         run: |
-          gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
+          gh auth login --with-token ${{ secrets.GITHUB_TOKEN }}
           gh release create TEST `
             --title "Release TEST" `
             --notes "Release notes for TEST" `
