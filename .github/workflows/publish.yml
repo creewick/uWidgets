@@ -22,7 +22,7 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore .\uWidgets.sln
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
@@ -67,11 +67,11 @@ jobs:
 
       - name: Publish
         run: |
-           dotnet publish .\uWidgets\uWidgets.csproj \
-           --configuration Release \
-           --runtime ${{ matrix.runtime }} \
-           --output .\uWidgets\bin\Publish\${{ matrix.runtime }} \
-           --self-contained false \
+           dotnet publish .\uWidgets\uWidgets.csproj `
+           --configuration Release `
+           --runtime ${{ matrix.runtime }} `
+           --output .\uWidgets\bin\Publish\${{ matrix.runtime }} `
+           --self-contained false `
            --no-restore
 
       - name: Copy Widgets
@@ -86,8 +86,8 @@ jobs:
 
       - name: Archive
         run: |
-          Compress-Archive \
-          -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} \
+          Compress-Archive `
+          -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} `
           -DestinationPath .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
       - name: Upload artifacts
@@ -110,11 +110,11 @@ jobs:
       - name: Create Release
         run: |
           gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
-          gh release create TEST \
-            --title "Release TEST" \
-            --notes "Release notes for TEST" \
-            .\uWidgets\bin\Publish\win-x86.zip \
-            .\uWidgets\bin\Publish\win-x64.zip \
+          gh release create TEST `
+            --title "Release TEST" `
+            --notes "Release notes for TEST" `
+            .\uWidgets\bin\Publish\win-x86.zip `
+            .\uWidgets\bin\Publish\win-x64.zip `
             .\uWidgets\bin\Publish\win-arm64.zip
 
   merge:
