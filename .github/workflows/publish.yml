@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - beta 
+      - beta
 
 jobs:
   publish:
@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         runtime: [ win-x86, win-x64, win-arm64 ]
-        
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,17 +36,17 @@ jobs:
 
       - name: Publish
         run: |
-           dotnet publish .\uWidgets\uWidgets.csproj `
-           --configuration Release `
-           --runtime ${{ matrix.runtime }} `
-           --output .\uWidgets\bin\Publish\${{ matrix.runtime }} `
-           --self-contained false
+          dotnet publish .\uWidgets\uWidgets.csproj `
+          --configuration Release `
+          --runtime ${{ matrix.runtime }} `
+          --output .\uWidgets\bin\Publish\${{ matrix.runtime }} `
+          --self-contained false
 
       - name: Copy Widgets
         run: |
-           New-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets -ItemType Directory -Force
-           Copy-Item -Path .\uWidgets\bin\Release\net8.0\Widgets\* -Destination .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets -Recurse -Force
-      
+          New-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets -ItemType Directory -Force
+          Copy-Item -Path .\uWidgets\bin\Release\net8.0\Widgets\* -Destination .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets -Recurse -Force
+
       - name: Clean up
         run: |
           Get-ChildItem -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.pdb -Recurse | Remove-Item -Force
@@ -71,7 +71,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: beta
-    
+
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
@@ -93,14 +93,14 @@ jobs:
             exit 1
           }
         shell: pwsh
-        
+
       - name: Get Commit Messages
         id: commit_messages
         run: |
           $lastTag = git describe --tags --abbrev=0
           $commitMessages = git log "$lastTag..HEAD" --pretty=format:"`%h` %s"
           echo "::set-output name=messages::$commitMessages"
-          
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
