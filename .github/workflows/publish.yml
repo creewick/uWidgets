@@ -6,13 +6,13 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: dev
-
+          
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
         with:
@@ -20,9 +20,18 @@ jobs:
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
-        
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: restore
+          path: .\uWidgets\obj
+
       - name: Build
-        run: dotnet build .\uWidgets.sln --configuration Release
+        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
@@ -43,23 +52,43 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: dev
-  
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: restore
+          path: .\uWidgets\obj
+
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
           name: build
           path: .\uWidgets\bin\Release\net8.0
-    
-      - name: Publish for ${{ matrix.runtime }}
+
+      - name: Publish
         run: |
-          dotnet publish .\uWidgets\uWidgets.csproj --configuration Release --runtime ${{ matrix.runtime }} --output .\uWidgets\bin\Publish\${{ matrix.runtime }} --self-contained false
-          mkdir .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets
-          cp -r .\uWidgets\bin\Release\net8.0\Widgets\* .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets
+           dotnet publish .\uWidgets\uWidgets.csproj \
+           --configuration Release \
+           --runtime ${{ matrix.runtime }} \
+           --output .\uWidgets\bin\Publish\${{ matrix.runtime }} \
+           --self-contained false \
+           --no-restore
+
+      - name: Copy Widgets
+        run:
+           mkdir .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets
+           cp -r .\uWidgets\bin\Release\net8.0\Widgets\* .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets
+      
+      - name: Clean up
+        run: |
           Remove-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\*.pdb -Force
           Remove-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\*.deps.json -Force
 
-      - name: Archive ${{ matrix.runtime }}
-        run: Compress-Archive -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -DestinationPath .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
+      - name: Archive
+        run: |
+          Compress-Archive \
+          -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} \
+          -DestinationPath .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
@@ -70,7 +99,7 @@ jobs:
   release:
     runs-on: windows-latest
     needs: publish
-
+    
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v3
@@ -78,22 +107,20 @@ jobs:
           name: publish
           path: .\uWidgets\bin\Publish
           
-      - name: Release
-        uses: gh-cli/gh-actions@v2
-        with:
-          args: |
-            release create TEST \
+      - name: Create Release
+        run: |
+          gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
+          gh release create TEST \
             --title "Release TEST" \
             --notes "Release notes for TEST" \
-            --files .\uWidgets\bin\Publish\win-x86.zip \
-                   .\uWidgets\bin\Publish\win-x64.zip \
-                   .\uWidgets\bin\Publish\win-arm64.zip
+            .\uWidgets\bin\Publish\win-x86.zip \
+            .\uWidgets\bin\Publish\win-x64.zip \
+            .\uWidgets\bin\Publish\win-arm64.zip
 
   merge:
     runs-on: windows-latest
     needs: release
-    if: github.ref == 'refs/heads/dev'
-
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
