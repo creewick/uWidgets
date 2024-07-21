@@ -57,7 +57,7 @@ jobs:
           Compress-Archive -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -DestinationPath .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: publish
           path: .\uWidgets\bin\Publish
@@ -73,7 +73,7 @@ jobs:
           ref: beta
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: publish
           path: .\uWidgets\bin\Publish
