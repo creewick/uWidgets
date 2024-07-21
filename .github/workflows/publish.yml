@@ -88,7 +88,7 @@ jobs:
           if ($content -match '\[assembly: AssemblyVersion\("([0-9]+\.[0-9]+\.[0-9]+)"\)\]') {
             $version = $matches[1]
             echo "Assembly Version: $version"
-            echo "version=v$version" >> $GITHUB_ENV
+            echo "version=v$version" >> $GITHUB_OUTPUT
           } else {
             echo "AssemblyVersion not found in $filePath"
             exit 1
@@ -96,7 +96,7 @@ jobs:
 
       - name: Create tag
         run: |
-          tag="${{ env.version }}"
+          $tag="${{ steps.version.output.version }}"
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           git tag -a "$tag" -m "Automated tag for version $tag"
@@ -108,15 +108,16 @@ jobs:
         id: changelog
         uses: requarks/changelog-action@v1
         with:
-          token: ${{ env.version }}
+          token: ${{ steps.version.output.version }}
           tag: ${{ github.ref_name }}
+          includeInvalidCommits: true
 
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: ${{ env.version }}
-          release_name: ${{ env.version }}-beta
+          tag_name: ${{ steps.version.output.version }}
+          release_name: ${{ steps.version.output.version }}-beta
           body: |
             Changelog:
             ${{ steps.changelog.outputs.changelog }}
