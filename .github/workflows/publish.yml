@@ -7,10 +7,6 @@ jobs:
   build:
     runs-on: windows-latest
 
-    strategy:
-      matrix:
-        runtime: [ win-x86, win-x64, win-arm64 ]
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,12 +21,21 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
-      - name: Restore dependencies
+      - name: Restore
         run: dotnet restore
         
       - name: Build
         run: dotnet build .\uWidgets.sln --configuration Release --no-restore
 
+  publish:
+    runs-on: windows-latest
+    needs: build
+
+    strategy:
+      matrix:
+        runtime: [ win-x86, win-x64, win-arm64 ]
+        
+    steps:
       - name: Publish for ${{ matrix.runtime }}
         run: |
           dotnet publish .\uWidgets\uWidgets.csproj --configuration Release --runtime ${{ matrix.runtime }} --output .\uWidgets\bin\Publish\${{ matrix.runtime }} --self-contained false --no-restore
@@ -38,3 +43,42 @@ jobs:
           cp -r .\uWidgets\bin\Release\net8.0\Widgets\* .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets
           Remove-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\*.pdb -Force
           Remove-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\*.deps.json -Force
+
+      - name: Archive ${{ matrix.runtime }}
+        run: Compress-Archive -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -DestinationPath .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
+
+  release:
+    runs-on: windows-latest
+    needs: publish
+
+    steps:
+      - name: Release
+        uses: gh-cli/gh-actions@v2
+        with:
+          args: |
+            release create TEST \
+            --title "Release TEST" \
+            --notes "Release notes for TEST" \
+            --files .\uWidgets\bin\Publish\win-x86.zip \
+                   .\uWidgets\bin\Publish\win-x64.zip \
+                   .\uWidgets\bin\Publish\win-arm64.zip
+
+  merge:
+    runs-on: windows-latest
+    needs: release
+    if: github.ref == 'refs/heads/dev'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: beta
+
+      - name: Merge dev into beta
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git fetch origin
+          git checkout beta
+          git merge origin/dev
+          git push origin beta
