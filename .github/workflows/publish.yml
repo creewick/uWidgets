@@ -20,18 +20,9 @@ jobs:
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
-
-      - name: Restore
-        run: dotnet restore
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: restore
-          path: .\uWidgets\obj
         
       - name: Build
-        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
+        run: dotnet build .\uWidgets.sln --configuration Release
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
@@ -52,12 +43,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: dev
-
-      - name: Download artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: restore
-          path: .\uWidgets\obj
   
       - name: Download artifacts
         uses: actions/download-artifact@v3
@@ -67,7 +52,7 @@ jobs:
     
       - name: Publish for ${{ matrix.runtime }}
         run: |
-          dotnet publish .\uWidgets\uWidgets.csproj --configuration Release --runtime ${{ matrix.runtime }} --output .\uWidgets\bin\Publish\${{ matrix.runtime }} --self-contained false --no-restore
+          dotnet publish .\uWidgets\uWidgets.csproj --configuration Release --runtime ${{ matrix.runtime }} --output .\uWidgets\bin\Publish\${{ matrix.runtime }} --self-contained false
           mkdir .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets
           cp -r .\uWidgets\bin\Release\net8.0\Widgets\* .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets
           Remove-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\*.pdb -Force
