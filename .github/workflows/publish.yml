@@ -4,44 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-latest
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: dev
-          
-      - name: Install .NET Core
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
-
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
-
-      - name: Restore
-        run: dotnet restore .\uWidgets.sln
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: restore
-          path: .\uWidgets\obj
-
-      - name: Build
-        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          path: .\uWidgets\bin\Release\net8.0
-
   publish:
     runs-on: windows-latest
-    needs: build
 
     strategy:
       matrix:
@@ -53,17 +17,19 @@ jobs:
         with:
           ref: dev
 
-      - name: Download artifacts
-        uses: actions/download-artifact@v3
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v4
         with:
-          name: restore
-          path: .\uWidgets\obj
+          dotnet-version: 8.0.x
 
-      - name: Download artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: .\uWidgets\bin\Release\net8.0
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore
+        run: dotnet restore .\uWidgets.sln
+
+      - name: Build
+        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
 
       - name: Publish
         run: |
