@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Controls;
 using Calendar.Models;
 using Calendar.ViewModels;
@@ -11,6 +12,23 @@ public partial class Month : UserControl
     public Month(MonthCalendarModel monthCalendarModel)
     {
         DataContext = new MonthCalendarViewModel(monthCalendarModel);
+        SizeChanged += OnSizeChanged;
         InitializeComponent();
+    }
+    
+    public static readonly StyledProperty<double> TextSizeProperty = 
+        AvaloniaProperty.Register<Month, double>(nameof(TextSize), 12);
+
+    public double TextSize
+    {
+        get => GetValue(TextSizeProperty);
+        set => SetValue(TextSizeProperty, value);
+    }
+
+    private void OnSizeChanged(object? sender, SizeChangedEventArgs e)
+    {
+        var fontSize = e.NewSize.Height / 12;
+
+        TextSize = fontSize;
     }
 }

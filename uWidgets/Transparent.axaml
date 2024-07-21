@@ -9,4 +9,7 @@
             <x:Double x:Key="TextOpacity">0.8</x:Double>
         </Style.Resources>
     </Style>
+    <Style Selector="TextBlock">
+        <Setter Property="Opacity" Value="0.8" />
+    </Style>
 </Styles>

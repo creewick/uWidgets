@@ -48,7 +48,7 @@
                     </Ellipse.Clip>
                 </Ellipse>
             </Canvas>
-            <Canvas Name="Numbers" Opacity="{DynamicResource TextOpacity}">
+            <Canvas Name="Numbers">
                 <TextBlock Canvas.Left="745" Canvas.Top="420" Text="3" />
                 <TextBlock Canvas.Left="450" Canvas.Top="690" Text="6" />
                 <TextBlock Canvas.Left="185" Canvas.Top="415" Text="9" />

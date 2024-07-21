@@ -1,11 +1,42 @@
-using System.Globalization;
 using Avalonia.Threading;
 using ReactiveUI;
 
 namespace Calendar.ViewModels;
 
-public class DateCalendarViewModel : ReactiveObject
+public class DateCalendarViewModel : ReactiveObject, IDisposable
 {
+    private readonly DispatcherTimer timer;
+    
+    public DateCalendarViewModel()
+    {
+        timer = new DispatcherTimer { Interval = GetInitialTimerInterval(DateTime.Now) };
+        timer.Tick += Tick;
+        timer.Start();
+        UpdateTime();
+    }
+    
+    public void Dispose()
+    {
+        timer.Stop();
+        timer.Tick -= Tick;
+    }
+    
+    private void Tick(object? sender, EventArgs e)
+    {
+        timer.Interval = GetTimerInterval();
+        UpdateTime();
+    }
+
+    private void UpdateTime()
+    {
+        var now = DateTime.Now;
+        var format = Thread.CurrentThread.CurrentUICulture.DateTimeFormat;
+        
+        Month = format.GetAbbreviatedMonthName(now.Month);
+        DayOfWeek = format.GetAbbreviatedDayName(now.DayOfWeek).Replace(".", "");
+        Day = now.Day.ToString();
+    }
+    
     private string? month;
     public string? Month 
     {
@@ -25,26 +56,6 @@ public class DateCalendarViewModel : ReactiveObject
     {
         get => day;
         private set => this.RaiseAndSetIfChanged(ref day, value);
-    }
-    
-    private readonly DispatcherTimer timer;
-    
-    public DateCalendarViewModel()
-    {
-        timer = new DispatcherTimer { Interval = GetInitialTimerInterval(DateTime.Now) };
-        timer.Tick += (_, _) => Tick();
-        timer.Start();
-        Tick();
-    }
-
-    private void Tick()
-    {
-        var now = DateTime.Now;
-        timer.Interval = GetTimerInterval();
-
-        Month = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(now.Month);
-        DayOfWeek = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedDayName(now.DayOfWeek).Replace(".", "");
-        Day = now.Day.ToString();
     }
 
     private TimeSpan GetInitialTimerInterval(DateTime now) => TimeSpan.FromHours(24) - now.TimeOfDay;

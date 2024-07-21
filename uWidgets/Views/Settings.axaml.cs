@@ -9,21 +9,14 @@ public partial class Settings : Window
     private readonly SettingsViewModel viewModel;
 
     public Settings(IAppSettingsProvider appSettingsProvider, IAssemblyProvider assemblyProvider, 
-        IWidgetFactory<Window, UserControl> widgetFactory)
+        ILayoutProvider layoutProvider, IWidgetFactory<Window, UserControl> widgetFactory)
     {
-        viewModel = new SettingsViewModel(appSettingsProvider, assemblyProvider, widgetFactory);
+        viewModel = new SettingsViewModel(appSettingsProvider, assemblyProvider, layoutProvider, widgetFactory);
         DataContext = viewModel;
         Resized += OnResized;
         KeyDown += (_, _) => AppTitle.Text = "UwUidgets";
-        Closing += OnClosing;
         InitializeComponent();
         ListBox.SelectedItem = SettingsViewModel.MenuItems[0];
-    }
-
-    private void OnClosing(object? sender, WindowClosingEventArgs e)
-    {
-        e.Cancel = true;
-        Hide();
     }
 
     private void OnResized(object? sender, WindowResizedEventArgs e) => 

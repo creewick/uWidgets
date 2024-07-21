@@ -21,6 +21,7 @@ class Program
         catch (Exception e)
         {
             File.WriteAllText("crash_log.txt", $"{e.Message}{Environment.NewLine}{e.StackTrace}");
+            throw;
         }
     }
 

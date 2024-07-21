@@ -1,27 +1,40 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:viewModels="clr-namespace:Calendar.ViewModels"
+             xmlns:views="clr-namespace:Calendar.Views"
              x:Class="Calendar.Views.Month">
     
     <UserControl.Styles>
         <Style Selector="TextBlock">
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontSize" Value="{Binding TextSize, RelativeSource={RelativeSource AncestorType={x:Type views:Month}}}" />
+        </Style>
+        <Style Selector="TextBlock.weekend:not(.today)">
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+        <Style Selector="TextBlock.today">
+            <Setter Property="Foreground" Value="White" />
         </Style>
     </UserControl.Styles>
     
     <Grid RowDefinitions="Auto,*">
-        <TextBlock Grid.Row="0" Foreground="{DynamicResource SystemControlBackgroundAccentBrush}" Text="{Binding Month}" />
+        <TextBlock Grid.Row="0" Text="{Binding Month}" 
+                   Foreground="{DynamicResource SystemControlBackgroundAccentBrush}" />
         <ItemsControl Grid.Row="1" ItemsSource="{Binding Days}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="viewModels:DayViewModel">
                     <Grid>
                         <Viewbox>
                             <Canvas Width="100" Height="100">
-                                <Ellipse Canvas.Left="0" Canvas.Top="0" Width="100" Height="100" IsVisible="{Binding IsToday}" Fill="{DynamicResource SystemControlBackgroundAccentBrush}" />
+                                <Ellipse Canvas.Left="0" Canvas.Top="0" Width="100" Height="100"
+                                         IsVisible="{Binding IsToday}"
+                                         Fill="{DynamicResource SystemControlBackgroundAccentBrush}" />
                             </Canvas>
                         </Viewbox>
-                        <TextBlock Foreground="{Binding Foreground}" VerticalAlignment="Center" TextAlignment="Center" Text="{Binding Day}" Opacity="{Binding Opacity}" />
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" 
+                                   Classes.weekend="{Binding IsWeekend}"
+                                   Classes.today="{Binding IsToday}"
+                                   Text="{Binding Day}"  />
                     </Grid>
                     </DataTemplate>
             </ItemsControl.ItemTemplate>
