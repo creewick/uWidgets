@@ -1,6 +1,8 @@
 using System.Text.Json;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
+using Notes.Locales;
 using Notes.Models;
 using Notes.ViewModels;
 using uWidgets.Core.Interfaces;
@@ -12,13 +14,15 @@ public partial class Note : UserControl
     private readonly NoteModel noteModel;
     private readonly IWidgetLayoutProvider widgetLayoutProvider;
     
-    public Note(IWidgetLayoutProvider widgetLayoutProvider) : this(new NoteModel(), widgetLayoutProvider) {}
+    public Note(IWidgetLayoutProvider widgetLayoutProvider) : this(new NoteModel(Locale.Notes_Title), widgetLayoutProvider) {}
     
     public Note(NoteModel noteModel, IWidgetLayoutProvider widgetLayoutProvider)
     {
         this.noteModel = noteModel;
         this.widgetLayoutProvider = widgetLayoutProvider;
         DataContext = new NoteViewModel(noteModel);
+        
+        PointerExited += OnPointerExited;
         InitializeComponent();
     }
 
@@ -43,4 +47,7 @@ public partial class Note : UserControl
         
         widgetLayoutProvider.Save(newLayout);
     }
+
+    private void OverlayClick(object? sender, PointerPressedEventArgs e) => Overlay.IsVisible = false;
+    private void OnPointerExited(object? sender, PointerEventArgs e) => Overlay.IsVisible = true;
 }

@@ -2,10 +2,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:locales="clr-namespace:Notes.Locales"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              Margin="0"
              x:Class="Notes.Views.Note">
+    
+    <UserControl.Styles>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </UserControl.Styles>
+    
     <Grid RowDefinitions="Auto, Auto, *, Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Border Grid.Row="0" Height="44" Background="{DynamicResource SystemControlForegroundBaseMediumLowBrush}" Padding="12">
             <TextBlock Text="{x:Static locales:Locale.Notes_Title}" FontSize="16" FontWeight="SemiBold" />
@@ -13,7 +20,8 @@
         <Canvas Grid.Row="1" Margin="0,5">
             <Line StartPoint="0,0" EndPoint="200,0" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" Opacity="0.2" StrokeThickness="2" StrokeDashArray="1,1"/>
         </Canvas>
-        <TextBox Grid.Row="2" Text="{Binding Content}" LostFocus="UpdateContent" Background="Transparent" BorderThickness="0" AcceptsReturn="True" TextWrapping="Wrap" />
+        <TextBox Grid.Row="2" Text="{Binding Content}" LostFocus="UpdateContent" AcceptsReturn="True" TextWrapping="Wrap" />
         <TextBlock Grid.Row="3" Padding="12,8" Text="{Binding Updated}" FontSize="12" Opacity="0.5" /> 
+        <Border Grid.Row="0" Grid.RowSpan="4" Name="Overlay" Background="Transparent" PointerPressed="OverlayClick" />
     </Grid>
 </UserControl>
