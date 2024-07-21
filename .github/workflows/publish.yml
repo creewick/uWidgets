@@ -68,18 +68,29 @@ jobs:
     needs: publish
     
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: beta
+    
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
           name: publish
           path: .\uWidgets\bin\Publish
+
+      - name: Set version variables
+        id: nbgv
+        uses: aarnott/nbgv@v0.4.2
+        with:
+          setAllVars: true
           
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: test
-          release_name: Release test
+          tag_name: v${{ steps.nbgv.outputs.AssemblyVersion }}
+          release_name: Release ${{ steps.nbgv.outputs.AssemblyVersion }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -90,6 +101,8 @@ jobs:
           asset_path: .\uWidgets\bin\Publish\win-x86.zip
           asset_name: win-x86.zip
           asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload win-x64
         uses: actions/upload-release-asset@v1
@@ -98,6 +111,8 @@ jobs:
           asset_path: .\uWidgets\bin\Publish\win-x64.zip
           asset_name: win-x64.zip
           asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload win-arm64
         uses: actions/upload-release-asset@v1
@@ -106,3 +121,5 @@ jobs:
           asset_path: .\uWidgets\bin\Publish\win-arm64.zip
           asset_name: win-arm64.zip
           asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
