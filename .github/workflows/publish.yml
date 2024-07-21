@@ -27,6 +27,12 @@ jobs:
       - name: Build
         run: dotnet build .\uWidgets.sln --configuration Release --no-restore
 
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: .\uWidgets\bin\Release\net8.0
+
   publish:
     runs-on: windows-latest
     needs: build
@@ -36,6 +42,17 @@ jobs:
         runtime: [ win-x86, win-x64, win-arm64 ]
         
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+  
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: .\uWidgets\bin\Release\net8.0
+    
       - name: Publish for ${{ matrix.runtime }}
         run: |
           dotnet publish .\uWidgets\uWidgets.csproj --configuration Release --runtime ${{ matrix.runtime }} --output .\uWidgets\bin\Publish\${{ matrix.runtime }} --self-contained false --no-restore
@@ -47,11 +64,23 @@ jobs:
       - name: Archive ${{ matrix.runtime }}
         run: Compress-Archive -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -DestinationPath .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: publish
+          path: .\uWidgets\bin\Publish
+
   release:
     runs-on: windows-latest
     needs: publish
 
     steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: publish
+          path: .\uWidgets\bin\Publish
+          
       - name: Release
         uses: gh-cli/gh-actions@v2
         with:
