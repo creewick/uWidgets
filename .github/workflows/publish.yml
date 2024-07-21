@@ -97,8 +97,6 @@ jobs:
       - name: Get Changelog
         uses: cobraz/get-commit-changelog@v1
         id: changelog
-        with:
-          base: ${{ github.ref_name }}
 
       - name: Create Release
         id: create_release
