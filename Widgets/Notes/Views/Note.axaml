@@ -14,8 +14,8 @@
     </UserControl.Styles>
     
     <Grid RowDefinitions="Auto, Auto, *, Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <Border Grid.Row="0" Height="44" Background="{DynamicResource SystemControlForegroundBaseMediumLowBrush}" Padding="12">
-            <TextBlock Text="{x:Static locales:Locale.Notes_Title}" FontSize="16" FontWeight="SemiBold" />
+        <Border Grid.Row="0" Height="44" Background="{DynamicResource SystemControlForegroundBaseMediumLowBrush}" Padding="0 12">
+            <TextBox Text="{Binding Title}" LostFocus="UpdateTitle" FontSize="16" FontWeight="SemiBold" />
         </Border>
         <Canvas Grid.Row="1" Margin="0,5">
             <Line StartPoint="0,0" EndPoint="200,0" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" Opacity="0.2" StrokeThickness="2" StrokeDashArray="1,1"/>
