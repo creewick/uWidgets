@@ -71,7 +71,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: beta
-          fetch-tags: true
 
       - name: Download artifacts
         uses: actions/download-artifact@v3
@@ -98,6 +97,7 @@ jobs:
       - name: Get Commit Messages
         id: commit_messages
         run: |
+          git fetch --tags
           $lastTag = git describe --tags --abbrev=0
           $commitMessages = git log "$lastTag..HEAD" --pretty=format:"`%h` %s"
           Write-Output "Changelog: $commitMessages"
