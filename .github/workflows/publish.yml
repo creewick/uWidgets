@@ -119,7 +119,7 @@ jobs:
           release_name: ${{ steps.version.outputs.version }}-beta
           body: |
             Changelog:
-            ${{ steps.changelog.outputs.changelog }}
+            ${{ steps.changelog.outputs.changes }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
