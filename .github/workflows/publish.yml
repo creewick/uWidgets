@@ -50,8 +50,8 @@ jobs:
       
       - name: Clean up
         run: |
-          Remove-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\*.pdb -Force
-          Remove-Item -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\*.deps.json -Force
+          Get-ChildItem -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.pdb -Recurse | Remove-Item -Force
+          Get-ChildItem -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.deps.json -Recurse | Remove-Item -Force
 
       - name: Archive
         run: |
@@ -94,6 +94,13 @@ jobs:
             exit 1
           }
         shell: pwsh
+        
+      - name: Get Commit Messages
+        id: commit_messages
+        run: |
+          $lastTag = git describe --tags --abbrev=0
+          $commitMessages = git log $lastTag..HEAD --pretty=format:"`%h` %s"
+          echo "::set-output name=messages::$commitMessages"
           
       - name: Create Release
         id: create_release
@@ -101,6 +108,9 @@ jobs:
         with:
           tag_name: v${{ steps.version.outputs.version }}
           release_name: uWidgets ${{ steps.version.outputs.version }} BETA
+          body: |
+            Changelog:
+            ${{ steps.commit_messages.outputs.messages }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
