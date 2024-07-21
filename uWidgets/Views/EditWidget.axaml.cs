@@ -9,7 +9,6 @@ namespace uWidgets.Views;
 public partial class EditWidget : Window
 {
     private readonly IWidgetLayoutProvider widgetLayoutProvider;
-    public CornerRadius Radius => new(Const.CornerRadius / (Screens.ScreenFromWindow(this)?.Scaling ?? 1.0));
     public string WidgetType => widgetLayoutProvider.Get().Type;
     public string WidgetSubType => widgetLayoutProvider.Get().SubType;
     
