@@ -98,7 +98,7 @@ jobs:
         id: commit_messages
         run: |
           $lastTag = git describe --tags --abbrev=0
-          $commitMessages = git log $lastTag..HEAD --pretty=format:"`%h` %s"
+          $commitMessages = git log "$lastTag..HEAD" --pretty=format:"`%h` %s"
           echo "::set-output name=messages::$commitMessages"
           
       - name: Create Release
