@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: dev
+          ref: beta
 
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
@@ -79,18 +79,28 @@ jobs:
           name: publish
           path: .\uWidgets\bin\Publish
 
-      - name: Set version variables
-        id: nbgv
-        uses: aarnott/nbgv@v0.4.2
-        with:
-          setAllVars: true
+      - name: Get Assembly Version
+        id: version
+        run: |
+          $filePath = ".\uWidgets\AssemblyInfo.cs"
+          $content = Get-Content $filePath
+
+          if ($content -match '\[assembly: AssemblyVersion\("([0-9]+\.[0-9]+\.[0-9]+)"\)\]') {
+            $version = $matches[1]
+            Write-Output "Assembly Version: $version"
+            echo "::set-output name=version::$version"
+          } else {
+            Write-Error "AssemblyVersion not found in $filePath"
+            exit 1
+          }
+        shell: pwsh
           
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v${{ steps.nbgv.outputs.AssemblyVersion }}
-          release_name: Release ${{ steps.nbgv.outputs.AssemblyVersion }}
+          tag_name: v${{ steps.version.outputs.version }}
+          release_name: uWidgets ${{ steps.version.outputs.version }} BETA
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
