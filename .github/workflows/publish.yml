@@ -108,8 +108,8 @@ jobs:
         id: changelog
         uses: requarks/changelog-action@v1
         with:
-          token: ${{ steps.version.outputs.version }}
-          tag: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.version.outputs.version }}
           includeInvalidCommits: true
 
       - name: Create Release
