@@ -4,8 +4,58 @@ on:
   workflow_dispatch:
 
 jobs:
+  restore:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore
+        run: dotnet restore .\uWidgets.sln
+
+      - name: Cache NuGet Packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+  build:
+    runs-on: windows-latest
+    needs: restore
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build
+        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
+
   publish:
     runs-on: windows-latest
+    needs: build
 
     strategy:
       matrix:
@@ -41,7 +91,7 @@ jobs:
            --no-restore
 
       - name: Copy Widgets
-        run:
+        run: |
            mkdir .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets
            cp -r .\uWidgets\bin\Release\net8.0\Widgets\* .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets
       
