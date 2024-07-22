@@ -18,7 +18,7 @@
             <TextBox Text="{Binding Title}" LostFocus="UpdateTitle" FontSize="16" FontWeight="SemiBold" />
         </Border>
         <Canvas Grid.Row="1" Margin="0,5">
-            <Line StartPoint="0,0" EndPoint="200,0" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" Opacity="0.2" StrokeThickness="2" StrokeDashArray="1,1"/>
+            <Line StartPoint="0,0" EndPoint="{Binding LineEnd}" Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" Opacity="0.2" StrokeThickness="2" StrokeDashArray="1,1"/>
         </Canvas>
         <TextBox Grid.Row="2" Text="{Binding Content}" LostFocus="UpdateContent" AcceptsReturn="True" TextWrapping="Wrap" />
         <TextBlock Grid.Row="3" Padding="12,8" Text="{Binding Updated}" FontSize="12" Opacity="0.5" /> 

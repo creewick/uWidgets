@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -23,13 +24,22 @@ public partial class Note : UserControl
         DataContext = new NoteViewModel(noteModel);
         
         PointerExited += OnPointerExited;
+        SizeChanged += OnSizeChanged;
         Unloaded += OnUnloaded;
         InitializeComponent();
+    }
+
+    private void OnSizeChanged(object? sender, SizeChangedEventArgs e)
+    {
+        var width = VisualRoot?.ClientSize.Width ?? 0;
+        
+        (DataContext as NoteViewModel)!.LineEnd = new Point(width, 0);
     }
 
     private void OnUnloaded(object? sender, RoutedEventArgs e)
     {
         PointerExited -= OnPointerExited;
+        SizeChanged -= OnSizeChanged;
     }
 
     private void UpdateContent(object? sender, RoutedEventArgs e)
