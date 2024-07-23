@@ -1,7 +1,9 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:views="clr-namespace:Clock.Views"
+             xmlns:viewModels="clr-namespace:Clock.ViewModels"
              x:Class="Clock.Views.World" 
+             x:DataType="viewModels:WorldClockViewModel"
              Margin="4">
     <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
         <views:AnalogI Grid.Column="0" Grid.Row="0" Name="First" DataContext="{Binding First}" Margin="4" />

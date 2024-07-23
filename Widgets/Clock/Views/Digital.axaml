@@ -1,6 +1,8 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="Clock.Views.Digital">
+        xmlns:viewModels="clr-namespace:Clock.ViewModels"
+        x:Class="Clock.Views.Digital"
+        x:DataType="viewModels:DigitalClockViewModel">
     
     <UserControl.Styles>
         <Style Selector="TextBlock">

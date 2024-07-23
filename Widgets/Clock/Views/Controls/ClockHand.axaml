@@ -2,10 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Clock.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         RenderTransformOrigin="500,500"
         Width="1000" Height="1000"
         x:Class="Clock.Views.Controls.ClockHand" 
+        x:DataType="viewModels:ClockHandViewModel"
         Opacity="{DynamicResource TextOpacity}"
         IsVisible="{Binding IsVisible}">
     <Canvas.RenderTransform>

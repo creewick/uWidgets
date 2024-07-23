@@ -1,6 +1,8 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="Calendar.Views.Date">
+             xmlns:viewModels="clr-namespace:Calendar.ViewModels"
+             x:Class="Calendar.Views.Date"
+             x:DataType="viewModels:DateCalendarViewModel">
     <Viewbox Stretch="Uniform">
         <Grid RowDefinitions="*,4*" ColumnDefinitions="*,*">
             <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,2,0" FontWeight="Bold"

@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:viewModels="clr-namespace:Clock.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Clock.Views.Settings.WorldClockSettings">
+             x:Class="Clock.Views.Settings.WorldClockSettings"
+             x:DataType="viewModels:WorldClockSettingsViewModel">
     <ScrollViewer>
         <StackPanel Orientation="Vertical" Spacing="5">
             <controls:Setting Title="{Binding TimeZone1Title}">

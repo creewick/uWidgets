@@ -2,7 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:viewModels="clr-namespace:Calendar.ViewModels"
              xmlns:views="clr-namespace:Calendar.Views"
-             x:Class="Calendar.Views.Month">
+             x:Class="Calendar.Views.Month"
+             x:DataType="viewModels:MonthCalendarViewModel">
     
     <UserControl.Styles>
         <Style Selector="TextBlock">

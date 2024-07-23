@@ -40,7 +40,8 @@ jobs:
           --configuration Release `
           --runtime ${{ matrix.runtime }} `
           --output .\uWidgets\bin\Publish\${{ matrix.runtime }} `
-          --self-contained false
+          --self-contained false `
+          /p:PublishReadyToRun=true
 
       - name: Copy Widgets
         run: |

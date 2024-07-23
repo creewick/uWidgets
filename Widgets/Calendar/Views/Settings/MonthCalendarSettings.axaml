@@ -3,7 +3,9 @@
              xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              xmlns:locales="clr-namespace:Calendar.Locales"
-             x:Class="Calendar.Views.Settings.MonthCalendarSettings">
+             xmlns:viewModels="clr-namespace:Calendar.ViewModels"
+             x:Class="Calendar.Views.Settings.MonthCalendarSettings"
+             x:DataType="viewModels:MonthCalendarSettingsViewModel">
     <ScrollViewer>
         <StackPanel Orientation="Vertical" Spacing="5">
             <controls:Setting Title="{x:Static locales:Locale.Calendar_FirstDayOfWeek}">
