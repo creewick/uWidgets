@@ -1,13 +1,14 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:services="clr-namespace:uWidgets.Services">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style>
         <Style.Resources>
             <SolidColorBrush x:Key="WidgetBackground" Color="{DynamicResource SystemAltHighColor}" Opacity="0.2" />
             <SolidColorBrush x:Key="SettingsBackground" Color="{DynamicResource SystemAltMediumHighColor}" />
-            <services:TransparencyProvider x:Key="TransparencyLevelHint" Value="AcrylicBlur" />
             <x:Double x:Key="TextOpacity">0.8</x:Double>
         </Style.Resources>
+    </Style>
+    <Style Selector="Window">
+        <Setter Property="TransparencyLevelHint" Value="AcrylicBlur" />
     </Style>
     <Style Selector="TextBlock">
         <Setter Property="Opacity" Value="0.8" />

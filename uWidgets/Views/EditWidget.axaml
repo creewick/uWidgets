@@ -3,7 +3,6 @@
         xmlns:views="clr-namespace:uWidgets.Views"
         xmlns:locales="clr-namespace:uWidgets.Locales"
         x:Class="uWidgets.Views.EditWidget"
-        TransparencyLevelHint="{DynamicResource TransparencyLevelHint}"
         Background="{DynamicResource SettingsBackground}"
         ExtendClientAreaToDecorationsHint="True"
         WindowStartupLocation="CenterOwner"

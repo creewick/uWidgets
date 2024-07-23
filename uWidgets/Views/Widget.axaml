@@ -4,7 +4,6 @@
         xmlns:views="clr-namespace:uWidgets.Views"
         x:Class="uWidgets.Views.Widget"
         Background="Transparent"
-        TransparencyLevelHint="{DynamicResource TransparencyLevelHint}"
         ShowInTaskbar="False"
         SystemDecorations="None"
         x:DataType="views:Widget">
