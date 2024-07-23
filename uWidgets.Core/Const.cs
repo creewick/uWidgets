@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace uWidgets.Core;
+﻿namespace uWidgets.Core;
 
 public static class Const
 {
@@ -12,9 +10,6 @@ public static class Const
     public static string WidgetsFolder = Path.Combine(CurrentFolder, WidgetsFolderName);
     public static string AppSettingsFile = Path.Combine(CurrentFolder, AppSettingsFileName);
     public static string LayoutFile = Path.Combine(CurrentFolder, LayoutFileName);
-    public static float DisplayScaling = GetDpiForSystem() / 96.0f;
+    public static float DisplayScaling = Interop.GetDpiForSystem() / 96.0f;
     public static float CornerRadius = 48 / DisplayScaling;
-    
-    [DllImport("user32.dll")]
-    private static extern int GetDpiForSystem();
 }
