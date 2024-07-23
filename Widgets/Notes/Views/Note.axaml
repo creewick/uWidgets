@@ -16,7 +16,7 @@
     </UserControl.Styles>
     
     <Grid RowDefinitions="Auto, Auto, *, Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <Border Grid.Row="0" Height="44" Background="{DynamicResource SystemControlForegroundBaseMediumLowBrush}" Padding="0 12">
+        <Border Grid.Row="0" Height="44" Background="{DynamicResource SystemControlHighlightListAccentLowBrush}" Padding="0 12">
             <TextBox Text="{Binding Title}" LostFocus="UpdateTitle" FontSize="16" FontWeight="SemiBold" />
         </Border>
         <Canvas Grid.Row="1" Margin="0,5">

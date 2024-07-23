@@ -17,7 +17,7 @@ public class ThemeService : IThemeService
     
     private readonly StyleInclude transparentStyle = new(new Uri("avares://uWidgets/"))
     {
-        Source = new Uri("avares://uWidgets/Transparent.axaml")
+        Source = new Uri("avares://uWidgets/Styles/Transparent.axaml")
     };
     
     public void Apply(Theme theme)

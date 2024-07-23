@@ -20,7 +20,7 @@
     
     <Grid RowDefinitions="Auto,*">
         <TextBlock Grid.Row="0" Text="{Binding Month}" 
-                   Foreground="{DynamicResource SystemControlBackgroundAccentBrush}" />
+                   Foreground="{DynamicResource SystemControlForegroundAccentBrush}" />
         <ItemsControl Grid.Row="1" ItemsSource="{Binding Days}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="viewModels:DayViewModel">
@@ -29,7 +29,7 @@
                             <Canvas Width="100" Height="100">
                                 <Ellipse Canvas.Left="0" Canvas.Top="0" Width="100" Height="100"
                                          IsVisible="{Binding IsToday}"
-                                         Fill="{DynamicResource SystemControlBackgroundAccentBrush}" />
+                                         Fill="{DynamicResource SystemAccentColor}" />
                             </Canvas>
                         </Viewbox>
                         <TextBlock VerticalAlignment="Center" TextAlignment="Center" 

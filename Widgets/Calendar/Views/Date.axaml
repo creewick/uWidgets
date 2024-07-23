@@ -6,7 +6,7 @@
     <Viewbox Stretch="Uniform">
         <Grid RowDefinitions="*,4*" ColumnDefinitions="*,*">
             <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,2,0" FontWeight="Bold"
-                       Foreground="{DynamicResource SystemControlBackgroundAccentBrush}" 
+                       Foreground="{DynamicResource SystemControlForegroundAccentBrush}" 
                        Text="{Binding DayOfWeek}" 
                        VerticalAlignment="Bottom" HorizontalAlignment="Right" />
             <TextBlock Grid.Row="0" Grid.Column="1" Opacity="0.5" FontWeight="Bold"
