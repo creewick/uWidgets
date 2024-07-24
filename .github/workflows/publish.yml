@@ -45,6 +45,10 @@ jobs:
 
       - name: Copy Widgets
         run: |
+          New-Item `
+            -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets `
+            -ItemType Directory `
+          -Force
           Copy-Item `
             -Path .\uWidgets\bin\Release\net8.0\Widgets\* `
             -Destination .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets `
