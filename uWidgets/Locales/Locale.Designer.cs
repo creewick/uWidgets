@@ -195,6 +195,24 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Widgets elements appear in the same color.
+        /// </summary>
+        public static string Settings_Appearance_Monochrome_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_Monochrome_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monochrome theme.
+        /// </summary>
+        public static string Settings_Appearance_Monochrome_Title {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_Monochrome_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Align widget position to grid.
         /// </summary>
         public static string Settings_Appearance_SnapPosition_Subtitle {

@@ -5,6 +5,7 @@ using System.Resources;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using uWidgets.Core;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
 using uWidgets.Locales;
@@ -21,7 +22,7 @@ public partial class Gallery : UserControl
     private readonly IWidgetFactory<Window, UserControl> widgetFactory;
     public List<WidgetPreviewViewModel> Widgets => GetWidgets();
     public int WidgetSize => appSettingsProvider.Get().Layout.WidgetSize * 2;
-    public CornerRadius Radius => new(16);
+    public CornerRadius Radius => new(Const.CornerRadius / (VisualRoot?.RenderScaling ?? 1.0));
 
     public Gallery(IAppSettingsProvider appSettingsProvider, ILayoutProvider layoutProvider, IAssemblyProvider assemblyProvider, 
         AssemblyInfo assemblyInfo, IWidgetFactory<Window, UserControl> widgetFactory)

@@ -150,4 +150,10 @@
     <data name="Widget_Save" xml:space="preserve">
         <value>Done</value>
     </data>
+    <data name="Settings_Appearance_Monochrome_Title" xml:space="preserve">
+        <value>Monochrome theme</value>
+    </data>
+    <data name="Settings_Appearance_Monochrome_Subtitle" xml:space="preserve">
+        <value>Widgets elements appear in the same color</value>
+    </data>
 </root>

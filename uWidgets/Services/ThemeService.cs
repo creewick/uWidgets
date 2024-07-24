@@ -20,6 +20,11 @@ public class ThemeService : IThemeService
         Source = new Uri("avares://uWidgets/Styles/Transparent.axaml")
     };
     
+    private readonly StyleInclude monochromeStyle = new(new Uri("avares://uWidgets/"))
+    {
+        Source = new Uri("avares://uWidgets/Styles/Monochrome.axaml")
+    };
+    
     public void Apply(Theme theme)
     {
         Application.Current!.RequestedThemeVariant = theme.DarkMode switch
@@ -28,10 +33,16 @@ public class ThemeService : IThemeService
             false => ThemeVariant.Light,
             _ => ThemeVariant.Dark,
         };
+        
+        SwitchStyle(transparentStyle, theme.Transparency);
+        SwitchStyle(monochromeStyle, theme.Monochrome);
+    }
 
-        if (theme.Transparency && !Application.Current.Styles.Contains(transparentStyle))
-            Application.Current.Styles.Add(transparentStyle);
-        if (!theme.Transparency && Application.Current.Styles.Contains(transparentStyle))
-            Application.Current.Styles.Remove(transparentStyle);
+    private static void SwitchStyle(StyleInclude style, bool enable)
+    {
+        if (enable && !Application.Current!.Styles.Contains(style))
+            Application.Current.Styles.Add(style);
+        if (!enable && Application.Current!.Styles.Contains(style))
+            Application.Current.Styles.Remove(style);
     }
 }

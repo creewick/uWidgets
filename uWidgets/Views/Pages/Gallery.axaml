@@ -30,7 +30,7 @@
                             </Border>
                         </Button>
                         <TextBlock Margin="0 20 0 5" FontWeight="Bold" TextAlignment="Center" Text="{Binding Title}" />
-                        <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Subtitle}" />
+                        <TextBlock TextAlignment="Center" FontSize="12" Opacity="0.7" TextWrapping="Wrap" Text="{Binding Subtitle}" />
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

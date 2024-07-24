@@ -25,6 +25,11 @@
             Subtitle="{x:Static locales:Locale.Settings_Appearance_Transparency_Subtitle}">
             <ToggleSwitch IsChecked="{Binding Transparency}" />
         </controls:Setting>
+        <controls:Setting Icon="{DynamicResource Monochrome}" 
+                          Title="{x:Static locales:Locale.Settings_Appearance_Monochrome_Title}" 
+                          Subtitle="{x:Static locales:Locale.Settings_Appearance_Monochrome_Subtitle}">
+            <ToggleSwitch IsChecked="{Binding Monochrome}" />
+        </controls:Setting>
         <!-- <controls:Setting Icon="{DynamicResource Color}" -->
         <!--     Title="{x:Static locales:Locale.Settings_Appearance_AccentColor_Title}"> -->
         <!--     <ColorPicker Color="Aqua" /> -->

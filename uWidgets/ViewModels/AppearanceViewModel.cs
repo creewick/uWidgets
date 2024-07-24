@@ -38,6 +38,18 @@ public class AppearanceViewModel(IAppSettingsProvider appSettingsProvider) : Rea
         }
     }
     
+    public bool Monochrome
+    {
+        get => appSettingsProvider.Get().Theme.Monochrome;
+        set
+        {
+            var settings = appSettingsProvider.Get();
+            var newTheme = settings.Theme with { Monochrome = value };
+            var newSettings = settings with { Theme = newTheme };
+            appSettingsProvider.Save(newSettings);
+        }
+    }
+    
     public bool SnapPosition
     {
         get => appSettingsProvider.Get().Layout.SnapPosition;

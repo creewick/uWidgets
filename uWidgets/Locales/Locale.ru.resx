@@ -143,4 +143,10 @@
     <data name="Widget_Save" xml:space="preserve">
         <value>Готово</value>
     </data>
+    <data name="Settings_Appearance_Monochrome_Subtitle" xml:space="preserve">
+        <value>Монохромная тема</value>
+    </data>
+    <data name="Settings_Appearance_Monochrome_Title" xml:space="preserve">
+        <value>Элементы виджетов отображаются в одном цвете</value>
+    </data>
 </root>

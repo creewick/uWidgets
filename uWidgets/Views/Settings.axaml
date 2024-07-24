@@ -1,12 +1,11 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
-        Width="1000" Height="600" MinWidth="500" MinHeight="300"
+        Width="1000" Height="650" MinWidth="500" MinHeight="300"
         x:Class="uWidgets.Views.Settings"
         Background="{DynamicResource SettingsBackground}"
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaTitleBarHeightHint="50"
-        ClipToBounds="True"
         Title="Settings"
         x:DataType="viewModels:SettingsViewModel">
 

@@ -6,7 +6,8 @@
         Background="Transparent"
         ShowInTaskbar="False"
         SystemDecorations="None"
-        x:DataType="views:Widget">
+        x:DataType="views:Widget"
+        Classes="Widget">
 
     <Window.ContextMenu>
         <ContextMenu>
