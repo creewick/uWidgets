@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar", "Widgets\Calenda
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes", "Widgets\Notes\Notes.csproj", "{DFB15B49-F8C6-45D3-8DFF-4520E79A6633}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reminders", "Widgets\Reminders\Reminders.csproj", "{CD104FCB-BC8D-4A47-A03E-3D7934C8D16C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,11 +40,16 @@ Global
 		{DFB15B49-F8C6-45D3-8DFF-4520E79A6633}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFB15B49-F8C6-45D3-8DFF-4520E79A6633}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFB15B49-F8C6-45D3-8DFF-4520E79A6633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD104FCB-BC8D-4A47-A03E-3D7934C8D16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD104FCB-BC8D-4A47-A03E-3D7934C8D16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD104FCB-BC8D-4A47-A03E-3D7934C8D16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD104FCB-BC8D-4A47-A03E-3D7934C8D16C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{340079E1-2FE5-451F-8577-D1D88F437A17} = {208BA44D-33C9-4962-8FDB-CCD073BD3D88}
 		{E4AF018A-A8A9-4896-ABB0-FA01C3BD2F43} = {208BA44D-33C9-4962-8FDB-CCD073BD3D88}
 		{DFB15B49-F8C6-45D3-8DFF-4520E79A6633} = {208BA44D-33C9-4962-8FDB-CCD073BD3D88}
+		{CD104FCB-BC8D-4A47-A03E-3D7934C8D16C} = {208BA44D-33C9-4962-8FDB-CCD073BD3D88}
 	EndGlobalSection
 	GlobalSection(RiderSharedRunConfigurations) = postSolution
 	EndGlobalSection
