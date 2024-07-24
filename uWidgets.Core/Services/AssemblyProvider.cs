@@ -20,9 +20,13 @@ public class AssemblyProvider : IAssemblyProvider
     
     public ILookup<string, AssemblyInfo> GetAssemblyInfos(string directoryPath)
     {
-        return Directory
-            .GetFiles(directoryPath, "*.dll")
-            .Select(filePath => new AssemblyInfo(filePath))
+        var assemblies = Directory.Exists(directoryPath)
+            ? Directory
+                .GetFiles(directoryPath, "*.dll")
+                .Select(filePath => new AssemblyInfo(filePath))
+            : [];
+        
+        return assemblies
             .ToLookup(assembly => assembly.AssemblyName.Name!);
     }
     
