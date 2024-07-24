@@ -5,27 +5,17 @@
         x:Class="uWidgets.Views.EditWidget"
         Background="{DynamicResource SettingsBackground}"
         ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="60"
         WindowStartupLocation="CenterOwner"
         Width="340" Height="340" CanResize="False"
         x:DataType="views:EditWidget">
-    <Window.Styles>
-        <Style Selector="Window">
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <Grid Background="{DynamicResource SettingsBackground}">
-                        <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto, Auto,*"
-                              Margin="16">
-                            <PathIcon Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="0,0,12,0" Data="{DynamicResource Appearance}" Height="32" />
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding WidgetType}" FontSize="14" FontWeight="Bold" />
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding WidgetSubType}" FontSize="12" FontWeight="SemiBold" Opacity="0.5" />
-                            
-                            <!-- <TitleBar VerticalAlignment="Center" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" /> -->
-                            <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Content="{x:Static locales:Locale.Widget_Save}" Click="Close" />
-                            <ContentPresenter Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" IsHitTestVisible="True" Margin="0,12,0,0" Content="{TemplateBinding Content}" />
-                        </Grid>
-                    </Grid>
-                </ControlTemplate>
-            </Setter>
-        </Style>
-    </Window.Styles>
+    <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto, Auto,*"
+          Margin="16">
+        <PathIcon Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsHitTestVisible="False" Margin="0,0,12,0" Data="{DynamicResource Appearance}" Height="32" />
+        <TextBlock Grid.Row="0" Grid.Column="1" IsHitTestVisible="False" Text="{Binding WidgetType}" FontSize="14" FontWeight="Bold" />
+        <TextBlock Grid.Row="1" Grid.Column="1" IsHitTestVisible="False" Text="{Binding WidgetSubType}" FontSize="12" FontWeight="SemiBold" Opacity="0.5" />
+        <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Content="{x:Static locales:Locale.Widget_Save}" Click="Close" />
+        <ContentPresenter Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" IsHitTestVisible="True" Margin="0,12,0,0" Content="{Binding Control}" />
+    </Grid>
 </Window>
