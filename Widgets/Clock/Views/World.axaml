@@ -5,10 +5,10 @@
              x:Class="Clock.Views.World" 
              x:DataType="viewModels:WorldClockViewModel"
              Margin="4">
-    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Name="Grid">
         <views:AnalogI Grid.Column="0" Grid.Row="0" Name="First" DataContext="{Binding First}" Margin="4" />
-        <views:AnalogI Grid.Column="1" Grid.Row="0" DataContext="{Binding Second}" Margin="4" />
-        <views:AnalogI Grid.Column="0" Grid.Row="1" DataContext="{Binding Third}" Margin="4" />
-        <views:AnalogI Grid.Column="1" Grid.Row="1" DataContext="{Binding Fourth}" Margin="4" />
+        <views:AnalogI Grid.Column="1" Grid.Row="0" Name="Second" DataContext="{Binding Second}" Margin="4" />
+        <views:AnalogI Grid.Column="0" Grid.Row="1" Name="Third" DataContext="{Binding Third}" Margin="4" />
+        <views:AnalogI Grid.Column="1" Grid.Row="1" Name="Fourth" DataContext="{Binding Fourth}" Margin="4" />
     </Grid>
 </UserControl>
