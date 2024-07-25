@@ -15,6 +15,12 @@ public class AnalogClockSettingsViewModel(IWidgetLayoutProvider widgetLayoutProv
         set => UpdateClockModel(clockModel with { ShowSeconds = value });
     }
 
+    public bool ShowDate
+    {
+        get => clockModel.ShowDate;
+        set => UpdateClockModel(clockModel with { ShowDate = value });
+    }
+
     public bool Use24Hours
     {
         get => clockModel.Use24Hours;

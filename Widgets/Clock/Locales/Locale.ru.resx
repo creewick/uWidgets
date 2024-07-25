@@ -47,4 +47,7 @@
     <data name="Clock_LocalTimeZone" xml:space="preserve">
         <value>Локальный часовой пояс</value>
     </data>
+    <data name="Clock_ShowDate" xml:space="preserve">
+        <value>Показывать дату</value>
+    </data>
 </root>

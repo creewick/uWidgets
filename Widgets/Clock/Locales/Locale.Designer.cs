@@ -123,6 +123,15 @@ namespace Clock.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show date.
+        /// </summary>
+        public static string Clock_ShowDate {
+            get {
+                return ResourceManager.GetString("Clock_ShowDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show seconds.
         /// </summary>
         public static string Clock_ShowSeconds {

@@ -12,7 +12,15 @@
     </UserControl.Styles>
     
     <Viewbox Stretch="Uniform">
-        <TextBlock Text="{Binding Text}" />
+        <StackPanel>
+            <TextBlock Text="{Binding DateText}" 
+                       IsVisible="{Binding ShowDate}"
+                       HorizontalAlignment="Center"
+                       Margin="0,4,0,0"
+                       FontSize="8" Opacity="0.5" />
+            <TextBlock Text="{Binding TimeText}"
+                       FontSize="34" HorizontalAlignment="Center" />
+        </StackPanel>
     </Viewbox>
 </UserControl>
 

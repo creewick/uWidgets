@@ -36,7 +36,7 @@ public class DigitalClockViewModel : ReactiveObject, IDisposable
             ? DateTime.UtcNow.AddHours(clockModel.TimeZone.Value) 
             : DateTime.Now;
 
-        this.RaisePropertyChanged(nameof(Text));
+        this.RaisePropertyChanged(nameof(TimeText));
     }
 
     private DateTime time;
@@ -50,7 +50,9 @@ public class DigitalClockViewModel : ReactiveObject, IDisposable
     private string SS => clockModel.ShowSeconds ? ":ss" : "";
     private string AM => clockModel.Use24Hours ? "" : " tt";
 
-    public string Text => Time.ToString($"{HH}:mm{SS}{AM}");
+    public string TimeText => Time.ToString($"{HH}:mm{SS}{AM}");
+    public string DateText => Time.ToString("D", Thread.CurrentThread.CurrentUICulture); 
+    public bool ShowDate => clockModel.ShowDate;
 
     private TimeSpan GetInitialTimerInterval(DateTime now) => clockModel.ShowSeconds
         ? TimeSpan.FromMilliseconds(1000 - now.Millisecond)
