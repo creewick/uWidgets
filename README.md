@@ -1,3 +1,5 @@
+<img src=".github/images/cover.png"  />
+
 <div align="center">
   <h1>uWidgets</h1>
   macOS widgets for Windows
