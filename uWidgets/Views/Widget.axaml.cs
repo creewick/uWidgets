@@ -31,6 +31,7 @@ public partial class Widget : Window
         this.gridService = gridService;
         Height = widgetLayoutProvider.Get().Height;
         Width = widgetLayoutProvider.Get().Width;
+        Title = $"{widgetLayoutProvider.Get().Type} {widgetLayoutProvider.Get().SubType}";
         DataContext = this;
         Content = userControl();
         
