@@ -11,28 +11,20 @@ using uWidgets.Core.Interfaces;
 
 namespace Reminders.Views;
 
-public partial class RemindersList : UserControl
+public partial class List : UserControl
 {
     private RemindersListModel model;
     private readonly IWidgetLayoutProvider widgetLayoutProvider;
 
-    public RemindersList(IWidgetLayoutProvider widgetLayoutProvider) 
+    public List(IWidgetLayoutProvider widgetLayoutProvider) 
         : this(new RemindersListModel(Locale.Reminders_List_Title, []), widgetLayoutProvider) {}
     
-    public RemindersList(RemindersListModel model, IWidgetLayoutProvider widgetLayoutProvider)
+    public List(RemindersListModel model, IWidgetLayoutProvider widgetLayoutProvider)
     {
         this.model = model;
         this.widgetLayoutProvider = widgetLayoutProvider;
         DataContext = new RemindersViewModel(model);
-        LostFocus += OnLostFocus;
-        Unloaded += OnUnloaded;
         InitializeComponent();
-    }
-    
-
-    private void OnUnloaded(object? sender, RoutedEventArgs e)
-    {
-        PointerExited -= OnLostFocus;
     }
     
     private void ListNameChanged(object? sender, RoutedEventArgs e)
@@ -85,7 +77,4 @@ public partial class RemindersList : UserControl
         (sender as TextBox)!.Text = "";
         UpdateModel(model);
     }
-    
-    private void OverlayClick(object? sender, PointerPressedEventArgs e) => Overlay.IsVisible = false;
-    private void OnLostFocus(object? sender, RoutedEventArgs e) => Overlay.IsVisible = true;
 }

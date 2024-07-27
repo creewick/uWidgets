@@ -5,7 +5,7 @@ using Reminders.Views;
 using uWidgets.Core.Models;
 
 [assembly: AssemblyCompany("creewick")]
-[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyVersion("1.0.1")]
 
-[assembly: WidgetInfo(typeof(RemindersList), typeof(RemindersListModel), null, "Reminders_List_Title", "Reminders_List_Subtitle")]
+[assembly: WidgetInfo(typeof(List), typeof(RemindersListModel), null, "Reminders_List_Title", "Reminders_List_Subtitle")]
 [assembly: Locale(typeof(Locale))]

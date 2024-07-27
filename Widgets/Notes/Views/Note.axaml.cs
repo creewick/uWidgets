@@ -3,6 +3,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.VisualTree;
 using Notes.Locales;
 using Notes.Models;
 using Notes.ViewModels;
@@ -24,22 +25,7 @@ public partial class Note : UserControl
         this.widgetLayoutProvider = widgetLayoutProvider;
         DataContext = new NoteViewModel(model);
         
-        LostFocus += OnLostFocus;
-        SizeChanged += OnSizeChanged;
-        Unloaded += OnUnloaded;
         InitializeComponent();
-    }
-
-    private void OnSizeChanged(object? sender, SizeChangedEventArgs e)
-    {
-        var width = VisualRoot?.ClientSize.Width ?? 0;
-        (DataContext as NoteViewModel)!.LineEnd = new Point(width, 0);
-    }
-
-    private void OnUnloaded(object? sender, RoutedEventArgs e)
-    {
-        PointerExited -= OnLostFocus;
-        SizeChanged -= OnSizeChanged;
     }
 
     private void UpdateContent(object? sender, RoutedEventArgs e)
@@ -63,7 +49,4 @@ public partial class Note : UserControl
         
         widgetLayoutProvider.Save(newLayout);
     }
-
-    private void OverlayClick(object? sender, PointerPressedEventArgs e) => Overlay.IsVisible = false;
-    private void OnLostFocus(object? sender, RoutedEventArgs e) => Overlay.IsVisible = true;
 }

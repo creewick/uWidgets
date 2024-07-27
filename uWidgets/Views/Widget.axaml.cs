@@ -69,7 +69,7 @@ public partial class Widget : Window
     public void ResizeExtraLarge() => Resize(8, 4);
     public void OpenSettings() => settingsWindow.Invoke().Show();
 
-    private void OnPointerPressed(object? sender, PointerPressedEventArgs e)
+    public void OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
         BeginMoveDrag(e);
         

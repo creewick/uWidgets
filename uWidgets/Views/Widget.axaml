@@ -29,6 +29,10 @@
         <Style Selector=":is(UserControl)">
             <Setter Property="Margin" Value="12" />
         </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
         <Style Selector="Window">
             <Setter Property="Template">
                 <ControlTemplate>
