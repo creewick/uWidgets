@@ -18,10 +18,11 @@
         </Style>
     </UserControl.Styles>
     
-    <Grid RowDefinitions="Auto,*">
-        <TextBlock Grid.Row="0" Text="{Binding Month}" 
+    <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,13*">
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Month}" 
+                   Margin="{Binding MonthMargin, RelativeSource={RelativeSource AncestorType={x:Type views:Month}}}"
                    Foreground="{DynamicResource SystemControlForegroundAccentBrush}" />
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding Days}">
+        <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Days}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="viewModels:DayViewModel">
                     <Grid>
@@ -30,12 +31,16 @@
                                 <Ellipse Canvas.Left="0" Canvas.Top="0" Width="100" Height="100"
                                          IsVisible="{Binding IsToday}"
                                          Fill="{DynamicResource SystemAccentColor}" />
+                                <TextBlock Width="100" Height="100"
+                                           TextAlignment="Center"
+                                           Margin="0,14,0,0"
+                                           FontSize="60"
+                                           Classes.weekend="{Binding IsWeekend}"
+                                           Classes.today="{Binding IsToday}"
+                                           Text="{Binding Day}"  />
                             </Canvas>
                         </Viewbox>
-                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" 
-                                   Classes.weekend="{Binding IsWeekend}"
-                                   Classes.today="{Binding IsToday}"
-                                   Text="{Binding Day}"  />
+                        
                     </Grid>
                     </DataTemplate>
             </ItemsControl.ItemTemplate>

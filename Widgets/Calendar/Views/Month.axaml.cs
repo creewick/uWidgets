@@ -32,11 +32,22 @@ public partial class Month : UserControl
         get => GetValue(TextSizeProperty);
         set => SetValue(TextSizeProperty, value);
     }
+    
+    public static readonly StyledProperty<Thickness> MonthMarginProperty = 
+        AvaloniaProperty.Register<Month, Thickness>(nameof(MonthMargin));
+    
+    public Thickness MonthMargin
+    {
+        get => GetValue(MonthMarginProperty);
+        set => SetValue(MonthMarginProperty, value);
+    }
 
     private void OnSizeChanged(object? sender, SizeChangedEventArgs e)
     {
         var fontSize = e.NewSize.Height / 12;
+        var margin = e.NewSize.Height / 32;
 
         TextSize = fontSize;
+        MonthMargin = new Thickness(-margin, 0,  0,  0);
     }
 }
