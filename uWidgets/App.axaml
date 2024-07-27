@@ -10,6 +10,10 @@
                 <ColorPaletteResources x:Key="Dark" AltHigh="#2E2E2E" />
             </FluentTheme.Palettes>
         </FluentTheme>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
         <Style>
             <Style.Resources>
                 <SolidColorBrush x:Key="WidgetBackground" Color="{DynamicResource SystemAltHighColor}" />

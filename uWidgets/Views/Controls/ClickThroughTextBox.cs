@@ -16,14 +16,27 @@ public class ClickThroughTextBox : TextBox, IStyleable
     {
         Focusable = false;
         AddHandler(PointerPressedEvent, OnPointerPressed, RoutingStrategies.Tunnel);
+        KeyDown += OnKeyDown;
         LostFocus += OnLostFocus;
         Initialized += OnInitialized;
         Unloaded += OnUnloaded;
     }
 
+    private void OnKeyDown(object? sender, KeyEventArgs e)
+    {
+        if (VisualRoot is Widget widget &&
+            ((e.Key == Key.Enter && !AcceptsReturn) || 
+             (e.Key == Key.Tab && !AcceptsTab) ||
+             (e.Key == Key.Escape)))
+        {
+            widget.FocusManager?.ClearFocus();
+        }
+    }
+
     private void OnUnloaded(object? sender, RoutedEventArgs e)
     {
         RemoveHandler(PointerPressedEvent, OnPointerPressed);
+        KeyDown -= OnKeyDown;
         LostFocus -= OnLostFocus;
         Initialized -= OnInitialized;
         Unloaded -= OnUnloaded;
