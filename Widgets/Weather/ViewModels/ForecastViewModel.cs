@@ -1,3 +1,4 @@
+using Avalonia.Media;
 using Avalonia.Threading;
 using ReactiveUI;
 using Weather.Models;
@@ -32,10 +33,18 @@ public class ForecastViewModel : ReactiveObject, IDisposable
         var code = (int) forecast.Current.WeatherCode;
 
         CurrentTemperature = $"{forecast.Current.Temperature:0}°";
+        CurrentIcon = WeatherIconProvider.GetIcon(forecast.Current.WeatherCode);
         CurrentCondition = Locales.Locale.ResourceManager.GetString($"Weather_Code_{code}");
         CurrentMinMax = $"{forecast.Daily.Max[0]:0}°  {forecast.Daily.Min[0]:0}°";
     }
 
+    private StreamGeometry currentIcon = new();
+    public StreamGeometry CurrentIcon
+    {
+        get => currentIcon;
+        private set => this.RaiseAndSetIfChanged(ref currentIcon, value);
+    }
+    
     public string CityName => model.Name;
 
     private string? currentTemperature = "█°";

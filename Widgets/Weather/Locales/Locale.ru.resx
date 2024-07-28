@@ -24,7 +24,7 @@
         <value>Ясно</value>
     </data>
     <data name="Weather_Code_1" xml:space="preserve">
-        <value>Преимущественно ясно</value>
+        <value>Ясно</value>
     </data>
     <data name="Weather_Code_2" xml:space="preserve">
         <value>Облачно</value>
@@ -39,13 +39,13 @@
         <value>Туман</value>
     </data>
     <data name="Weather_Code_51" xml:space="preserve">
-        <value>Моросящий дождь</value>
+        <value>Дождь</value>
     </data>
     <data name="Weather_Code_53" xml:space="preserve">
-        <value>Моросящий дождь</value>
+        <value>Дождь</value>
     </data>
     <data name="Weather_Code_55" xml:space="preserve">
-        <value>Моросящий дождь</value>
+        <value>Дождь</value>
     </data>
     <data name="Weather_Code_56" xml:space="preserve">
         <value>Изморось</value>

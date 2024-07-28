@@ -3,7 +3,7 @@ namespace Weather.Models.Forecast;
 public enum WeatherCode
 {
     ClearSky = 0,
-    MainlyClear = 1,
+    MostlyClear = 1,
     PartlyCloudy = 2,
     Overcast = 3,
     Fog = 45,
