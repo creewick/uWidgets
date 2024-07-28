@@ -1,0 +1,119 @@
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Weather" xml:space="preserve">
+        <value>Погода</value>
+    </data>
+    <data name="Weather_Forecast_Title" xml:space="preserve">
+        <value>Прогноз погоды</value>
+    </data>
+    <data name="Weather_Forecast_Subtitle" xml:space="preserve">
+        <value>Посмотрите текущие погодные условия и прогноз для местоположения</value>
+    </data>
+    <data name="Weather_Code_0" xml:space="preserve">
+        <value>Ясно</value>
+    </data>
+    <data name="Weather_Code_1" xml:space="preserve">
+        <value>Преимущественно ясно</value>
+    </data>
+    <data name="Weather_Code_2" xml:space="preserve">
+        <value>Облачно</value>
+    </data>
+    <data name="Weather_Code_3" xml:space="preserve">
+        <value>Пасмурно</value>
+    </data>
+    <data name="Weather_Code_45" xml:space="preserve">
+        <value>Туман</value>
+    </data>
+    <data name="Weather_Code_48" xml:space="preserve">
+        <value>Туман</value>
+    </data>
+    <data name="Weather_Code_51" xml:space="preserve">
+        <value>Моросящий дождь</value>
+    </data>
+    <data name="Weather_Code_53" xml:space="preserve">
+        <value>Моросящий дождь</value>
+    </data>
+    <data name="Weather_Code_55" xml:space="preserve">
+        <value>Моросящий дождь</value>
+    </data>
+    <data name="Weather_Code_56" xml:space="preserve">
+        <value>Изморось</value>
+    </data>
+    <data name="Weather_Code_57" xml:space="preserve">
+        <value>Изморось</value>
+    </data>
+    <data name="Weather_Code_61" xml:space="preserve">
+        <value>Дождь</value>
+    </data>
+    <data name="Weather_Code_63" xml:space="preserve">
+        <value>Дождь</value>
+    </data>
+    <data name="Weather_Code_65" xml:space="preserve">
+        <value>Сильный дождь</value>
+    </data>
+    <data name="Weather_Code_66" xml:space="preserve">
+        <value>Снег с дождем</value>
+    </data>
+    <data name="Weather_Code_67" xml:space="preserve">
+        <value>Снег с дождем</value>
+    </data>
+    <data name="Weather_Code_71" xml:space="preserve">
+        <value>Снег</value>
+    </data>
+    <data name="Weather_Code_73" xml:space="preserve">
+        <value>Снег</value>
+    </data>
+    <data name="Weather_Code_75" xml:space="preserve">
+        <value>Сильный снегопад</value>
+    </data>
+    <data name="Weather_Code_77" xml:space="preserve">
+        <value>Град</value>
+    </data>
+    <data name="Weather_Code_80" xml:space="preserve">
+        <value>Дождь</value>
+    </data>
+    <data name="Weather_Code_81" xml:space="preserve">
+        <value>Дождь</value>
+    </data>
+    <data name="Weather_Code_82" xml:space="preserve">
+        <value>Дождь</value>
+    </data>
+    <data name="Weather_Code_85" xml:space="preserve">
+        <value>Снег с дождем</value>
+    </data>
+    <data name="Weather_Code_86" xml:space="preserve">
+        <value>Снег с дождем</value>
+    </data>
+    <data name="Weather_Code_95" xml:space="preserve">
+        <value>Гроза</value>
+    </data>
+    <data name="Weather_Code_96" xml:space="preserve">
+        <value>Гроза</value>
+    </data>
+    <data name="Weather_Code_99" xml:space="preserve">
+        <value>Гроза</value>
+    </data>
+    <data name="Weather_Location" xml:space="preserve">
+        <value>Местоположение</value>
+    </data>
+    <data name="Weather_Units" xml:space="preserve">
+        <value>Температура</value>
+    </data>
+    <data name="Weather_Units_Celsius" xml:space="preserve">
+        <value>Цельсий</value>
+    </data>
+    <data name="Weather_Units_Fahrenheit" xml:space="preserve">
+        <value>Фаренгейт</value>
+    </data>
+</root>
