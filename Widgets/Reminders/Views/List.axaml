@@ -5,7 +5,7 @@
              xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
              x:Class="Reminders.Views.List"
              x:DataType="viewModels:RemindersViewModel"
-             Margin="12,12,12,4">
+             Margin="12,12,6,4">
     
     <UserControl.Styles>
         <Style Selector="TextBox">
@@ -14,21 +14,25 @@
         </Style>
     </UserControl.Styles>
              
-    <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, Auto">
-        <TextBox Grid.Row="0" Grid.Column="0" 
+    <Grid Name="Grid" RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, Auto">
+        <TextBox Name="ListName"
+                 Grid.Row="0" Grid.Column="0" 
                  Padding="0" MinHeight="16"
+                 Margin="0 0 8 0"
+                 MinWidth="90"
                  FontSize="16" FontWeight="SemiBold"
                  VerticalAlignment="Top"
                  Text="{Binding ListName}"
                  Foreground="{DynamicResource SystemControlForegroundAccentBrush}"
                  LostFocus="ListNameChanged"/>
-        <TextBlock Grid.Row="0" Grid.Column="1"
+        <TextBlock Name="Count"
+                   Grid.Row="0" Grid.Column="1"
                    HorizontalAlignment="Right"
                    FontSize="20" FontWeight="Bold"
-                   Margin="8 -4 0 2"
+                   Margin="0 -3 6 0"
                    VerticalAlignment="Top"
                    Text="{Binding Count}" />
-        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+        <ScrollViewer Name="Entries" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel>
                 <ItemsControl ItemsSource="{Binding Reminders}">
                     <ItemsControl.ItemTemplate>
@@ -58,7 +62,7 @@
                 </ItemsControl>
             </StackPanel>
         </ScrollViewer>
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ColumnDefinitions="Auto, *">
+        <Grid Name="Input" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ColumnDefinitions="Auto, *">
             <Button Grid.Column="0" Width="19" Padding="0" Margin="0,-2,0,0" Background="Transparent" CornerRadius="12">
                 <TextBlock Text="◌" Opacity="0.5" FontSize="34" LineHeight="32" Margin="-1.5,-14,0,0" />
             </Button>

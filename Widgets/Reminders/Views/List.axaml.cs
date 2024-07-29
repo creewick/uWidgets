@@ -1,13 +1,13 @@
 using System.Text.Json;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Input;
 using Avalonia.Interactivity;
-using DynamicData;
+using Avalonia.Layout;
 using Reminders.Locales;
 using Reminders.Models;
 using Reminders.ViewModels;
 using uWidgets.Core.Interfaces;
+using uWidgets.Services;
 
 namespace Reminders.Views;
 
@@ -24,9 +24,59 @@ public partial class List : UserControl
         this.model = model;
         this.widgetLayoutProvider = widgetLayoutProvider;
         DataContext = new RemindersViewModel(model);
+        SizeChanged += OnSizeChanged;
+        Unloaded += OnUnloaded;
         InitializeComponent();
     }
-    
+
+    private void OnUnloaded(object? sender, RoutedEventArgs e)
+    {
+        SizeChanged -= OnSizeChanged;
+        Unloaded -= OnUnloaded;
+    }
+
+    private void OnSizeChanged(object? sender, SizeChangedEventArgs e)
+    {
+        const int smallSize = 160;
+        var small = e.NewSize is { Width: < smallSize, Height: < smallSize };
+        var wide = e.NewSize.AspectRatio >= 1.5;
+
+        if (small && !wide)
+        {
+            Margin = new Thickness(12, 12, 6, 4);
+            Grid.ColumnDefinitions = new ColumnDefinitions("*, Auto");
+            Grid.RowDefinitions = new RowDefinitions("Auto, *, Auto");
+            Grid.SetPosition(ListName, 0, 0);
+            ListName.VerticalAlignment = VerticalAlignment.Top;
+            Grid.SetPosition(Count, 1, 0);
+            Count.HorizontalAlignment = HorizontalAlignment.Right;
+            Count.FontSize = 20;
+            Grid.SetPosition(Entries, 0, 1, 2);
+            Grid.SetPosition(Input, 0, 2, 2);
+        } else if (wide)
+        {
+            Margin = new Thickness(12, 4, 6, 4);
+            Grid.ColumnDefinitions = new ColumnDefinitions("Auto, *");
+            Grid.RowDefinitions = new RowDefinitions("*, Auto, Auto");
+            Grid.SetPosition(ListName, 0, 2);
+            ListName.VerticalAlignment = VerticalAlignment.Center;
+            Grid.SetPosition(Count, 0, 1);
+            Count.HorizontalAlignment = HorizontalAlignment.Left;
+            Count.FontSize = 32;
+            Grid.SetPosition(Entries, 1, 0, 1, 2);
+            Grid.SetPosition(Input, 1, 2);
+        }
+
+        // var wide = e.NewSize.AspectRatio >= 1.5;
+        //
+        // Grid.ColumnDefinitions = new ColumnDefinitions(wide ? "*,*,*,*" : "*,*");
+        // Grid.RowDefinitions = new RowDefinitions(wide ? "*" : "*,*");
+        // Grid.SetColumn(Third, wide ? 2 : 0);
+        // Grid.SetRow(Third, wide ? 0 : 1);
+        // Grid.SetColumn(Fourth, wide ? 3 : 1);
+        // Grid.SetRow(Fourth, wide ? 0 : 1);
+    }
+
     private void ListNameChanged(object? sender, RoutedEventArgs e)
     {
         var listName = (sender as TextBox)!.Text;
