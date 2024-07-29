@@ -156,4 +156,19 @@
     <data name="Settings_Appearance_Monochrome_Subtitle" xml:space="preserve">
         <value>Widgets elements appear in the same color</value>
     </data>
+    <data name="Update_SoftwareUpdate" xml:space="preserve">
+        <value>Software Update</value>
+    </data>
+    <data name="Update_UpdateFormat" xml:space="preserve">
+        <value>uWidgets {0} is available to&#160;download</value>
+    </data>
+    <data name="Update_Download" xml:space="preserve">
+        <value>Download</value>
+    </data>
+    <data name="Update_Later" xml:space="preserve">
+        <value>Later</value>
+    </data>
+    <data name="Update_SkipThisVersion" xml:space="preserve">
+        <value>Skip This Version</value>
+    </data>
 </root>

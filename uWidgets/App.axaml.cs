@@ -25,6 +25,7 @@ public class App : Application
             .AddSingleton<IGridService<Widget>, GridService>()
             .AddSingleton<IWidgetFactory<Window, UserControl>, WidgetFactory>()
             .AddSingleton<Settings, Settings>()
+            .AddSingleton<UpdateService, UpdateService>()
             .BuildServiceProvider();
 
         var appSettingsProvider = services
@@ -49,6 +50,8 @@ public class App : Application
 
         if (widgets.Count == 0)
             services.GetRequiredService<Settings>().Show();
+        
+        services.GetRequiredService<UpdateService>().CheckForUpdates();
         
         base.OnFrameworkInitializationCompleted();
     }

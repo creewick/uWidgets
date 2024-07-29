@@ -375,6 +375,51 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        public static string Update_Download {
+            get {
+                return ResourceManager.GetString("Update_Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Later.
+        /// </summary>
+        public static string Update_Later {
+            get {
+                return ResourceManager.GetString("Update_Later", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip This Version.
+        /// </summary>
+        public static string Update_SkipThisVersion {
+            get {
+                return ResourceManager.GetString("Update_SkipThisVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software Update.
+        /// </summary>
+        public static string Update_SoftwareUpdate {
+            get {
+                return ResourceManager.GetString("Update_SoftwareUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uWidgets {0} is available to download.
+        /// </summary>
+        public static string Update_UpdateFormat {
+            get {
+                return ResourceManager.GetString("Update_UpdateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Widget.
         /// </summary>
         public static string Widget {

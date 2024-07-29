@@ -149,4 +149,19 @@
     <data name="Settings_Appearance_Monochrome_Title" xml:space="preserve">
         <value>Монохромная тема</value>
     </data>
+    <data name="Update_SoftwareUpdate" xml:space="preserve">
+        <value>Обновление приложения</value>
+    </data>
+    <data name="Update_UpdateFormat" xml:space="preserve">
+        <value>uWidgets {0} доступно для&#160;скачивания</value>
+    </data>
+    <data name="Update_Download" xml:space="preserve">
+        <value>Скачать</value>
+    </data>
+    <data name="Update_Later" xml:space="preserve">
+        <value>Позже</value>
+    </data>
+    <data name="Update_SkipThisVersion" xml:space="preserve">
+        <value>Пропустить эту версию</value>
+    </data>
 </root>
