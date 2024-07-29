@@ -6,13 +6,8 @@ namespace Weather.Services;
 
 public class OpenMeteoWeatherProvider
 {
-    private readonly HttpClient httpClient;
+    private readonly HttpClient httpClient = new();
 
-    public OpenMeteoWeatherProvider()
-    {
-        httpClient = new HttpClient();
-    }
-    
     public async Task<ForecastResponse?> GetForecastAsync(double latitude, double longitude, string temperatureUnit)
     {
         try
@@ -35,8 +30,9 @@ public class OpenMeteoWeatherProvider
 
             return forecast;
         }
-        catch (Exception)
+        catch (Exception e)
         {
+            await File.WriteAllTextAsync("weather_crash_log.txt", $"{e.Message}{Environment.NewLine}{e.StackTrace}");
             return null;
         }
     }
@@ -45,9 +41,11 @@ public class OpenMeteoWeatherProvider
     {
         try
         {
+            var language = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+            
             var url = $"https://geocoding-api.open-meteo.com/v1/search?" +
                       $"name={cityName}&" +
-                      $"language={Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName}";
+                      $"language={language}";
 
             var response = await httpClient.GetAsync(url);
 
@@ -60,6 +58,7 @@ public class OpenMeteoWeatherProvider
         }
         catch (Exception e)
         {
+            await File.WriteAllTextAsync("weather_crash_log.txt", $"{e.Message}{Environment.NewLine}{e.StackTrace}");
             return null;
         }
     }
