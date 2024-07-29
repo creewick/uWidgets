@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.Json;
 using Weather.Models.Forecast;
 using Weather.Models.Geocoding;
@@ -12,9 +13,12 @@ public class OpenMeteoWeatherProvider
     {
         try
         {
+            var latitudeString = string.Format(CultureInfo.InvariantCulture, "{0:F4}", latitude);
+            var longitudeString = string.Format(CultureInfo.InvariantCulture, "{0:F4}", longitude);
+            
             var url = $"https://api.open-meteo.com/v1/forecast?" +
-                      $"latitude={latitude:F4}&" +
-                      $"longitude={longitude:F4}&" +
+                      $"latitude={latitudeString}&" +
+                      $"longitude={longitudeString}&" +
                       $"temperature_unit={temperatureUnit}&" +
                       $"current=temperature_2m,weathercode&" +
                       $"hourly=temperature_2m,weathercode&" +
@@ -23,7 +27,7 @@ public class OpenMeteoWeatherProvider
             
             var response = await httpClient.GetAsync(url);
 
-            if (!response.IsSuccessStatusCode) return null;
+            if (!response.IsSuccessStatusCode) throw new Exception(JsonSerializer.Serialize(response));
 
             var json = await response.Content.ReadAsStringAsync();
             var forecast = JsonSerializer.Deserialize<ForecastResponse>(json);
