@@ -1,33 +1,27 @@
 ﻿using Avalonia.Threading;
 using Clock.Models;
 using ReactiveUI;
+using uWidgets.Services;
 
 namespace Clock.ViewModels;
 
 public class DigitalClockViewModel : ReactiveObject, IDisposable
 {
     private readonly ClockModel clockModel;
-    private readonly DispatcherTimer timer;
+    private readonly UpdateTimer timer;
 
     public DigitalClockViewModel(ClockModel clockModel)
     {
         this.clockModel = clockModel;
-        timer = new DispatcherTimer { Interval = GetInitialTimerInterval(DateTime.Now) };
-        timer.Tick += Tick;
-        timer.Start();
+        timer = clockModel.ShowSeconds ? TimerService.Timer1Second : TimerService.Timer1Minute;
+        timer.Subscribe(UpdateTime);
         UpdateTime();
     }
     
     public void Dispose()
     {
-        timer.Stop();
-        timer.Tick -= Tick;
-    }
-    
-    private void Tick(object? sender, EventArgs e)
-    {
-        timer.Interval = GetTimerInterval();
-        UpdateTime();
+        timer.Unsubscribe(UpdateTime);
+        GC.SuppressFinalize(this);
     }
 
     private void UpdateTime()
@@ -53,12 +47,4 @@ public class DigitalClockViewModel : ReactiveObject, IDisposable
     public string TimeText => Time.ToString($"{HH}:mm{SS}{AM}");
     public string DateText => Time.ToString("D", Thread.CurrentThread.CurrentUICulture); 
     public bool ShowDate => clockModel.ShowDate;
-
-    private TimeSpan GetInitialTimerInterval(DateTime now) => clockModel.ShowSeconds
-        ? TimeSpan.FromMilliseconds(1000 - now.Millisecond)
-        : TimeSpan.FromSeconds(60 - now.Second);
-
-    private TimeSpan GetTimerInterval() => clockModel.ShowSeconds 
-        ? TimeSpan.FromSeconds(1)
-        : TimeSpan.FromSeconds(60);
 }

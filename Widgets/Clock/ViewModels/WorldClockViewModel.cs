@@ -19,5 +19,9 @@ public class WorldClockViewModel(WorldClockModel worldClockModel) : IDisposable
     public AnalogClockViewModel Third => viewModels[2];
     public AnalogClockViewModel Fourth => viewModels[3];
 
-    public void Dispose() => viewModels.ForEach(x => x.Dispose());
+    public void Dispose()
+    {
+        viewModels.ForEach(x => x.Dispose());
+        GC.SuppressFinalize(this);
+    }
 }

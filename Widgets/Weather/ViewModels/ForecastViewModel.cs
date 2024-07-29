@@ -1,6 +1,6 @@
 using Avalonia.Media;
-using Avalonia.Threading;
 using ReactiveUI;
+using uWidgets.Services;
 using Weather.Models;
 using Weather.Services;
 
@@ -10,21 +10,18 @@ public class ForecastViewModel : ReactiveObject, IDisposable
 {
     private readonly ForecastModel model;
     private readonly OpenMeteoWeatherProvider provider;
-    private readonly DispatcherTimer timer;
 
     public ForecastViewModel(ForecastModel model)
     {
         provider = new OpenMeteoWeatherProvider();
         this.model = model;
-        timer = new DispatcherTimer { Interval = TimeSpan.FromHours(1) };
-        timer.Tick += Tick;
-        timer.Start();
-        _ = UpdateForecast();
+        TimerService.Timer1Hour.Subscribe(UpdateForecast);
+        UpdateForecast();
     }
 
-    private void Tick(object? sender, EventArgs e) => _ = UpdateForecast();
+    private void UpdateForecast() => _ = UpdateForecastAsync();
 
-    private async Task UpdateForecast()
+    private async Task UpdateForecastAsync()
     {
         var forecast = await provider.GetForecastAsync(model.Latitude, model.Longitude, model.TemperatureUnit);
 
@@ -70,7 +67,7 @@ public class ForecastViewModel : ReactiveObject, IDisposable
 
     public void Dispose()
     {
-        timer.Stop();
-        timer.Tick -= Tick;
+        TimerService.Timer1Hour.Unsubscribe(UpdateForecast);
+        GC.SuppressFinalize(this);
     }
 }

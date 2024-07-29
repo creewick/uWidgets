@@ -1,41 +1,36 @@
 using System.Globalization;
-using Avalonia.Threading;
 using Calendar.Models;
 using ReactiveUI;
+using uWidgets.Services;
 
 namespace Calendar.ViewModels;
 
 public class MonthCalendarViewModel : ReactiveObject, IDisposable
 {
     private readonly MonthCalendarModel monthCalendarModel;
-    private readonly DispatcherTimer timer;
+    private DateTime currentDate;
     
     public MonthCalendarViewModel(MonthCalendarModel monthCalendarModel)
     {
         this.monthCalendarModel = monthCalendarModel;
-        timer = new DispatcherTimer { Interval = GetInitialTimerInterval(DateTime.Now) };
-        timer.Tick += Tick;
-        timer.Start();
+        TimerService.Timer5Minutes.Subscribe(UpdateTime);
         UpdateTime();
     }
 
     public void Dispose()
     {
-        timer.Stop();
-        timer.Tick -= Tick;
+        TimerService.Timer5Minutes.Unsubscribe(UpdateTime);
+        GC.SuppressFinalize(this);
     }
     
-    private void Tick(object? sender, EventArgs e)
-    {      
-        timer.Interval = GetTimerInterval();
-        UpdateTime();
-    }
-
     private void UpdateTime()
     {
         var now = DateTime.Now;
         var format = Thread.CurrentThread.CurrentUICulture.DateTimeFormat;
-        
+
+        if (currentDate.Date == now.Date) return;
+
+        currentDate = now;
         Month = format.GetMonthName(now.Month).ToUpper();
         Days = GetWeekDays(format)
             .Concat(GetEmptyDays(now))
@@ -89,6 +84,4 @@ public class MonthCalendarViewModel : ReactiveObject, IDisposable
     }
     
     private static bool IsWeekend(DayOfWeek dayOfWeek) => dayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday;
-    private TimeSpan GetInitialTimerInterval(DateTime now) => TimeSpan.FromHours(24) - now.TimeOfDay;
-    private TimeSpan GetTimerInterval() => TimeSpan.FromHours(24);
 }

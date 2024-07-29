@@ -1,30 +1,22 @@
-using Avalonia.Threading;
 using ReactiveUI;
+using uWidgets.Services;
 
 namespace Calendar.ViewModels;
 
 public class DateCalendarViewModel : ReactiveObject, IDisposable
 {
-    private readonly DispatcherTimer timer;
+    private DateTime currentDate;
     
     public DateCalendarViewModel()
     {
-        timer = new DispatcherTimer { Interval = GetInitialTimerInterval(DateTime.Now) };
-        timer.Tick += Tick;
-        timer.Start();
+        TimerService.Timer5Minutes.Subscribe(UpdateTime);
         UpdateTime();
     }
     
     public void Dispose()
     {
-        timer.Stop();
-        timer.Tick -= Tick;
-    }
-    
-    private void Tick(object? sender, EventArgs e)
-    {
-        timer.Interval = GetTimerInterval();
-        UpdateTime();
+        TimerService.Timer5Minutes.Unsubscribe(UpdateTime);
+        GC.SuppressFinalize(this);
     }
 
     private void UpdateTime()
@@ -32,6 +24,9 @@ public class DateCalendarViewModel : ReactiveObject, IDisposable
         var now = DateTime.Now;
         var format = Thread.CurrentThread.CurrentUICulture.DateTimeFormat;
         
+        if (currentDate.Date == now.Date) return;
+
+        currentDate = now;
         Month = format.GetAbbreviatedMonthName(now.Month);
         DayOfWeek = format.GetAbbreviatedDayName(now.DayOfWeek).Replace(".", "");
         Day = now.Day.ToString();
@@ -57,7 +52,4 @@ public class DateCalendarViewModel : ReactiveObject, IDisposable
         get => day;
         private set => this.RaiseAndSetIfChanged(ref day, value);
     }
-
-    private TimeSpan GetInitialTimerInterval(DateTime now) => TimeSpan.FromHours(24) - now.TimeOfDay;
-    private TimeSpan GetTimerInterval() => TimeSpan.FromHours(24);
 }
