@@ -5,7 +5,7 @@
              xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
              x:Class="Reminders.Views.List"
              x:DataType="viewModels:RemindersViewModel"
-             Margin="12,12,6,4">
+             Margin="12,8,6,4">
     
     <UserControl.Styles>
         <Style Selector="TextBox">
@@ -15,16 +15,16 @@
     </UserControl.Styles>
              
     <Grid Name="Grid" RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, Auto">
-        <TextBox Name="ListName"
-                 Grid.Row="0" Grid.Column="0" 
-                 Padding="0" MinHeight="16"
-                 Margin="0 0 8 0"
-                 MinWidth="90"
-                 FontSize="16" FontWeight="SemiBold"
-                 VerticalAlignment="Top"
-                 Text="{Binding ListName}"
-                 Foreground="{DynamicResource SystemControlForegroundAccentBrush}"
-                 LostFocus="ListNameChanged"/>
+        <controls:ClickThroughTextBox Name="ListName"
+                                      Grid.Row="0" Grid.Column="0" 
+                                      Padding="0" MinHeight="16"
+                                      Margin="0 0 8 0"
+                                      MinWidth="90"
+                                      FontSize="16" FontWeight="SemiBold"
+                                      VerticalAlignment="Top"
+                                      Text="{Binding ListName}"
+                                      Foreground="{DynamicResource SystemControlForegroundAccentBrush}"
+                                      LostFocus="ListNameChanged"/>
         <TextBlock Name="Count"
                    Grid.Row="0" Grid.Column="1"
                    HorizontalAlignment="Right"
@@ -32,6 +32,13 @@
                    Margin="0 -3 6 0"
                    VerticalAlignment="Top"
                    Text="{Binding Count}" />
+        <Path Name="Divider" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="False" Height="1" Stretch="Fill" Opacity="0.2" Margin="0 8 8 0"
+              StrokeThickness="2"
+              Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" >
+            <Path.Data>
+                <LineGeometry StartPoint="0,0" EndPoint="1,0"/>
+            </Path.Data>
+        </Path>
         <ScrollViewer Name="Entries" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel>
                 <ItemsControl ItemsSource="{Binding Reminders}">

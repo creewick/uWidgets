@@ -38,17 +38,18 @@ public partial class List : UserControl
     private void OnSizeChanged(object? sender, SizeChangedEventArgs e)
     {
         const int smallSize = 160;
-        var small = e.NewSize is { Width: < smallSize, Height: < smallSize };
+        var small = e.NewSize.Width < smallSize || e.NewSize.Height < smallSize;
         var wide = e.NewSize.AspectRatio >= 1.5;
 
         if (small && !wide)
         {
-            Margin = new Thickness(12, 12, 6, 4);
+            Margin = new Thickness(12, 8, 6, 4);
             Grid.ColumnDefinitions = new ColumnDefinitions("*, Auto");
             Grid.RowDefinitions = new RowDefinitions("Auto, *, Auto");
             Grid.SetPosition(ListName, 0, 0);
             ListName.VerticalAlignment = VerticalAlignment.Top;
             Grid.SetPosition(Count, 1, 0);
+            Divider.IsVisible = false;
             Count.HorizontalAlignment = HorizontalAlignment.Right;
             Count.FontSize = 20;
             Grid.SetPosition(Entries, 0, 1, 2);
@@ -61,10 +62,25 @@ public partial class List : UserControl
             Grid.SetPosition(ListName, 0, 2);
             ListName.VerticalAlignment = VerticalAlignment.Center;
             Grid.SetPosition(Count, 0, 1);
+            Divider.IsVisible = false;
             Count.HorizontalAlignment = HorizontalAlignment.Left;
             Count.FontSize = 32;
             Grid.SetPosition(Entries, 1, 0, 1, 2);
             Grid.SetPosition(Input, 1, 2);
+        }
+        else
+        {
+            Margin = new Thickness(12, 8, 6, 4);
+            Grid.ColumnDefinitions = new ColumnDefinitions("*, Auto");
+            Grid.RowDefinitions = new RowDefinitions("Auto, Auto, Auto, *, Auto");
+            Grid.SetPosition(ListName, 0, 1);
+            ListName.VerticalAlignment = VerticalAlignment.Bottom;
+            Grid.SetPosition(Count, 0, 0);
+            Count.HorizontalAlignment = HorizontalAlignment.Left;
+            Count.FontSize = 32;
+            Divider.IsVisible = true;
+            Grid.SetPosition(Entries, 0, 3, 2);
+            Grid.SetPosition(Input, 0, 4, 2);
         }
 
         // var wide = e.NewSize.AspectRatio >= 1.5;
