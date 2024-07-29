@@ -43,8 +43,8 @@ public class GridService(IAppSettingsProvider appSettingsProvider) : IGridServic
         var (size, margin, _, _) = appSettingsProvider.Get().Layout;
         
         if (addMargin)
-            return (int) scaling * (units * (size + margin) + margin);
+            return (int) (scaling * units * (size + margin) + margin);
 
-        return (int) scaling * (units * (size + margin) - margin);
+        return (int) (scaling * units * (size + margin) - margin);
     }
 }

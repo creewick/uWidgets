@@ -10,6 +10,5 @@ public static class Const
     public static string WidgetsFolder = Path.Combine(CurrentFolder, WidgetsFolderName);
     public static string AppSettingsFile = Path.Combine(CurrentFolder, AppSettingsFileName);
     public static string LayoutFile = Path.Combine(CurrentFolder, LayoutFileName);
-    public static float DisplayScaling = Interop.GetDpiForSystem() / 96.0f;
-    public static float CornerRadius = 48 / DisplayScaling;
+    public static float CornerRadius = 24;
 }
