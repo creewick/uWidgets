@@ -44,21 +44,21 @@ public class ForecastViewModel : ReactiveObject, IDisposable
     
     public string CityName => model.Name;
 
-    private string? currentTemperature = "█°";
+    private string? currentTemperature = "--°";
     public string? CurrentTemperature
     {
         get => currentTemperature;
         private set => this.RaiseAndSetIfChanged(ref currentTemperature, value);
     }
     
-    private string? currentCondition = "████";
+    private string? currentCondition = "--------";
     public string? CurrentCondition
     {
         get => currentCondition;
         private set => this.RaiseAndSetIfChanged(ref currentCondition, value);
     }
     
-    private string? currentMinMax = "█°  █°";
+    private string? currentMinMax = "--°  --°";
     public string? CurrentMinMax
     {
         get => currentMinMax;
