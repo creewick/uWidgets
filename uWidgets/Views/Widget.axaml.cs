@@ -8,6 +8,7 @@ using uWidgets.Core;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
 using uWidgets.Locales;
+using uWidgets.Services;
 
 namespace uWidgets.Views;
 
@@ -36,6 +37,7 @@ public partial class Widget : Window
         Content = userControl();
         
         InitializeComponent();
+        InteropService.RemoveWindowFromAltTab(this);
         
         Position = new PixelPoint(
             widgetLayoutProvider.Get().X,

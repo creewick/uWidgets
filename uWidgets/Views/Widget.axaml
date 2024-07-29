@@ -5,6 +5,7 @@
         x:Class="uWidgets.Views.Widget"
         Background="Transparent"
         ShowInTaskbar="False"
+        CanResize="False"
         SystemDecorations="None"
         x:DataType="views:Widget"
         Classes="Widget">
