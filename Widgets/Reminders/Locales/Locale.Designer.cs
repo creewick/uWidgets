@@ -69,6 +69,33 @@ namespace Reminders.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Reminders_Delete {
+            get {
+                return ResourceManager.GetString("Reminders_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete All.
+        /// </summary>
+        public static string Reminders_DeleteAll {
+            get {
+                return ResourceManager.GetString("Reminders_DeleteAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Completed.
+        /// </summary>
+        public static string Reminders_DeleteCompleted {
+            get {
+                return ResourceManager.GetString("Reminders_DeleteCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get quick access to one of your reminder lists.
         /// </summary>
         public static string Reminders_List_Subtitle {

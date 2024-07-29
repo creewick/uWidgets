@@ -27,4 +27,13 @@
     <data name="Reminders_List_Subtitle" xml:space="preserve">
         <value>Get quick access to one of your reminder lists</value>
     </data>
+    <data name="Reminders_DeleteCompleted" xml:space="preserve">
+        <value>Delete Completed</value>
+    </data>
+    <data name="Reminders_DeleteAll" xml:space="preserve">
+        <value>Delete All</value>
+    </data>
+    <data name="Reminders_Delete" xml:space="preserve">
+        <value>Delete</value>
+    </data>
 </root>
