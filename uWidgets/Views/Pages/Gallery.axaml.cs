@@ -21,7 +21,7 @@ public partial class Gallery : UserControl
     private readonly AssemblyInfo assemblyInfo;
     private readonly IWidgetFactory<Window, UserControl> widgetFactory;
     public List<WidgetPreviewViewModel> Widgets => GetWidgets();
-    public int WidgetSize => appSettingsProvider.Get().Layout.WidgetSize * 2;
+    public int WidgetSize => 160;
     public CornerRadius Radius => new(Const.CornerRadius / (VisualRoot?.RenderScaling ?? 1.0));
 
     public Gallery(IAppSettingsProvider appSettingsProvider, ILayoutProvider layoutProvider, IAssemblyProvider assemblyProvider, 

@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using Avalonia.VisualTree;
 using uWidgets.Core;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
@@ -38,6 +39,14 @@ public partial class Widget : Window
         
         InitializeComponent();
         InteropService.RemoveWindowFromAltTab(this);
+        
+        if (ContentPresenter != null)
+        {
+            var scaleFactor = appSettingsProvider.Get().Layout.WidgetSize / 72f;
+            ContentPresenter.Width = Width / scaleFactor;
+            ContentPresenter.Height = Height / scaleFactor;
+            ContentPresenter.RenderTransform = new ScaleTransform(scaleFactor, scaleFactor);
+        }
         
         Position = new PixelPoint(
             widgetLayoutProvider.Get().X,
@@ -83,10 +92,19 @@ public partial class Widget : Window
         var settings = widgetLayoutProvider.Get();
         widgetLayoutProvider.Save(settings with { X = Position.X, Y = Position.Y });
     }
-    
+
+    private Control? ContentPresenter => (Content as UserControl)?.GetVisualParent() as Control;
     private void Resize(int columns, int rows)
     {
         gridService.SetSize(this, columns, rows);
+        
+        if (ContentPresenter != null)
+        {
+            var scaleFactor = appSettingsProvider.Get().Layout.WidgetSize / 72f;
+            ContentPresenter.Width = Width / scaleFactor;
+            ContentPresenter.Height = Height / scaleFactor;
+            ContentPresenter.RenderTransform = new ScaleTransform(scaleFactor, scaleFactor);
+        }
         
         var settings = widgetLayoutProvider.Get();
         widgetLayoutProvider.Save(settings with { Width = (int)Width, Height = (int)Height });
