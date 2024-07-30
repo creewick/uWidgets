@@ -164,4 +164,10 @@
     <data name="Update_SkipThisVersion" xml:space="preserve">
         <value>Пропустить эту версию</value>
     </data>
+    <data name="Settings_Appearance_AccentColor_Null" xml:space="preserve">
+        <value>Системный</value>
+    </data>
+    <data name="Settings_Appearance_AccentColor_Manual" xml:space="preserve">
+        <value>Свой</value>
+    </data>
 </root>

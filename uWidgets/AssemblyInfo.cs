@@ -3,4 +3,4 @@
 [assembly: AssemblyTitle("uWidgets")]
 [assembly: AssemblyDescription("A macOS styled widget pack for Windows")]
 [assembly: AssemblyCompany("creewick")]
-[assembly: AssemblyVersion("0.2.2")]
+[assembly: AssemblyVersion("0.3.0")]

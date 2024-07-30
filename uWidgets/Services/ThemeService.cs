@@ -1,6 +1,7 @@
 ﻿using System;
 using Avalonia;
 using Avalonia.Markup.Xaml.Styling;
+using Avalonia.Media;
 using Avalonia.Styling;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
@@ -33,6 +34,13 @@ public class ThemeService : IThemeService
             false => ThemeVariant.Light,
             _ => ThemeVariant.Dark,
         };
+
+        if (theme.AccentColor != null && Color.TryParse(theme.AccentColor, out var color))
+        {
+            Application.Current.Resources["SystemAccentColor"] = color;
+            Application.Current.Resources["SystemAccentColorDark1"] = color;
+            Application.Current.Resources["SystemAccentColorLight1"] = color;
+        }
         
         SwitchStyle(transparentStyle, theme.Transparency);
         SwitchStyle(monochromeStyle, theme.Monochrome);

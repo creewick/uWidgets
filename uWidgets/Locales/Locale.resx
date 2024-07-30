@@ -171,4 +171,10 @@
     <data name="Update_SkipThisVersion" xml:space="preserve">
         <value>Skip This Version</value>
     </data>
+    <data name="Settings_Appearance_AccentColor_Null" xml:space="preserve">
+        <value>System</value>
+    </data>
+    <data name="Settings_Appearance_AccentColor_Manual" xml:space="preserve">
+        <value>Manual</value>
+    </data>
 </root>

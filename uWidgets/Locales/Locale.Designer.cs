@@ -132,6 +132,24 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manual.
+        /// </summary>
+        public static string Settings_Appearance_AccentColor_Manual {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_AccentColor_Manual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System.
+        /// </summary>
+        public static string Settings_Appearance_AccentColor_Null {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_AccentColor_Null", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accent color.
         /// </summary>
         public static string Settings_Appearance_AccentColor_Title {

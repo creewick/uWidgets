@@ -1,4 +1,6 @@
 using System.Linq;
+using System.Security.AccessControl;
+using Avalonia.Media;
 using ReactiveUI;
 using uWidgets.Core.Interfaces;
 using uWidgets.Locales;
@@ -13,6 +15,39 @@ public class AppearanceViewModel(IAppSettingsProvider appSettingsProvider) : Rea
         new ThemeViewModel(Locale.Settings_Appearance_DarkMode_True, true),
         new ThemeViewModel(Locale.Settings_Appearance_DarkMode_Null, null)
     ];
+
+    public AccentColorViewModel[] AccentComboboxItems =>
+    [
+        new AccentColorViewModel(Locale.Settings_Appearance_AccentColor_Null, null),
+        new AccentColorViewModel(Locale.Settings_Appearance_AccentColor_Manual, "#3376CD")
+    ];
+
+    public bool ShowColorPalette => appSettingsProvider.Get().Theme.AccentColor != null;
+    
+    public AccentColorViewModel AccentMode
+    {
+        get => appSettingsProvider.Get().Theme.AccentColor == null ? AccentComboboxItems[0] : AccentComboboxItems[1];
+        set
+        {
+            var settings = appSettingsProvider.Get();
+            var newTheme = settings.Theme with { AccentColor = value.Value };
+            var newSettings = settings with { Theme = newTheme };
+            appSettingsProvider.Save(newSettings);
+            this.RaisePropertyChanged(nameof(ShowColorPalette));
+        }
+    }
+
+    public Color AccentColor
+    {
+        get => Color.TryParse(appSettingsProvider.Get().Theme.AccentColor, out var color) ? color : Colors.DodgerBlue;
+        set
+        {
+            var settings = appSettingsProvider.Get();
+            var newTheme = settings.Theme with { AccentColor = value.ToString() };
+            var newSettings = settings with { Theme = newTheme };
+            appSettingsProvider.Save(newSettings);
+        }
+    }
 
     public ThemeViewModel? DarkMode
     {
