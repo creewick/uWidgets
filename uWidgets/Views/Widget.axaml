@@ -57,12 +57,6 @@
                 Width="{Binding Width, RelativeSource={RelativeSource AncestorType=Window}}"
                 Height="{Binding Height, RelativeSource={RelativeSource AncestorType=Window}}">
             <ContentPresenter Name="ContentPresenter" />
-            <!-- <Border.Transitions> -->
-            <!--     <Transitions> -->
-            <!--         <DoubleTransition Property="Width" Duration="0:0:0.3"/> -->
-            <!--         <DoubleTransition Property="Height" Duration="0:0:0.3"/> -->
-            <!--     </Transitions> -->
-            <!-- </Border.Transitions> -->
         </Border>
     </Grid>
     
