@@ -249,6 +249,24 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Align widget size to grid.
+        /// </summary>
+        public static string Settings_Appearance_SnapSize_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_SnapSize_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snap size.
+        /// </summary>
+        public static string Settings_Appearance_SnapSize_Title {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_SnapSize_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
         public static string Settings_Appearance_Theme {

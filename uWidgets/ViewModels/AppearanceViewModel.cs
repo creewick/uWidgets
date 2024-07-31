@@ -96,6 +96,18 @@ public class AppearanceViewModel(IAppSettingsProvider appSettingsProvider) : Rea
             appSettingsProvider.Save(newSettings);
         }
     }
+    
+    public bool SnapSize 
+    {
+        get => appSettingsProvider.Get().Layout.SnapSize;
+        set
+        {
+            var settings = appSettingsProvider.Get();
+            var newLayout = settings.Layout with { SnapSize = value };
+            var newSettings = settings with { Layout = newLayout };
+            appSettingsProvider.Save(newSettings);
+        }
+    }
 
     public int WidgetSize
     {

@@ -5,7 +5,10 @@
         x:Class="uWidgets.Views.Widget"
         Background="Transparent"
         ShowInTaskbar="False"
-        CanResize="False"
+        ToolTip.Placement="BottomEdgeAlignedRight"
+        ToolTip.
+        ToolTip.VerticalOffset="-30"
+        ToolTip.HorizontalOffset="15"
         SystemDecorations="None"
         x:DataType="views:Widget"
         Classes="Widget">
@@ -30,28 +33,35 @@
         <Style Selector=":is(UserControl)">
             <Setter Property="Margin" Value="12" />
         </Style>
-        <Style Selector="Window">
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <Grid>
-                        <Border CornerRadius="{Binding Radius}" Background="{DynamicResource WidgetBackground}" 
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Left"
-                                ClipToBounds="True"
-                                Width="{Binding Width, RelativeSource={RelativeSource AncestorType=Window}}"
-                                Height="{Binding Height, RelativeSource={RelativeSource AncestorType=Window}}">
-                            <ContentPresenter Content="{TemplateBinding Content}" />
-                            <Border.Transitions>
-                                <Transitions>
-                                    <DoubleTransition Property="Width" Duration="0:0:0.3"/>
-                                    <DoubleTransition Property="Height" Duration="0:0:0.3"/>
-                                </Transitions>
-                            </Border.Transitions>
-                        </Border>
-                    </Grid>
-                </ControlTemplate>
-            </Setter>
+        <Style Selector="ToolTip">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
         </Style>
     </Window.Styles>
+    
+    <ToolTip.Tip>
+        <Viewbox Stretch="Uniform" Width="32" Height="32">
+            <Path Fill="{DynamicResource SystemControlForegroundBaseHighBrush}" 
+                  Data="M1 3A1 1 0 001 5C3 5 5 3 5 1A1 1 0 003 1C3 2 2 3 1 3"
+                  PointerPressed="Resize"/>
+        </Viewbox>
+    </ToolTip.Tip>
+    
+    <Grid>
+        <Border CornerRadius="{Binding Radius}" Background="{DynamicResource WidgetBackground}" 
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                ClipToBounds="True"
+                Width="{Binding Width, RelativeSource={RelativeSource AncestorType=Window}}"
+                Height="{Binding Height, RelativeSource={RelativeSource AncestorType=Window}}">
+            <ContentPresenter Name="ContentPresenter" />
+            <Border.Transitions>
+                <Transitions>
+                    <DoubleTransition Property="Width" Duration="0:0:0.3"/>
+                    <DoubleTransition Property="Height" Duration="0:0:0.3"/>
+                </Transitions>
+            </Border.Transitions>
+        </Border>
+    </Grid>
     
 </Window>

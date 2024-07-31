@@ -4,7 +4,6 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
-using Avalonia.VisualTree;
 using uWidgets.Core;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
@@ -35,18 +34,15 @@ public partial class Widget : Window
         Width = widgetLayoutProvider.Get().Width;
         Title = $"{widgetLayoutProvider.Get().Type} {widgetLayoutProvider.Get().SubType}";
         DataContext = this;
-        Content = userControl();
         
         InitializeComponent();
         InteropService.RemoveWindowFromAltTab(this);
-        
-        if (ContentPresenter != null)
-        {
-            var scaleFactor = appSettingsProvider.Get().Layout.WidgetSize / 72f;
-            ContentPresenter.Width = Width / scaleFactor;
-            ContentPresenter.Height = Height / scaleFactor;
-            ContentPresenter.RenderTransform = new ScaleTransform(scaleFactor, scaleFactor);
-        }
+
+        ContentPresenter.Content = userControl();
+        var scaleFactor = appSettingsProvider.Get().Layout.WidgetSize / 72f;
+        ContentPresenter.Width = Width / scaleFactor;
+        ContentPresenter.Height = Height / scaleFactor;
+        ContentPresenter.RenderTransform = new ScaleTransform(scaleFactor, scaleFactor);
         
         Position = new PixelPoint(
             widgetLayoutProvider.Get().X,
@@ -67,7 +63,7 @@ public partial class Widget : Window
     private void UpdateControl(object? sender, WidgetLayout? oldLayout, WidgetLayout newLayout)
     {
         if (!Equals(oldLayout?.Settings, newLayout.Settings))
-            Content = userControl();
+            ContentPresenter.Content = userControl();
     }
 
     public bool ShowEditButton => editWidgetWindow != null;
@@ -82,6 +78,8 @@ public partial class Widget : Window
 
     public void OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
+        if (e.GetCurrentPoint(this).Properties.IsRightButtonPressed) return;
+        
         BeginMoveDrag(e);
         
         var appSettings = appSettingsProvider.Get();
@@ -93,26 +91,36 @@ public partial class Widget : Window
         widgetLayoutProvider.Save(settings with { X = Position.X, Y = Position.Y });
     }
 
-    private Control? ContentPresenter => (Content as UserControl)?.GetVisualParent() as Control;
     private void Resize(int columns, int rows)
     {
         gridService.SetSize(this, columns, rows);
-        
-        if (ContentPresenter != null)
-        {
-            var scaleFactor = appSettingsProvider.Get().Layout.WidgetSize / 72f;
-            ContentPresenter.Width = Width / scaleFactor;
-            ContentPresenter.Height = Height / scaleFactor;
-            ContentPresenter.RenderTransform = new ScaleTransform(scaleFactor, scaleFactor);
-        }
+        AfterResize();
+    }
+
+    private void AfterResize()
+    {
+        var scaleFactor = appSettingsProvider.Get().Layout.WidgetSize / 72f;
+        ContentPresenter.Width = Width / scaleFactor;
+        ContentPresenter.Height = Height / scaleFactor;
+        ContentPresenter.RenderTransform = new ScaleTransform(scaleFactor, scaleFactor);
         
         var settings = widgetLayoutProvider.Get();
         widgetLayoutProvider.Save(settings with { Width = (int)Width, Height = (int)Height });
+
     }
 
     public void Remove()
     {
         widgetLayoutProvider.Remove();
         Close();
+    }
+
+    private void Resize(object? sender, PointerPressedEventArgs e)
+    {
+        BeginResizeDrag(WindowEdge.SouthEast, e);
+        if (appSettingsProvider.Get().Layout.SnapSize)
+            gridService.SnapSize(this);
+        AfterResize();
+        e.Handled = true;
     }
 }

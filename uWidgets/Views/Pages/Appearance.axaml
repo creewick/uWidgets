@@ -75,5 +75,10 @@
                           Subtitle="{x:Static locales:Locale.Settings_Appearance_SnapPosition_Subtitle}">
             <ToggleSwitch IsChecked="{Binding SnapPosition}" />
         </controls:Setting>
+        <controls:Setting Icon="{DynamicResource SnapSize}" 
+                          Title="{x:Static locales:Locale.Settings_Appearance_SnapSize_Title}" 
+                          Subtitle="{x:Static locales:Locale.Settings_Appearance_SnapSize_Subtitle}">
+            <ToggleSwitch IsChecked="{Binding SnapSize}" />
+        </controls:Setting>
     </StackPanel>
 </UserControl>

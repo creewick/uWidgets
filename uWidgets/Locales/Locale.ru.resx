@@ -179,4 +179,10 @@
     <data name="Settings_General_Startup" xml:space="preserve">
         <value>Запуск</value>
     </data>
+    <data name="Settings_Appearance_SnapSize_Title" xml:space="preserve">
+        <value>Размер по сетке</value>
+    </data>
+    <data name="Settings_Appearance_SnapSize_Subtitle" xml:space="preserve">
+        <value>Выравнивать размер виджета по сетке</value>
+    </data>
 </root>
