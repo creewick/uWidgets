@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Avalonia;
+using Avalonia.Animation;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -70,10 +72,10 @@ public partial class Widget : Window
     public string Edit => $"{Locale.Widget_Edit} \"{widgetLayoutProvider.Get().Type}\"";
     public CornerRadius Radius => new(Const.CornerRadius / (Screens.ScreenFromWindow(this)?.Scaling ?? 1.0));
     public void EditWidget() => editWidgetWindow?.Invoke().ShowDialog(this);
-    public void ResizeSmall() => Resize(2, 2);
-    public void ResizeMedium() => Resize(4, 2);
-    public void ResizeLarge() => Resize(4, 4);
-    public void ResizeExtraLarge() => Resize(8, 4);
+    public void ResizeSmall() => _ = Resize(2, 2);
+    public void ResizeMedium() => _ = Resize(4, 2);
+    public void ResizeLarge() => _ = Resize(4, 4);
+    public void ResizeExtraLarge() => _ = Resize(8, 4);
     public void OpenSettings() => settingsWindow.Invoke().Show();
 
     public void OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -91,10 +93,17 @@ public partial class Widget : Window
         widgetLayoutProvider.Save(settings with { X = Position.X, Y = Position.Y });
     }
 
-    private void Resize(int columns, int rows)
+    private async Task Resize(int columns, int rows)
     {
+        Border.Transitions = new Transitions
+        {
+            new DoubleTransition { Property = WidthProperty, Duration = TimeSpan.FromMilliseconds(300) },
+            new DoubleTransition { Property = HeightProperty, Duration = TimeSpan.FromMilliseconds(300) }
+        };
         gridService.SetSize(this, columns, rows);
         AfterResize();
+        await Task.Delay(300);
+        Border.Transitions = null;
     }
 
     private void AfterResize()
