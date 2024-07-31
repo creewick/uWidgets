@@ -4,11 +4,12 @@ using System.Linq;
 using System.Resources;
 using ReactiveUI;
 using uWidgets.Core.Interfaces;
+using uWidgets.Core.Services;
 using uWidgets.Locales;
 
 namespace uWidgets.ViewModels;
 
-public class LanguageViewModel(IAppSettingsProvider appSettingsProvider) : ReactiveObject
+public class GeneralViewModel(IAppSettingsProvider appSettingsProvider) : ReactiveObject
 {
     public CultureInfo[] Languages => GetAvailableCultures().ToHashSet().OrderBy(x => x.DisplayName).ToArray();
     
@@ -23,6 +24,20 @@ public class LanguageViewModel(IAppSettingsProvider appSettingsProvider) : React
             appSettingsProvider.Save(newSettings);
         }
     }
+    
+    public bool RunOnStartup
+    {
+        get => appSettingsProvider.Get().RunOnStartup;
+        set
+        {
+            if (!StartupService.Set(value)) return;
+            
+            var settings = appSettingsProvider.Get();
+            var newSettings = settings with { RunOnStartup = value };
+            appSettingsProvider.Save(newSettings);
+        }
+    }
+    
     
     private static IEnumerable<CultureInfo> GetAvailableCultures()
     {

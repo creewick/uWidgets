@@ -5,7 +5,7 @@
              xmlns:globalization="clr-namespace:System.Globalization;assembly=System.Runtime"
              xmlns:locales="clr-namespace:uWidgets.Locales"
              x:Class="uWidgets.Views.Pages.General"
-             x:DataType="viewModels:LanguageViewModel">
+             x:DataType="viewModels:GeneralViewModel">
     <StackPanel Orientation="Vertical" Spacing="5">
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 0 0 10" 
                    Text="{x:Static locales:Locale.Settings_General_Language}"/>
@@ -21,6 +21,13 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </controls:Setting>
+        <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10" 
+                   Text="{x:Static locales:Locale.Settings_General_Startup}"/>
+        <controls:Setting Icon="{DynamicResource Play}"
+                          Title="{x:Static locales:Locale.Settings_General_Startup_Title}"
+                          Subtitle="{x:Static locales:Locale.Settings_General_Startup_Subtitle}">
+            <ToggleSwitch IsChecked="{Binding RunOnStartup}" />
+        </controls:Setting>   
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10" 
                    Text="{x:Static locales:Locale.Settings_General_Actions}"/>
         <controls:Setting Icon="{DynamicResource Refresh}"

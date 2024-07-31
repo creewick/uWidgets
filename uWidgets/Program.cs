@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using System;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using uWidgets.Core;
 
 namespace uWidgets;
@@ -20,7 +22,8 @@ class Program
         }
         catch (Exception e)
         {
-            File.WriteAllText("crash_log.txt", $"{e.Message}{Environment.NewLine}{e.StackTrace}");
+            var fileName = Path.Combine(Const.CurrentFolder, "crash_log.txt");
+            File.WriteAllText(fileName, $"{e.Message}{Environment.NewLine}{e.StackTrace}");
             throw;
         }
     }

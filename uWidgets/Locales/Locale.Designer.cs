@@ -393,6 +393,33 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Startup.
+        /// </summary>
+        public static string Settings_General_Startup {
+            get {
+                return ResourceManager.GetString("Settings_General_Startup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You need to run the application as Administrator to edit this setting.
+        /// </summary>
+        public static string Settings_General_Startup_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_General_Startup_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run on startup.
+        /// </summary>
+        public static string Settings_General_Startup_Title {
+            get {
+                return ResourceManager.GetString("Settings_General_Startup_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download.
         /// </summary>
         public static string Update_Download {

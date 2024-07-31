@@ -12,7 +12,7 @@ public partial class General : UserControl
 {
     public General(IAppSettingsProvider appSettingsProvider)
     {
-        DataContext = new LanguageViewModel(appSettingsProvider);
+        DataContext = new GeneralViewModel(appSettingsProvider);
         InitializeComponent();
     }
 

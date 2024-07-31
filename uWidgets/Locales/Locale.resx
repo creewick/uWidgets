@@ -177,4 +177,13 @@
     <data name="Settings_Appearance_AccentColor_Manual" xml:space="preserve">
         <value>Manual</value>
     </data>
+    <data name="Settings_General_Startup_Title" xml:space="preserve">
+        <value>Run on startup</value>
+    </data>
+    <data name="Settings_General_Startup_Subtitle" xml:space="preserve">
+        <value>You need to run the application as Administrator to edit this setting</value>
+    </data>
+    <data name="Settings_General_Startup" xml:space="preserve">
+        <value>Startup</value>
+    </data>
 </root>

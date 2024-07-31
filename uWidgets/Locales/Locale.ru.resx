@@ -170,4 +170,13 @@
     <data name="Settings_Appearance_AccentColor_Manual" xml:space="preserve">
         <value>Свой</value>
     </data>
+    <data name="Settings_General_Startup_Title" xml:space="preserve">
+        <value>Запускать при старте системы</value>
+    </data>
+    <data name="Settings_General_Startup_Subtitle" xml:space="preserve">
+        <value>Запустите приложение от имени Администратора для изменения этой опции</value>
+    </data>
+    <data name="Settings_General_Startup" xml:space="preserve">
+        <value>Запуск</value>
+    </data>
 </root>
