@@ -1,9 +1,6 @@
 using System.Text.Json;
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.VisualTree;
 using Notes.Locales;
 using Notes.Models;
 using Notes.ViewModels;

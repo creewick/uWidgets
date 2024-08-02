@@ -1,5 +1,4 @@
-﻿using Avalonia.Threading;
-using Clock.Models;
+﻿using Clock.Models;
 using ReactiveUI;
 using uWidgets.Services;
 

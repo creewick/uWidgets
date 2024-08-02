@@ -1,7 +1,6 @@
 using Avalonia.Media;
 using Weather.Models.Forecast;
 using Weather.ViewModels;
-using Exception = System.Exception;
 
 namespace Weather.Services;
 

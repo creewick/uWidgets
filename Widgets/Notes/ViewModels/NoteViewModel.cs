@@ -1,4 +1,3 @@
-using Avalonia;
 using Notes.Models;
 using ReactiveUI;
 

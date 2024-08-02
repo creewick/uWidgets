@@ -14,7 +14,7 @@
                 <LineGeometry StartPoint="0,0" EndPoint="1,0"/>
             </Path.Data>
         </Path>
-        <controls:ClickThroughTextBox Grid.Row="2" Text="{Binding Content}" LostFocus="UpdateContent" AcceptsReturn="True" TextWrapping="Wrap" />
+        <controls:ClickThroughTextBox Grid.Row="2" MinHeight="0" Text="{Binding Content}" LostFocus="UpdateContent" AcceptsReturn="True" TextWrapping="Wrap" />
         <TextBlock Grid.Row="3" Padding="12,0,12,8" Text="{Binding Updated}" FontSize="12" Opacity="0.5" />
     </Grid>
 </UserControl>
