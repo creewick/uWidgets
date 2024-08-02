@@ -15,8 +15,6 @@ public class GridService(IAppSettingsProvider appSettingsProvider) : IGridServic
 
     public void SnapSize(Widget window)
     {
-        var scaling = window.Screens.ScreenFromWindow(window)?.Scaling ?? 1.0;
-        
         window.Width = SnapDimension(window.Width);
         window.Height = SnapDimension(window.Height);
     }
@@ -26,14 +24,14 @@ public class GridService(IAppSettingsProvider appSettingsProvider) : IGridServic
         var scaling = window.Screens.ScreenFromWindow(window)?.Scaling ?? 1.0;
         
         window.Position = new PixelPoint(
-            SnapDimension(window.Position.X, scaling, true),
-            SnapDimension(window.Position.Y, scaling, true));
+            SnapDimension(window.Position.X, scaling, true, 0),
+            SnapDimension(window.Position.Y, scaling, true, 0));
     }
     
-    private int SnapDimension(double pixels, double scaling = 1.0, bool addMargin = false)
+    private int SnapDimension(double pixels, double scaling = 1.0, bool addMargin = false, int minValue = 1)
     {
         var (size, margin, _, _) = appSettingsProvider.Get().Layout;
-        var units = (int) Math.Round(pixels / (scaling * (size + margin)));
+        var units = (int) Math.Max(minValue, Math.Round(pixels / (scaling * (size + margin))));
 
         return GetSize(units, scaling, addMargin);
     }

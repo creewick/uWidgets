@@ -53,13 +53,23 @@ public partial class Widget : Window
         RenderOptions.SetTextRenderingMode(this, TextRenderingMode.Antialias);
         PointerPressed += OnPointerPressed;
         widgetLayoutProvider.DataChanged += UpdateControl;
+        appSettingsProvider.DataChanged += MoveResize;
         Unloaded += OnUnloaded;
+    }
+
+    private void MoveResize(object sender, AppSettings? olddata, AppSettings newdata)
+    {
+        if (olddata?.Layout == newdata.Layout) return;
+        
+        AfterMove();
+        AfterResize();
     }
 
     private void OnUnloaded(object? sender, RoutedEventArgs e)
     {
         PointerPressed -= OnPointerPressed;
         widgetLayoutProvider.DataChanged -= UpdateControl;
+        appSettingsProvider.DataChanged -= MoveResize;
     }
 
     private void UpdateControl(object? sender, WidgetLayout? oldLayout, WidgetLayout newLayout)
@@ -83,9 +93,13 @@ public partial class Widget : Window
         if (e.GetCurrentPoint(this).Properties.IsRightButtonPressed) return;
         
         BeginMoveDrag(e);
-        
-        var appSettings = appSettingsProvider.Get();
+        AfterMove();
+    }
 
+    private void AfterMove()
+    {
+        var appSettings = appSettingsProvider.Get();
+        
         if (appSettings.Layout.SnapPosition) 
             gridService.SnapPosition(this);
         
@@ -108,6 +122,8 @@ public partial class Widget : Window
 
     private void AfterResize()
     {
+        if (appSettingsProvider.Get().Layout.SnapSize)
+            gridService.SnapSize(this);
         var scaleFactor = appSettingsProvider.Get().Layout.WidgetSize / 72f;
         ContentPresenter.Width = Width / scaleFactor;
         ContentPresenter.Height = Height / scaleFactor;
@@ -115,7 +131,6 @@ public partial class Widget : Window
         
         var settings = widgetLayoutProvider.Get();
         widgetLayoutProvider.Save(settings with { Width = (int)Width, Height = (int)Height });
-
     }
 
     public void Remove()
@@ -127,8 +142,6 @@ public partial class Widget : Window
     private void Resize(object? sender, PointerPressedEventArgs e)
     {
         BeginResizeDrag(WindowEdge.SouthEast, e);
-        if (appSettingsProvider.Get().Layout.SnapSize)
-            gridService.SnapSize(this);
         AfterResize();
         e.Handled = true;
     }

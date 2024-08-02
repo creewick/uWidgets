@@ -44,8 +44,8 @@ public partial class Month : UserControl
 
     private void OnSizeChanged(object? sender, SizeChangedEventArgs e)
     {
-        var fontSize = e.NewSize.Height / 12;
-        var margin = e.NewSize.Height / 32;
+        var fontSize = Math.Min(e.NewSize.Width, e.NewSize.Height) / 12;
+        var margin = Math.Min(e.NewSize.Width, e.NewSize.Height) / 30;
 
         TextSize = fontSize;
         MonthMargin = new Thickness(-margin, 0,  0,  0);

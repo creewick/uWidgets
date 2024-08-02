@@ -21,10 +21,11 @@ public class JsonParser<T>(string filePath) : IDataProvider<T>
 
     public void Save(T newData)
     {
+        var oldData = data;
         DataChanging?.Invoke(this, data, newData);
         var json = JsonSerializer.Serialize(data = newData);
         
         File.WriteAllText(filePath, json);
-        DataChanged?.Invoke(this, data, newData);
+        DataChanged?.Invoke(this, oldData, newData);
     }
 }
