@@ -1,5 +1,5 @@
 <div align="center">
-  <img src=".github/images/icon128x128@2x.png"  />
+  <img src=".github/images/icon256x256@2x.png" width="256"  />
   <h1>uWidgets</h1>
   Widgets for you<br/><br/>
   <b>
