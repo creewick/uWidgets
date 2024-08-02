@@ -1,14 +1,18 @@
-<div align="center">
-  <img src=".github/images/icon256x256@2x.png" width="256"  />
-  <h1>uWidgets</h1>
-  Widgets for you<br/><br/>
-  <b>
-    <a href="https://github.com/creewick/uWidgets/releases">Download</a> |
-    <a href="https://github.com/users/creewick/projects/4">Roadmap</a> |
-    <a href="https://github.com/creewick/uWidgets/wiki/API-Reference">API</a> |
-    <a href="https://github.com/creewick/uWidgets/issues">Report a bug</a> |
-    <a href="https://github.com/creewick/uWidgets/discussions">Discussions</a>
-  </b>
+<div>
+  <img src=".github/images/icon256x256@2x.png" width="256" alt="Logo" align="left" style="margin-right: 20px;">
+  <div>
+    <br/><br/>
+    <h3>uWidgets</h3>
+    Widgets for you<br/><br/>
+    <b>
+      <a href="https://github.com/creewick/uWidgets/releases">Download</a> |
+      <a href="https://github.com/users/creewick/projects/4">Roadmap</a> |
+      <a href="https://github.com/creewick/uWidgets/wiki/API-Reference">API</a> |
+      <a href="https://github.com/creewick/uWidgets/issues">Report a bug</a> |
+      <a href="https://github.com/creewick/uWidgets/discussions">Discussions</a>
+    </b>
+    <br/><br/><br/><br/>
+  </div>
 </div>
 
 ## Features
