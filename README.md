@@ -1,35 +1,55 @@
-<img src=".github/images/cover.png"  />
-
 <div align="center">
+  <img src=".github/images/icon128x128@2x.png"  />
   <h1>uWidgets</h1>
-  macOS widgets for Windows
+  Widgets for you<br/><br/>
+  <b>
+    <a href="https://github.com/creewick/uWidgets/releases">Download</a> |
+    <a href="https://github.com/users/creewick/projects/4">Roadmap</a> |
+    <a href="https://github.com/creewick/uWidgets/wiki/API-Reference">API</a> |
+    <a href="https://github.com/creewick/uWidgets/issues">Report a bug</a> |
+    <a href="https://github.com/creewick/uWidgets/discussions">Discussions</a>
+  </b>
 </div>
+
+## Features
+
+### Widgets
+
+<img src=".github/images/widgets_line.png">
+
+5 types of fully customizable widgets
+
+| Widget  | Description                                          |
+|---------|------------------------------------------------------|
+| 🕒 Clock | 3 styles of Analog clock, World clock, Digital clock |
+| 📅 Calendar | Today view and Month view                            |
+| 🗒️ Notes | Interactive widget to store text notes               |
+| ✅ Reminders | Interactive widget with a to-do list                 |
+| ⛅️ Weather | Weather forecast for your location                   |
+
+### Themes
+
+- Light / Dark theme support
+- Transparency effects (Acrylic background)
+- Monochrome theme
+
+## System requirements
+
+- Windows 8.1 or later 
+- [.NET 8.0 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ## Installation
 
 1. Download the [latest release](https://github.com/creewick/uWidgets/releases)
-2. Launch `uWidgets.exe`
-3. On the first launch it may prompt to install .NET 8.0 Runtime to run
-
-## Bug reports
-
-Feel free to submit any bug report as a [GitHub Issue](https://github.com/creewick/uWidgets/issues).
-
-If the application craches, it will generate `crash_log.txt`.<br/>
-Please attach it to your issue, when submitting a bug report.
+2. Extract the archive
+3. Launch `uWidgets.exe`
 
 ## Collaboration
 
-uWidgets is built with modularity in mind.
+uWidgets is built with modularity in mind.<br/>
+That means you can create your own widgets using C#.
 
-Every widget is a separate .DLL file that can be loaded and unloaded in runtime.<br/>
-We encourage third-party developers to implement and share their own widgets.
-
-API Reference and the Dev Guide will be available later.
-
-## Roadmap
-
-Public roadmap is available [here](https://github.com/users/creewick/projects/4)
+[API Reference](https://github.com/creewick/uWidgets/wiki/API-Reference) will be here soon.
 
 ## License
 
