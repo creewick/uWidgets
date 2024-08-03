@@ -29,8 +29,8 @@
     <data name="Settings_Appearance_DarkMode_True" xml:space="preserve">
         <value>Темный</value>
     </data>
-    <data name="Settings_Appearance_Layout" xml:space="preserve">
-        <value>Размеры</value>
+    <data name="Settings_Appearance_Size" xml:space="preserve">
+        <value>Размер</value>
     </data>
     <data name="Settings_Appearance_Theme" xml:space="preserve">
         <value>Тема</value>
@@ -184,5 +184,20 @@
     </data>
     <data name="Settings_Appearance_SnapSize_Subtitle" xml:space="preserve">
         <value>Выравнивать размер виджета по сетке</value>
+    </data>
+    <data name="Settings_Appearance_LockSize_Title" xml:space="preserve">
+        <value>Блокировка размера</value>
+    </data>
+    <data name="Settings_Appearance_LockPosition_Title" xml:space="preserve">
+        <value>Блокировка положения</value>
+    </data>
+    <data name="Settings_Appearance_LockSize_Subtitle" xml:space="preserve">
+        <value>Запретить изменение размера виджета</value>
+    </data>
+    <data name="Settings_Appearance_LockPosition_Subtitle" xml:space="preserve">
+        <value>Запретить изменение положения виджета</value>
+    </data>
+    <data name="Settings_Appearance_Position" xml:space="preserve">
+        <value>Положение</value>
     </data>
 </root>

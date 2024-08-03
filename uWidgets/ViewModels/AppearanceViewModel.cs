@@ -107,6 +107,30 @@ public class AppearanceViewModel(IAppSettingsProvider appSettingsProvider) : Rea
             appSettingsProvider.Save(newSettings);
         }
     }
+    
+    public bool LockPosition
+    {
+        get => appSettingsProvider.Get().Layout.LockPosition;
+        set
+        {
+            var settings = appSettingsProvider.Get();
+            var newLayout = settings.Layout with { LockPosition = value };
+            var newSettings = settings with { Layout = newLayout };
+            appSettingsProvider.Save(newSettings);
+        }
+    }
+    
+    public bool LockSize
+    {
+        get => appSettingsProvider.Get().Layout.LockSize;
+        set
+        {
+            var settings = appSettingsProvider.Get();
+            var newLayout = settings.Layout with { LockSize = value };
+            var newSettings = settings with { Layout = newLayout };
+            appSettingsProvider.Save(newSettings);
+        }
+    }
 
     public int WidgetSize
     {

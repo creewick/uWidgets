@@ -90,6 +90,8 @@ public partial class Widget : Window
 
     public void OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
+        if (appSettingsProvider.Get().Layout.LockPosition) return;
+        
         ToolTip.SetIsOpen(this, false);
         if (e.GetCurrentPoint(this).Properties.IsRightButtonPressed) return;
         
@@ -142,6 +144,8 @@ public partial class Widget : Window
 
     private void Resize(object? sender, PointerPressedEventArgs e)
     {
+        if (appSettingsProvider.Get().Layout.LockSize) return;
+        
         BeginResizeDrag(WindowEdge.SouthEast, e);
         AfterResize();
         e.Handled = true;

@@ -204,11 +204,38 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Layout.
+        ///   Looks up a localized string similar to Prevent accidental widget repositioning.
         /// </summary>
-        public static string Settings_Appearance_Layout {
+        public static string Settings_Appearance_LockPosition_Subtitle {
             get {
-                return ResourceManager.GetString("Settings_Appearance_Layout", resourceCulture);
+                return ResourceManager.GetString("Settings_Appearance_LockPosition_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lock position.
+        /// </summary>
+        public static string Settings_Appearance_LockPosition_Title {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_LockPosition_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prevent accidental widget resizing.
+        /// </summary>
+        public static string Settings_Appearance_LockSize_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_LockSize_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lock size.
+        /// </summary>
+        public static string Settings_Appearance_LockSize_Title {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_LockSize_Title", resourceCulture);
             }
         }
         
@@ -227,6 +254,24 @@ namespace uWidgets.Locales {
         public static string Settings_Appearance_Monochrome_Title {
             get {
                 return ResourceManager.GetString("Settings_Appearance_Monochrome_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        public static string Settings_Appearance_Position {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size.
+        /// </summary>
+        public static string Settings_Appearance_Size {
+            get {
+                return ResourceManager.GetString("Settings_Appearance_Size", resourceCulture);
             }
         }
         

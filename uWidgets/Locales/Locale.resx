@@ -54,8 +54,8 @@
     <data name="Settings_Appearance_AccentColor_Title" xml:space="preserve">
         <value>Accent color</value>
     </data>
-    <data name="Settings_Appearance_Layout" xml:space="preserve">
-        <value>Layout</value>
+    <data name="Settings_Appearance_Size" xml:space="preserve">
+        <value>Size</value>
     </data>
     <data name="Settings_Appearance_WidgetSize_Title" xml:space="preserve">
         <value>Widget size</value>
@@ -191,5 +191,20 @@
     </data>
     <data name="Settings_Appearance_SnapSize_Subtitle" xml:space="preserve">
         <value>Align widget size to grid</value>
+    </data>
+    <data name="Settings_Appearance_LockSize_Title" xml:space="preserve">
+        <value>Lock size</value>
+    </data>
+    <data name="Settings_Appearance_LockPosition_Title" xml:space="preserve">
+        <value>Lock position</value>
+    </data>
+    <data name="Settings_Appearance_LockSize_Subtitle" xml:space="preserve">
+        <value>Prevent accidental widget resizing</value>
+    </data>
+    <data name="Settings_Appearance_LockPosition_Subtitle" xml:space="preserve">
+        <value>Prevent accidental widget repositioning</value>
+    </data>
+    <data name="Settings_Appearance_Position" xml:space="preserve">
+        <value>Position</value>
     </data>
 </root>

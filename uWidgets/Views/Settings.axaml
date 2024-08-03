@@ -6,6 +6,7 @@
         Background="{DynamicResource SettingsBackground}"
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaTitleBarHeightHint="50"
+        WindowStartupLocation="CenterScreen"
         Title="Settings"
         x:DataType="viewModels:SettingsViewModel">
 

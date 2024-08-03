@@ -30,7 +30,7 @@ public class GridService(IAppSettingsProvider appSettingsProvider) : IGridServic
     
     private int SnapDimension(double pixels, double scaling = 1.0, bool addMargin = false, int minValue = 1)
     {
-        var (size, margin, _, _) = appSettingsProvider.Get().Layout;
+        var (size, margin, _, _, _, _) = appSettingsProvider.Get().Layout;
         var units = (int) Math.Max(minValue, Math.Round(pixels / (scaling * (size + margin))));
 
         return GetSize(units, scaling, addMargin);
@@ -38,7 +38,7 @@ public class GridService(IAppSettingsProvider appSettingsProvider) : IGridServic
 
     private int GetSize(int units, double scaling = 1.0, bool addMargin = false)
     {
-        var (size, margin, _, _) = appSettingsProvider.Get().Layout;
+        var (size, margin, _, _, _, _) = appSettingsProvider.Get().Layout;
         
         if (addMargin)
             return (int) (scaling * units * (size + margin) + scaling * margin);
