@@ -9,6 +9,7 @@
         ToolTip.VerticalOffset="-25"
         ToolTip.HorizontalOffset="7"
         SystemDecorations="None"
+        CanResize="False"
         x:DataType="views:Widget"
         Classes="Widget">
 

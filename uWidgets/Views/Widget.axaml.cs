@@ -145,9 +145,11 @@ public partial class Widget : Window
     private void Resize(object? sender, PointerPressedEventArgs e)
     {
         if (appSettingsProvider.Get().Layout.LockSize) return;
-        
+
+        CanResize = true;
         BeginResizeDrag(WindowEdge.SouthEast, e);
         AfterResize();
         e.Handled = true;
+        CanResize = false;
     }
 }
