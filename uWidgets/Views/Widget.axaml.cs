@@ -90,6 +90,7 @@ public partial class Widget : Window
 
     public void OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
+        ToolTip.SetIsOpen(this, false);
         if (e.GetCurrentPoint(this).Properties.IsRightButtonPressed) return;
         
         BeginMoveDrag(e);
