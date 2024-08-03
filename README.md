@@ -4,13 +4,11 @@
     <br/><br/>
     <h3>uWidgets</h3>
     Widgets for you<br/><br/>
-    <b>
-      <a href="https://github.com/creewick/uWidgets/releases">Download</a> |
-      <a href="https://github.com/users/creewick/projects/4">Roadmap</a> |
-      <a href="https://github.com/creewick/uWidgets/wiki/API-Reference">API</a> |
-      <a href="https://github.com/creewick/uWidgets/issues">Report a bug</a> |
+      <b><a href="https://github.com/creewick/uWidgets/releases">Download</a></b> ・
+      <a href="https://github.com/users/creewick/projects/4">Roadmap</a> ・
+      <a href="https://github.com/creewick/uWidgets/wiki/API-Reference">API</a> ・
+      <a href="https://github.com/creewick/uWidgets/issues">Report a bug</a> ・
       <a href="https://github.com/creewick/uWidgets/discussions">Discussions</a>
-    </b>
     <br/><br/><br/><br/>
   </div>
 </div>
