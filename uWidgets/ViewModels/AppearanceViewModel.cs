@@ -131,28 +131,4 @@ public class AppearanceViewModel(IAppSettingsProvider appSettingsProvider) : Rea
             appSettingsProvider.Save(newSettings);
         }
     }
-
-    public int WidgetSize
-    {
-        get => appSettingsProvider.Get().Layout.WidgetSize;
-        set
-        {
-            var settings = appSettingsProvider.Get();
-            var newLayout = settings.Layout with { WidgetSize = value };
-            var newSettings = settings with { Layout = newLayout };
-            appSettingsProvider.Save(newSettings);
-        }
-    }
-    
-    public int WidgetMargin
-    {
-        get => appSettingsProvider.Get().Layout.WidgetMargin;
-        set
-        {
-            var settings = appSettingsProvider.Get();
-            var newLayout = settings.Layout with { WidgetMargin = value };
-            var newSettings = settings with { Layout = newLayout };
-            appSettingsProvider.Save(newSettings);
-        }
-    }
 }

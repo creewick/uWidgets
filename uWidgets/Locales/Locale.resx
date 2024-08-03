@@ -57,10 +57,10 @@
     <data name="Settings_Appearance_Size" xml:space="preserve">
         <value>Size</value>
     </data>
-    <data name="Settings_Appearance_WidgetSize_Title" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetSize_Title" xml:space="preserve">
         <value>Widget size</value>
     </data>
-    <data name="Settings_Appearance_WidgetMargin_Title" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetMargin_Title" xml:space="preserve">
         <value>Widget margin</value>
     </data>
     <data name="Widget_Remove" xml:space="preserve">
@@ -111,10 +111,10 @@
     <data name="Settings_General_Language_Subtitle" xml:space="preserve">
         <value>uWidgets will appear in this language</value>
     </data>
-    <data name="Settings_Appearance_WidgetMargin_Subtitle" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetMargin_Subtitle" xml:space="preserve">
         <value>Minimal distance between widgets</value>
     </data>
-    <data name="Settings_Appearance_WidgetSize_Subtitle" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetSize_Subtitle" xml:space="preserve">
         <value>Size of the small widget</value>
     </data>
     <data name="Settings_General_Exit_Title" xml:space="preserve">
@@ -181,7 +181,7 @@
         <value>Run on startup</value>
     </data>
     <data name="Settings_General_Startup_Subtitle" xml:space="preserve">
-        <value>You need to run the application as Administrator to edit this setting</value>
+        <value>The app will start automatically when you start your device</value>
     </data>
     <data name="Settings_General_Startup" xml:space="preserve">
         <value>Startup</value>
@@ -206,5 +206,23 @@
     </data>
     <data name="Settings_Appearance_Position" xml:space="preserve">
         <value>Position</value>
+    </data>
+    <data name="Settings_Advanced" xml:space="preserve">
+        <value>Advanced</value>
+    </data>
+    <data name="Settings_Advanced_WidgetRadius_Title" xml:space="preserve">
+        <value>Widget radius</value>
+    </data>
+    <data name="Settings_Advanced_WidgetRadius_Subtitle" xml:space="preserve">
+        <value>Radius of widget corners</value>
+    </data>
+    <data name="Settings_RestartRequired" xml:space="preserve">
+        <value>Restart the app to apply changes</value>
+    </data>
+    <data name="Settings_AdminRequired" xml:space="preserve">
+        <value>Run the application as Administrator to change this setting</value>
+    </data>
+    <data name="Settings_Advanced_Dimensions" xml:space="preserve">
+        <value>Dimensions</value>
     </data>
 </root>

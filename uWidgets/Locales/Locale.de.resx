@@ -65,16 +65,16 @@
     <data name="Settings_Appearance_Transparency_Title" xml:space="preserve">
         <value>Transparenzeffekte</value>
     </data>
-    <data name="Settings_Appearance_WidgetMargin_Subtitle" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetMargin_Subtitle" xml:space="preserve">
         <value>Minimaler Abstand zwischen Widgets</value>
     </data>
-    <data name="Settings_Appearance_WidgetMargin_Title" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetMargin_Title" xml:space="preserve">
         <value>Widget-Rand</value>
     </data>
-    <data name="Settings_Appearance_WidgetSize_Subtitle" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetSize_Subtitle" xml:space="preserve">
         <value>Größe des kleinen Widgets</value>
     </data>
-    <data name="Settings_Appearance_WidgetSize_Title" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetSize_Title" xml:space="preserve">
         <value>Widget-Größe</value>
     </data>
     <data name="Settings_General_Language" xml:space="preserve">

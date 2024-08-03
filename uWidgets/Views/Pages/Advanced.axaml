@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:uWidgets.Views.Controls"
+             xmlns:locales="clr-namespace:uWidgets.Locales"
+             xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
+             x:Class="uWidgets.Views.Pages.Advanced"
+             x:DataType="viewModels:AdvancedViewModel">
+    <StackPanel Orientation="Vertical" Spacing="3">
+        <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 0 0 10" 
+                   Text="{x:Static locales:Locale.Settings_Advanced_Dimensions}"/>
+        <controls:Setting Icon="{DynamicResource WidgetSize}" 
+            Title="{x:Static locales:Locale.Settings_Advanced_WidgetSize_Title}"
+            Subtitle="{x:Static locales:Locale.Settings_Advanced_WidgetSize_Subtitle}">
+            <NumericUpDown MinWidth="130" Minimum="36" Maximum="144" Value="{Binding Size, StringFormat=F0}" />
+        </controls:Setting>
+        <controls:Setting Icon="{DynamicResource WidgetMargin}" 
+            Title="{x:Static locales:Locale.Settings_Advanced_WidgetMargin_Title}"
+            Subtitle="{x:Static locales:Locale.Settings_Advanced_WidgetMargin_Subtitle}">
+            <NumericUpDown MinWidth="130" Minimum="0" Maximum="32" Value="{Binding Margin, StringFormat=F0}" />
+        </controls:Setting>
+        <controls:Setting Icon="{DynamicResource WidgetRadius}" 
+                          RestartRequired="True"
+                          Title="{x:Static locales:Locale.Settings_Advanced_WidgetRadius_Title}"
+                          Subtitle="{x:Static locales:Locale.Settings_Advanced_WidgetRadius_Subtitle}">
+            <NumericUpDown MinWidth="130" Minimum="0" Maximum="48" Value="{Binding Radius, StringFormat=F0}" />
+        </controls:Setting>
+    </StackPanel>
+</UserControl>

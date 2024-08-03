@@ -32,6 +32,7 @@ public class SettingsViewModel(IAppSettingsProvider appSettingsProvider, IAssemb
     [
         new PageViewModel(typeof(Appearance), nameof(Appearance), Locale.Settings_Appearance),
         new PageViewModel(typeof(General), nameof(General), Locale.Settings_General),
+        new PageViewModel(typeof(Advanced), nameof(Advanced), Locale.Settings_Advanced),
         new PageViewModel(typeof(About), nameof(About),  Locale.Settings_About)
     ];
 

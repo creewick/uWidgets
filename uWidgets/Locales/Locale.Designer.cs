@@ -123,6 +123,87 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run the application as Administrator to change this setting.
+        /// </summary>
+        public static string Settings_AdminRequired {
+            get {
+                return ResourceManager.GetString("Settings_AdminRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced.
+        /// </summary>
+        public static string Settings_Advanced {
+            get {
+                return ResourceManager.GetString("Settings_Advanced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dimensions.
+        /// </summary>
+        public static string Settings_Advanced_Dimensions {
+            get {
+                return ResourceManager.GetString("Settings_Advanced_Dimensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal distance between widgets.
+        /// </summary>
+        public static string Settings_Advanced_WidgetMargin_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Advanced_WidgetMargin_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Widget margin.
+        /// </summary>
+        public static string Settings_Advanced_WidgetMargin_Title {
+            get {
+                return ResourceManager.GetString("Settings_Advanced_WidgetMargin_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Radius of widget corners.
+        /// </summary>
+        public static string Settings_Advanced_WidgetRadius_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Advanced_WidgetRadius_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Widget radius.
+        /// </summary>
+        public static string Settings_Advanced_WidgetRadius_Title {
+            get {
+                return ResourceManager.GetString("Settings_Advanced_WidgetRadius_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size of the small widget.
+        /// </summary>
+        public static string Settings_Advanced_WidgetSize_Subtitle {
+            get {
+                return ResourceManager.GetString("Settings_Advanced_WidgetSize_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Widget size.
+        /// </summary>
+        public static string Settings_Advanced_WidgetSize_Title {
+            get {
+                return ResourceManager.GetString("Settings_Advanced_WidgetSize_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appearance.
         /// </summary>
         public static string Settings_Appearance {
@@ -339,42 +420,6 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimal distance between widgets.
-        /// </summary>
-        public static string Settings_Appearance_WidgetMargin_Subtitle {
-            get {
-                return ResourceManager.GetString("Settings_Appearance_WidgetMargin_Subtitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Widget margin.
-        /// </summary>
-        public static string Settings_Appearance_WidgetMargin_Title {
-            get {
-                return ResourceManager.GetString("Settings_Appearance_WidgetMargin_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Size of the small widget.
-        /// </summary>
-        public static string Settings_Appearance_WidgetSize_Subtitle {
-            get {
-                return ResourceManager.GetString("Settings_Appearance_WidgetSize_Subtitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Widget size.
-        /// </summary>
-        public static string Settings_Appearance_WidgetSize_Title {
-            get {
-                return ResourceManager.GetString("Settings_Appearance_WidgetSize_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
         public static string Settings_General {
@@ -465,7 +510,7 @@ namespace uWidgets.Locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You need to run the application as Administrator to edit this setting.
+        ///   Looks up a localized string similar to The app will start automatically when you start your device.
         /// </summary>
         public static string Settings_General_Startup_Subtitle {
             get {
@@ -479,6 +524,15 @@ namespace uWidgets.Locales {
         public static string Settings_General_Startup_Title {
             get {
                 return ResourceManager.GetString("Settings_General_Startup_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restart the app to apply changes.
+        /// </summary>
+        public static string Settings_RestartRequired {
+            get {
+                return ResourceManager.GetString("Settings_RestartRequired", resourceCulture);
             }
         }
         

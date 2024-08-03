@@ -14,7 +14,7 @@
             </Style>
         </Styles>
     </UserControl.Styles>
-    <StackPanel Orientation="Vertical" Spacing="5">
+    <StackPanel Orientation="Vertical" Spacing="3">
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 0 0 10" 
                    Text="{x:Static locales:Locale.Settings_Appearance_Theme}"/>
         <controls:Setting Icon="{DynamicResource Brush}" 
@@ -60,16 +60,6 @@
         </controls:Setting>
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10"
                    Text="{x:Static locales:Locale.Settings_Appearance_Size}"/>
-        <controls:Setting Icon="{DynamicResource WidgetSize}" 
-            Title="{x:Static locales:Locale.Settings_Appearance_WidgetSize_Title}"
-            Subtitle="{x:Static locales:Locale.Settings_Appearance_WidgetSize_Subtitle}">
-            <NumericUpDown MinWidth="130" Minimum="36" Maximum="144" Value="{Binding WidgetSize, StringFormat=F0}" />
-        </controls:Setting>
-        <controls:Setting Icon="{DynamicResource WidgetMargin}" 
-            Title="{x:Static locales:Locale.Settings_Appearance_WidgetMargin_Title}"
-            Subtitle="{x:Static locales:Locale.Settings_Appearance_WidgetMargin_Subtitle}">
-            <NumericUpDown MinWidth="130" Minimum="0" Maximum="32" Value="{Binding WidgetMargin, StringFormat=F0}" />
-        </controls:Setting>
         <controls:Setting Icon="{DynamicResource SnapSize}" 
                           Title="{x:Static locales:Locale.Settings_Appearance_SnapSize_Title}" 
                           Subtitle="{x:Static locales:Locale.Settings_Appearance_SnapSize_Subtitle}">

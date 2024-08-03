@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using uWidgets.Core;
+using uWidgets.Core.Services;
 
 namespace uWidgets;
 
@@ -28,14 +29,18 @@ class Program
 
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>()
+    {
+        var radius = new AppSettingsProvider().Get().Dimensions.Radius;
+        
+        return AppBuilder.Configure<App>()
             .UseWin32()
             .UsePlatformDetect()
             .WithInterFont()
             .With(new Win32PlatformOptions
             {
-                CompositionMode = new [] { Win32CompositionMode.WinUIComposition },
-                WinUICompositionBackdropCornerRadius = Const.CornerRadius,
+                CompositionMode = new[] { Win32CompositionMode.WinUIComposition },
+                WinUICompositionBackdropCornerRadius = radius,
             })
             .LogToTrace();
+    }
 }

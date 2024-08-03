@@ -6,12 +6,13 @@
              xmlns:locales="clr-namespace:uWidgets.Locales"
              x:Class="uWidgets.Views.Pages.General"
              x:DataType="viewModels:GeneralViewModel">
-    <StackPanel Orientation="Vertical" Spacing="5">
+    <StackPanel Orientation="Vertical" Spacing="3">
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 0 0 10" 
                    Text="{x:Static locales:Locale.Settings_General_Language}"/>
         <controls:Setting Icon="{DynamicResource Language}" 
                           Title="{x:Static locales:Locale.Settings_General_Language_Title}"
-                          Subtitle="{x:Static locales:Locale.Settings_General_Language_Subtitle}">
+                          Subtitle="{x:Static locales:Locale.Settings_General_Language_Subtitle}"
+                          RestartRequired="True">
             <ComboBox ItemsSource="{Binding Languages}" MinWidth="130"
                       SelectedItem="{Binding Language}">
                 <ComboBox.ItemTemplate>
@@ -23,11 +24,11 @@
         </controls:Setting>
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10" 
                    Text="{x:Static locales:Locale.Settings_General_Startup}"/>
-        <controls:Setting Icon="{DynamicResource Play}"
+        <controls:Setting Icon="{DynamicResource Play}" AdminRequired="True"
                           Title="{x:Static locales:Locale.Settings_General_Startup_Title}"
                           Subtitle="{x:Static locales:Locale.Settings_General_Startup_Subtitle}">
             <ToggleSwitch IsChecked="{Binding RunOnStartup}" />
-        </controls:Setting>   
+        </controls:Setting>
         <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10" 
                    Text="{x:Static locales:Locale.Settings_General_Actions}"/>
         <controls:Setting Icon="{DynamicResource Refresh}"

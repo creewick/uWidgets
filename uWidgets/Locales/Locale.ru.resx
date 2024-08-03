@@ -38,10 +38,10 @@
     <data name="Settings_Appearance_Transparency_Title" xml:space="preserve">
         <value>Эффекты прозрачности</value>
     </data>
-    <data name="Settings_Appearance_WidgetMargin_Title" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetMargin_Title" xml:space="preserve">
         <value>Отступ виджета</value>
     </data>
-    <data name="Settings_Appearance_WidgetSize_Title" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetSize_Title" xml:space="preserve">
         <value>Размер виджета</value>
     </data>
     <data name="Settings_General" xml:space="preserve">
@@ -98,10 +98,10 @@
     <data name="Settings_About_ReportBug" xml:space="preserve">
         <value>Сообщить об ошибке</value>
     </data>
-    <data name="Settings_Appearance_WidgetMargin_Subtitle" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetMargin_Subtitle" xml:space="preserve">
         <value>Расстояние между виджетами</value>
     </data>
-    <data name="Settings_Appearance_WidgetSize_Subtitle" xml:space="preserve">
+    <data name="Settings_Advanced_WidgetSize_Subtitle" xml:space="preserve">
         <value>Размер маленького виджета</value>
     </data>
     <data name="Settings_General_Language_Subtitle" xml:space="preserve">
@@ -174,7 +174,7 @@
         <value>Запускать при старте системы</value>
     </data>
     <data name="Settings_General_Startup_Subtitle" xml:space="preserve">
-        <value>Запустите приложение от имени Администратора для изменения этой опции</value>
+        <value>Приложение запустится автоматически при старте системы</value>
     </data>
     <data name="Settings_General_Startup" xml:space="preserve">
         <value>Запуск</value>
@@ -199,5 +199,23 @@
     </data>
     <data name="Settings_Appearance_Position" xml:space="preserve">
         <value>Положение</value>
+    </data>
+    <data name="Settings_Advanced" xml:space="preserve">
+        <value>Расширенные</value>
+    </data>
+    <data name="Settings_AdminRequired" xml:space="preserve">
+        <value>Запустите приложение от имени Администратора для изменения этой настройки</value>
+    </data>
+    <data name="Settings_RestartRequired" xml:space="preserve">
+        <value>Перезапустите приложение, чтобы применить изменения</value>
+    </data>
+    <data name="Settings_Advanced_WidgetRadius_Subtitle" xml:space="preserve">
+        <value>Радиус скругления углов виджета</value>
+    </data>
+    <data name="Settings_Advanced_Dimensions" xml:space="preserve">
+        <value>Размеры</value>
+    </data>
+    <data name="Settings_Advanced_WidgetRadius_Title" xml:space="preserve">
+        <value>Радиус виджета</value>
     </data>
 </root>

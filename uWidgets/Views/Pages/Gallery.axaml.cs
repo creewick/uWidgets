@@ -22,7 +22,7 @@ public partial class Gallery : UserControl
     private readonly IWidgetFactory<Window, UserControl> widgetFactory;
     public List<WidgetPreviewViewModel> Widgets => GetWidgets();
     public int WidgetSize => 160;
-    public CornerRadius Radius => new(Const.CornerRadius / (VisualRoot?.RenderScaling ?? 1.0));
+    public CornerRadius Radius => new(appSettingsProvider.Get().Dimensions.Radius / (VisualRoot?.RenderScaling ?? 1.0));
 
     public Gallery(IAppSettingsProvider appSettingsProvider, ILayoutProvider layoutProvider, IAssemblyProvider assemblyProvider, 
         AssemblyInfo assemblyInfo, IWidgetFactory<Window, UserControl> widgetFactory)
@@ -73,8 +73,8 @@ public partial class Gallery : UserControl
     {
         var button = sender as Button;
         var viewModel = button!.DataContext as WidgetPreviewViewModel;
-        var layout = appSettingsProvider.Get().Layout;
-        var size = 2 * layout.WidgetSize + layout.WidgetMargin;
+        var dimensions = appSettingsProvider.Get().Dimensions;
+        var size = 2 * dimensions.Size + dimensions.Margin;
         var position = button!.PointToScreen(new Point(0, 0));
 
         var widgetSettings = new WidgetLayout(viewModel!.Type, viewModel.Subtype, position.X, position.Y, size, size, null);

@@ -33,7 +33,7 @@ public class App : Application
 
         var themeService = services
             .GetRequiredService<IThemeService>();
-        
+
         var localeService = services
             .GetRequiredService<ILocaleService>();
         

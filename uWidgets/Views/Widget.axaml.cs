@@ -41,7 +41,7 @@ public partial class Widget : Window
         InteropService.RemoveWindowFromAltTab(this);
 
         ContentPresenter.Content = userControl();
-        var scaleFactor = appSettingsProvider.Get().Layout.WidgetSize / 72f;
+        var scaleFactor = appSettingsProvider.Get().Dimensions.Size / 72f;
         ContentPresenter.Width = Width / scaleFactor;
         ContentPresenter.Height = Height / scaleFactor;
         ContentPresenter.RenderTransform = new ScaleTransform(scaleFactor, scaleFactor);
@@ -59,7 +59,7 @@ public partial class Widget : Window
 
     private void MoveResize(object sender, AppSettings? olddata, AppSettings newdata)
     {
-        if (olddata?.Layout == newdata.Layout) return;
+        if (olddata?.Dimensions == newdata.Dimensions) return;
         
         AfterMove();
         AfterResize();
@@ -80,7 +80,7 @@ public partial class Widget : Window
 
     public bool ShowEditButton => editWidgetWindow != null;
     public string Edit => $"{Locale.Widget_Edit} \"{widgetLayoutProvider.Get().Type}\"";
-    public CornerRadius Radius => new(Const.CornerRadius / (Screens.ScreenFromWindow(this)?.Scaling ?? 1.0));
+    public CornerRadius Radius => new(appSettingsProvider.Get().Dimensions.Radius / (Screens.ScreenFromWindow(this)?.Scaling ?? 1.0));
     public void EditWidget() => editWidgetWindow?.Invoke().ShowDialog(this);
     public void ResizeSmall() => _ = Resize(2, 2);
     public void ResizeMedium() => _ = Resize(4, 2);
@@ -127,7 +127,7 @@ public partial class Widget : Window
     {
         if (appSettingsProvider.Get().Layout.SnapSize)
             gridService.SnapSize(this);
-        var scaleFactor = appSettingsProvider.Get().Layout.WidgetSize / 72f;
+        var scaleFactor = appSettingsProvider.Get().Dimensions.Size / 72f;
         ContentPresenter.Width = Width / scaleFactor;
         ContentPresenter.Height = Height / scaleFactor;
         ContentPresenter.RenderTransform = new ScaleTransform(scaleFactor, scaleFactor);
