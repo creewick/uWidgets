@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="clr-namespace:Weather.ViewModels"
+             x:Class="Weather.Views.Controls.ForecastWide"
+             x:DataType="viewModels:ForecastViewModel">
+    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto">
+        <TextBlock Grid.Row="0" Grid.Column="0"
+                   FontSize="16" FontWeight="Bold" 
+                   Text="{Binding CityName}" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" 
+                   FontSize="44" LetterSpacing="-2" Margin="-2,0,0,0"
+                   Text="{Binding CurrentTemperature}" />
+        <PathIcon Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right"
+                  Foreground="{DynamicResource SystemControlForegroundAccentBrush}" 
+                  Data="{Binding CurrentIcon}" />
+        <TextBlock Grid.Row="1" Grid.Column="1" 
+                   FontSize="14" FontWeight="Bold" Opacity="0.5"
+                   HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                   Text="{Binding CurrentCondition}" />
+        <TextBlock Grid.Row="2" Grid.Column="1"
+                   FontSize="14" FontWeight="Bold" Opacity="0.5"
+                   HorizontalAlignment="Right" VerticalAlignment="Top"
+                   Text="{Binding CurrentMinMax}" />
+        <ScrollViewer Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible">
+            <ItemsControl ItemsSource="{Binding HourlyForecast}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="viewModels:HourlyForecastViewModel">
+                        <Grid RowDefinitions="*,*,*" Margin="15 0">
+                            <TextBlock Grid.Row="0" Text="{Binding Time}" Opacity="0.5" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="SemiBold" />
+                            <PathIcon Grid.Row="1" HorizontalAlignment="Center"
+                                      Foreground="{DynamicResource SystemControlForegroundAccentBrush}" 
+                                      VerticalAlignment="Center" Margin="0 4"
+                                      Data="{Binding Icon}" />
+                            <TextBlock Grid.Row="2" Text="{Binding Temperature}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Margin="-15 0" Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
