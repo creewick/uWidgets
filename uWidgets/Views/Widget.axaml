@@ -29,6 +29,13 @@
     </Window.ContextMenu> 
     
     <Window.Styles>
+        <Style Selector="ScrollBar">
+            <Setter Property="Visibility" Value="Hidden" />
+            <Setter Property="AllowAutoHide" Value="True" />
+        </Style>
+        <Style Selector="Border:pointerover ScrollBar">
+            <Setter Property="Visibility" Value="Auto" />
+        </Style>
         <Style Selector=":is(UserControl)">
             <Setter Property="Margin" Value="12" />
         </Style>
