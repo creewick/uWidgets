@@ -1,0 +1,59 @@
+name: Generate Docs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-wiki:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: beta
+
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore
+        run: dotnet restore .\uWidgets.sln
+
+      - name: Build
+        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
+
+      - name: Install tool
+        run: dotnet tool install -g XMLDoc2Markdown
+
+      - name: Run tool
+        run: |
+          xmldoc2md .\uWidgets.Core\bin\Release\net8.0\uWidgets.Core.dll `
+          --output .\docs `
+          --gitlab-wiki
+
+      - name: Clone wiki repository
+        run: |
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git
+          cd $(basename ${{ github.repository }}.wiki.git)
+  
+      - name: Remove old API docs
+        run: |
+          cd $(basename ${{ github.repository }}.wiki.git)
+          rm -rf API
+          mkdir API
+
+      - name: Copy new API docs
+        run: |
+          cp -r ../docs/* $(basename ${{ github.repository }}.wiki.git)/API/
+  
+      - name: Commit and push changes
+        run: |
+          cd $(basename ${{ github.repository }}.wiki.git)
+          git add .
+          git commit -m "Update API documentation"
+          git push
