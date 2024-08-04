@@ -21,21 +21,35 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
+      - name: Install tool
+        run: dotnet tool install -g XMLDoc2Markdown
+
       - name: Restore
         run: dotnet restore .\src\uWidgets.sln
 
       - name: Build
         run: dotnet build .\src\uWidgets.sln --configuration Release --no-restore
 
-      - name: Install tool
-        run: dotnet tool install -g XMLDoc2Markdown
-
       - name: Run tool
         run: |
           xmldoc2md .\src\uWidgets.Core\bin\Release\net8.0\uWidgets.Core.dll `
-          --output .\wiki\API `
+          --output .\new-wiki\API `
           --github-pages `
           --index-page-name API `
 
-      - name: Publish to wiki
-        uses: Andrew-Chen-Wang/github-wiki-action@v4
+      - name: Clone wiki repository
+        run: |
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git wiki
+  
+      - name: Update API docs
+        run: |
+          if (Test-Path -Path wiki\API) { Remove-Item -Recurse -Force wiki\API }
+          New-Item -ItemType Directory -Path wiki\API
+          Copy-Item -Path .\new-wiki\API\* -Destination wiki\API -Recurse
+          cd wiki
+          
+      - name: Commit & Push changes
+        uses: actions-js/push@v1.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: Update API docs
