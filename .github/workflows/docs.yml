@@ -33,12 +33,13 @@ jobs:
       - name: Run tool
         run: |
           xmldoc2md .\src\uWidgets.Core\bin\Release\net8.0\uWidgets.Core.dll `
-          --output .\new-wiki\API `
+          --output ..\new-wiki\API `
           --github-pages `
           --index-page-name API `
 
       - name: Clone wiki repository
         run: |
+          cd ..
           git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git wiki
   
       - name: Update API docs
