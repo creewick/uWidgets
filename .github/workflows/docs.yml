@@ -38,8 +38,8 @@ jobs:
 
       - name: Clone wiki repository
         run: |
-          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git
-          cd $(basename ${{ github.repository }}.wiki.git) $(basename ${{ github.repository }}.wiki.git)
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git $(basename ${{ github.repository }}.wiki.git)
+          cd $(basename ${{ github.repository }}.wiki.git)
   
       - name: Remove old API docs
         run: |
