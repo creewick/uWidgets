@@ -36,7 +36,6 @@ jobs:
           --output .\wiki\API `
           --github-pages `
           --index-page-name API `
-          --structure tree
 
       - name: Publish to wiki
         uses: Andrew-Chen-Wang/github-wiki-action@v4
