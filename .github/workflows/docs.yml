@@ -34,7 +34,7 @@ jobs:
         run: |
           xmldoc2md .\src\uWidgets.Core\bin\Release\net8.0\uWidgets.Core.dll `
           --output .\wiki\API `
-          --gitlab-wiki
+          --github-pages
 
       - name: Publish to wiki
         uses: Andrew-Chen-Wang/github-wiki-action@v4
