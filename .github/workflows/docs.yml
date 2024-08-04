@@ -33,29 +33,8 @@ jobs:
       - name: Run tool
         run: |
           xmldoc2md .\src\uWidgets.Core\bin\Release\net8.0\uWidgets.Core.dll `
-          --output .\docs `
+          --output .\wiki\API `
           --gitlab-wiki
 
-      - name: Clone wiki repository
-        run: |
-          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git wiki
-  
-      - name: Remove old API docs
-        run: |
-          if (Test-Path -Path wiki\API) { Remove-Item -Recurse -Force wiki\API }
-          New-Item -ItemType Directory -Path wiki\API
-
-      - name: Copy new API docs
-        run: |
-          Copy-Item -Path docs\* -Destination wiki\API -Recurse
-
-      - name: Commit and push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cd wiki
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Update API documentation"
-          git push
+      - name: Publish to wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v4
