@@ -22,17 +22,17 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Restore
-        run: dotnet restore .\uWidgets.sln
+        run: dotnet restore .\src\uWidgets.sln
 
       - name: Build
-        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
+        run: dotnet build .\src\uWidgets.sln --configuration Release --no-restore
 
       - name: Install tool
         run: dotnet tool install -g XMLDoc2Markdown
 
       - name: Run tool
         run: |
-          xmldoc2md .\uWidgets.Core\bin\Release\net8.0\uWidgets.Core.dll `
+          xmldoc2md .\src\uWidgets.Core\bin\Release\net8.0\uWidgets.Core.dll `
           --output .\docs `
           --gitlab-wiki
 
