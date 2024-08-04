@@ -53,6 +53,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git add .
           git commit -m "Update API docs"
-          git push origin main
+          git push origin master 
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
