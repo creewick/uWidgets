@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: beta
+          ref: dev
 
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
