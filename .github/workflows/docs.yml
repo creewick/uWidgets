@@ -48,10 +48,14 @@ jobs:
       - name: Copy new API docs
         run: |
           Copy-Item -Path docs\* -Destination wiki\API -Recurse
-  
+
       - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd wiki
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Update API documentation"
           git push
