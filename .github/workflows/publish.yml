@@ -29,48 +29,48 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Restore
-        run: dotnet restore .\uWidgets.sln
+        run: dotnet restore .\src\uWidgets.sln
 
       - name: Build
-        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
+        run: dotnet build .\src\uWidgets.sln --configuration Release --no-restore
 
       - name: Publish
         run: |
-          dotnet publish .\uWidgets\uWidgets.csproj `
+          dotnet publish .\src\uWidgets\uWidgets.csproj `
           --configuration Release `
           --runtime ${{ matrix.runtime }} `
-          --output .\uWidgets\bin\Publish\${{ matrix.runtime }} `
+          --output .\src\uWidgets\bin\Publish\${{ matrix.runtime }} `
           --self-contained false `
           /p:PublishReadyToRun=true
 
       - name: Copy Widgets
         run: |
           New-Item `
-            -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets `
+            -Path .\src\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets `
             -ItemType Directory `
           -Force
           Copy-Item `
-            -Path .\uWidgets\bin\Release\net8.0\Widgets\* `
-            -Destination .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets `
+            -Path .\src\uWidgets\bin\Release\net8.0\Widgets\* `
+            -Destination .\src\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets `
             -Recurse `
             -Force
 
       - name: Clean up
         run: |
-          Get-ChildItem -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.pdb -Recurse | Remove-Item -Force
-          Get-ChildItem -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.deps.json -Recurse | Remove-Item -Force
+          Get-ChildItem -Path .\src\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.pdb -Recurse | Remove-Item -Force
+          Get-ChildItem -Path .\src\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.deps.json -Recurse | Remove-Item -Force
 
       - name: Archive
         run: |
           Compress-Archive `
-            -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} `
-            -DestinationPath .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
+            -Path .\src\uWidgets\bin\Publish\${{ matrix.runtime }} `
+            -DestinationPath .\src\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: publish-${{ matrix.runtime }}
-          path: .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
+          path: .\src\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
   release:
     runs-on: windows-latest
@@ -87,12 +87,12 @@ jobs:
         with:
           pattern: publish-*
           merge-multiple: true
-          path: .\uWidgets\bin\Publish
+          path: .\src\uWidgets\bin\Publish
 
       - name: Get Assembly Version
         id: version
         run: |
-          $filePath = ".\uWidgets\AssemblyInfo.cs"
+          $filePath = ".\src\uWidgets\AssemblyInfo.cs"
           $content = [string](Get-Content $filePath)
 
           if ($content -match '\[assembly: AssemblyVersion\("([0-9]+\.[0-9]+\.[0-9]+)"\)\]') {
@@ -133,7 +133,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: .\uWidgets\bin\Publish\win-x86.zip
+          asset_path: .\src\uWidgets\bin\Publish\win-x86.zip
           asset_name: win-x86.zip
           asset_content_type: application/zip
         env:
@@ -143,7 +143,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: .\uWidgets\bin\Publish\win-x64.zip
+          asset_path: .\src\uWidgets\bin\Publish\win-x64.zip
           asset_name: win-x64.zip
           asset_content_type: application/zip
         env:
@@ -153,7 +153,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: .\uWidgets\bin\Publish\win-arm64.zip
+          asset_path: .\src\uWidgets\bin\Publish\win-arm64.zip
           asset_name: win-arm64.zip
           asset_content_type: application/zip
         env:
