@@ -39,21 +39,19 @@ jobs:
       - name: Clone wiki repository
         run: |
           git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git
-          cd $(basename ${{ github.repository }}.wiki.git)
+          cd $(basename ${{ github.repository }}.wiki.git) $(basename ${{ github.repository }}.wiki.git)
   
       - name: Remove old API docs
         run: |
-          cd $(basename ${{ github.repository }}.wiki.git)
-          rm -rf API
+          if exist API (rmdir /s /q API)
           mkdir API
 
       - name: Copy new API docs
         run: |
-          cp -r ../docs/* $(basename ${{ github.repository }}.wiki.git)/API/
+          cp -r ../docs/* ./API/
   
       - name: Commit and push changes
         run: |
-          cd $(basename ${{ github.repository }}.wiki.git)
           git add .
           git commit -m "Update API documentation"
           git push
