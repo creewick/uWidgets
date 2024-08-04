@@ -43,8 +43,8 @@ jobs:
   
       - name: Remove old API docs
         run: |
-          if exist API (rmdir /s /q API)
-          mkdir API
+          if (Test-Path -Path API) { Remove-Item -Recurse -Force API }
+          New-Item -ItemType Directory -Path API
 
       - name: Copy new API docs
         run: |
