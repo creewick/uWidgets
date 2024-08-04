@@ -36,9 +36,12 @@ jobs:
           --output .\new-wiki\API `
           --github-pages `
           --index-page-name API `
-      - name: Clone wiki repository
-        run: |
-          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git wiki
+
+      - name: Checkout wiki repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{github.repository}}.wiki
+          path: wiki
   
       - name: Update API docs
         run: |
@@ -49,8 +52,8 @@ jobs:
       - name: Commit & Push changes
         run: |
           cd wiki
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add .
           git commit -m "Update API docs"
-          git push https://x-access-token:${ secrets.GH_TOKEN }@github.com/${{ github.repository }}.wiki.git master
+          git push
