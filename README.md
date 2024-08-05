@@ -6,7 +6,7 @@
     Widgets for you<br/><br/>
       <b><a href="https://github.com/creewick/uWidgets/releases">Download</a></b> ・
       <a href="https://github.com/users/creewick/projects/4">Roadmap</a> ・
-      <a href="https://github.com/creewick/uWidgets/wiki/API-Reference">API</a> ・
+      <a href="https://github.com/creewick/uWidgets/wiki/API">API</a> ・
       <a href="https://github.com/creewick/uWidgets/issues">Report a bug</a> ・
       <a href="https://github.com/creewick/uWidgets/discussions">Discussions</a>
     <br/><br/><br/><br/>
@@ -51,7 +51,7 @@
 uWidgets is built with modularity in mind.<br/>
 That means you can create your own widgets using C#.
 
-[API Reference](https://github.com/creewick/uWidgets/wiki/API-Reference) will be here soon.
+Check the [API Reference](https://github.com/creewick/uWidgets/wiki/API)
 
 ## License
 
