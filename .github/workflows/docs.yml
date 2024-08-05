@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: beta
+          ref: dev
 
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
@@ -21,40 +21,39 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
-      - name: Restore
-        run: dotnet restore .\uWidgets.sln
-
-      - name: Build
-        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
-
       - name: Install tool
         run: dotnet tool install -g XMLDoc2Markdown
 
+      - name: Restore
+        run: dotnet restore .\src\uWidgets.sln
+
+      - name: Build
+        run: dotnet build .\src\uWidgets.sln --configuration Release --no-restore
+
       - name: Run tool
         run: |
-          dotnet xmldoc2md `
-          .\uWidgets.Core\bin\Release\net8.0\uWidgets.Core.dll `
-          --output .\docs `
-          --gitlab-wiki
+          xmldoc2md .\src\uWidgets.Core\bin\Release\net8.0\uWidgets.Core.dll `
+          --output .\new-wiki\API `
+          --github-pages `
+          --index-page-name API `
 
-      - name: Clone wiki repository
-        run: |
-          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git
-          cd $(basename ${{ github.repository }}.wiki.git)
+      - name: Checkout wiki repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{github.repository}}.wiki
+          path: wiki
   
-      - name: Remove old API docs
+      - name: Update API docs
         run: |
-          cd $(basename ${{ github.repository }}.wiki.git)
-          rm -rf API
-          mkdir API
+          if (Test-Path -Path wiki\API) { Remove-Item -Recurse -Force wiki\API }
+          New-Item -ItemType Directory -Path wiki\API
+          Copy-Item -Path new-wiki\API\* -Destination wiki\API -Recurse
 
-      - name: Copy new API docs
+      - name: Commit & Push changes
         run: |
-          cp -r ../docs/* $(basename ${{ github.repository }}.wiki.git)/API/
-  
-      - name: Commit and push changes
-        run: |
-          cd $(basename ${{ github.repository }}.wiki.git)
+          cd wiki
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add .
-          git commit -m "Update API documentation"
+          git commit -m "Update API docs"
           git push

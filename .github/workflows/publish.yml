@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: beta
+          ref: ${{ github.ref_name }}
 
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
@@ -28,49 +28,53 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
-      - name: Restore
-        run: dotnet restore .\uWidgets.sln
-
       - name: Build
-        run: dotnet build .\uWidgets.sln --configuration Release --no-restore
+        run: dotnet build .\src\uWidgets.sln --configuration Release
+
+      - name: Upload build
+        if: ${{ matrix.runtime == 'win-x64' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: .\src\uWidgets\bin\Release\net8.0
 
       - name: Publish
         run: |
-          dotnet publish .\uWidgets\uWidgets.csproj `
+          dotnet publish .\src\uWidgets\uWidgets.csproj `
           --configuration Release `
           --runtime ${{ matrix.runtime }} `
-          --output .\uWidgets\bin\Publish\${{ matrix.runtime }} `
+          --output .\src\uWidgets\bin\Publish\${{ matrix.runtime }} `
           --self-contained false `
           /p:PublishReadyToRun=true
 
       - name: Copy Widgets
         run: |
           New-Item `
-            -Path .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets `
+            -Path .\src\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets `
             -ItemType Directory `
           -Force
           Copy-Item `
-            -Path .\uWidgets\bin\Release\net8.0\Widgets\* `
-            -Destination .\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets `
+            -Path .\src\uWidgets\bin\Release\net8.0\Widgets\* `
+            -Destination .\src\uWidgets\bin\Publish\${{ matrix.runtime }}\Widgets `
             -Recurse `
             -Force
 
       - name: Clean up
         run: |
-          Get-ChildItem -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.pdb -Recurse | Remove-Item -Force
-          Get-ChildItem -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.deps.json -Recurse | Remove-Item -Force
+          Get-ChildItem -Path .\src\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.pdb -Recurse | Remove-Item -Force
+          Get-ChildItem -Path .\src\uWidgets\bin\Publish\${{ matrix.runtime }} -Filter *.deps.json -Recurse | Remove-Item -Force
 
       - name: Archive
         run: |
           Compress-Archive `
-            -Path .\uWidgets\bin\Publish\${{ matrix.runtime }} `
-            -DestinationPath .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
+            -Path .\src\uWidgets\bin\Publish\${{ matrix.runtime }} `
+            -DestinationPath .\src\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: publish-${{ matrix.runtime }}
-          path: .\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
+          path: .\src\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
   release:
     runs-on: windows-latest
@@ -80,19 +84,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: beta
+          ref: ${{ github.ref_name }}
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
           pattern: publish-*
           merge-multiple: true
-          path: .\uWidgets\bin\Publish
+          path: .\src\uWidgets\bin\Publish
 
       - name: Get Assembly Version
         id: version
         run: |
-          $filePath = ".\uWidgets\AssemblyInfo.cs"
+          $filePath = ".\src\uWidgets\AssemblyInfo.cs"
           $content = [string](Get-Content $filePath)
 
           if ($content -match '\[assembly: AssemblyVersion\("([0-9]+\.[0-9]+\.[0-9]+)"\)\]') {
@@ -133,7 +137,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: .\uWidgets\bin\Publish\win-x86.zip
+          asset_path: .\src\uWidgets\bin\Publish\win-x86.zip
           asset_name: win-x86.zip
           asset_content_type: application/zip
         env:
@@ -143,7 +147,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: .\uWidgets\bin\Publish\win-x64.zip
+          asset_path: .\src\uWidgets\bin\Publish\win-x64.zip
           asset_name: win-x64.zip
           asset_content_type: application/zip
         env:
@@ -153,8 +157,57 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: .\uWidgets\bin\Publish\win-arm64.zip
+          asset_path: .\src\uWidgets\bin\Publish\win-arm64.zip
           asset_name: win-arm64.zip
           asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  update-docs:
+    runs-on: windows-latest
+    needs: publish
+    
+    steps:  
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+  
+      - name: Install tool
+        run: dotnet tool install -g XMLDoc2Markdown
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: build
+          path: .
+  
+      - name: Run tool
+        run: |
+          ls .
+          ls .\build
+          xmldoc2md .\build\uWidgets.Core.dll `
+          --output .\new-wiki\API `
+          --github-pages `
+          --index-page-name API `
+  
+      - name: Checkout wiki repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{github.repository}}.wiki
+          path: wiki
+  
+      - name: Update API docs
+        run: |
+          if (Test-Path -Path wiki\API) { Remove-Item -Recurse -Force wiki\API }
+          New-Item -ItemType Directory -Path wiki\API
+          Copy-Item -Path new-wiki\API\* -Destination wiki\API -Recurse
+  
+      - name: Commit & Push changes
+        run: |
+          cd wiki
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update API docs"
+          git push
