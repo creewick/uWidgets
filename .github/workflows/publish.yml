@@ -166,7 +166,6 @@ jobs:
 
   update-docs:
     runs-on: windows-latest
-    needs: release
     
     steps:  
       - name: Install .NET Core
