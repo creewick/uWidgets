@@ -174,9 +174,6 @@ jobs:
         with:
           dotnet-version: 8.0.x
   
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
-  
       - name: Install tool
         run: dotnet tool install -g XMLDoc2Markdown
 
@@ -184,7 +181,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           pattern: build
-          path: .\build
+          path: .
   
       - name: Run tool
         run: |
