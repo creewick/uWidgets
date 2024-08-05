@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: beta
+          ref: ${{ github.ref_name }}
 
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
@@ -28,11 +28,15 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
-      - name: Restore
-        run: dotnet restore .\src\uWidgets.sln
-
       - name: Build
-        run: dotnet build .\src\uWidgets.sln --configuration Release --no-restore
+        run: dotnet build .\src\uWidgets.sln --configuration Release
+
+      - name: Upload build
+        if: matrix.runtime == 'win-x64'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: .\src\uWidgets\bin\Release\net8.0
 
       - name: Publish
         run: |
@@ -73,6 +77,7 @@ jobs:
           path: .\src\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
   release:
+    if: false
     runs-on: windows-latest
     needs: publish
     
@@ -80,7 +85,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: beta
+          ref: ${{ github.ref_name }}
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
@@ -158,3 +163,53 @@ jobs:
           asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  update-docs:
+    runs-on: windows-latest
+    needs: publish
+    
+    steps:  
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+  
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+  
+      - name: Install tool
+        run: dotnet tool install -g XMLDoc2Markdown
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: build
+          path: .\build
+  
+      - name: Run tool
+        run: |
+          xmldoc2md .\build\uWidgets.Core.dll `
+          --output .\new-wiki\API `
+          --github-pages `
+          --index-page-name API `
+  
+      - name: Checkout wiki repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{github.repository}}.wiki
+          path: wiki
+  
+      - name: Update API docs
+        run: |
+          if (Test-Path -Path wiki\API) { Remove-Item -Recurse -Force wiki\API }
+          New-Item -ItemType Directory -Path wiki\API
+          Copy-Item -Path new-wiki\API\* -Destination wiki\API -Recurse
+  
+      - name: Commit & Push changes
+        run: |
+          cd wiki
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update API docs"
+          git push
