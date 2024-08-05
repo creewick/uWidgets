@@ -40,7 +40,7 @@ public class AnalogClockSettingsViewModel(IWidgetLayoutProvider widgetLayoutProv
         get
         {
             var timespan = TimeSpan.FromHours(clockModel.TimeZone ?? 0);
-            var name = $"(UTC{timespan.Hours:+00}:{timespan.Minutes:D2})";
+            var name = $"({(timespan.Hours >= 0 ? "UTC+" : "UTC")}{timespan.Hours:00}:{timespan.Minutes:D2})";
             return TimeZoneInfo.CreateCustomTimeZone(name, timespan, name, name);
         }
         set => UpdateClockModel(clockModel with { TimeZone = value.BaseUtcOffset.TotalMinutes / 60 });
@@ -54,10 +54,5 @@ public class AnalogClockSettingsViewModel(IWidgetLayoutProvider widgetLayoutProv
         var widgetSettings = widgetLayoutProvider.Get();
         var newSettings = widgetSettings with { Settings = JsonSerializer.SerializeToElement(clockModel) };
         widgetLayoutProvider.Save(newSettings);
-        this.RaisePropertyChanged(nameof(ShowSeconds));
-        this.RaisePropertyChanged(nameof(Use24Hours));
-        this.RaisePropertyChanged(nameof(ShowTimeZones));
-        this.RaisePropertyChanged(nameof(UseLocalTimeZone));
-        this.RaisePropertyChanged(nameof(TimeZone));
     }
 }

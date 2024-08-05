@@ -19,7 +19,7 @@ public class WorldClockSettingsViewModel(IWidgetLayoutProvider widgetLayoutProvi
         return model;
     }
     
-    public TimeZoneInfo[] TimeZones => TimeZoneInfo.GetSystemTimeZones().ToArray();
+    public TimeZoneInfo[] TimeZones => TimeZoneInfo.GetSystemTimeZones().Append(TimeZone1).Append(TimeZone2).Append(TimeZone3).Append(TimeZone4).ToArray();
 
     public string TimeZone1Title => $"{Locale.Clock_TimeZone} 1";
     public string TimeZone2Title => $"{Locale.Clock_TimeZone} 2";
@@ -54,7 +54,7 @@ public class WorldClockSettingsViewModel(IWidgetLayoutProvider widgetLayoutProvi
     {
         var baseUtcOffset = clockModel.TimeZones[index];
         var timespan = TimeSpan.FromHours(baseUtcOffset ?? 0);
-        var name = $"(UTC{timespan.Hours:+00:-00}:{timespan.Minutes:D2})";
+        var name = $"({(timespan.Hours >= 0 ? "UTC+" : "UTC")}{timespan.Hours:00}:{timespan.Minutes:D2})";
         return TimeZoneInfo.CreateCustomTimeZone(name, timespan, name, name);
     }
 
@@ -69,9 +69,5 @@ public class WorldClockSettingsViewModel(IWidgetLayoutProvider widgetLayoutProvi
         var widgetSettings = widgetLayoutProvider.Get();
         var newSettings = widgetSettings with { Settings = JsonSerializer.SerializeToElement(clockModel) };
         widgetLayoutProvider.Save(newSettings);
-        this.RaisePropertyChanged(nameof(TimeZone1));
-        this.RaisePropertyChanged(nameof(TimeZone2));
-        this.RaisePropertyChanged(nameof(TimeZone3));
-        this.RaisePropertyChanged(nameof(TimeZone4));
     }
 }
