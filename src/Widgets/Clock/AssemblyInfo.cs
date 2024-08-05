@@ -4,6 +4,7 @@ using Clock.Models;
 using Clock.Views;
 using Clock.Views.Settings;
 using uWidgets.Core.Models;
+using uWidgets.Core.Models.Attributes;
 
 [assembly: AssemblyCompany("creewick")]
 [assembly: AssemblyVersion("1.0.2")]

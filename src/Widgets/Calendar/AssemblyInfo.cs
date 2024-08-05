@@ -4,6 +4,7 @@ using Calendar.Models;
 using Calendar.Views;
 using Calendar.Views.Settings;
 using uWidgets.Core.Models;
+using uWidgets.Core.Models.Attributes;
 
 [assembly: AssemblyCompany("creewick")]
 [assembly: AssemblyVersion("1.0.3")]

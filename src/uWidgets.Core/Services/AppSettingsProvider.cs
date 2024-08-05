@@ -1,5 +1,5 @@
 ﻿using uWidgets.Core.Interfaces;
-using uWidgets.Core.Models;
+using uWidgets.Core.Models.Settings;
 
 namespace uWidgets.Core.Services;
 

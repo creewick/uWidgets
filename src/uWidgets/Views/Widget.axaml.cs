@@ -6,9 +6,9 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
-using uWidgets.Core;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
+using uWidgets.Core.Models.Settings;
 using uWidgets.Locales;
 using uWidgets.Services;
 

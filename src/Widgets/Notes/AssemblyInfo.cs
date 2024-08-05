@@ -3,6 +3,7 @@ using Notes.Locales;
 using Notes.Models;
 using Notes.Views;
 using uWidgets.Core.Models;
+using uWidgets.Core.Models.Attributes;
 
 [assembly: AssemblyCompany("creewick")]
 [assembly: AssemblyVersion("1.0.4")]

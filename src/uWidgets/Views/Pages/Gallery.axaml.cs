@@ -5,9 +5,9 @@ using System.Resources;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using uWidgets.Core;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
+using uWidgets.Core.Models.Attributes;
 using uWidgets.Locales;
 using uWidgets.ViewModels;
 

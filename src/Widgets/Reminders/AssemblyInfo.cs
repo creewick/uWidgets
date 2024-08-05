@@ -4,6 +4,7 @@ using Reminders.Models;
 using Reminders.Views;
 using Reminders.Views.Settings;
 using uWidgets.Core.Models;
+using uWidgets.Core.Models.Attributes;
 
 [assembly: AssemblyCompany("creewick")]
 [assembly: AssemblyVersion("1.1.0")]
