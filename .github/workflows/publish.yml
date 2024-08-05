@@ -77,7 +77,6 @@ jobs:
           path: .\src\uWidgets\bin\Publish\${{ matrix.runtime }}.zip
 
   release:
-    if: false
     runs-on: windows-latest
     needs: publish
     
