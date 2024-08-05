@@ -40,6 +40,7 @@ public class App : Application
         localeService.SetCulture(appSettingsProvider.Get().Region.Language);
         themeService.Apply(appSettingsProvider.Get().Theme);
 
+        // TODO Storing widgets as variable keep them in memory
         var widgets = services
             .GetRequiredService<IWidgetFactory<Window, UserControl>>()
             .Create()

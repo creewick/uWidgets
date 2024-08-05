@@ -3,12 +3,16 @@ using uWidgets.Core.Interfaces;
 
 namespace uWidgets.Core.Services;
 
+/// <inheritdoc />
 public class JsonParser<T>(string filePath) : IDataProvider<T>
 {
     private T? data;
+    /// <inheritdoc />
     public event DataChangedEvent<T>? DataChanging;
+    /// <inheritdoc />
     public event DataChangedEvent<T>? DataChanged;
 
+    /// <inheritdoc />
     public T Get()
     {
         if (data != null) return data;
@@ -19,6 +23,7 @@ public class JsonParser<T>(string filePath) : IDataProvider<T>
                ?? throw new FormatException($"Can't deserialize {typeof(T).Name}");
     }
 
+    /// <inheritdoc />
     public void Save(T newData)
     {
         var oldData = data;

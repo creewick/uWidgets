@@ -30,7 +30,7 @@ public class GeneralViewModel(IAppSettingsProvider appSettingsProvider) : Reacti
         get => appSettingsProvider.Get().RunOnStartup;
         set
         {
-            if (!StartupService.Set(value)) return;
+            if (!new StartupService().SetRunOnStartup(value)) return;
             
             var settings = appSettingsProvider.Get();
             var newSettings = settings with { RunOnStartup = value };

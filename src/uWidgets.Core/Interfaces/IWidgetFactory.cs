@@ -5,8 +5,8 @@ namespace uWidgets.Core.Interfaces;
 /// <summary>
 /// Factory for creating widgets.
 /// </summary>
-/// <typeparam name="TWindow">Type of window. For Avalonia, use <see cref="Avalonia.Controls.Window"/></typeparam>
-/// <typeparam name="TControl">Type of user control. For Avalonia, use <see cref="Avalonia.Controls.UserControl"/></typeparam>
+/// <typeparam name="TWindow">Type of window. For Avalonia, use <c>Avalonia.Controls.Window</c></typeparam>
+/// <typeparam name="TControl">Type of user control. For Avalonia, use <c>Avalonia.Controls.UserControl</c></typeparam>
 public interface IWidgetFactory<out TWindow, out TControl>
 {
     /// <summary>

@@ -3,7 +3,7 @@ namespace uWidgets.Core.Interfaces;
 /// <summary>
 /// Service for resizing and positioning windows in a grid.
 /// </summary>
-/// <typeparam name="T">Type of window. For Avalonia, use <see cref="Avalonia.Controls.Window"/></typeparam>
+/// <typeparam name="T">Type of window. For Avalonia, use <c>Avalonia.Controls.Window</c></typeparam>
 public interface IGridService<in T>
 {
     /// <summary>

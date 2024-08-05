@@ -1,48 +1,33 @@
 using Microsoft.Win32;
+using uWidgets.Core.Interfaces;
 
 namespace uWidgets.Core.Services;
 
-public static class StartupService
+/// <inheritdoc />
+public class StartupService : IStartupService
 {
     private const string RegistryKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
     private static readonly string ExePath = Environment.ProcessPath!;
 
-    public static bool Set(bool value)
-    {
-        return value 
-            ? RunOnStartup() 
-            : RemoveFromStartup();
-    }
+    /// <inheritdoc />
+    public bool SetRunOnStartup(bool value) => SetRunOnStartupInternal(value);
 
-    private static bool RunOnStartup(bool repeat = true)
+    private static bool SetRunOnStartupInternal(bool value, bool repeat = true)
     {
         if (!OperatingSystem.IsWindows()) return false;
         
         try
         {
             var rk = Registry.CurrentUser.OpenSubKey(RegistryKey, true);
-            rk?.SetValue(Const.AppName, ExePath);
+            if (value)
+                rk?.SetValue(Const.AppName, ExePath);
+            else
+                rk?.DeleteValue(Const.AppName);
             return true;
         }
         catch (Exception)
         {
-            return repeat && RunOnStartup(false);
-        }
-    }
-
-    private static bool RemoveFromStartup(bool repeat = true)
-    {
-        if (!OperatingSystem.IsWindows()) return false;
-        
-        try
-        {
-            var rk = Registry.CurrentUser.OpenSubKey(RegistryKey, true);
-            rk?.DeleteValue(Const.AppName);
-            return true;
-        }
-        catch (Exception)
-        {
-            return repeat && RemoveFromStartup(false);
+            return repeat && SetRunOnStartupInternal(value, false);
         }
     }
 }
