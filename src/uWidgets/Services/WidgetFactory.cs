@@ -5,6 +5,7 @@ using System.Reflection;
 using Avalonia.Controls;
 using uWidgets.Core.Interfaces;
 using uWidgets.Core.Models;
+using uWidgets.Core.Models.Attributes;
 using uWidgets.Core.Services;
 using uWidgets.Views;
 

@@ -3,13 +3,19 @@ using uWidgets.Core.Models;
 
 namespace uWidgets.Core.Services;
 
-public class WidgetLayoutProvider(ILayoutProvider layoutProvider, WidgetLayout widgetLayout) 
-    : IWidgetLayoutProvider
+/// <inheritdoc />
+public class WidgetLayoutProvider(ILayoutProvider layoutProvider, WidgetLayout widgetLayout) : IWidgetLayoutProvider
 {
+    /// <inheritdoc />
     public event DataChangedEvent<WidgetLayout>? DataChanging;
+
+    /// <inheritdoc />
     public event DataChangedEvent<WidgetLayout>? DataChanged;
+
+    /// <inheritdoc />
     public WidgetLayout Get() => widgetLayout;
 
+    /// <inheritdoc />
     public void Save(WidgetLayout data)
     {
         DataChanging?.Invoke(this, widgetLayout, data);
@@ -25,6 +31,7 @@ public class WidgetLayoutProvider(ILayoutProvider layoutProvider, WidgetLayout w
         DataChanged?.Invoke(this, oldData, data);
     }
 
+    /// <inheritdoc />
     public void Remove()
     {
         var layout = layoutProvider.Get();

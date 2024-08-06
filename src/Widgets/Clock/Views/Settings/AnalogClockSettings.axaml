@@ -15,7 +15,7 @@
                 <ToggleSwitch IsChecked="{Binding UseLocalTimeZone} "/>
             </controls:Setting>
             <controls:Setting IsVisible="{Binding ShowTimeZones}" Title="{x:Static locales:Locale.Clock_TimeZone}">
-                <ComboBox ItemsSource="{Binding TimeZones}" Width="130" SelectedItem="{Binding TimeZone}">
+                <ComboBox ItemsSource="{Binding TimeZones}" Width="130" SelectedValue="{Binding TimeZone}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate DataType="system:TimeZoneInfo">
                             <TextBlock Text="{Binding  DisplayName}" Margin="0 4" />

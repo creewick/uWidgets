@@ -6,18 +6,24 @@ using uWidgets.Core.Models;
 
 namespace uWidgets.Core.Services;
  
+/// <inheritdoc />
 public class AssemblyProvider : IAssemblyProvider
 {
     private readonly Dictionary<string, AssemblyLoadContext> loadedContexts = new();
     private ILookup<string, AssemblyInfo> assemblyCache;
     private readonly IServiceProvider serviceProvider;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AssemblyProvider"/> class.
+    /// </summary>
+    /// <param name="serviceProvider">The service provider.</param>
     public AssemblyProvider(IServiceProvider serviceProvider)
     {
         assemblyCache = GetAssemblyInfos(Const.WidgetsFolder);
         this.serviceProvider = serviceProvider;
     }
-    
+
+    /// <inheritdoc />
     public ILookup<string, AssemblyInfo> GetAssemblyInfos(string directoryPath)
     {
         var assemblies = Directory.Exists(directoryPath)
@@ -30,6 +36,7 @@ public class AssemblyProvider : IAssemblyProvider
             .ToLookup(assembly => assembly.AssemblyName.Name!);
     }
     
+    /// <inheritdoc />
     public Assembly LoadAssembly(string name)
     {
         if (loadedContexts.TryGetValue(name, out var context))
@@ -43,6 +50,7 @@ public class AssemblyProvider : IAssemblyProvider
         return context.LoadFromAssemblyPath(filePath);
     }
 
+    /// <inheritdoc />
     public void UnloadAssembly(string name)
     {
         if (!loadedContexts.TryGetValue(name, out var context))
@@ -54,6 +62,7 @@ public class AssemblyProvider : IAssemblyProvider
         GC.WaitForPendingFinalizers();
     }
 
+    /// <inheritdoc />
     public object Activate(Type type, params object[] args)
     {
         try

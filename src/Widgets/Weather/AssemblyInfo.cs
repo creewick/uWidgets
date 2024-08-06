@@ -1,5 +1,6 @@
 using System.Reflection;
 using uWidgets.Core.Models;
+using uWidgets.Core.Models.Attributes;
 using Weather.Models;
 using Weather.Views;
 using Weather.Views.Settings;
