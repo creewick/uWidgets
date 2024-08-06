@@ -1,5 +1,6 @@
 # uWidgets
-<img src=".github/images/icon128x128@2x.png" width="140" alt="Logo" align="left">
+<img src=".github/images/icon-light.png#gh-light-mode-only" width="140" alt="Logo" align="left">
+<img src=".github/images/icon-dark.png#gh-dark-mode-only" width="140" alt="Logo" align="left">
 
 <p align="center">
   Standalone .NET application designed to enhance your Windows experience with a variety of customizable widgets.
@@ -21,7 +22,8 @@
 
 ### Widgets
 
-<img src=".github/images/widgets_line.png">
+<img src=".github/images/widget-line-light.png#gh-light-mode-only">
+<img src=".github/images/widget-line-dark.png#gh-dark-mode-only">
 
 5 types of fully customizable widgets
 
