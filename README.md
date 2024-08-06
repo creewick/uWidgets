@@ -1,20 +1,21 @@
-<div>
-  <img src=".github/images/icon128x128@2x.png" width="160" alt="Logo" align="left">
-  <div>
-    <br/>
-    <h3>uWidgets</h3>
-    <p>Widgets for you</p>
-    <br/><br/>
-  </div>
-</div>
+# uWidgets
+<img src=".github/images/icon128x128@2x.png" width="140" alt="Logo" align="left">
 
-<div align="center">
-  <b><a href="https://github.com/creewick/uWidgets/releases">Download</a></b> ・
-      <a href="https://github.com/users/creewick/projects/4">Roadmap</a> ・
-      <a href="https://github.com/creewick/uWidgets/wiki/API">API</a> ・
-      <a href="https://github.com/creewick/uWidgets/issues">Report a bug</a> ・
-      <a href="https://github.com/creewick/uWidgets/discussions">Discussions</a>
-</div>
+<p align="center">
+  Standalone .NET application designed to enhance your Windows experience with a variety of customizable widgets.
+</p>
+<h3 align="center">
+  <a href="https://github.com/creewick/uWidgets/releases">Download</a> ・ 
+  <a href="https://github.com/users/creewick/projects/4">Roadmap</a> ・
+  <a href="https://github.com/creewick/uWidgets/wiki/API">API</a> ・
+  <a href="https://github.com/creewick/uWidgets/issues">Report a bug</a> ・
+  <a href="https://github.com/creewick/uWidgets/discussions">Discussions</a>
+</h3>
+<h3 align="center">
+  <img src="https://img.shields.io/github/downloads/creewick/uWidgets/total"/>
+  <img src="https://img.shields.io/github/stars/creewick/uWidgets?style=flat"/>
+  <img src="https://img.shields.io/github/v/tag/creewick/uWidgets?label=version"/>
+</h3>
 
 ## Features
 
@@ -24,13 +25,13 @@
 
 5 types of fully customizable widgets
 
-| Widget  | Description                                          |
-|---------|------------------------------------------------------|
-| 🕒 Clock | 3 styles of Analog clock, World clock, Digital clock |
-| 📅 Calendar | Today view and Month view                            |
-| 🗒️ Notes | Interactive widget to store text notes               |
-| ✅ Reminders | Interactive widget with a to-do list                 |
-| ⛅️ Weather | Weather forecast for your location                   |
+| Widget       | Description                |
+|--------------|----------------------------|
+| 🕒 Clock     | 3 x Analog, World, Digital |
+| 📅 Calendar  | Today, Month views         |
+| 🗒️ Notes     | Interactive text notes     |
+| ✅ Reminders | Interactive to-do list     |
+| ⛅️ Weather   | Weather forecast           |
 
 ### Themes
 
