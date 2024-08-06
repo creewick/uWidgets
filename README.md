@@ -45,9 +45,11 @@
 - 🔲 **Monochrome** theme
 
 ### Grid
+<kbd>&nbsp;</kbd> <kbd>&nbsp;</kbd><br/>
+<kbd>&nbsp;</kbd> <kbd>&nbsp;</kbd>
 
-Widgets are designed to snap their position and size to the virtual grid.<br/>
-You can change the grid cell size and margin between widgets, or disable the grid completely.
+Widgets are designed to snap their **position** and **size** to the virtual grid.<br/>
+You can change the grid cell **size** and **margin** between widgets, or disable the grid completely.
 
 ### Sizes
 
@@ -129,6 +131,14 @@ You can also resize the widget by it's corner to set the desired size manually.
 1. Download the [latest release](https://github.com/creewick/uWidgets/releases)
 2. Extract the archive
 3. Launch `uWidgets.exe`
+
+## Deinstallation
+
+1. Disable "Run on startup" from the app's settings window
+2. Exit the application
+3. Delete `uWidgets` folder
+
+The app's portable and doesn't store any data outside that folder
 
 ## Collaboration
 
