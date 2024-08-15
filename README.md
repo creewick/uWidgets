@@ -55,7 +55,7 @@
 <img src=".github/images/weather-dark.png#gh-dark-mode-only" width="106" alt="Weather" align="left">
 
 ### Weather
-**Views**: Forecast, Temperature, UV Index <br>
+**Views**: Forecast <br>
 **Features**: Forecast up to 7 days, Search city by name
 
 <img src=".github/images/monitor-light.png#gh-light-mode-only" width="106" alt="Monitor" align="left">
@@ -104,6 +104,10 @@ You can change the grid cell **size** and **margin** between widgets, or disable
 <kbd align="center">
   <img src="https://github.com/yammadev/flag-icons/blob/master/png/US@2x.png?raw=true" width="48px" />
   <br/><br/><b>English</b>
+</kbd>
+<kbd align="center">
+  <img src="https://github.com/yammadev/flag-icons/blob/master/png/CN@2x.png?raw=true" width="48px" />
+  <br/><br/><b>Chinese</b>
 </kbd>
 <kbd align="center">
   <img src="https://github.com/yammadev/flag-icons/blob/master/png/DE@2x.png?raw=true" width="48px" />

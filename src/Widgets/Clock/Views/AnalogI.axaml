@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:Clock.Views.Controls"
@@ -51,3 +52,58 @@
     </Viewbox>
 </UserControl>
 
+=======
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:Clock.Views.Controls"
+        xmlns:viewModels="clr-namespace:Clock.ViewModels"
+        x:Class="Clock.Views.AnalogI"
+        x:DataType="viewModels:AnalogClockViewModel"
+        Margin="8">
+    
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="110" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+        <Style Selector="#Strokes > Ellipse">
+            <Setter Property="Stroke" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+            <Setter Property="StrokeThickness" Value="30" />
+            <Setter Property="Canvas.Left" Value="30" />
+            <Setter Property="Canvas.Top" Value="30" />
+            <Setter Property="Width" Value="940" />
+            <Setter Property="Height" Value="940" />
+        </Style>
+    </UserControl.Styles>
+    
+    <Viewbox Stretch="Uniform">
+        <Canvas Width="1000" Height="1000">
+            <Ellipse Width="1000" Height="1000" Opacity="0.2"
+                     Fill="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+            <Canvas Name="Strokes">
+                <Ellipse StrokeDashArray="0.3,7.64" />
+                <Ellipse StrokeDashArray="0.3,1.288" Opacity="0.25" />
+            </Canvas>
+            <Canvas Name="Numbers">
+                <TextBlock Canvas.Left="650" Canvas.Top="115" Text="1" />
+                <TextBlock Canvas.Left="790" Canvas.Top="255" Text="2" />
+                <TextBlock Canvas.Left="835" Canvas.Top="440" Text="3" />
+                <TextBlock Canvas.Left="775" Canvas.Top="615" Text="4" />
+                <TextBlock Canvas.Left="630" Canvas.Top="745" Text="5" />
+                <TextBlock Canvas.Left="460" Canvas.Top="800" Text="6" />
+                <TextBlock Canvas.Left="280" Canvas.Top="740" Text="7" />
+                <TextBlock Canvas.Left="140" Canvas.Top="610" Text="8" />
+                <TextBlock Canvas.Left="95" Canvas.Top="435" Text="9" />
+                <TextBlock Canvas.Left="140" Canvas.Top="255" Text="10" />
+                <TextBlock Canvas.Left="280" Canvas.Top="120" Text="11" />
+                <TextBlock Canvas.Left="440" Canvas.Top="70" Text="12" />
+                <TextBlock Canvas.Top="600" Width="1000" TextAlignment="Center" Text="{Binding TimeZoneDiff}" />
+            </Canvas>
+            <controls:ClockHand DataContext="{Binding HourHand}" />
+            <controls:ClockHand DataContext="{Binding MinuteHand}" />
+            <controls:ClockHand DataContext="{Binding SecondHand}" />
+        </Canvas>
+    </Viewbox>
+</UserControl>
+
+>>>>>>> parent of 15524c5 (Delete src directory)

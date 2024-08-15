@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
@@ -14,3 +15,21 @@
         </StackPanel>
     </ScrollViewer>
 </UserControl>
+=======
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
+             xmlns:locales="clr-namespace:Reminders.Locales"
+             x:Class="Reminders.Views.Settings.ListSettings">
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical" Spacing="5">
+            <controls:Setting Title="{x:Static locales:Locale.Reminders_DeleteCompleted}">
+                <Button Content="{x:Static locales:Locale.Reminders_Delete}" Click="DeleteCompleted" />
+            </controls:Setting>
+            <controls:Setting Title="{x:Static locales:Locale.Reminders_DeleteAll}">
+                <Button Content="{x:Static locales:Locale.Reminders_Delete}" Click="DeleteAll"/>
+            </controls:Setting>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
+>>>>>>> parent of 15524c5 (Delete src directory)

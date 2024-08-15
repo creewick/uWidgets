@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using Avalonia.Controls;
 using Clock.ViewModels;
 using uWidgets.Core.Interfaces;
@@ -11,4 +12,19 @@ public partial class AnalogClockSettings : UserControl
         DataContext = new AnalogClockSettingsViewModel(widgetLayoutProvider);
         InitializeComponent();
     }
+=======
+using Avalonia.Controls;
+using Clock.ViewModels;
+using uWidgets.Core.Interfaces;
+
+namespace Clock.Views.Settings;
+
+public partial class AnalogClockSettings : UserControl
+{
+    public AnalogClockSettings(IWidgetLayoutProvider widgetLayoutProvider)
+    {
+        DataContext = new AnalogClockSettingsViewModel(widgetLayoutProvider);
+        InitializeComponent();
+    }
+>>>>>>> parent of 15524c5 (Delete src directory)
 }

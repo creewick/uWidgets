@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style>
@@ -14,3 +15,21 @@
         <Setter Property="Opacity" Value="0.8" />
     </Style>
 </Styles>
+=======
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style>
+        <Style.Resources>
+            <SolidColorBrush x:Key="WidgetBackground" Color="{DynamicResource SystemAltHighColor}" Opacity="0.4" />
+            <SolidColorBrush x:Key="SettingsBackground" Color="{DynamicResource SystemAltMediumHighColor}" />
+            <x:Double x:Key="TextOpacity">0.8</x:Double>
+        </Style.Resources>
+    </Style>
+    <Style Selector="Window">
+        <Setter Property="TransparencyLevelHint" Value="AcrylicBlur" />
+    </Style>
+    <Style Selector="TextBlock">
+        <Setter Property="Opacity" Value="0.8" />
+    </Style>
+</Styles>
+>>>>>>> parent of 15524c5 (Delete src directory)

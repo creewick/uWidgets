@@ -1,0 +1,64 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = 
+build_property.IncludeAllContentForSelfExtract = 
+build_property.AvaloniaNameGeneratorIsEnabled = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
+build_property.AvaloniaNameGeneratorViewFileNamingStrategy = NamespaceAndClassName
+build_property.AvaloniaNameGeneratorAttachDevTools = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = uWidgets
+build_property.ProjectDir = D:\我的文档\Programming\uWidgets1\src\uWidgets\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Views/Controls/Setting.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = 
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Styles/Monochrome.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Styles/Transparent.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Views/EditWidget.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Views/Pages/About.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Views/Pages/Advanced.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Views/Pages/Appearance.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Views/Pages/Gallery.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Views/Pages/General.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Views/Settings.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Views/UpdatePopup.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/我的文档/Programming/uWidgets1/src/uWidgets/Views/Widget.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
