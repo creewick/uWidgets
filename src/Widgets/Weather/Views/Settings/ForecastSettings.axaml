@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
+             xmlns:locales="clr-namespace:Weather.Locales"
+             xmlns:viewModels="clr-namespace:Weather.ViewModels"
+             xmlns:geocoding="clr-namespace:Weather.Models.Geocoding"
+             x:Class="Weather.Views.Settings.ForecastSettings"
+             x:DataType="viewModels:ForecastSettingsViewModel">
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical" Spacing="5">
+            <controls:Setting Title="{x:Static locales:Locale.Weather_Location}">
+                <AutoCompleteBox Width="130" Name="Search" FilterMode="None" 
+                                 ValueMemberBinding="{Binding Name, x:DataType=geocoding:City}" 
+                                 SelectedItem="{Binding Location, Mode=OneWay}"
+                                 LostFocus="Search_OnLostFocus">
+                    <AutoCompleteBox.ItemTemplate>
+                        <DataTemplate x:DataType="geocoding:City">
+                            <TextBlock Text="{Binding SearchName}" Margin="0 4" />
+                        </DataTemplate>
+                    </AutoCompleteBox.ItemTemplate>
+                </AutoCompleteBox>
+            </controls:Setting>
+            <controls:Setting Title="{x:Static locales:Locale.Weather_Units}">
+                <ComboBox ItemsSource="{Binding TemperatureUnits}" MinWidth="130" 
+                          SelectedItem="{Binding TemperatureUnit}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="viewModels:TemperatureUnitViewModel">
+                            <TextBlock Text="{Binding DisplayName}" Margin="0 4" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </controls:Setting>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
