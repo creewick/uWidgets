@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:viewModels="clr-namespace:Clock.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Clock.Views.Settings.WorldClockSettings"
+             x:DataType="viewModels:WorldClockSettingsViewModel">
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical" Spacing="5">
+            <controls:Setting Title="{Binding TimeZone1Title}">
+                <ComboBox ItemsSource="{Binding TimeZones}" Width="130" SelectedValue="{Binding TimeZone1}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="system:TimeZoneInfo">
+                            <TextBlock Text="{Binding  DisplayName}" Margin="0 4" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </controls:Setting>
+            <controls:Setting Title="{Binding TimeZone2Title}">
+                <ComboBox ItemsSource="{Binding TimeZones}" Width="130" SelectedValue="{Binding TimeZone2}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="system:TimeZoneInfo">
+                            <TextBlock Text="{Binding  DisplayName}" Margin="0 4" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </controls:Setting>
+            <controls:Setting Title="{Binding TimeZone3Title}">
+                <ComboBox ItemsSource="{Binding TimeZones}" Width="130" SelectedValue="{Binding TimeZone3}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="system:TimeZoneInfo">
+                            <TextBlock Text="{Binding  DisplayName}" Margin="0 4" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </controls:Setting>
+            <controls:Setting Title="{Binding TimeZone4Title}">
+                <ComboBox ItemsSource="{Binding TimeZones}" Width="130" SelectedValue="{Binding TimeZone4}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="system:TimeZoneInfo">
+                            <TextBlock Text="{Binding  DisplayName}" Margin="0 4" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </controls:Setting>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

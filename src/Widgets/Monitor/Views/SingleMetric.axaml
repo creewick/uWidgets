@@ -1,0 +1,14 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Monitor.Views.Controls"
+             xmlns:viewModels="clr-namespace:Monitor.ViewModels"
+             x:Class="Monitor.Views.SingleMetric"
+             x:DataType="viewModels:SingleMetricViewModel">
+    <Grid RowDefinitions="*,*">
+        <controls:Metric VerticalAlignment="Top" HorizontalAlignment="Left" 
+                         DataContext="{Binding Metric}" />
+        <Viewbox Grid.Row="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <TextBlock FontSize="44" Text="{Binding Metric.Text}" />
+        </Viewbox>
+    </Grid>
+</UserControl>

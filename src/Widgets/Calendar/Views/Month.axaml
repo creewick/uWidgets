@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="clr-namespace:Calendar.ViewModels"
+             xmlns:views="clr-namespace:Calendar.Views"
+             x:Class="Calendar.Views.Month"
+             x:DataType="viewModels:MonthCalendarViewModel">
+    
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="{Binding TextSize, RelativeSource={RelativeSource AncestorType={x:Type views:Month}}}" />
+        </Style>
+        <Style Selector="TextBlock.weekend:not(.today)">
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+        <Style Selector="TextBlock.today">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+    </UserControl.Styles>
+    
+    <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,13*">
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Month}" 
+                   Margin="{Binding MonthMargin, RelativeSource={RelativeSource AncestorType={x:Type views:Month}}}"
+                   Foreground="{DynamicResource SystemControlForegroundAccentBrush}" />
+        <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Days}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="viewModels:DayViewModel">
+                    <Grid>
+                        <Viewbox>
+                            <Canvas Width="100" Height="100">
+                                <Ellipse Canvas.Left="0" Canvas.Top="0" Width="100" Height="100"
+                                         IsVisible="{Binding IsToday}"
+                                         Fill="{DynamicResource SystemAccentColor}" />
+                                <TextBlock Width="100" Height="100"
+                                           TextAlignment="Center"
+                                           Margin="0,14,0,0"
+                                           FontSize="60"
+                                           Classes.weekend="{Binding IsWeekend}"
+                                           Classes.today="{Binding IsToday}"
+                                           Text="{Binding Day}"  />
+                            </Canvas>
+                        </Viewbox>
+                        
+                    </Grid>
+                    </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="7" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </Grid>
+    
+</UserControl>

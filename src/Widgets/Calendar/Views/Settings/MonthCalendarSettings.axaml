@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:locales="clr-namespace:Calendar.Locales"
+             xmlns:viewModels="clr-namespace:Calendar.ViewModels"
+             x:Class="Calendar.Views.Settings.MonthCalendarSettings"
+             x:DataType="viewModels:MonthCalendarSettingsViewModel">
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical" Spacing="5">
+            <controls:Setting Title="{x:Static locales:Locale.Calendar_FirstDayOfWeek}">
+                <ComboBox ItemsSource="{Binding Days}" Width="130" SelectedItem="{Binding FirstDayOfWeek}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="system:DayOfWeek">
+                            <TextBlock Text="{Binding }" Margin="0 4" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </controls:Setting>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

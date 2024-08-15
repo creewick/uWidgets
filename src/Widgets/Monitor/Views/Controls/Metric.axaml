@@ -1,0 +1,30 @@
+<Viewbox xmlns="https://github.com/avaloniaui"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:viewModels="clr-namespace:Monitor.ViewModels"
+         x:Class="Monitor.Views.Controls.Metric"
+         x:DataType="viewModels:MetricViewModel"
+         Stretch="Uniform" ClipToBounds="False">
+    <Canvas Width="110" Height="110">
+        <Path Opacity="0.2" StrokeThickness="10"
+              Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" >
+            <Path.Data>
+                <EllipseGeometry Center="55,55" RadiusX="50" RadiusY="50" />
+            </Path.Data>
+        </Path>
+        <PathIcon Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                  Canvas.Top="30" Canvas.Left="30" Width="50" Height="50"
+                  Opacity="0.8"
+                  Data="{Binding Icon}" />
+        <Path StrokeThickness="10" StrokeDashArray="31.4,31.4" StrokeLineCap="Round"
+              StrokeDashOffset="{Binding StrokeDashOffset}"
+              Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}"
+              RenderTransformOrigin="55,55" Name="ProgressBar">
+            <Path.RenderTransform>
+                <RotateTransform Angle="-90" />
+            </Path.RenderTransform>
+            <Path.Data>
+                <EllipseGeometry Center="55,55" RadiusX="50" RadiusY="50" />
+            </Path.Data>
+        </Path>
+    </Canvas>
+</Viewbox>

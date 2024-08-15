@@ -1,0 +1,66 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Clock.Views.Controls"
+             xmlns:viewModels="clr-namespace:Clock.ViewModels"
+             x:Class="Clock.Views.AnalogIII"
+             x:DataType="viewModels:AnalogClockViewModel"
+             Margin="4">
+    
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="140" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </UserControl.Styles>
+    
+    <Viewbox Stretch="Uniform">
+        <Canvas Width="1000" Height="1000">
+            <Canvas Name="Strokes">
+                <Ellipse Canvas.Left="-500" Canvas.Top="-500" 
+                         Width="2000" Height="2000" 
+                         StrokeThickness="1000" Opacity="0.5"
+                         StrokeDashArray="0.01,0.2517"
+                         Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" >
+                    <Ellipse.Clip>
+                        <CombinedGeometry GeometryCombineMode="Exclude">
+                            <CombinedGeometry.Geometry1>
+                                <RectangleGeometry Rect="520,520,960,960" />
+                            </CombinedGeometry.Geometry1>
+                            <CombinedGeometry.Geometry2>
+                                <EllipseGeometry Center="1000,1000" RadiusX="370" RadiusY="370" />
+                            </CombinedGeometry.Geometry2>
+                        </CombinedGeometry>
+                    </Ellipse.Clip>
+                </Ellipse>
+                <Ellipse Canvas.Left="-500" Canvas.Top="-500" 
+                         Width="2000" Height="2000" 
+                         StrokeThickness="1000" 
+                         Opacity="0.25"
+                         StrokeDashArray="0.005,0.0474"
+                         Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" >
+                    <Ellipse.Clip>
+                        <CombinedGeometry GeometryCombineMode="Exclude">
+                            <CombinedGeometry.Geometry1>
+                                <RectangleGeometry Rect="520,520,960,960" />
+                            </CombinedGeometry.Geometry1>
+                            <CombinedGeometry.Geometry2>
+                                <RectangleGeometry Rect="570,570,860,860" />
+                            </CombinedGeometry.Geometry2>
+                        </CombinedGeometry>
+                    </Ellipse.Clip>
+                </Ellipse>
+            </Canvas>
+            <Canvas Name="Numbers">
+                <TextBlock Canvas.Left="745" Canvas.Top="420" Text="3" />
+                <TextBlock Canvas.Left="450" Canvas.Top="690" Text="6" />
+                <TextBlock Canvas.Left="185" Canvas.Top="415" Text="9" />
+                <TextBlock Canvas.Left="420" Canvas.Top="150" Text="12" />
+                <TextBlock Canvas.Top="550" Width="1000" FontSize="110" TextAlignment="Center" Text="{Binding TimeZoneDiff}" />
+            </Canvas>
+            <controls:ClockHand DataContext="{Binding HourHand}" />
+            <controls:ClockHand DataContext="{Binding MinuteHand}" />
+            <controls:ClockHand DataContext="{Binding SecondHand}" />
+        </Canvas>
+    </Viewbox>
+</UserControl>
+

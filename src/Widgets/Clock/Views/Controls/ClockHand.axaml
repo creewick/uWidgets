@@ -1,0 +1,51 @@
+﻿<Canvas xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Clock.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        RenderTransformOrigin="500,500"
+        Width="1000" Height="1000"
+        x:Class="Clock.Views.Controls.ClockHand" 
+        x:DataType="viewModels:ClockHandViewModel"
+        Opacity="{DynamicResource TextOpacity}"
+        IsVisible="{Binding IsVisible}">
+    <Canvas.RenderTransform>
+        <RotateTransform Angle="{Binding RotateAngle}" />
+    </Canvas.RenderTransform>
+    <Ellipse
+        Canvas.Left="470" Canvas.Top="470"
+        Width="60" Height="60"
+        StrokeThickness="12"
+        IsVisible="{Binding IsHourMinuteHand}"
+        Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+    <Path
+        Data="M 500,470 V 436"
+        StrokeThickness="16"
+        IsVisible="{Binding IsHourMinuteHand}"
+        Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+    <Path
+        Data="{Binding Geometry}"
+        StrokeThickness="32"
+        StrokeLineCap="Round"
+        IsVisible="{Binding IsHourMinuteHand}"
+        Stroke="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+    
+    <Ellipse 
+        Canvas.Left="480" Canvas.Top="480" 
+        Width="40"  Height="40" 
+        StrokeThickness="8"
+        IsVisible="{Binding IsSecondHand}"
+        Stroke="{DynamicResource SystemControlBackgroundAccentBrush}" />
+    <Path 
+        Data="M 500,520 V 575" 
+        StrokeThickness="8" 
+        IsVisible="{Binding IsSecondHand}"
+        Stroke="{DynamicResource SystemControlBackgroundAccentBrush}" />
+    <Path
+        Canvas.Top="60"
+        Data="{Binding Geometry}" 
+        StrokeThickness="8" 
+        IsVisible="{Binding IsSecondHand}"
+        Stroke="{DynamicResource SystemControlBackgroundAccentBrush}" />
+</Canvas>

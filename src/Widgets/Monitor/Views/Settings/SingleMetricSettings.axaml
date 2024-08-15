@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:uWidgets.Views.Controls;assembly=uWidgets"
+             xmlns:locales="clr-namespace:Monitor.Locales"
+             xmlns:viewModels="clr-namespace:Monitor.ViewModels"
+             x:DataType="viewModels:SingleMetricSettingsViewModel"
+             x:Class="Monitor.Views.Settings.SingleMetricSettings">
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical" Spacing="5">
+            <controls:Setting Title="{x:Static locales:Locale.Monitor_Metric}">
+                <ComboBox ItemsSource="{Binding AllTypes}" MinWidth="130" 
+                          SelectedItem="{Binding SelectedType}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="viewModels:MetricTypeViewModel">
+                            <TextBlock Text="{Binding Title}" Margin="0 4" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </controls:Setting>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

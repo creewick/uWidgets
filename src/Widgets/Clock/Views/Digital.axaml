@@ -1,0 +1,26 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModels="clr-namespace:Clock.ViewModels"
+        x:Class="Clock.Views.Digital"
+        x:DataType="viewModels:DigitalClockViewModel">
+    
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="110" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </UserControl.Styles>
+    
+    <Viewbox Stretch="Uniform">
+        <StackPanel>
+            <TextBlock Text="{Binding DateText}" 
+                       IsVisible="{Binding ShowDate}"
+                       HorizontalAlignment="Center"
+                       Margin="0,4,0,0"
+                       FontSize="8" Opacity="0.5" />
+            <TextBlock Text="{Binding TimeText}"
+                       FontSize="34" HorizontalAlignment="Center" />
+        </StackPanel>
+    </Viewbox>
+</UserControl>
+
