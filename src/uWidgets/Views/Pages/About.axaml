@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:uWidgets.Views.Controls"
+             xmlns:pages="clr-namespace:uWidgets.Views.Pages"
+             xmlns:locales="clr-namespace:uWidgets.Locales"
+             x:Class="uWidgets.Views.Pages.About"
+             x:DataType="pages:About">
+    <StackPanel Orientation="Vertical" Spacing="3">
+        <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 0 0 10" 
+                   Text="{x:Static locales:Locale.Settings_About}"/>
+        <controls:Setting Icon="{DynamicResource About}" 
+                          Title="{x:Static locales:Locale.Settings_About_Version}"
+                          Subtitle="uWidgets by creewick">
+            <TextBlock Text="{Binding Version}" />
+        </controls:Setting>
+        <controls:Setting Name="Update" IsVisible="False" 
+                          Icon="{DynamicResource Download}" 
+                          Title="{x:Static locales:Locale.Update_SoftwareUpdate}">
+            <Button MinWidth="130" HorizontalContentAlignment="Center" Content="{x:Static locales:Locale.Settings_About_Repository_Action}" Click="GoToUpdate" />
+        </controls:Setting>
+        <TextBlock FontSize="14" FontWeight="SemiBold" Margin="0 20 0 10" 
+                   Text="{x:Static locales:Locale.Settings_About_Actions}"/>
+        <controls:Setting Icon="{DynamicResource GitHub}" 
+                          Title="{x:Static locales:Locale.Settings_About_Repository}">
+            <Button MinWidth="130" HorizontalContentAlignment="Center" Content="{x:Static locales:Locale.Settings_About_Repository_Action}" Click="GoToRepository" />
+        </controls:Setting>
+        <controls:Setting Icon="{DynamicResource Bug}" 
+                          Title="{x:Static locales:Locale.Settings_About_ReportBug}">
+            <Button MinWidth="130" HorizontalContentAlignment="Center" Content="{x:Static locales:Locale.Settings_About_Repository_Action}" Click="GoToIssues" />
+        </controls:Setting>
+    </StackPanel>
+</UserControl>

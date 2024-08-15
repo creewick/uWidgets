@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:locales="clr-namespace:uWidgets.Locales"
+        xmlns:views="clr-namespace:uWidgets.Views"
+        x:Class="uWidgets.Views.UpdatePopup"
+        Background="{DynamicResource SettingsBackground}"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="40"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        Width="340" Height="240" CanResize="False"
+        Title="Update" x:DataType="views:UpdatePopup">
+    <Window.Styles>
+        <Styles>
+            <Style Selector="TextBlock">
+                <Setter Property="TextAlignment" Value="Center" />
+            </Style>
+            <Style Selector="Button">
+                <Setter Property="Width" Value="340" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+            <Style Selector="Separator">
+                <Setter Property="Margin" Value="0" />
+            </Style>
+        </Styles>
+    </Window.Styles>
+    <StackPanel>
+        <StackPanel Margin="40 20">
+            <TextBlock FontSize="20" Margin="0 10" FontWeight="SemiBold" Text="{x:Static locales:Locale.Update_SoftwareUpdate}" />
+            <TextBlock TextWrapping="Wrap" Text="{Binding UpdateText}" />
+        </StackPanel>
+        <Separator />
+        <Button FontWeight="SemiBold" Content="{x:Static locales:Locale.Update_Download}" Click="DownloadUpdate" />
+        <Separator />
+        <Button Content="{x:Static locales:Locale.Update_Later}" Click="Later" />
+        <Separator />
+        <Button Content="{x:Static locales:Locale.Update_SkipThisVersion}" Click="SkipThisVersion" />
+    </StackPanel>
+</Window>

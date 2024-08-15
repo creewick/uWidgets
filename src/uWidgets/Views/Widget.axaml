@@ -1,0 +1,72 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:locales="clr-namespace:uWidgets.Locales"
+        xmlns:views="clr-namespace:uWidgets.Views"
+        x:Class="uWidgets.Views.Widget"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        ToolTip.Placement="BottomEdgeAlignedRight"
+        ToolTip.VerticalOffset="-25"
+        ToolTip.HorizontalOffset="7"
+        SystemDecorations="None"
+        CanResize="False"
+        x:DataType="views:Widget"
+        Classes="Widget">
+
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="{Binding Edit}" Command="{Binding EditWidget}" IsVisible="{Binding ShowEditButton}" />
+            <Separator IsVisible="{Binding ShowEditButton}"/>
+            <MenuItem Header="{x:Static locales:Locale.Widget_Size}" IsEnabled="False" />
+            <MenuItem Header="{x:Static locales:Locale.Widget_Size_Small}" Command="{Binding ResizeSmall}" />
+            <MenuItem Header="{x:Static locales:Locale.Widget_Size_Medium}" Command="{Binding ResizeMedium}" />
+            <MenuItem Header="{x:Static locales:Locale.Widget_Size_Large}" Command="{Binding ResizeLarge}" />
+            <MenuItem Header="{x:Static locales:Locale.Widget_Size_ExtraLarge}" Command="{Binding ResizeExtraLarge}" />
+            <Separator />
+            <MenuItem Header="{x:Static locales:Locale.Widget_Remove}" Command="{Binding Remove}" />
+            <Separator />
+            <MenuItem Header="{x:Static locales:Locale.Settings}" Command="{Binding OpenSettings}" />
+        </ContextMenu>
+    </Window.ContextMenu> 
+    
+    <Window.Styles>
+        <Style Selector="Border:not(:pointerover) ScrollViewer">
+            <Setter Property="VerticalScrollBarVisibility" Value="Hidden" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
+        </Style>
+        <Style Selector="Border:pointerover ScrollViewer">
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        </Style>
+        <Style Selector=":is(UserControl)">
+            <Setter Property="Margin" Value="12" />
+        </Style>
+        <Style Selector="ToolTip">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+    </Window.Styles>
+    
+    <ToolTip.Tip>
+        <Viewbox Stretch="Uniform" Width="32" Height="32">
+            <Path Fill="{DynamicResource SystemControlForegroundBaseHighBrush}" 
+                  Data="M1 3A1 1 0 001 5C3 5 5 3 5 1A1 1 0 003 1C3 2 2 3 1 3"
+                  PointerPressed="Resize"/>
+        </Viewbox>
+    </ToolTip.Tip>
+    
+    <Grid>
+        <Border CornerRadius="{Binding Radius}" Background="{DynamicResource WidgetBackground}" 
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                ClipToBounds="True"
+                Name="Border"
+                Width="{Binding Width, RelativeSource={RelativeSource AncestorType=Window}}"
+                Height="{Binding Height, RelativeSource={RelativeSource AncestorType=Window}}">
+            <ContentPresenter Name="ContentPresenter" />
+        </Border>
+    </Grid>
+    
+</Window>

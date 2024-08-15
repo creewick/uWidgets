@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:pages="clr-namespace:uWidgets.Views.Pages"
+             xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
+             x:Class="uWidgets.Views.Pages.Gallery"
+             x:DataType="pages:Gallery">
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Width" Value="{Binding WidgetSize, RelativeSource={RelativeSource AncestorType=pages:Gallery}}" />
+            <Setter Property="Height" Value="{Binding WidgetSize, RelativeSource={RelativeSource AncestorType=pages:Gallery}}" />
+            <Setter Property="CornerRadius" Value="{Binding Radius, RelativeSource={RelativeSource AncestorType=pages:Gallery}}" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="ClipToBounds" Value="True" />
+        </Style>
+        <Style Selector=".Button > Border">
+            <Setter Property="CornerRadius" Value="{Binding Radius, RelativeSource={RelativeSource AncestorType=pages:Gallery}}" />
+        </Style>
+        <Style Selector=":is(UserControl)">
+            <Setter Property="Margin" Value="12" />
+        </Style>
+    </UserControl.Styles>
+    <StackPanel>
+        <ItemsControl ItemsSource="{Binding Widgets}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="viewModels:WidgetPreviewViewModel">
+                    <StackPanel Width="220" Margin="10 0 10 40">
+                        <Button Classes="Button" HorizontalAlignment="Center" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Click="Button_OnClick">
+                            <Border ClipToBounds="True">
+                                <ContentPresenter IsHitTestVisible="False" Content="{Binding Control}" />
+                            </Border>
+                        </Button>
+                        <TextBlock Margin="0 20 0 5" FontWeight="Bold" TextAlignment="Center" Text="{Binding Title}" />
+                        <TextBlock TextAlignment="Center" FontSize="12" Opacity="0.7" TextWrapping="Wrap" Text="{Binding Subtitle}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

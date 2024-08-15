@@ -1,0 +1,59 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModels="clr-namespace:uWidgets.ViewModels"
+        Width="1000" Height="650" MinWidth="500" MinHeight="300"
+        x:Class="uWidgets.Views.Settings"
+        Background="{DynamicResource SettingsBackground}"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="50"
+        WindowStartupLocation="CenterScreen"
+        Title="Settings"
+        x:DataType="viewModels:SettingsViewModel">
+
+    <Window.Styles>
+        <Style Selector="ListBoxItem">
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SystemRevealListLowColor}" />                
+        </Style>
+    </Window.Styles>
+    
+    <Grid RowDefinitions="Auto,*">
+        <TextBlock Name="AppTitle" IsHitTestVisible="False" Margin="16 16 0  16" FontWeight="Bold">uWidgets</TextBlock>
+        <SplitView Name="SplitView" Grid.Row="1" IsPaneOpen="True" DisplayMode="CompactInline" PaneBackground="Transparent" OpenPaneLength="240" CompactPaneLength="60">
+            <SplitView.Pane>
+                <ScrollViewer>
+                    <StackPanel Margin="0 0 12 0">
+                        <ListBox Name="ListBox" Background="Transparent" SelectionMode="Single" ItemsSource="{Binding AllItems}" SelectionChanged="OnMenuItemChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="viewModels:PageViewModel">
+                                    <StackPanel Orientation="Horizontal" Spacing="12" IsVisible="{Binding IsNotSeparator}">
+                                        <PathIcon Data="{Binding Icon}" Height="16" />
+                                        <TextBlock Text="{Binding Text}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid RowDefinitions="Auto, *" MaxWidth="800">
+                    <TextBlock Grid.Row="0" FontSize="28" FontWeight="SemiBold" Text="{Binding CurrentPageTitle}" Margin="0 0 0 32" />
+                    <ScrollViewer Grid.Row="1">
+                        <TransitioningContentControl Margin="0 0 16 16" Content="{Binding CurrentPage}">
+                            <TransitioningContentControl.PageTransition>
+                                <CompositePageTransition>
+                                    <CrossFade Duration="0:00:00.000" />
+                                    <PageSlide Orientation="Vertical" SlideInEasing="CubicEaseOut" Duration="0:00:00.300" />
+                                </CompositePageTransition>
+                            </TransitioningContentControl.PageTransition>
+                        </TransitioningContentControl>
+                    </ScrollViewer>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Window>
