@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:viewModels="clr-namespace:Calendar.ViewModels"
@@ -18,3 +19,25 @@
         </Grid>
     </Viewbox>
 </UserControl>
+=======
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="clr-namespace:Calendar.ViewModels"
+             x:Class="Calendar.Views.Date"
+             x:DataType="viewModels:DateCalendarViewModel">
+    <Viewbox Stretch="Uniform">
+        <Grid RowDefinitions="*,4*" ColumnDefinitions="*,*">
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,2,0" FontWeight="Bold"
+                       Foreground="{DynamicResource SystemControlForegroundAccentBrush}" 
+                       Text="{Binding DayOfWeek}" 
+                       VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Opacity="0.5" FontWeight="Bold"
+                       Text="{Binding Month}" 
+                       VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-5,0,0" 
+                       FontSize="50" LineHeight="55" Text="{Binding Day}" FontWeight="SemiBold"
+                       VerticalAlignment="Top" HorizontalAlignment="Center" />
+        </Grid>
+    </Viewbox>
+</UserControl>
+>>>>>>> parent of 15524c5 (Delete src directory)

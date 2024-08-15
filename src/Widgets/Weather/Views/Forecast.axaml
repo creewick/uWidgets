@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:viewModels="clr-namespace:Weather.ViewModels"
@@ -5,3 +6,12 @@
              x:Class="Weather.Views.Forecast"
              x:DataType="viewModels:ForecastViewModel">
 </UserControl>
+=======
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="clr-namespace:Weather.ViewModels"
+             Margin="0"
+             x:Class="Weather.Views.Forecast"
+             x:DataType="viewModels:ForecastViewModel">
+</UserControl>
+>>>>>>> parent of 15524c5 (Delete src directory)

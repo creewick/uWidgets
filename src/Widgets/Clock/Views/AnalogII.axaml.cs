@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using Avalonia.Controls;
 using Clock.Models;
 using Clock.ViewModels;
@@ -14,4 +15,22 @@ public partial class AnalogII : UserControl
         Unloaded += (_, _) => ((AnalogClockViewModel)DataContext).Dispose();
         InitializeComponent();
     }
+=======
+﻿using Avalonia.Controls;
+using Clock.Models;
+using Clock.ViewModels;
+
+namespace Clock.Views;
+
+public partial class AnalogII : UserControl
+{
+    public AnalogII() : this(new ClockModel()) {}
+    
+    public AnalogII(ClockModel clockModel) 
+    {
+        DataContext = new AnalogClockViewModel(clockModel);
+        Unloaded += (_, _) => ((AnalogClockViewModel)DataContext).Dispose();
+        InitializeComponent();
+    }
+>>>>>>> parent of 15524c5 (Delete src directory)
 }
