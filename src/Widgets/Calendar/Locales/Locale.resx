@@ -135,7 +135,4 @@
   <data name="Calendar_FirstDayOfWeek" xml:space="preserve">
     <value>First day of week</value>
   </data>
-  <data name="Monitor_SingleMetric_Title" xml:space="preserve">
-    <value>Single Metric</value>
-  </data>
 </root>
