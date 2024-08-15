@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Settings_Appearance" xml:space="preserve">
+    <value>外观</value>
+  </data>
+  <data name="Settings_General" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="Settings_About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Settings_Appearance_Theme" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="Settings_Appearance_DarkMode_Title" xml:space="preserve">
+    <value>选择模式</value>
+  </data>
+  <data name="Settings_Appearance_DarkMode_Subtitle" xml:space="preserve">
+    <value>更改小部件中显示的颜色</value>
+  </data>
+  <data name="Settings_Appearance_DarkMode_True" xml:space="preserve">
+    <value>暗</value>
+  </data>
+  <data name="Settings_Appearance_DarkMode_False" xml:space="preserve">
+    <value>亮</value>
+  </data>
+  <data name="Settings_Appearance_DarkMode_Null" xml:space="preserve">
+    <value>跟随系统</value>
+  </data>
+  <data name="Settings_Appearance_Transparency_Title" xml:space="preserve">
+    <value>透明效果</value>
+  </data>
+  <data name="Settings_Appearance_Transparency_Subtitle" xml:space="preserve">
+    <value>小部件将呈现半透明状态</value>
+  </data>
+  <data name="Settings_Appearance_AccentColor_Title" xml:space="preserve">
+    <value>强调色</value>
+  </data>
+  <data name="Settings_Appearance_Size" xml:space="preserve">
+    <value>尺寸</value>
+  </data>
+  <data name="Settings_Advanced_WidgetSize_Title" xml:space="preserve">
+    <value>尺寸</value>
+  </data>
+  <data name="Settings_Advanced_WidgetMargin_Title" xml:space="preserve">
+    <value>小部件边距</value>
+  </data>
+  <data name="Widget_Remove" xml:space="preserve">
+    <value>移除小部件</value>
+  </data>
+  <data name="Widget_Size" xml:space="preserve">
+    <value>尺寸</value>
+  </data>
+  <data name="Widget_Size_Small" xml:space="preserve">
+    <value>小</value>
+  </data>
+  <data name="Widget_Size_Medium" xml:space="preserve">
+    <value>中</value>
+  </data>
+  <data name="Widget_Size_Large" xml:space="preserve">
+    <value>大</value>
+  </data>
+  <data name="Widget_Size_ExtraLarge" xml:space="preserve">
+    <value>巨大</value>
+  </data>
+  <data name="Widget_Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="Widget_OpenSettings" xml:space="preserve">
+    <value>编辑小部件</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Widget" xml:space="preserve">
+    <value>小部件</value>
+  </data>
+  <data name="Settings_About_Version" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="Settings_About_Actions" xml:space="preserve">
+    <value>更多</value>
+  </data>
+  <data name="Settings_About_Repository" xml:space="preserve">
+    <value>GitHub 存储库</value>
+  </data>
+  <data name="Settings_About_ReportBug" xml:space="preserve">
+    <value>反馈 bug</value>
+  </data>
+  <data name="Settings_General_Language_Title" xml:space="preserve">
+    <value>显示语言</value>
+  </data>
+  <data name="Settings_General_Language_Subtitle" xml:space="preserve">
+    <value>uWidgets 将以所选语言显示</value>
+  </data>
+  <data name="Settings_Advanced_WidgetMargin_Subtitle" xml:space="preserve">
+    <value>小部件之间的最小距离</value>
+  </data>
+  <data name="Settings_Advanced_WidgetSize_Subtitle" xml:space="preserve">
+    <value>最小部件的尺寸</value>
+  </data>
+  <data name="Settings_General_Exit_Title" xml:space="preserve">
+    <value>退出程序</value>
+  </data>
+  <data name="Settings_General_Exit_Action" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="Settings_General_Restart_Action" xml:space="preserve">
+    <value>重启</value>
+  </data>
+  <data name="Settings_General_Restart_Title" xml:space="preserve">
+    <value>重启程序</value>
+  </data>
+  <data name="Settings_General_Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Settings_General_Actions" xml:space="preserve">
+    <value>更多</value>
+  </data>
+  <data name="Settings_About_Repository_Action" xml:space="preserve">
+    <value>访问</value>
+  </data>
+  <data name="Widgets" xml:space="preserve">
+    <value>小部件</value>
+  </data>
+  <data name="Settings_Appearance_SnapPosition_Title" xml:space="preserve">
+    <value>对齐位置</value>
+  </data>
+  <data name="Settings_Appearance_SnapPosition_Subtitle" xml:space="preserve">
+    <value>将小部件位置与网格对齐</value>
+  </data>
+  <data name="Widget_Save" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="Settings_Appearance_Monochrome_Title" xml:space="preserve">
+    <value>单色主题</value>
+  </data>
+  <data name="Settings_Appearance_Monochrome_Subtitle" xml:space="preserve">
+    <value>小部件元素以相同的颜色显示</value>
+  </data>
+  <data name="Update_SoftwareUpdate" xml:space="preserve">
+    <value>软件更新</value>
+  </data>
+  <data name="Update_UpdateFormat" xml:space="preserve">
+    <value>uWidgets {0} 可供下载</value>
+  </data>
+  <data name="Update_Download" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>以后再说</value>
+  </data>
+  <data name="Update_SkipThisVersion" xml:space="preserve">
+    <value>跳过此版本</value>
+  </data>
+  <data name="Settings_Appearance_AccentColor_Null" xml:space="preserve">
+    <value>跟随系统</value>
+  </data>
+  <data name="Settings_Appearance_AccentColor_Manual" xml:space="preserve">
+    <value>手动</value>
+  </data>
+  <data name="Settings_General_Startup_Title" xml:space="preserve">
+    <value>开机自启</value>
+  </data>
+  <data name="Settings_General_Startup_Subtitle" xml:space="preserve">
+    <value>该程序将在系统启动时自动启动</value>
+  </data>
+  <data name="Settings_General_Startup" xml:space="preserve">
+    <value>启动</value>
+  </data>
+  <data name="Settings_Appearance_SnapSize_Title" xml:space="preserve">
+    <value>对齐尺寸</value>
+  </data>
+  <data name="Settings_Appearance_SnapSize_Subtitle" xml:space="preserve">
+    <value>将小部件大小与网格对齐</value>
+  </data>
+  <data name="Settings_Appearance_LockSize_Title" xml:space="preserve">
+    <value>锁定尺寸</value>
+  </data>
+  <data name="Settings_Appearance_LockPosition_Title" xml:space="preserve">
+    <value>锁定位置</value>
+  </data>
+  <data name="Settings_Appearance_LockSize_Subtitle" xml:space="preserve">
+    <value>防止意外调整小部件大小</value>
+  </data>
+  <data name="Settings_Appearance_LockPosition_Subtitle" xml:space="preserve">
+    <value>防止意外重新定位小部件</value>
+  </data>
+  <data name="Settings_Appearance_Position" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="Settings_Advanced" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="Settings_Advanced_WidgetRadius_Title" xml:space="preserve">
+    <value>小部件圆角大小</value>
+  </data>
+  <data name="Settings_Advanced_WidgetRadius_Subtitle" xml:space="preserve">
+    <value>小部件角半径</value>
+  </data>
+  <data name="Settings_RestartRequired" xml:space="preserve">
+    <value>重新启动应用程序以应用更改</value>
+  </data>
+  <data name="Settings_AdminRequired" xml:space="preserve">
+    <value>以管理员身份运行应用程序来更改此设置</value>
+  </data>
+  <data name="Settings_Advanced_Dimensions" xml:space="preserve">
+    <value>形状</value>
+  </data>
+</root>
