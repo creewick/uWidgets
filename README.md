@@ -106,6 +106,10 @@ You can change the grid cell **size** and **margin** between widgets, or disable
   <br/><br/><b>English</b>
 </kbd>
 <kbd align="center">
+  <img src="https://github.com/yammadev/flag-icons/blob/master/png/CN@2x.png?raw=true" width="48px" />
+  <br/><br/><b>Chinese</b>
+</kbd>
+<kbd align="center">
   <img src="https://github.com/yammadev/flag-icons/blob/master/png/DE@2x.png?raw=true" width="48px" />
   <br/><br/><b>German</b>
 </kbd>
