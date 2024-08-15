@@ -55,7 +55,7 @@
 <img src=".github/images/weather-dark.png#gh-dark-mode-only" width="106" alt="Weather" align="left">
 
 ### Weather
-**Views**: Forecast, Temperature, UV Index <br>
+**Views**: Forecast <br>
 **Features**: Forecast up to 7 days, Search city by name
 
 <img src=".github/images/monitor-light.png#gh-light-mode-only" width="106" alt="Monitor" align="left">
